@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'localization'], function(){
+    
+    Route::get('/', 'LanguagesController@index');
+    Route::get('/{language}', 'CategoriesController@index');
+
+    // Route::get('/{language}/about', 'PagesController@about');
+    // Route::get('/{language}/services', 'PagesController@services');
+    // Route::resource('/{language}/posts','PostsController');
+
 });

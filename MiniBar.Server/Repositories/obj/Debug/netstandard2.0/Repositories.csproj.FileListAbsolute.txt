@@ -1,0 +1,16 @@
+D:\MiniBar\MiniBar.Server\Repositories\bin\Debug\netstandard2.0\Repositories.deps.json
+D:\MiniBar\MiniBar.Server\Repositories\bin\Debug\netstandard2.0\Repositories.dll
+D:\MiniBar\MiniBar.Server\Repositories\bin\Debug\netstandard2.0\Repositories.pdb
+D:\MiniBar\MiniBar.Server\Repositories\bin\Debug\netstandard2.0\BusinessEntities.dll
+D:\MiniBar\MiniBar.Server\Repositories\bin\Debug\netstandard2.0\Facade.dll
+D:\MiniBar\MiniBar.Server\Repositories\bin\Debug\netstandard2.0\SharedEntities.dll
+D:\MiniBar\MiniBar.Server\Repositories\bin\Debug\netstandard2.0\Facade.pdb
+D:\MiniBar\MiniBar.Server\Repositories\bin\Debug\netstandard2.0\BusinessEntities.pdb
+D:\MiniBar\MiniBar.Server\Repositories\bin\Debug\netstandard2.0\SharedEntities.pdb
+D:\MiniBar\MiniBar.Server\Repositories\obj\Debug\netstandard2.0\Repositories.csprojAssemblyReference.cache
+D:\MiniBar\MiniBar.Server\Repositories\obj\Debug\netstandard2.0\Repositories.csproj.CoreCompileInputs.cache
+D:\MiniBar\MiniBar.Server\Repositories\obj\Debug\netstandard2.0\Repositories.AssemblyInfoInputs.cache
+D:\MiniBar\MiniBar.Server\Repositories\obj\Debug\netstandard2.0\Repositories.AssemblyInfo.cs
+D:\MiniBar\MiniBar.Server\Repositories\obj\Debug\netstandard2.0\Repositories.csproj.CopyComplete
+D:\MiniBar\MiniBar.Server\Repositories\obj\Debug\netstandard2.0\Repositories.dll
+D:\MiniBar\MiniBar.Server\Repositories\obj\Debug\netstandard2.0\Repositories.pdb

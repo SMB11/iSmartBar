@@ -1,0 +1,13 @@
+D:\MiniBar\MiniBar.Server\Common\bin\Debug\netstandard2.0\Common.pssym
+D:\MiniBar\MiniBar.Server\Common\bin\Debug\netstandard2.0\Common.deps.json
+D:\MiniBar\MiniBar.Server\Common\bin\Debug\netstandard2.0\Common.dll
+D:\MiniBar\MiniBar.Server\Common\bin\Debug\netstandard2.0\Common.pdb
+D:\MiniBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.csprojAssemblyReference.cache
+D:\MiniBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.csproj.CoreCompileInputs.cache
+D:\MiniBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.AssemblyInfoInputs.cache
+D:\MiniBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.AssemblyInfo.cs
+D:\MiniBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\PostSharp\touch
+D:\MiniBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\PostSharp\dependencies.txt
+D:\MiniBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.dll
+D:\MiniBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.pdb
+D:\MiniBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\PostSharp\postsharp.app.config

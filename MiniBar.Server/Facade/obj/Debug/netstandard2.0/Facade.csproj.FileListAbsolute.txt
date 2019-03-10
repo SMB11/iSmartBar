@@ -1,0 +1,14 @@
+D:\MiniBar\MiniBar.Server\Facade\bin\Debug\netstandard2.0\Facade.deps.json
+D:\MiniBar\MiniBar.Server\Facade\bin\Debug\netstandard2.0\Facade.dll
+D:\MiniBar\MiniBar.Server\Facade\bin\Debug\netstandard2.0\Facade.pdb
+D:\MiniBar\MiniBar.Server\Facade\bin\Debug\netstandard2.0\BusinessEntities.dll
+D:\MiniBar\MiniBar.Server\Facade\bin\Debug\netstandard2.0\SharedEntities.dll
+D:\MiniBar\MiniBar.Server\Facade\bin\Debug\netstandard2.0\SharedEntities.pdb
+D:\MiniBar\MiniBar.Server\Facade\bin\Debug\netstandard2.0\BusinessEntities.pdb
+D:\MiniBar\MiniBar.Server\Facade\obj\Debug\netstandard2.0\Facade.csprojAssemblyReference.cache
+D:\MiniBar\MiniBar.Server\Facade\obj\Debug\netstandard2.0\Facade.csproj.CoreCompileInputs.cache
+D:\MiniBar\MiniBar.Server\Facade\obj\Debug\netstandard2.0\Facade.AssemblyInfoInputs.cache
+D:\MiniBar\MiniBar.Server\Facade\obj\Debug\netstandard2.0\Facade.AssemblyInfo.cs
+D:\MiniBar\MiniBar.Server\Facade\obj\Debug\netstandard2.0\Facade.csproj.CopyComplete
+D:\MiniBar\MiniBar.Server\Facade\obj\Debug\netstandard2.0\Facade.dll
+D:\MiniBar\MiniBar.Server\Facade\obj\Debug\netstandard2.0\Facade.pdb

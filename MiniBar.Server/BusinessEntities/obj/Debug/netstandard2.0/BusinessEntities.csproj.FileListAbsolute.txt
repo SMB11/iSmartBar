@@ -1,0 +1,9 @@
+D:\MiniBar\MiniBar.Server\BusinessEntities\bin\Debug\netstandard2.0\BusinessEntities.deps.json
+D:\MiniBar\MiniBar.Server\BusinessEntities\bin\Debug\netstandard2.0\BusinessEntities.dll
+D:\MiniBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.csproj.CoreCompileInputs.cache
+D:\MiniBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.AssemblyInfoInputs.cache
+D:\MiniBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.AssemblyInfo.cs
+D:\MiniBar\MiniBar.Server\BusinessEntities\bin\Debug\netstandard2.0\BusinessEntities.pdb
+D:\MiniBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.dll
+D:\MiniBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.pdb
+D:\MiniBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.csprojAssemblyReference.cache

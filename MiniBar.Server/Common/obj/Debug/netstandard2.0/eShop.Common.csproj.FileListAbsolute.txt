@@ -1,0 +1,13 @@
+D:\eShop\eShopServer\eShop.Common\obj\Debug\netstandard2.0\eShop.Common.csprojAssemblyReference.cache
+D:\eShop\eShopServer\eShop.Common\obj\Debug\netstandard2.0\eShop.Common.csproj.CoreCompileInputs.cache
+D:\eShop\eShopServer\eShop.Common\obj\Debug\netstandard2.0\eShop.Common.AssemblyInfoInputs.cache
+D:\eShop\eShopServer\eShop.Common\obj\Debug\netstandard2.0\eShop.Common.AssemblyInfo.cs
+D:\eShop\eShopServer\eShop.Common\bin\Debug\netstandard2.0\eShop.Common.deps.json
+D:\eShop\eShopServer\eShop.Common\bin\Debug\netstandard2.0\eShop.Common.dll
+D:\eShop\eShopServer\eShop.Common\bin\Debug\netstandard2.0\eShop.Common.pssym
+D:\eShop\eShopServer\eShop.Common\bin\Debug\netstandard2.0\eShop.Common.pdb
+D:\eShop\eShopServer\eShop.Common\obj\Debug\netstandard2.0\PostSharp\touch
+D:\eShop\eShopServer\eShop.Common\obj\Debug\netstandard2.0\PostSharp\dependencies.txt
+D:\eShop\eShopServer\eShop.Common\obj\Debug\netstandard2.0\eShop.Common.dll
+D:\eShop\eShopServer\eShop.Common\obj\Debug\netstandard2.0\eShop.Common.pdb
+D:\eShop\eShopServer\eShop.Common\obj\Debug\netstandard2.0\PostSharp\postsharp.app.config

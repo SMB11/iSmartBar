@@ -15,10 +15,13 @@ Route::group(['middleware' => 'localization'], function(){
     
     Route::get('/', 'LanguagesController@index');
     Route::get('/{language}', 'CategoriesController@index');
+    Route::get('/{language}/product', 'ProductController@index');
 
     Route::get('/{language}/category/{id}', 'CategoriesController@subcategories')->name('category');
+    Route::get('/{language}/category/{id}/products', 'ProductController@index');  //Show products from that category
     // Route::get('/{language}/about', 'PagesController@about');
     // Route::get('/{language}/services', 'PagesController@services');
     // Route::resource('/{language}/posts','PostsController');
+    
 
 });

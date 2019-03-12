@@ -3,6 +3,6 @@ namespace App\Model;
 
 class Category
 {
-    public $id;
-    public $name;
+    public $ID;
+    public $Name;
 }

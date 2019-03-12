@@ -9,7 +9,7 @@
 <body>
     <ul>
         @foreach ($data as $category)
-            <li>{{$category->name}}</li>
+            <li><a href={{ route('category', [$language, $category->id])}}>{{$category->name}}</a></li>
         @endforeach
     </ul>
 </body>

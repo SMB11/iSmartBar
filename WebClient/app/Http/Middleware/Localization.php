@@ -16,9 +16,21 @@ class Localization
     public function handle($request, Closure $next)
     {
         $urlSegments = explode('/', $request->path());
-        view()->share('language', $urlSegments[0]);
-        App::setLocale($urlSegments[0]); // Laravel locale is set to $language now
+        $newLangauge = $urlSegments[0];
+        $currentLanguage = App::getLocale();
+        
+        view()->share('language', $newLangauge);
+        view()->share('tree', App\Services\CategoryService::GetTree($newLangauge));
+        
+        if($currentLanguage !== $currentLanguage){
+            App::setLocale($newLangauge);
+            handleLanguageChanged($newLangauge);
+        }
 
         return $next($request);
+    }
+
+    private function handleLanguageChanged($language){
+        
     }
 }

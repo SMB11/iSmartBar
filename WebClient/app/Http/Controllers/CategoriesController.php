@@ -9,8 +9,7 @@ class CategoriesController extends Controller
 {
     public function index($language)
     {
-        $data = CategoryService::GetRoot($language);
-        return view('categories.root')->with('data',$data);
+        return view('global.index');
     }
 
     public function subcategories($language, $id)

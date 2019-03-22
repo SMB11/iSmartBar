@@ -7,10 +7,13 @@
         <title>{{config('app.name','laravelFirst')}}</title>
 </head>
 <body>
-    <ul>
-        @foreach ($data as $category)
-            <li><a href={{ route('category', [$language, $category->id])}}>{{$category->name}}</a></li>
-        @endforeach
-    </ul>
+    <div class="main container">
+        <div class="sidemneu">
+            @include('global.sidemenu')
+        </div>
+        <div class="content">
+            @yield('content')
+        </div>
+    </div>
 </body>
 </html>

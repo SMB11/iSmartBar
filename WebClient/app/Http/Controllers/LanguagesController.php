@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class LanguagesController extends Controller
 {
     public function index(){
-        return view('pages.language');
+        return view('global.language');
     }
 }

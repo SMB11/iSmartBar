@@ -8,7 +8,6 @@ class Category
         $this->id = $id;
         $this->name = $name;
         $this->parentID = $parentID;
-        return $this;
     }
 
     public $id;

@@ -11,6 +11,6 @@ class ProductController extends Controller
     {
         //Hard coded but principle is same, Show products, from concrete category.
         $data = ProductService::ShowProduct($id,ProductService::makeProduct($language)); 
-        return view('product.product')->with('data',$data);
+        return view('product.product')->with('brandID',$id);
     }
 }

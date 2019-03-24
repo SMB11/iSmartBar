@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\CategoryService;
+use App\Services\BrandService;
 
 class CategoriesController extends Controller
 {
@@ -14,7 +15,10 @@ class CategoriesController extends Controller
 
     public function subcategories($language, $id)
     {
-        $data = CategoryService::GetSubcategories($id, $language);
-        return view('categories.root')->with('data',$data);
+        $subCategories = CategoryService::GetSubcategories($id, $language);
+        $brands = BrandService::GetCategoryBrands($subCategories->map(function($cat) { return $cat->id; }));
+        return view('category.sub')
+            ->with('subCategories', $subCategories)
+            ->with('brands', $brands);
     }
 }

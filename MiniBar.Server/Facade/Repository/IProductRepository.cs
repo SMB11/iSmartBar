@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Facade.Repository
 {
-    public interface IProductRepository : IRepository<Product, int>
+    public interface IProductRepository : IRepository<Product, int, IProductRepository>
     {
     }
 }

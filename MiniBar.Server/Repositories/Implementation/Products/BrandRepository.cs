@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.Implementation.Products
 {
-    public class BrandRepository : RepositoryBase<Brand, int, BrandRepository>, IBrandRepository
+    public class BrandRepository : RepositoryBase<Brand, int, IBrandRepository>, IBrandRepository
     {
         internal override Expression<Func<DBContext, ITable<Brand>>> TableExpression => c => c.Brands;
         

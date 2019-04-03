@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Repositories.Implementation.Products
 {
-    public class CategoryRepository : RepositoryBase<Category, int, CategoryRepository>, ICategoryRepository
+    public class CategoryRepository : RepositoryBase<Category, int, ICategoryRepository>, ICategoryRepository
     {
         internal override Expression<Func<DBContext, ITable<Category>>> TableExpression => c => c.Categories;
     }

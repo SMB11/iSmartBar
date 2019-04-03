@@ -13,7 +13,7 @@
     <Grid>
         <dxg:GridControl IsEnabled="{Binding IsEnabled}" AllowInitiallyFocusedRow="False" SelectionMode="Row" CurrentItem="{Binding CurrentItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" dxInf:GridProperties.GenerateColumns="True" ItemsSource="{Binding Products}" AutoGenerateColumns="None" EnableSmartColumnsGeneration="True">
             <dxg:GridControl.View>
-                <dxg:TableView AllowPerPixelScrolling="True" AllowEditing="False" ShowTotalSummary="True" ShowFixedTotalSummary="True"/>
+                <dxg:TableView ShowSearchPanelMode="Always" AllowPerPixelScrolling="True" AllowEditing="False" ShowTotalSummary="True" ShowFixedTotalSummary="True"/>
             </dxg:GridControl.View>
 
             <dxg:GridControl.TotalSummary>

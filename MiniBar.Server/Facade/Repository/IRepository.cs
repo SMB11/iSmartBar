@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Facade.Repository
 {
-    public interface IRepository<T, K>
+    public interface IRepository<T, K, R>
     {
+        R LoadWith(Expression<Func<T, object>> exp);
         List<T> GetAll();
         Task<List<T>> GetAllAsync(CancellationToken token = new CancellationToken());
         T Insert(T obj);

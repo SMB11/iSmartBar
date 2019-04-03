@@ -1,37 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Symbols LinesOfCode="99" PostSharpLinesOfCode="0" EnhancedTypesCount="5" SchemaVersion="1" PostSharpVersion="6.0.35.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Class Class="#1=T:[Common]Common.Core.TransactionAttribute">
-    <Instance Declaration="#2=M:[Managers]Managers.Implementation.AuthenticationManager::RegisterAsync(SharedEntities.DTO.Users.RegisterDto)" Id="2ba1811898b674aa">
+    <Instance Declaration="#2=M:[Managers]Managers.Implementation.AuthenticationManager::RegisterAsync(SharedEntities.DTO.Users.RegisterDto)" Id="2ba18118836b5845">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#3=M:[Managers]Managers.Implementation.BrandManager::InsertAsync(SharedEntities.DTO.Product.BrandDTO)" Id="2ba181183577e9b2">
+    <Instance Declaration="#3=M:[Managers]Managers.Implementation.BrandManager::InsertAsync(SharedEntities.DTO.Product.BrandDTO)" Id="2ba181188711be6a">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#4=M:[Managers]Managers.Implementation.BrandManager::UpdateAsync(SharedEntities.DTO.Product.BrandDTO)" Id="2ba181183a572b1a">
+    <Instance Declaration="#4=M:[Managers]Managers.Implementation.BrandManager::UpdateAsync(SharedEntities.DTO.Product.BrandDTO)" Id="2ba18118b4d8f897">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#5=M:[Managers]Managers.Implementation.BrandManager::RemoveAsync(System.Int32)" Id="2ba18118ffd5a382">
+    <Instance Declaration="#5=M:[Managers]Managers.Implementation.BrandManager::RemoveAsync(System.Int32)" Id="2ba18118fc81e7ab">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#6=M:[Managers]Managers.Implementation.CategoryManager::InsertAsync(SharedEntities.DTO.Product.CategoryUploadDTO)" Id="2ba181185ca7d86e">
+    <Instance Declaration="#6=M:[Managers]Managers.Implementation.CategoryManager::InsertAsync(SharedEntities.DTO.Product.CategoryUploadDTO)" Id="2ba181188689ee2c">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#7=M:[Managers]Managers.Implementation.CategoryManager::UpdateAsync(SharedEntities.DTO.Product.CategoryUploadDTO)" Id="2ba1811858b580c5">
+    <Instance Declaration="#7=M:[Managers]Managers.Implementation.CategoryManager::UpdateAsync(SharedEntities.DTO.Product.CategoryUploadDTO)" Id="2ba18118186ff621">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#8=M:[Managers]Managers.Implementation.CategoryManager::RemoveAsync(System.Int32)" Id="2ba1811857e9fc82">
+    <Instance Declaration="#8=M:[Managers]Managers.Implementation.CategoryManager::RemoveAsync(System.Int32)" Id="2ba18118ca2c8825">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#9=M:[Managers]Managers.Implementation.ProductManager::InsertAsync(SharedEntities.DTO.Product.ProductUploadDTO)" Id="2ba18118cd872a4a">
+    <Instance Declaration="#9=M:[Managers]Managers.Implementation.ProductManager::InsertAsync(SharedEntities.DTO.Product.ProductUploadDTO)" Id="2ba18118088ecc01">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#10=M:[Managers]Managers.Implementation.ProductManager::UpdateAsync(SharedEntities.DTO.Product.ProductUploadDTO)" Id="2ba181182a827d2d">
+    <Instance Declaration="#10=M:[Managers]Managers.Implementation.ProductManager::UpdateAsync(SharedEntities.DTO.Product.ProductUploadDTO)" Id="2ba18118b75c71a1">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#11=M:[Managers]Managers.Implementation.ProductManager::RemoveAsync(System.Int32)" Id="2ba1811821cbb46a">
+    <Instance Declaration="#11=M:[Managers]Managers.Implementation.ProductManager::RemoveAsync(System.Int32)" Id="2ba18118ca1797c2">
       <Target LinesAvoided="2" />
     </Instance>
-    <Instance Declaration="#12=M:[Managers]Managers.Implementation.UserRolesManager::SaveList(System.Collections.Generic.List{[SharedEntities]SharedEntities.DTO.Users.UserRolesDTO}, System.Threading.CancellationToken)" Id="2ba18118d859c4aa">
+    <Instance Declaration="#12=M:[Managers]Managers.Implementation.UserRolesManager::SaveList(System.Collections.Generic.List{[SharedEntities]SharedEntities.DTO.Users.UserRolesDTO}, System.Threading.CancellationToken)" Id="2ba1811836c386ce">
       <Target LinesAvoided="2" />
     </Instance>
   </Class>

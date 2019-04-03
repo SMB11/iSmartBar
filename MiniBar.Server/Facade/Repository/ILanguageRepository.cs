@@ -2,7 +2,7 @@
 
 namespace Facade.Repository
 {
-    public interface ILanguageRepository : IRepository<Language, string>
+    public interface ILanguageRepository : IRepository<Language, string, ILanguageRepository>
     {
     }
 }

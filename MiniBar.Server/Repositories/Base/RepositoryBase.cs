@@ -20,7 +20,7 @@ namespace Repositories.Base
     /// </summary>
     /// <typeparam name="T">The entity class/DB model that this repository works with</typeparam>
     /// <typeparam name="R">The repository class that inherits RepositoryBase. Example usage: public class ProductRepository&lt;ProductModel, ProductRepository&gt;</typeparam>
-    public abstract class RepositoryBase<T, K, R> : IRepository<T, K>
+    public abstract class RepositoryBase<T, K, R> : IRepository<T, K, R>
         where T : IDEntityBase<K>
         where R : class
     {

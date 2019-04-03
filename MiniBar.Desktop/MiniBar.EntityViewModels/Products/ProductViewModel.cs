@@ -44,6 +44,7 @@ namespace MiniBar.EntityViewModels.Products
         }
 
         private string _Category;
+        [GridColumn]
         public string Category
         {
             get { return _Category; }
@@ -66,6 +67,7 @@ namespace MiniBar.EntityViewModels.Products
         }
 
         private string _Brand;
+        [GridColumn]
         public string Brand
         {
             get { return _Brand; }

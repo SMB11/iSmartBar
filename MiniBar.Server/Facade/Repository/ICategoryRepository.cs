@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Facade.Repository
 {
-    public interface ICategoryRepository : IRepository<Category, int>
+    public interface ICategoryRepository : IRepository<Category, int, ICategoryRepository>
     {
     }
 }

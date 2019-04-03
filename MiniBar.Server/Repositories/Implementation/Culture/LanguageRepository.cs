@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Repositories.Implementation.Culture
 {
-    public class LanguageRepository : RepositoryBase<Language, string, LanguageRepository>, ILanguageRepository
+    public class LanguageRepository : RepositoryBase<Language, string, ILanguageRepository>, ILanguageRepository
     {
         internal override Expression<Func<DBContext, ITable<Language>>> TableExpression => c => c.Languages;
     }

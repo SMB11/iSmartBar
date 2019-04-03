@@ -15,6 +15,9 @@ namespace BusinessEntities.Products
         [Column]
         public int BrandID { get; set; }
 
+        [Association(ThisKey = nameof(BrandID), OtherKey = "ID")]
+        public Brand Brand { get; set; }
+
         [Column]
         public float Price { get; set; }
 

@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Repositories.Implementation.Products
 {
-    public class ProductRepository : RepositoryBase<Product, int, ProductRepository>, IProductRepository
+    public class ProductRepository : RepositoryBase<Product, int, IProductRepository>, IProductRepository
     {
         internal override Expression<Func<DBContext, ITable<Product>>> TableExpression => c=> c.Products;
     }

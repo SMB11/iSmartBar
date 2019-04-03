@@ -15,7 +15,6 @@ D:\iSmartBar\MiniBar.Server\Common\bin\Debug\netstandard2.0\Common.pssym
 D:\iSmartBar\MiniBar.Server\Common\bin\Debug\netstandard2.0\Common.deps.json
 D:\iSmartBar\MiniBar.Server\Common\bin\Debug\netstandard2.0\Common.dll
 D:\iSmartBar\MiniBar.Server\Common\bin\Debug\netstandard2.0\Common.pdb
-D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.csprojAssemblyReference.cache
 D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.csproj.CoreCompileInputs.cache
 D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.AssemblyInfoInputs.cache
 D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.AssemblyInfo.cs

@@ -41,7 +41,7 @@ namespace Managers.Implementation
         public async Task<List<ProductDTO>> GetAll()
         {
             IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
-            List<Product> products = await productRepo.GetAllAsync();
+            List<Product> products = await productRepo.LoadWith(r => r.Brand).GetAllAsync();
             List<ProductDTO> dTOs = new List<ProductDTO>();
             foreach (Product prod in products)
             {
@@ -66,12 +66,16 @@ namespace Managers.Implementation
         {
 
             IProductInfoRepository productInfoRepo = ServiceProvider.GetService<IProductInfoRepository>();
+            ICategoryNameRepository categoryNameRepo = ServiceProvider.GetService<ICategoryNameRepository>();
             ProductInfo info = await productInfoRepo.FindByIDAsync(product.ID, Culture.Name);
+            CategoryName catName = await categoryNameRepo.FindByIDAsync(product.CategoryID, Culture.Name);
             return new ProductDTO()
             {
                 ID = product.ID,
+                Category = catName.Name,
                 CategoryID = product.CategoryID,
                 BrandID = product.BrandID,
+                Brand = product.Brand?.Name,
                 Name = info.Name,
                 Description = info.Description,
             };

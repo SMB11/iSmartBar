@@ -26,6 +26,12 @@ namespace Managers.Implementation
         public CategoryManager(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
+        
+        public async Task<List<CategoryDTO>> GetAllAsync()
+        {
+            ICategoryRepository catRepo = ServiceProvider.GetService<ICategoryRepository>();
+            return await GetDTOs(await catRepo.GetAllAsync());
+        }
 
         public Task<List<CategoryDTO>> GetRootCategoriesAsync()
         {
@@ -117,7 +123,8 @@ namespace Managers.Implementation
             {
                 ID = category.ID,
                 Name = (await catNameRepo.FindByIDAsync(category.ID, Culture.Name)).Name,
-                LanguageID = Culture.Name
+                LanguageID = Culture.Name,
+                ParentID = category.ParentID
             };
         }
 
@@ -130,6 +137,7 @@ namespace Managers.Implementation
             }
             return res;
         }
+
         #endregion
 
     }

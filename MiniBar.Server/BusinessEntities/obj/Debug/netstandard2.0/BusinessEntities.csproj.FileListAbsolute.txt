@@ -7,3 +7,12 @@ D:\MiniBar\MiniBar.Server\BusinessEntities\bin\Debug\netstandard2.0\BusinessEnti
 D:\MiniBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.dll
 D:\MiniBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.pdb
 D:\MiniBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.csprojAssemblyReference.cache
+D:\iSmartBar\MiniBar.Server\BusinessEntities\bin\Debug\netstandard2.0\BusinessEntities.deps.json
+D:\iSmartBar\MiniBar.Server\BusinessEntities\bin\Debug\netstandard2.0\BusinessEntities.dll
+D:\iSmartBar\MiniBar.Server\BusinessEntities\bin\Debug\netstandard2.0\BusinessEntities.pdb
+D:\iSmartBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.csprojAssemblyReference.cache
+D:\iSmartBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.csproj.CoreCompileInputs.cache
+D:\iSmartBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.AssemblyInfoInputs.cache
+D:\iSmartBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.AssemblyInfo.cs
+D:\iSmartBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.dll
+D:\iSmartBar\MiniBar.Server\BusinessEntities\obj\Debug\netstandard2.0\BusinessEntities.pdb

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BusinessEntities.Culture;
 using Common.ResponseHandling;
 using Facade.Managers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,19 +15,29 @@ namespace CoreAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CategoryController : ApiControllerBase
     {
         public CategoryController(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
 
+        [HttpGet]
+        public async Task<List<CategoryDTO>> GetAll()
+        {
+            return await this.ServiceProvider.GetService<ICategoryManager>().GetAllAsync();
+        }
+
         [HttpGet("root")]
+        [AllowAnonymous]
         public async Task<List<CategoryDTO>> GetRootCategories()
         {
             return await this.ServiceProvider.GetService<ICategoryManager>().GetRootCategoriesAsync();
         }
 
+
         [HttpGet("sub/{id}")]
+        [AllowAnonymous]
         public async Task<List<CategoryDTO>> GetSubcategories(int id)
         {
             return await this.ServiceProvider.GetService<ICategoryManager>().GetSubcategoriesAsync(id);

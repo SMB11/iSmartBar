@@ -8,7 +8,10 @@ namespace SharedEntities.DTO.Product
     {
         public int ID { get; set; }
         public int CategoryID { get; set; }
+        public string Category { get; set; }
         public int BrandID { get; set; }
+        public float Price { get; set; }
+        public string Brand { get; set; }
     }
 
     public class ProductLangData
@@ -22,6 +25,7 @@ namespace SharedEntities.DTO.Product
         public int ID { get; set; }
         public int CategoryID { get; set; }
         public int BrandID { get; set; }
+        public float Price { get; set; }
         public Dictionary<string, ProductLangData> Info { get; set; }
     }
 }

@@ -30,6 +30,26 @@ namespace Managers.Implementation
             return await GetProductDTO(prod);
         }
 
+        public async Task<ProductUploadDTO> GetForUplaodByID(int id)
+        {
+            IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
+            Product prod = await productRepo.FindByIDAsync(id);
+
+            return await GetProductUploadDTO(prod);
+        }
+
+        public async Task<List<ProductDTO>> GetAll()
+        {
+            IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
+            List<Product> products = await productRepo.GetAllAsync();
+            List<ProductDTO> dTOs = new List<ProductDTO>();
+            foreach (Product prod in products)
+            {
+                dTOs.Add(await GetProductDTO(prod));
+            }
+            return dTOs;
+        }
+
         public async Task<List<ProductDTO>> GetBrandProducts(int id)
         {
             IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
@@ -53,7 +73,27 @@ namespace Managers.Implementation
                 CategoryID = product.CategoryID,
                 BrandID = product.BrandID,
                 Name = info.Name,
-                Description = info.Description
+                Description = info.Description,
+            };
+        }
+
+        private async Task<ProductUploadDTO> GetProductUploadDTO(Product product)
+        {
+
+            IProductInfoRepository productInfoRepo = ServiceProvider.GetService<IProductInfoRepository>();
+            List<ProductInfo> infos = await productInfoRepo.FindAsync((inf) => inf.ProductID == product.ID);
+            Dictionary<string, ProductLangData> info = new Dictionary<string, ProductLangData>();
+            foreach(var data in infos)
+            {
+                info.Add(data.LanguageID, new ProductLangData() { Name = data.Name, Description = data.Description });
+            }
+            return new ProductUploadDTO()
+            {
+                ID = product.ID,
+                CategoryID = product.CategoryID,
+                BrandID = product.BrandID,
+                Price = product.Price,
+                Info = info
             };
         }
 
@@ -65,7 +105,8 @@ namespace Managers.Implementation
             IProductInfoRepository prodInfoRepo = ServiceProvider.GetService<IProductInfoRepository>();
             Product saved = await prodRepo.InsertAsync(new Product() {  
                BrandID = product.BrandID,
-               CategoryID = product.CategoryID
+               CategoryID = product.CategoryID,
+               Price = product.Price
             });
             foreach (CultureInfo culture in LocalizationOptions.Value.SupportedCultures)
             {
@@ -98,7 +139,8 @@ namespace Managers.Implementation
             {
                 ID = product.ID,
                 BrandID = product.BrandID,
-                CategoryID = product.CategoryID
+                CategoryID = product.CategoryID,
+                Price = product.Price
             });
             if (product.Info != null)
             {

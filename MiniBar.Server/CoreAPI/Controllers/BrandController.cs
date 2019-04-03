@@ -13,13 +13,23 @@ namespace CoreAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BrandController : ApiControllerBase
     {
         public BrandController(IServiceProvider serviceProvider) : base(serviceProvider)
         {
         }
 
+        [HttpGet]
+        public async Task<List<BrandDTO>> GetAll()
+        {
+            IBrandManager manager = ServiceProvider.GetService<IBrandManager>();
+            return await manager.GetAll();
+        }
+
+
         [HttpGet("categoryBrands/{id}")]
+        [AllowAnonymous]
         public async Task<List<BrandDTO>> GetCategoryBrands(int id)
         {
             IBrandManager manager = ServiceProvider.GetService<IBrandManager>();

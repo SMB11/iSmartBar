@@ -8,6 +8,7 @@ namespace Facade.Managers
 {
     public interface IBrandManager
     {
+        Task<List<BrandDTO>> GetAll();
         Task<BrandDTO> GetByIDAsync(int id);
         Task<List<BrandDTO>> GetCategoryBrands(int id);
         Task<int> InsertAsync(BrandDTO brand);

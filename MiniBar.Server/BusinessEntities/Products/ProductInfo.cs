@@ -8,9 +8,9 @@ namespace BusinessEntities.Products
     [Table("ProductInfo")]
     public class ProductInfo
     {
-        [Column]
+        [Column, PrimaryKey]
         public int ProductID { get; set; }
-        [Column]
+        [Column, PrimaryKey]
         public string LanguageID { get; set; }
         [Column]
         public string Name { get; set; }

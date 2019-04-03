@@ -43,11 +43,17 @@ namespace Managers.Implementation
             {
                 var appUser = _userManager.Users.SingleOrDefault(r => r.UserName == model.Username);
                 List<string> roles = (await _userManager.GetRolesAsync(appUser)).ToList();
-                return new UserDto { UserName = appUser.UserName, Token = GenerateJwtToken(appUser, roles), Roles = roles};
+                return new UserDto { UserName = appUser.UserName, Token = GenerateJwtToken(appUser, roles).ToString(), Roles = roles};
             }
             throw new ApiException(FaultCode.InvalidUserCredentials);
         }
+
         
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
+        }
+
         [Transaction]
         public async Task<UserDto> RegisterAsync(RegisterDto model)
         {
@@ -60,7 +66,7 @@ namespace Managers.Implementation
             {
                 //await _userManager.AddToRoleAsync(user, ApplicationUserRole.Client.ToString());
                 await _signInManager.SignInAsync(user, false);
-                return new UserDto { UserName = user.UserName, Token = GenerateJwtToken(user, (await _userManager.GetRolesAsync(user)).ToList()) };
+                return new UserDto { UserName = user.UserName, Token = GenerateJwtToken(user, (await _userManager.GetRolesAsync(user)).ToList()).ToString() };
             }
 
             throw new ApiException(FaultCode.InvalidInput);

@@ -26,6 +26,13 @@ namespace Managers.Implementation
         {
         }
 
+        public async Task<List<BrandDTO>> GetAll()
+        {
+
+            IBrandRepository brandRepo = ServiceProvider.GetService<IBrandRepository>();
+            return Mapper.Map<List<BrandDTO>>(await brandRepo.GetAllAsync());
+        }
+
         public async Task<BrandDTO> GetByIDAsync(int id)
         {
             IBrandRepository brandRepo = ServiceProvider.GetService<IBrandRepository>();
@@ -73,5 +80,6 @@ namespace Managers.Implementation
             await brandRepo.RemoveAsync(new Brand { ID = id });
 
         }
+
     }
 }

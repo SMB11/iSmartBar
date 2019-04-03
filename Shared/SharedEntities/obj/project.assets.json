@@ -30,7 +30,7 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MiniBar\\Shared\\SharedEntities\\SharedEntities.csproj",
+      "projectUniqueName": "D:\\iSmartBar\\Shared\\SharedEntities\\SharedEntities.csproj",
       "projectName": "SharedEntities",
-      "projectPath": "D:\\MiniBar\\Shared\\SharedEntities\\SharedEntities.csproj",
+      "projectPath": "D:\\iSmartBar\\Shared\\SharedEntities\\SharedEntities.csproj",
       "packagesPath": "C:\\Users\\Hamlet Petrosyan\\.nuget\\packages\\",
-      "outputPath": "D:\\MiniBar\\Shared\\SharedEntities\\obj\\",
+      "outputPath": "D:\\iSmartBar\\Shared\\SharedEntities\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

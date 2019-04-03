@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Symbols LinesOfCode="197" PostSharpLinesOfCode="0" EnhancedTypesCount="1" SchemaVersion="1" PostSharpVersion="6.0.35.0" xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Class Class="#1=T:[PostSharp]PostSharp.Serialization.PSerializableAttribute">
-    <Instance Declaration="#2=T:[Common]Common.Core.TransactionAttribute" Id="39896b221036ad4a">
+    <Instance Declaration="#2=T:[Common]Common.Core.TransactionAttribute" Id="39896b2293b45701">
       <Target />
     </Instance>
   </Class>

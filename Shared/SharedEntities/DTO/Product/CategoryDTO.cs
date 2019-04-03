@@ -11,6 +11,8 @@ namespace SharedEntities.DTO.Product
         public string Name { get; set; }
 
         public string LanguageID { get; set; }
+
+        public int? ParentID { get; set; }
     }
 
     public class CategoryUploadDTO

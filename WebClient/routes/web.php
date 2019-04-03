@@ -18,7 +18,7 @@ Route::group(['middleware' => 'localization'], function(){
     Route::get('/{language}/product', 'ProductController@index');
 
     Route::get('/{language}/category/{id}', 'CategoriesController@subcategories')->name('category');
-    Route::get('/{language}/brand/{id}', 'ProductController@index')->name("brand");
+    Route::get('/{language}/brand/{id}/{brandID}', 'ProductController@index')->name("brand");
     // Route::get('/{language}/about', 'PagesController@about');
     // Route::get('/{language}/services', 'PagesController@services');
     // Route::resource('/{language}/posts','PostsController');

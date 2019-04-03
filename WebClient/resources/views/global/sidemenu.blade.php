@@ -11,7 +11,7 @@
                         return $cat->parentID === $category->id; 
                     }
                 ) as $child)
-                    <li><a href={{ route('category', [$language, $child->id])}}>{{$child->name}}</a></li>
+                    <li><a href={{ route('category', [$language, $category->id]).'#'.$child->name}}>{{$child->name}}</a></li>
                 @endforeach
 
             </ul>

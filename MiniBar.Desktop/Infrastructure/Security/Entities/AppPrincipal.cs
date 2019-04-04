@@ -5,11 +5,11 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Security.Internal.Entities
+namespace Infrastructure.Security.Entities
 {
-    class AppPrincipal : IAppPrincipal
+    public class AppPrincipal
     {
-        internal static AppPrincipal Anonymous
+        public static AppPrincipal Anonymous
         {
             get
             {
@@ -17,14 +17,14 @@ namespace Security.Internal.Entities
             }
         }
 
-        private IAppIdentity _identity;
+        private AppIdentity _identity;
 
-        public IAppIdentity Identity
+        public AppIdentity Identity
         {
             get { return _identity; }
-            set { _identity = value; }
+            private set { _identity = value; }
         }
-        public AppPrincipal(IAppIdentity identity)
+        public AppPrincipal(AppIdentity identity)
         {
             _identity = identity;
         }

@@ -8,6 +8,7 @@ using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
 using Infrastructure.Interface;
 using Infrastructure.MVVM;
+using Infrastructure.MVVM.Commands;
 using MiniBar.Common.Resources;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Services;
@@ -94,6 +95,8 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             set
             {
                 SetProperty(ref isReadOnly, value, nameof(IsReadOnly));
+                DescriptionEditCommand.RaiseCanExecuteChanged();
+                NameEditCommand.RaiseCanExecuteChanged();
             }
         }
 
@@ -108,24 +111,25 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             }
         }
 
-        private DelegateCommand nameEditCommand;
-        public DelegateCommand NameEditCommand
+        private SecureCommand nameEditCommand;
+        public SecureCommand NameEditCommand
         {
             get
             {
                 if (nameEditCommand == null)
-                    nameEditCommand = new DelegateCommand(StartEditName);
+                    nameEditCommand = new SecureCommand(StartEditName, CanEdit);
                 return nameEditCommand;
             }
         }
 
-        private DelegateCommand descEditCommand;
-        public DelegateCommand DescriptionEditCommand
+
+        private SecureCommand descEditCommand;
+        public SecureCommand DescriptionEditCommand
         {
             get
             {
                 if (descEditCommand == null)
-                    descEditCommand = new DelegateCommand(StartEditDescription);
+                    descEditCommand = new SecureCommand(StartEditDescription, CanEdit);
                 return descEditCommand;
             }
         }
@@ -158,9 +162,10 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             editWindow.Width = 300;
             editWindow.Height = 300;
             editWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            editWindow.ResizeMode = System.Windows.ResizeMode.NoResize;
+            editWindow.ResizeMode = System.Windows.ResizeMode.CanResizeWithGrip;
             editWindow.Content = languageEdit;
-            editWindow.Show();
+            editWindow.SetParent(Application.Current.MainWindow);
+            editWindow.ShowDialogWindow();
         }
 
         private void StartEditDescription()
@@ -185,9 +190,15 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             editWindow.Width = 300;
             editWindow.Height = 300;
             editWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            editWindow.ResizeMode = System.Windows.ResizeMode.NoResize;
+            editWindow.ResizeMode = System.Windows.ResizeMode.CanResizeWithGrip;
             editWindow.Content = languageEdit;
-            editWindow.Show();
+            editWindow.SetParent(Application.Current.MainWindow);
+            editWindow.ShowDialogWindow();
+        }
+
+        private bool CanEdit()
+        {
+            return !IsReadOnly;
         }
 
         private void SaveName(CancelEventArgs arg, LanguageEditViewModel vm)
@@ -216,6 +227,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
 
         #region IObjectDetailsManager
         object IObjectDetailsManager.EditingItem { get => (!this.IsReadOnly)? CurrentItem: null; }
+        
 
         void IObjectDetailsManager.BeginAdd()
         {

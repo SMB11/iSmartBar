@@ -112,6 +112,9 @@
     <Compile Include="Configuration\BrandProfile.cs" />
     <Compile Include="Configuration\CategoryProfile.cs" />
     <Compile Include="Configuration\ProductProfile.cs" />
+    <Compile Include="DXSplashScreen\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShellWindowViewModel.cs" />
     <Compile Include="ShellWindow.xaml.cs">
       <DependentUpon>ShellWindow.xaml</DependentUpon>
@@ -147,6 +150,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DXSplashScreen\SplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShellWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,7 +189,16 @@
       <Name>SecurityModule</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="DXSplashScreen\Image.png" />
+    <Resource Include="DXSplashScreen\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DXSplashScreen\Logo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="DXSplashScreen\hotel.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

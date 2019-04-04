@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Security.Internal.Entities
+namespace Infrastructure.Security.Entities
 {
     public class AnonymousIdentity : AppIdentity
     {

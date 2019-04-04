@@ -5,9 +5,9 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Security.Internal.Entities
+namespace Infrastructure.Security.Entities
 {
-    public class AppIdentity : IAppIdentity
+    public class AppIdentity
     {
         public AppIdentity(string name, string token)
         {

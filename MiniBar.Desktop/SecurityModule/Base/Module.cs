@@ -8,7 +8,7 @@ using Prism.Events;
 using System.Reflection;
 using DevExpress.Mvvm;
 using Infrastructure.Interface;
-using Infrastructure.Prism.Events;
+using Infrastructure.Security;
 
 namespace Security
 {
@@ -17,9 +17,6 @@ namespace Security
         #region Private Fields
 
         private ICurrentContextService _currentContextService;
-
-        private List<DelegateCommand> secureCommands = new List<DelegateCommand>();
-        private IEventAggregator _eventAggregator;
 
         #endregion
 
@@ -35,11 +32,6 @@ namespace Security
             return true;
         }
 
-        private void HandleUserAuthentication()
-        {
-            this.secureCommands.ForEach(c => c.RaiseCanExecuteChanged());
-        }
-
         #endregion
 
         #region Public and Protected Methods
@@ -47,8 +39,6 @@ namespace Security
         {
 
             this._currentContextService = containerProvider.Resolve< ICurrentContextService>();
-            this._eventAggregator = containerProvider.Resolve<IEventAggregator>();
-            this._eventAggregator.GetEvent<AuthenticationStateChanged>().Subscribe(HandleUserAuthentication);
         }
 
         public virtual void RegisterTypes(IContainerRegistry containerRegistry)
@@ -56,27 +46,12 @@ namespace Security
 
         }
         
-        protected ICommand ToCommand(Action method)
-        {
-            return new DelegateCommand(method);
-        }
-
-
-        protected ICommand ToSecureCommand(Action method)
-        {
-            DelegateCommand command = new DelegateCommand(method, SecureCanExecute);
-            secureCommands.Add(command);
-            return command;
-        }
-
-
         #endregion
 
         #region Properties
         public abstract string Name { get; }
         
         protected ICurrentContextService CurrentContextService { get { return _currentContextService; } }
-        protected IEventAggregator EventAggregator { get { return _eventAggregator; } }
 
         #endregion
         

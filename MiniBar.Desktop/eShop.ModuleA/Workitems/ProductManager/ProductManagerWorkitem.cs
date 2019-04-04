@@ -6,9 +6,7 @@ using Prism.Ioc;
 using MiniBar.ProductsModule.Constants;
 using MiniBar.ProductsModule.Services;
 using MiniBar.EntityViewModels.Products;
-using AutoMapper;
 using SharedEntities.DTO.Product;
-using DevExpress.Xpf.Core;
 using Infrastructure.Helpers;
 using System.Collections.Generic;
 using System;
@@ -19,6 +17,8 @@ using Security.Api;
 using Infrastructure.Workitems;
 using System.Reactive;
 using System.Reactive.Linq;
+using Prism.Events;
+using Infrastructure.Security;
 
 namespace MiniBar.ProductsModule.Workitems.ProductManager
 {
@@ -36,7 +36,9 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
         public ProductManagerWorkitem(IContainerExtension container) : base(container)
         {
             ProductService = Container.Resolve<ProductService>();
+            AppSecurityContext.AppPrincipalChanged += (o, e) => HandleAutheticationStateChanged();
         }
+
 
         #endregion
 
@@ -46,7 +48,21 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
         #endregion
 
         #region Private Methods
-        
+
+        private void HandleAutheticationStateChanged()
+        {
+            if (!AppSecurityContext.CurrentPrincipal.Identity.IsAuthenticated)
+            {
+                ObjectListManager.Disable();
+                UpdateCrudCommands();
+            }
+            else
+            {
+
+                ObjectListManager.Enable();
+                UpdateCrudCommands();
+            }
+        }
 
         #endregion
 

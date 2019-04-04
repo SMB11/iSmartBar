@@ -10,6 +10,7 @@ D:\MiniBar\Shared\SharedEntities\obj\Debug\netstandard2.0\SharedEntities.pdb
 D:\iSmartBar\Shared\SharedEntities\bin\Debug\netstandard2.0\SharedEntities.deps.json
 D:\iSmartBar\Shared\SharedEntities\bin\Debug\netstandard2.0\SharedEntities.dll
 D:\iSmartBar\Shared\SharedEntities\bin\Debug\netstandard2.0\SharedEntities.pdb
+D:\iSmartBar\Shared\SharedEntities\obj\Debug\netstandard2.0\SharedEntities.csprojAssemblyReference.cache
 D:\iSmartBar\Shared\SharedEntities\obj\Debug\netstandard2.0\SharedEntities.csproj.CoreCompileInputs.cache
 D:\iSmartBar\Shared\SharedEntities\obj\Debug\netstandard2.0\SharedEntities.AssemblyInfoInputs.cache
 D:\iSmartBar\Shared\SharedEntities\obj\Debug\netstandard2.0\SharedEntities.AssemblyInfo.cs

@@ -1,5 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using Infrastructure.Helpers;
+using Infrastructure.MVVM.Commands;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;
@@ -13,70 +14,70 @@ namespace Infrastructure.Workitems
     {
 
         #region Commands
-        private DelegateCommand _deleteCommand;
+        private SecureCommand _deleteCommand;
 
-        public DelegateCommand DeleteCommand
+        public SecureCommand DeleteCommand
         {
             get
             {
                 if (_deleteCommand == null)
-                    _deleteCommand = new DelegateCommand(Delete, CanDelete, false);
+                    _deleteCommand = new SecureCommand(Delete, CanDelete);
                 return _deleteCommand;
             }
         }
 
-        private DelegateCommand _editCommand;
+        private SecureCommand _editCommand;
 
-        public DelegateCommand EditCommand
+        public SecureCommand EditCommand
         {
             get
             {
                 if (_editCommand == null)
-                    _editCommand = new DelegateCommand(Edit, CanEdit, false);
+                    _editCommand = new SecureCommand(Edit, CanEdit);
                 return _editCommand;
             }
         }
 
-        private DelegateCommand _cancelCommand;
+        private SecureCommand _cancelCommand;
 
-        public DelegateCommand CancelCommand
+        public SecureCommand CancelCommand
         {
             get
             {
                 if (_cancelCommand == null)
-                    _cancelCommand = new DelegateCommand(CancelEditing, CanCancelEditing, false);
+                    _cancelCommand = new SecureCommand(CancelEditing, CanCancelEditing);
                 return _cancelCommand;
             }
         }
 
-        private DelegateCommand _addCommand;
+        private SecureCommand _addCommand;
 
-        public DelegateCommand AddCommand
+        public SecureCommand AddCommand
         {
             get
             {
                 if (_addCommand == null)
-                    _addCommand = new DelegateCommand(Add, CanAdd, false);
+                    _addCommand = new SecureCommand(Add, CanAdd);
                 return _addCommand;
             }
         }
 
-        private DelegateCommand _saveCommand;
+        private SecureCommand _saveCommand;
 
-        public CrudManagerWorkitem(IContainerExtension container) : base(container)
-        {
-        }
-
-        public DelegateCommand SaveCommand
+        public SecureCommand SaveCommand
         {
             get
             {
                 if (_saveCommand == null)
-                    _saveCommand = new DelegateCommand(Save, CanSave, false);
+                    _saveCommand = new SecureCommand(Save, CanSave);
                 return _saveCommand;
             }
         }
         #endregion
+
+        public CrudManagerWorkitem(IContainerExtension container) : base(container)
+        {
+        }
 
         #region Private/Protected
 

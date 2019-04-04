@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Infrastructure.MVVM
+namespace Infrastructure.MVVM.Commands
 {
     public static class CommandHelper
     {

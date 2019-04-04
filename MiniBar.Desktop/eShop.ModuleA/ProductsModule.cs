@@ -8,6 +8,7 @@ using Prism.Regions;
 using Unity.Attributes;
 using MiniBar.ProductsModule.Services;
 using Security;
+using Infrastructure.MVVM.Commands;
 
 namespace MiniBar.Modules
 {
@@ -24,7 +25,7 @@ namespace MiniBar.Modules
         {
             base.OnInitialized(containerProvider);
             RegionManager.RegisterViewWithRegion(Infrastructure.Constants.RegionNames.NavBarControlRegion, typeof(NavBarControls));
-            BarCommandManager.RegisterCommand(CommandNames.OpenProductManager, ToSecureCommand(OpenProductManager));
+            BarCommandManager.RegisterCommand(CommandNames.OpenProductManager, new SecureCommand(OpenProductManager));
         }
 
         public override void RegisterTypes(IContainerRegistry containerRegistry)

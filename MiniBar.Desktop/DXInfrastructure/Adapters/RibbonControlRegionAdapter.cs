@@ -20,12 +20,17 @@ namespace DXInfrastructure.Adapters
         {
             region.Views.CollectionChanged += (sender, e) =>
             {
+                bool isFirstAdd = true;
                 switch (e.Action)
                 {
                     case NotifyCollectionChangedAction.Add:
                         foreach (RibbonPageCategory cat in e.NewItems)
                         {
                             regionTarget.Items.Add(cat);
+                            var page = cat.GetFirstSelectablePage();
+                            if (page != null && isFirstAdd)
+                                regionTarget.SelectedPage = page;
+                            isFirstAdd = false;
                         }
                         break;
                     case NotifyCollectionChangedAction.Remove:

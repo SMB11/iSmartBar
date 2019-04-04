@@ -96,14 +96,8 @@
     <Compile Include="Constants\CommandNames.cs" />
     <Compile Include="Api\ApiError.cs" />
     <Compile Include="Api\ApiException.cs" />
-    <Compile Include="Interfaces\IAppIdentity.cs" />
-    <Compile Include="Interfaces\IAppPrincipal.cs" />
     <Compile Include="Internal\Controllers\AuthenticationController.cs" />
-    <Compile Include="Internal\Entities\AnonymousIdentity.cs" />
-    <Compile Include="Internal\Entities\AppPrincipal.cs" />
-    <Compile Include="Internal\Entities\AppIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecurityContext.cs" />
     <Compile Include="SecurityModule.cs" />
     <Compile Include="Internal\Services\AuthenticationService.cs" />
     <Compile Include="Internal\Views\LoginView.xaml.cs">

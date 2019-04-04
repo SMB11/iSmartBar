@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using DevExpress.Xpf.Core;
+using Infrastructure.Security;
+using Infrastructure.Security.Entities;
 using Prism.Events;
-using Security.Internal.Entities;
-using Security;
-using Infrastructure.Prism.Events;
 
 namespace Shell
 {
@@ -13,14 +12,14 @@ namespace Shell
     /// </summary>
     public partial class ShellWindow : ThemedWindow
     {
-        public ShellWindow(IEventAggregator eventAggregator)
+        public ShellWindow()
         {
             InitializeComponent();
             //IWorkspaceManager workspaceManager = WorkspaceManager.GetWorkspaceManager(dockLayoutManager);
             //workspaceManager.LoadWorkspace("SavedWorkspace", "layout.xml");
 
             //workspaceManager.ApplyWorkspace("SavedWorkspace");
-            eventAggregator.GetEvent<AuthenticationStateChanged>().Subscribe(HandleAuthenticationStateChanged);
+            AppSecurityContext.AppPrincipalChanged += (o,e) => HandleAuthenticationStateChanged();
             loginBarItem.PerformClick();
             exit.ItemClick += Exit_ItemClick;
         }

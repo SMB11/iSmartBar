@@ -2,10 +2,8 @@
 using SharedEntities.DTO.Users;
 using System.Threading.Tasks;
 using Security.Internal.Services;
-using Security.Internal.Entities;
-using Infrastructure.Prism.Events;
-using Security.Api;
-using System;
+using Infrastructure.Security;
+using Infrastructure.Security.Entities;
 
 namespace Security.Internal.Controllers
 {
@@ -27,7 +25,6 @@ namespace Security.Internal.Controllers
             if (user != null)
             {
                 AppSecurityContext.SetCurrentPrincipal(new AppPrincipal(new AppIdentity(user.UserName, user.Token)));
-                _eventAggregator.GetEvent<AuthenticationStateChanged>().Publish();
             }
         }
 
@@ -35,8 +32,6 @@ namespace Security.Internal.Controllers
         {
             await _authService.LogoutAsync();
             AppSecurityContext.SetCurrentPrincipal(AppPrincipal.Anonymous);
-
-            _eventAggregator.GetEvent<AuthenticationStateChanged>().Publish();
         }
     }
 }

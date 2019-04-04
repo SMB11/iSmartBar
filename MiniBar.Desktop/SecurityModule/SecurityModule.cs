@@ -80,8 +80,8 @@ namespace MiniBar.Modules
             dialogWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             dialogWindow.ResizeMode = System.Windows.ResizeMode.NoResize;
             dialogWindow.Content = loginView;
-            dialogWindow.Show();
-            //
+            dialogWindow.SetParent(Application.Current.MainWindow);
+            dialogWindow.ShowDialogWindow();
         }
 
         public override void RegisterTypes(IContainerRegistry containerRegistry)

@@ -28,7 +28,7 @@ namespace Security.Internal.Controllers
             }
         }
 
-        public async void Logout()
+        public async Task Logout()
         {
             await _authService.LogoutAsync();
             AppSecurityContext.SetCurrentPrincipal(AppPrincipal.Anonymous);

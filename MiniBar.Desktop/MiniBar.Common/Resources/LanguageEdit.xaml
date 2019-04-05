@@ -10,7 +10,7 @@
     <ItemsControl ItemsSource="{Binding LanguageDatas}">
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Grid>
+                <Grid Margin="0 0 0 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition/>

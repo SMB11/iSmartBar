@@ -10,6 +10,7 @@ namespace Infrastructure.Constants
     {
         public const string SetLightTheme = "SetLightThemeCommand";
         public const string SetDarkTheme = "SetDarkThemeCommand";
+        public const string SetTouchTheme = "SetTouchThemeCommand";
         public const string OpenFile = "OpenFileCommand";
         public const string CloseWorkItem = "CloseWorkItemCommand";
         

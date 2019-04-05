@@ -1,6 +1,7 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
 using DXInfrastructure;
+using Infrastructure.Helpers;
 using Prism.Ioc;
 using Security;
 using Security.Api;
@@ -11,6 +12,7 @@ using Security.Internal.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace MiniBar.Modules
@@ -26,15 +28,15 @@ namespace MiniBar.Modules
             base.OnInitialized(containerProvider);
             Container = containerProvider;
             BarCommandManager.RegisterCommand(CommandNames.Login, Login);
-            BarCommandManager.RegisterCommand(CommandNames.Logout, Logout);
+            BarCommandManager.RegisterCommand(CommandNames.Logout, new AsyncCommand(Logout));
         }
 
-        private void Logout()
+        private async Task Logout()
         {
             AuthenticationController controller = Container.Resolve<AuthenticationController>();
             try
             {
-                controller.Logout();
+                await controller.Logout();
             }
             catch(Exception ex)
             {
@@ -45,7 +47,6 @@ namespace MiniBar.Modules
         private void Login()
         {
             AuthenticationController controller = Container.Resolve<AuthenticationController>();
-            DXDialogWindow dialogWindow = null;
             LoginView loginView = new LoginView();
             UICommand loginCommand = new UICommand
             {
@@ -57,7 +58,7 @@ namespace MiniBar.Modules
                     {
                         c.Cancel = true;
                         await controller.AuthenticateAsync(loginView.Username, loginView.Password);
-                        dialogWindow.Close();
+                        UIHelper.CloseCurrentDialog();
                     }
                     catch (ApiException apiEx)
                     {
@@ -74,14 +75,7 @@ namespace MiniBar.Modules
                     }
                 })
             };
-            dialogWindow = new DXDialogWindow("Login", new List<UICommand> { loginCommand });
-            dialogWindow.Width = 300;
-            dialogWindow.Height = 300;
-            dialogWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            dialogWindow.ResizeMode = System.Windows.ResizeMode.NoResize;
-            dialogWindow.Content = loginView;
-            dialogWindow.SetParent(Application.Current.MainWindow);
-            dialogWindow.ShowDialogWindow();
+            UIHelper.ShowModal(loginView, "Login", ResizeMode.NoResize, new Size(300,300), new List<UICommand> { loginCommand });
         }
 
         public override void RegisterTypes(IContainerRegistry containerRegistry)

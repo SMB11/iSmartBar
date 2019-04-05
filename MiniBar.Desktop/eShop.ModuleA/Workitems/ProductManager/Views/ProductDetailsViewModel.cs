@@ -6,6 +6,7 @@ using System.Windows;
 using AutoMapper;
 using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
+using Infrastructure.Helpers;
 using Infrastructure.Interface;
 using Infrastructure.MVVM;
 using Infrastructure.MVVM.Commands;
@@ -142,7 +143,6 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
 
         private void StartEditName()
         {
-            DXDialogWindow editWindow = null;
             LanguageEdit languageEdit = new LanguageEdit();
             LanguageEditViewModel vm = (LanguageEditViewModel)languageEdit.DataContext;
             vm.SetData(currentItem.Names?? new Dictionary<string, string>());
@@ -158,19 +158,12 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
                 Caption = "Cancel",
                 IsCancel = true
             };
-            editWindow = new DXDialogWindow("Edit Name", new List<UICommand> { saveCommand, cancleCommand });
-            editWindow.Width = 300;
-            editWindow.Height = 300;
-            editWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            editWindow.ResizeMode = System.Windows.ResizeMode.CanResizeWithGrip;
-            editWindow.Content = languageEdit;
-            editWindow.SetParent(Application.Current.MainWindow);
-            editWindow.ShowDialogWindow();
+
+            UIHelper.ShowModal(languageEdit, "Edit Name", ResizeMode.CanResizeWithGrip, new Size(300, 300), new List<UICommand> { saveCommand, cancleCommand });
         }
 
         private void StartEditDescription()
         {
-            DXDialogWindow editWindow = null;
             LanguageEdit languageEdit = new LanguageEdit();
             LanguageEditViewModel vm = languageEdit.DataContext as LanguageEditViewModel;
             vm.SetData(currentItem.Description ?? new Dictionary<string, string>());
@@ -186,14 +179,8 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
                 Caption = "Cancel",
                 IsCancel = true
             };
-            editWindow = new DXDialogWindow("Edit Name", new List<UICommand> { saveCommand, cancleCommand });
-            editWindow.Width = 300;
-            editWindow.Height = 300;
-            editWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            editWindow.ResizeMode = System.Windows.ResizeMode.CanResizeWithGrip;
-            editWindow.Content = languageEdit;
-            editWindow.SetParent(Application.Current.MainWindow);
-            editWindow.ShowDialogWindow();
+            UIHelper.ShowModal(languageEdit,"Edit Description", ResizeMode.CanResizeWithGrip, new Size(300,300), new List<UICommand> { saveCommand, cancleCommand });
+           
         }
 
         private bool CanEdit()

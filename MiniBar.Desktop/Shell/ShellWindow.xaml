@@ -61,6 +61,7 @@
                         <dxr:RibbonPageGroup Caption="Theme">
                             <dxb:BarButtonItem Content="Dark Theme" dxInf:BarCommandManager.CommandName="{x:Static inf:CommandNames.SetDarkTheme}"/>
                             <dxb:BarButtonItem Content="Light Theme" dxInf:BarCommandManager.CommandName="{x:Static inf:CommandNames.SetLightTheme}"/>
+                            <dxb:BarButtonItem Content="Touch Theme" dxInf:BarCommandManager.CommandName="{x:Static inf:CommandNames.SetTouchTheme}"/>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>

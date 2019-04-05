@@ -1,4 +1,5 @@
-﻿using DevExpress.Mvvm;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using DevExpress.Xpf.Core;
 using DXInfrastructure;
@@ -34,6 +35,7 @@ namespace Shell
         {
             ThemeManager.ApplicationThemeChanged += ThemeManager_ApplicationThemeChanged;
 
+            BarCommandManager.RegisterCommand(CommandNames.SetTouchTheme, new DelegateCommand(() => ChangeTheme(Theme.Office2016WhiteTouchName)));
             BarCommandManager.RegisterCommand(CommandNames.SetDarkTheme, new DelegateCommand(() => ChangeTheme(Theme.VS2017DarkName)));
             BarCommandManager.RegisterCommand(CommandNames.SetLightTheme, new DelegateCommand(() => ChangeTheme(Theme.VS2017LightName)));
         }

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
-import SelectLanguage from "./components/PageSelectLanguage/selectLanguage";
 import { Provider } from "react-redux";
 import store from "./store";
 import { LocalizeProvider } from "react-localize-redux";
 import { renderToStaticMarkup } from "react-dom/server";
 import { withLocalize } from "react-localize-redux";
 import globalTranslations from "./translations/global.json";
+import StartProcessPage from "./components/StartProcess/startProcessPage";
 
 class App extends Component {
   constructor(props) {
@@ -24,11 +24,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LocalizeProvider>
-          <Provider store={store}>
-            <SelectLanguage />
-          </Provider>
-        </LocalizeProvider>
+        <Provider store={store}>
+          <StartProcessPage />
+        </Provider>
       </div>
     );
   }

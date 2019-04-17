@@ -14,6 +14,7 @@ class Language extends Component {
           type="radio"
           name="languageSelect"
           value={id}
+          checked={this.props.checked}
         />
       </div>
     );

@@ -6,5 +6,7 @@ import rootReducer from "./redux";
 
 // create our redux store using our reducers and our middleware, and export it for use in index.js
 const store = createStore(rootReducer, applyMiddleware(thunk));
-
+store.subscribe(_ => {
+  console.log(store.getState());
+});
 export default store;

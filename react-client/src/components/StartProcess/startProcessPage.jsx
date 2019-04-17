@@ -24,17 +24,26 @@ class StartProcessPage extends Component {
       console.log("All Finished");
     }
   }
+  backButtonHandler = () => {
+    const step = this.state.step;
+
+    if (this.state.step - 1 !== 0) {
+      this.setState({ ...this.state, step: step - 1 });
+      // console.log(this.state);
+    }
+  };
 
   render() {
     const step = this.state.step;
     return (
-      <Step
-        onFinished={this.handleStepFinished.bind(this)}
-        step={step}
-        stepsCount={this.state.steps.length}
-      >
-        {this.state.steps[step - 1]}
-      </Step>
+      <div>
+        <Step step={step} stepsCount={this.state.steps.length}>
+          {this.state.steps[step - 1]}
+        </Step>
+        {this.state.step - 1 !== 0 ? (
+          <button onClick={this.backButtonHandler}>Back</button>
+        ) : null}
+      </div>
     );
   }
 }

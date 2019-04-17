@@ -11,8 +11,12 @@ class ChooseMiniBar extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.onFinished}>Default</button>
-        <button onClick={this.props.onFinished}>Custom</button>
+        <a href="/default">
+          <button onClick={this.props.onFinished}>Default</button>
+        </a>
+        <a href="/custom">
+          <button onClick={this.props.onFinished}>Custom</button>
+        </a>
       </div>
     );
   }

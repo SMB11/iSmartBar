@@ -7,6 +7,8 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { withLocalize } from "react-localize-redux";
 import globalTranslations from "./translations/global.json";
 import StartProcessPage from "./components/StartProcess/startProcessPage";
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./Routes/routes";
 
 class App extends Component {
   constructor(props) {
@@ -23,11 +25,14 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <Provider store={store}>
-          <StartProcessPage />
-        </Provider>
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Provider store={store}>
+            {/* <StartProcessPage /> */}
+            <Routes />
+          </Provider>
+        </div>
+      </BrowserRouter>
     );
   }
 }

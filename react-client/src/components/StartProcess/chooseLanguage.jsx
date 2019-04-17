@@ -30,11 +30,9 @@ class ChooseLanguage extends Component {
     const language = this.state.selected;
     const prevLanguage = prevState.selected;
     if (
-      (prevLanguage && language && language.id != prevLanguage.id) ||
+      (prevLanguage && language && language.id !== prevLanguage.id) ||
       (!prevLanguage && language)
     ) {
-      this.props.languages.forEach(lang => (lang.checked = false));
-      language.checked = true;
       this.props.setActiveLanguage(language.id);
     }
   }

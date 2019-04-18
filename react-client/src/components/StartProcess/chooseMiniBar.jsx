@@ -6,6 +6,7 @@ import {
   Translate,
   setActiveLanguage
 } from "react-localize-redux";
+import { Link } from "react-router-dom";
 
 export const miniBarStepStorageKey = "MiniBarType";
 
@@ -21,14 +22,14 @@ class ChooseMiniBar extends Component {
   render() {
     return (
       <div>
-        <a href="/checkout">
+        <Link to="/checkout">
           <button onClick={this.handleDefaultClicked.bind(this)}>
             Default
           </button>
-        </a>
-        <a href="/">
+        </Link>
+        <Link to="/">
           <button onClick={this.handleCustomClicked.bind(this)}>Custom</button>
-        </a>
+        </Link>
       </div>
     );
   }

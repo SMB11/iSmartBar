@@ -84,9 +84,8 @@ class ChooseLocation extends Component {
     this.props.onFinished();
   }
   render() {
-    const { countries, cities, hotels, loading } = this.props;
+    const { countries, cities, hotels } = this.props;
     const isButtonDisabled =
-      loading ||
       !this.state.country ||
       !this.state.city ||
       !this.state.hotel ||

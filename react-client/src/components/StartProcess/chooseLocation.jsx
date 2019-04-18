@@ -45,13 +45,16 @@ class ChooseLocation extends Component {
       cnt => cnt.id === parseInt(e.target.value)
     );
     if (country) {
-      this.setState({ ...this.state, country: country });
+      this.setState({
+        ...this.state,
+        country: country,
+        city: null,
+        hotel: null
+      });
       this.props.GetCities(country.id);
     } else {
-      this.setState({ ...this.state, country: null });
+      this.setState({ ...this.state, country: null, city: null, hotel: null });
     }
-
-    this.setState({ ...this.state, city: null, hotel: null });
   }
 
   handleCityChanged(e) {
@@ -59,12 +62,12 @@ class ChooseLocation extends Component {
       cnt => cnt.id === parseInt(e.target.value)
     );
     if (city) {
-      this.setState({ ...this.state, city: city });
+      this.setState({ ...this.state, city: city, hotel: null });
       this.props.GetHotels(city.id);
     } else {
-      this.setState({ ...this.state, city: null });
+      this.setState({ ...this.state, city: null, hotel: null });
     }
-    this.setState({ ...this.state, hotel: null });
+    console.log(this.state);
   }
   handleHotelChanged(e) {
     const hotel = this.props.hotels.find(

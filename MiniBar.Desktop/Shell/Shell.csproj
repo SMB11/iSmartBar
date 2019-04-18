@@ -169,10 +169,6 @@
       <Project>{9f1b50bd-a33f-4989-96bb-7ce0b98b1b85}</Project>
       <Name>DXInfrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\eShop.ModuleA\MiniBar.ProductsModule.csproj">
-      <Project>{c1b2c6dc-514a-4003-aa94-7a14fee36fea}</Project>
-      <Name>MiniBar.ProductsModule</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Interface\Infrastructure.Interface.csproj">
       <Project>{C50D185A-4BA0-4899-8C73-4C0A995ECD57}</Project>
       <Name>Infrastructure.Interface</Name>
@@ -185,6 +181,10 @@
       <Project>{DB371131-E837-4F6F-BD59-B73276A89FA8}</Project>
       <Name>MiniBar.EntityViewModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MiniBar.ProductsModule\MiniBar.ProductsModule.csproj">
+      <Project>{c1b2c6dc-514a-4003-aa94-7a14fee36fea}</Project>
+      <Name>MiniBar.ProductsModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SecurityModule\SecurityModule.csproj">
       <Project>{BD54315E-9718-41FA-BA33-E39259B334FD}</Project>
       <Name>SecurityModule</Name>
@@ -193,9 +193,6 @@
   <ItemGroup>
     <Resource Include="DXSplashScreen\Image.png" />
     <Resource Include="DXSplashScreen\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="DXSplashScreen\Logo1.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="DXSplashScreen\hotel.jpg" />

@@ -1,3 +1,5 @@
+import api from "../api";
+
 export const FETCH_COUNTRIES = "language/FETCH_COUNTRIES";
 export const FETCH_COUNTRIES_END = "language/FETCH_COUNTRIES_END";
 export const FETCH_CITIES = "language/FETCH_CITIES";
@@ -61,56 +63,44 @@ export const fetchHotelsEnd = cities => ({
   payload: cities
 });
 
-function fetchSecretSauce() {
-  return fetch("http://localhost:3000/");
-}
-
 export function GetCountries() {
   return function(dispatch) {
     dispatch(fetchCountriesStart());
-    return fetchSecretSauce().then(data =>
-      dispatch(
-        fetchCountriesEnd([
-          { id: 1, name: "America" },
-          { id: 2, name: "Italy" }
-        ])
-      )
-    );
+    return api.locations
+      .getAllCountries()
+      .then(response => {
+        dispatch(fetchCountriesEnd(response.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 }
 
 export function GetCities(countryID) {
   return function(dispatch) {
     dispatch(fetchCitiesStart());
-    return fetchSecretSauce().then(data => {
-      let cities = [];
-      if (countryID === 1) {
-        cities = [{ id: 1, name: "New York" }, { id: 2, name: "Chicago" }];
-      } else {
-        cities = [{ id: 1, name: "Rome" }, { id: 2, name: "Florence" }];
-      }
-      dispatch(fetchCitiesEnd(cities));
-    });
+    return api.locations
+      .getAllCities(countryID)
+      .then(response => {
+        dispatch(fetchCitiesEnd(response.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 }
 
 export function GetHotels(cityID) {
   return function(dispatch) {
     dispatch(fetchHotelsStart());
-    return fetchSecretSauce().then(data => {
-      let hotels = [];
-      if (cityID === 1) {
-        hotels = [
-          { id: 1, name: "Best Western" },
-          { id: 2, name: "Palm Springs" }
-        ];
-      } else {
-        hotels = [
-          { id: 1, name: "Raddison Blu" },
-          { id: 2, name: "Al Theatro Palace" }
-        ];
-      }
-      dispatch(fetchHotelsEnd(hotels));
-    });
+    return api.locations
+      .getAllHotels(cityID)
+      .then(response => {
+        dispatch(fetchHotelsEnd(response.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 }

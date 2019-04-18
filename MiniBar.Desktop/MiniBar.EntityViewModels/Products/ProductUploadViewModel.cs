@@ -3,6 +3,7 @@ using MiniBar.EntityViewModels.Base;
 using MiniBar.EntityViewModels.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace MiniBar.EntityViewModels.Products
 {
@@ -22,7 +23,7 @@ namespace MiniBar.EntityViewModels.Products
         [Required]
         public string MainName
         {
-            get { return (Names != null && Names.ContainsKey("en"))? Names["en"]: ""; }
+            get { return (Names != null && Names.ContainsKey(CultureInfo.CurrentCulture.Name))? Names[CultureInfo.CurrentCulture.Name] : ""; }
         }
 
         private Dictionary<string, string> _Names;

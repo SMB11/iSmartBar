@@ -154,7 +154,7 @@ namespace Shell
         {
             base.OnStartup(eventArgs);
 
-            CultureInfo culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
+            CultureInfo culture = (CultureInfo)CultureInfo.GetCultureInfo("en").Clone();
             culture.NumberFormat.CurrencySymbol = "€";
             CultureInfo.CurrentCulture = culture;
             CultureInfo.CurrentUICulture = culture;

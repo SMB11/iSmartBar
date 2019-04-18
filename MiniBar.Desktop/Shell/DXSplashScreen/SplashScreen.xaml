@@ -34,7 +34,7 @@
                 <DockPanel x:Name="Footer" Grid.Row="3" Margin="12,20,12,4">
                     <TextBlock x:Name="Footer_Text" TextWrapping="Wrap" Opacity="0.5" Foreground="#FF2D2D2D" HorizontalAlignment="Left" VerticalAlignment="Center"
                                Text="{Binding Source={x:Static sys:DateTime.Today}, Path=Year, StringFormat='{}Copyright © {0}'}"/>
-                    <Image x:Name="Logotype" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" DockPanel.Dock="Right" Source="Logo1.png" Height="30" Stretch="Uniform" HorizontalAlignment="Right"  />
+                    <Image x:Name="Logotype" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" DockPanel.Dock="Right" Source="Logo.png" Height="30" Stretch="Uniform" HorizontalAlignment="Right"  />
                 </DockPanel>
             </Grid>
         </Grid>

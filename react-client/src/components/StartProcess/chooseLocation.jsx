@@ -50,6 +50,8 @@ class ChooseLocation extends Component {
     } else {
       this.setState({ ...this.state, country: null });
     }
+
+    this.setState({ ...this.state, city: null, hotel: null });
   }
 
   handleCityChanged(e) {
@@ -62,6 +64,7 @@ class ChooseLocation extends Component {
     } else {
       this.setState({ ...this.state, city: null });
     }
+    this.setState({ ...this.state, hotel: null });
   }
   handleHotelChanged(e) {
     const hotel = this.props.hotels.find(
@@ -80,7 +83,13 @@ class ChooseLocation extends Component {
   render() {
     const { countries, cities, hotels, loading } = this.props;
     const isButtonDisabled =
-      loading || !this.state.country || !this.state.city || !this.state.hotel;
+      loading ||
+      !this.state.country ||
+      !this.state.city ||
+      !this.state.hotel ||
+      this.props.countriesLoading ||
+      this.props.citiesLoading ||
+      this.props.hotelsLoading;
     return (
       <div>
         <DropDown

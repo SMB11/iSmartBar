@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>iSmartBar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <script>
+        function onResize(){
+            const vh = $(window).height();
+            console.log(vh);
+            const vw = $(window).width();
+            const mainImgEl = $(".mainImg");
+            $(".mainImg").width(1201 * vh/2137);
+        }
+        window.onresize = onResize;
+        window.onload = onResize;
+    </script>
+    <style type="text/css">
+    html,body{
+    margin:0;
+    }
+		body{
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+		}
+        .content{
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+        }
+        .mainImg{
+            background-image: url(mobile.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+        }
+        @media (min-aspect-ratio: 1/1) {
+            .mainImg{
+                background-image: url("back.png");
+                width: 100% !important;
+            background-size: cover;
+            }
+		} 
+	</style>
+</head>
+<body>
+    
+    <div class="content">
+
+            <div class="mainImg">
+
+            </div>
+    </div>
+</body>
+</html>

@@ -23,3 +23,4 @@ D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\PostSharp\dependenci
 D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.dll
 D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.pdb
 D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\PostSharp\postsharp.app.config
+D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\Common.csprojAssemblyReference.cache

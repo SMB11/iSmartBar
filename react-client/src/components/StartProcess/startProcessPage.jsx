@@ -3,6 +3,7 @@ import Step from "./step";
 import ChooseLanguage from "./chooseLanguage";
 import ChooseLocation from "./chooseLocation";
 import ChooseMiniBar from "./chooseMiniBar";
+import { Translate } from "react-localize-redux";
 
 class StartProcessPage extends Component {
   state = {
@@ -41,7 +42,9 @@ class StartProcessPage extends Component {
           {this.state.steps[step - 1]}
         </Step>
         {this.state.step - 1 !== 0 ? (
-          <button onClick={this.backButtonHandler}>Back</button>
+          <button onClick={this.backButtonHandler}>
+            <Translate id="back" />
+          </button>
         ) : null}
       </div>
     );

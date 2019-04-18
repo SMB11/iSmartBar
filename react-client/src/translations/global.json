@@ -1,3 +1,4 @@
 {
-  "select": ["Select", "Selectito"]
+  "select": ["Select", "Selectito"],
+  "back": ["Back", "Backito"]
 }

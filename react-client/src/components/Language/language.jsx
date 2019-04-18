@@ -13,6 +13,7 @@ class Language extends Component {
           onChange={this.props.onChecked}
           type="radio"
           name="languageSelect"
+          id={"language-radio-" + id}
           value={id}
           checked={this.props.checked}
         />

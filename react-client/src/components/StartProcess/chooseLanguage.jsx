@@ -16,7 +16,7 @@ export const languageStepStorageKey = "ChooseLanguageState";
 
 class ChooseLanguage extends Component {
   state = {
-    selected: null
+    selected: {}
   };
   componentDidMount() {
     this.props.GetLanguages();
@@ -67,7 +67,7 @@ class ChooseLanguage extends Component {
             disabled={isButtonDisabled}
             onClick={this.handleFinish.bind(this)}
           >
-            <Translate id="nextStep" />
+            <Translate id="select" />
           </button>
         </div>
       );

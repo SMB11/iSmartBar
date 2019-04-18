@@ -7,13 +7,14 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { withLocalize } from "react-localize-redux";
 import globalTranslations from "./translations/global.json";
 import StartProcessPage from "./components/StartProcess/startProcessPage";
-import { BrowserRouter } from "react-router-dom";
-import Routes from "./Routes/routes";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import LandingPage from "./components/Pages/landingPage";
+import ForceStartProcess from "./components/Reusable/forceStartProcess";
+import Modal from "react-modal";
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     this.props.initialize({
       languages: [
         { name: "English", code: "en" },
@@ -23,13 +24,19 @@ class App extends Component {
       options: { renderToStaticMarkup, renderInnerHtml: true }
     });
   }
+  componentDidMount() {
+    Modal.setAppElement("#App");
+  }
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        <div className="App" id="App">
           <Provider store={store}>
-            {/* <StartProcessPage /> */}
-            <Routes />
+            <Switch>
+              <Route path="/process" component={StartProcessPage} exact />
+              <Route path="/" component={ForceStartProcess} />
+            </Switch>
+            <Route path="/" component={LandingPage} exact />
           </Provider>
         </div>
       </BrowserRouter>

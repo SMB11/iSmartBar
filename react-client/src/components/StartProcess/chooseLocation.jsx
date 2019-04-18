@@ -119,7 +119,7 @@ class ChooseLocation extends Component {
           disabled={isButtonDisabled}
           onClick={this.handleFinish.bind(this)}
         >
-          <Translate id="nextStep" />
+          <Translate id="select" />
         </button>
       </div>
     );

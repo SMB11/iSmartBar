@@ -1,2 +1,0 @@
-C:\ProgramData\PostSharp\6.0.35\bin.Release\netcoreapp2.0\PostSharp.Compiler.Engine.dll
-D:\iSmartBar\MiniBar.Server\Common\obj\Debug\netstandard2.0\PostSharp\postsharp.config

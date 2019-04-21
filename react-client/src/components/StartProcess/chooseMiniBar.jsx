@@ -21,15 +21,54 @@ class ChooseMiniBar extends Component {
   }
   render() {
     return (
-      <div>
-        <Link to="/checkout">
-          <button onClick={this.handleDefaultClicked.bind(this)}>
-            Default
-          </button>
-        </Link>
-        <Link to="/">
-          <button onClick={this.handleCustomClicked.bind(this)}>Custom</button>
-        </Link>
+      <div className="step step1 active">
+        <div className="bars">
+          <div className="bar">
+            <div className="bar-logo">
+              <img src="images/default-bar.svg" alt="" />
+            </div>
+            <h2 className="title">Default Bar</h2>
+            <span className="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo.
+            </span>
+            <div className="button-content">
+              <Link to="/checkout">
+                <button
+                  onClick={this.handleDefaultClicked.bind(this)}
+                  className="btn next-step"
+                >
+                  Default
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div className="line" />
+          <div className="bar">
+            <div className="bar-logo">
+              <img src="images/custom-bar.svg" alt="" />
+            </div>
+            <h2 className="title">Custom Bar</h2>
+            <span className="description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo.
+            </span>
+            <div className="button-content">
+              <Link to="/">
+                <button
+                  onClick={this.handleCustomClicked.bind(this)}
+                  className="btn next-step"
+                >
+                  Custom
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

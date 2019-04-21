@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { CategoryGet } from "../../redux/category";
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
+import "../../assets/scss/home.scss";
 class landingPage extends Component {
   state = {};
   componentDidMount() {
@@ -22,7 +23,7 @@ class landingPage extends Component {
 
   render() {
     return (
-      <div>
+      <div id="container">
         <NavBar />
         {/* <Product
           product={{

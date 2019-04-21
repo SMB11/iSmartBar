@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./assets/scss/app.scss";
 import { Provider } from "react-redux";
 import store from "./store";
 import { renderToStaticMarkup } from "react-dom/server";

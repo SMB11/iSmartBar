@@ -61,14 +61,32 @@ class navBar extends Component {
 
   render() {
     return (
-      <nav>
-        <h1>Logo</h1>
-        <a onClick={this.openLanguageModal.bind(this)}>{this.state.language}</a>
-        <a onClick={this.openLocationModal.bind(this)}>{this.state.location}</a>
-        <div>
-          <input type="text" />
-          <button>Search</button>
-        </div>
+      <div>
+        <header className="header">
+          <a href="" className="logo">
+            <img src="images/logo-manu.svg" alt="" />
+          </a>
+          <input className="menu-btn" type="checkbox" id="menu-btn" />
+          <label className="menu-icon" htmlFor="menu-btn">
+            <span className="navicon" />
+          </label>
+          <ul className="menu">
+            <li>
+              <a className="japan-letter" href="#work">
+                <img src="images/japn-letter.svg" alt="" />
+              </a>
+            </li>
+            <li>
+              <a href="#about">{this.state.location}</a>
+            </li>
+            <li>
+              <a href="#careers">Rome</a>
+            </li>
+            <li className="search">
+              <input type="search" placeholder="Search" title="Search" />
+            </li>
+          </ul>
+        </header>
         <Modal
           isOpen={this.state.isLanguageModalOpen}
           onRequestClose={this.closeLanguageModal.bind(this)}
@@ -82,7 +100,7 @@ class navBar extends Component {
         >
           <ChooseLocation onFinished={this.closeLocationModal.bind(this)} />
         </Modal>
-      </nav>
+      </div>
     );
   }
 }

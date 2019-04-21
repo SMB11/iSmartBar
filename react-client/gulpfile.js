@@ -10,7 +10,7 @@ gulp.task("sass", function() {
   return gulp
     .src("./src/assets/scss/**/*.scss")
     .pipe(sass().on("error", sass.logError))
-    .pipe(gulp.dest("./public/css"));
+    .pipe(gulp.dest("./src/assets/css"));
 });
 
 //compile and watch

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "../../assets/scss/steps.module.scss";
 
 class Step extends Component {
   render() {
@@ -9,7 +10,7 @@ class Step extends Component {
       else stepsHtml.push(<div className="dot" />);
     }
     return (
-      <div id="container">
+      <div id="container" className={styles["step-wrapper"]}>
         <div className="page-logo">
           <img src="images/logo.svg" alt="ISmartBar logo" />
         </div>

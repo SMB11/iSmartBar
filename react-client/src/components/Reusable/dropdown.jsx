@@ -6,7 +6,11 @@ class DropDown extends Component {
       <div className="select-group">
         <div>
           <div className="select animated zoomIn">
-            <input type="radio" name={this.props.id} />
+            <input
+              disabled={this.props.disabled}
+              type="radio"
+              name={this.props.id}
+            />
             <i className="toggle icon icon-arrow-down" />
             <i className="toggle icon icon-arrow-up" />
             <span className="placeholder">{this.props.label}</span>

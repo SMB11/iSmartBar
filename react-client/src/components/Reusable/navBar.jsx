@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { stringify } from "querystring";
+// import { stringify } from "querystring";
 import ChooseLocation, {
   locationStepStorageKey
 } from "../StartProcess/chooseLocation";
@@ -72,15 +72,17 @@ class navBar extends Component {
           </label>
           <ul className="menu">
             <li>
-              <a className="japan-letter" href="#work">
+              <a
+                className="japan-letter"
+                onClick={this.openLanguageModal.bind(this)}
+              >
                 <img src="images/japn-letter.svg" alt="" />
               </a>
             </li>
             <li>
-              <a href="#about">{this.state.location}</a>
-            </li>
-            <li>
-              <a href="#careers">Rome</a>
+              <a onClick={this.openLocationModal.bind(this)}>
+                {this.state.location}
+              </a>
             </li>
             <li className="search">
               <input type="search" placeholder="Search" title="Search" />
@@ -88,17 +90,23 @@ class navBar extends Component {
           </ul>
         </header>
         <Modal
+          style={{ content: { bottom: "unset" } }}
           isOpen={this.state.isLanguageModalOpen}
           onRequestClose={this.closeLanguageModal.bind(this)}
         >
-          <ChooseLanguage onFinished={this.refresh.bind(this)} />
+          <div className="steps">
+            <ChooseLanguage onFinished={this.refresh.bind(this)} />
+          </div>
         </Modal>
 
         <Modal
+          style={{ content: { bottom: "unset" } }}
           isOpen={this.state.isLocationModalOpen}
           onRequestClose={this.closeLocationModal.bind(this)}
         >
-          <ChooseLocation onFinished={this.closeLocationModal.bind(this)} />
+          <div className="steps">
+            <ChooseLocation onFinished={this.closeLocationModal.bind(this)} />
+          </div>
         </Modal>
       </div>
     );

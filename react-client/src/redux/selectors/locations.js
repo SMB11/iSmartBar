@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+// import { createSelector } from "reselect";
 
 export const countriesSelector = state => state.locations.countries;
 export const countriesFetchingSelector = state =>

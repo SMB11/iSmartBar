@@ -24,6 +24,7 @@ namespace CoreAPI.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<List<CategoryDTO>> GetAll()
         {
             return await this.ServiceProvider.GetService<ICategoryManager>().GetAllAsync();

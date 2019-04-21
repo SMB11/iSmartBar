@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import styles from "../../assets/scss/steps.module.scss";
 
 class Step extends Component {
   render() {
     const { step, stepsCount } = this.props;
     let stepsHtml = [];
     for (let i = 0; i < stepsCount; i++) {
-      if (step == i + 1) stepsHtml.push(<div className="dot active" />);
+      if (step == i + 1) stepsHtml.push(<div key={i} className="dot active" />);
       else stepsHtml.push(<div className="dot" />);
     }
     return (
-      <div id="container" className={styles["step-wrapper"]}>
+      <div id="container">
         <div className="page-logo">
           <img src="images/logo.svg" alt="ISmartBar logo" />
         </div>

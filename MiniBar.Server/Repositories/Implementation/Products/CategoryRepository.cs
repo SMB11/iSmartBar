@@ -12,6 +12,6 @@ namespace Repositories.Implementation.Products
 {
     public class CategoryRepository : RepositoryBase<Category, int, ICategoryRepository>, ICategoryRepository
     {
-        internal override Expression<Func<DBContext, ITable<Category>>> TableExpression => c => c.Categories;
+        internal override Expression<Func<MiniBarDB, ITable<Category>>> TableExpression => c => c.Categories;
     }
 }

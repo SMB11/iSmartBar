@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
+using Common.Core;
 using Facade.Managers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using SharedEntities.DTO.Global;
 
 namespace CoreAPI.Controllers
 {
@@ -15,11 +18,11 @@ namespace CoreAPI.Controllers
         {
         }
 
-        //[HttpGet("texts/{languageID}")]
-        //public async Task<Dictionary<string, string>> GetLanguageTexts(string languageID)
-        //{
-        //    return await this.ServiceProvider.GetService<ILanguageManager>().GetLanguageTextsAsync(languageID);
-        //}
+        [HttpGet]
+        public async Task<List<LanguageDTO>> GetAll()
+        {
+            return await this.ServiceProvider.GetService<ILanguageManager>().GetAll();
+        }
 
         //[HttpGet("texts/distinct")]
         //public async Task<List<string>> GetAllTextKeys()

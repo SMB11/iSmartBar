@@ -15,12 +15,12 @@ namespace Repositories.Implementation.Products
 {
     public class ProductInfoRepository : CompositeRepositoryBase<ProductInfo, int, string, ProductInfoRepository>, IProductInfoRepository
     {
-        internal override Expression<Func<DBContext, ITable<ProductInfo>>> TableExpression => c => c.ProductInfos;
+        internal override Expression<Func<MiniBarDB, ITable<ProductInfo>>> TableExpression => c => c.ProductInfos;
 
         public override ProductInfo FindByID(int productID, string languageID)
         {
 
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return ExecuteSelect(t => t.Where(e => e.LanguageID == languageID && e.ProductID == productID), context).Single();
             }
@@ -29,7 +29,7 @@ namespace Repositories.Implementation.Products
         public override async Task<ProductInfo> FindByIDAsync(int productID, string languageID, CancellationToken token = default(CancellationToken))
         {
 
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return (await ExecuteSelectAsync(t => t.Where(e => e.LanguageID == languageID && e.ProductID == productID), context)).Single();
             }

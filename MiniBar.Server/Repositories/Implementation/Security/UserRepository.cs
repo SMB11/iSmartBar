@@ -12,7 +12,7 @@ namespace Repositories.Implementation.Security
 
         public async Task<List<User>> GetAllAsync()
         {
-            using(DBContext context = new DBContext())
+            using(MiniBarDB context = new MiniBarDB())
             {
 
                 return await Task.Run(() => context.Users.ToList());
@@ -21,7 +21,7 @@ namespace Repositories.Implementation.Security
 
         public async Task<User> GetByIDAsync(string id)
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
 
                 return await Task.Run(() => context.Users.Where(u => u.Id == id).First());

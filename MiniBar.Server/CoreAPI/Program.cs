@@ -18,7 +18,7 @@ namespace CoreAPI
             var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
             try
             {
-                logger.Debug("Initializing eShop Server");
+                logger.Debug("Initializing CoreAPI");
 
                 CreateWebHostBuilder(args).Build().Run();
             }

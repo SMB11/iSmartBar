@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using BusinessEntities.Culture;
 using Managers.Base;
 using Microsoft.Extensions.Caching.Memory;
+using SharedEntities.DTO.Global;
+using AutoMapper;
 
 namespace Managers.Implementation
 {
@@ -17,11 +19,11 @@ namespace Managers.Implementation
         {
         }
 
-        public List<Language> GetAll()
+        public Task<List<LanguageDTO>> GetAll()
         {
-            return MemoryCache.GetOrCreate("languages", (entry) => {
+            return MemoryCache.GetOrCreate("languages", async (entry) => {
                 entry.Priority = CacheItemPriority.High;
-                return ServiceProvider.GetService<ILanguageRepository>().GetAll();
+                return Mapper.Map<List<LanguageDTO>>(await ServiceProvider.GetService<ILanguageRepository>().GetAllAsync());
             });
         }
 

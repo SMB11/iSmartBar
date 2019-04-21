@@ -11,7 +11,7 @@ namespace Repositories.Implementation.Security
     {
         public async Task<IdentityRole> GetByIDAsync(string ID)
         {
-            using(DBContext context = new DBContext())
+            using(MiniBarDB context = new MiniBarDB())
             {
                 return await context.Roles.Where(role => role.Id == ID).FirstAsync();
             }

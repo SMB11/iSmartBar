@@ -35,6 +35,7 @@ using System.Linq;
 using Repositories.Implementation.Products;
 using Facade.Accessors;
 using Repositories.Implementation.Accessors;
+using Facade.Configuration;
 
 namespace CoreAPI
 {
@@ -134,7 +135,7 @@ namespace CoreAPI
             services.AddMemoryCache();
             //services.AddAutoMapper();
 
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(Startup).Assembly));
+            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(ProfileLocator).Assembly));
             services.AddOptions();
             IConfigurationSection globalOptionsSection = Configuration.GetSection("GlobalOptions");
 

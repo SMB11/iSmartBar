@@ -1,4 +1,5 @@
 ﻿using BusinessEntities.Culture;
+using SharedEntities.DTO.Global;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Facade.Managers
 {
     public interface ILanguageManager
     {
-        List<Language> GetAll();
+        Task<List<LanguageDTO>> GetAll();
     }
 }

@@ -1,0 +1,224 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:100,300';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.3.2/css/simple-line-icons.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css';
+@import 'https://fonts.googleapis.com/css?family=Roboto+Mono:300,700';
+
+@import "./_variables";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind', sans-serif;
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 150px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+}
+
+.clear {
+    clear: both;
+    content: "";
+}
+
+body {
+    &.without-scroll {
+        overflow: hidden;
+    }
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #e9eced;
+    border-radius: 50%;
+    cursor: pointer;
+    &.active {
+        cursor: auto;
+        background-color: #008efd;
+    }
+}
+
+.line {
+    width: 1px;
+    min-width: 1px;
+    background: #d5dadd;
+    position: relative;
+    &::before {
+        content: "";
+        height: 50px;
+        bottom: 0;
+        width: 1px;
+        background: #fff;
+        position: absolute;
+    }
+    @media(max-width: 550px) {
+        display: none;
+    }
+}
+.button-content {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    .btn {
+        width: 224px;
+        height: 62px;
+        border-radius: 48px;
+        border: 3px solid #008efd;
+        background-color: #fcfcfc;
+        opacity: 0.51;
+        color: #008efd;
+        font-family: 'Acrom';
+        font-size: 17px;
+        font-weight: 400;
+        letter-spacing: 1.02px;
+        text-transform: uppercase;
+        cursor: pointer;
+    
+        &:hover {
+            color: #fff;
+            box-shadow: $button-box-shadow-hover;
+            background-color: $button-background-hover;
+        }
+         
+        &:focus {
+            border: 0;
+            outline:0;
+        }
+    }
+}
+
+.container-radio {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin: 35px 0;
+    cursor: pointer;
+    color: #1a314c;
+    font-family: Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 100px;
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 14px;
+        width: 14px;
+        background-color: #d5dadd;
+        border-radius: 50%;
+        &:after {
+          content: "";
+          position: absolute;
+          top: 2px;
+          left: 2px;
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #d5dadd;
+          border: 2px solid #fff;
+        }
+      }
+      &:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+
+      input:checked ~ .checkmark {
+        background-color: #008efd;
+        &:after {
+            background: #008efd;
+        }
+    }
+  }
+
+
+
+@font-face {
+	font-family: 'Acrom';
+	src: url('../fonts/acrom/Acrom-Regular.eot');
+	src: local('Acrom Regular'), local('Acrom-Regular'),
+		url('../fonts/acrom/Acrom-Regular.woff') format('woff'),
+		url('../fonts/acrom/Acrom-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Acrom';
+	src: url('../fonts/acrom/Acrom-Bold.eot');
+	src: local('Acrom Bold'), local('Acrom-Bold'),
+		url('../fonts/acrom/Acrom-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/acrom/Acrom-Bold.woff') format('woff'),
+		url('../fonts/acrom/Acrom-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Acrom';
+	src: url('../fonts/acrom/Acrom-Thin.eot');
+	src: local('Acrom Thin'), local('Acrom-Thin'),
+		url('../fonts/acrom/Acrom-Thin.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/acrom/Acrom-Thin.woff') format('woff'),
+		url('../fonts/acrom/Acrom-Thin.ttf') format('truetype');
+	font-weight: 100;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Acrom';
+	src: url('../fonts/acrom/Acrom-Light.eot');
+	src: local('Acrom Light'), local('Acrom-Light'),
+		url('../fonts/acrom/Acrom-Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/acrom/Acrom-Light.woff') format('woff'),
+		url('../fonts/acrom/Acrom-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Acrom';
+	src: url('../fonts/acrom/Acrom-ExtraBold.eot');
+	src: local('Acrom ExtraBold'), local('Acrom-ExtraBold'),
+		url('../fonts/acrom/Acrom-ExtraBold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/acrom/Acrom-ExtraBold.woff') format('woff'),
+		url('../fonts/acrom/Acrom-ExtraBold.ttf') format('truetype');
+	font-weight: 800;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Acrom';
+	src: url('../fonts/acrom/Acrom-Medium.eot');
+	src: local('Acrom Medium'), local('Acrom-Medium'),
+		url('../fonts/acrom/Acrom-Medium.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/acrom/Acrom-Medium.woff') format('woff'),
+		url('../fonts/acrom/Acrom-Medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+}

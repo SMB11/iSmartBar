@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ISmartBar</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="css/app.css" rel="stylesheet">
+    <link href="css/steps.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+        <div class="page-logo">
+            <img src="images/logo.svg" alt="ISmartBar logo">
+        </div>
+        <div class="content">
+            <div class="body">
+                <div class="steps">
+                    <div class="step step1 active">
+                        <div class="bars">
+                            <div class="bar">
+                                <div class="bar-logo">
+                                    <img src="images/default-bar.svg" alt="">
+                                </div>
+                                <h2 class="title">Default Bar</h2>
+                                <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                    do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis
+                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+                                <div class="button-content">
+                                    <button class="btn next-step">Default</button>
+                                </div>
+                            </div>
+                            <div class="line"></div>
+                            <div class="bar">
+                                <div class="bar-logo">
+                                    <img src="images/custom-bar.svg" alt="">
+                                </div>
+                                <h2 class="title">Custom Bar</h2>
+                                <span class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                                    do
+                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis
+                                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</span>
+                                <div class="button-content">
+                                    <button class="btn next-step">Custom</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step step2">
+                        <form action="">
+                            <!-- <div class="form-group">
+                                <select class="select-css">
+                                    <option>This is a native select element</option>
+                                    <option>Apples</option>
+                                    <option>Bananas</option>
+                                    <option>Grapes</option>
+                                    <option>Oranges</option>
+                                </select>
+                            </div> -->
+                            <div class="select-group">
+                                <div>
+                                    <div class="select animated zoomIn">
+                                        <input type="radio" name="country">
+                                        <i class="toggle icon icon-arrow-down"></i>
+                                        <i class="toggle icon icon-arrow-up"></i>
+                                        <span class="placeholder">Choose Country</span>
+                                        <label class="option">
+                                            <input type="radio" name="country">
+                                            <span class="title animated fadeIn">Armenia</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="country">
+                                            <span class="title animated fadeIn">USA</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="country">
+                                            <span class="title animated fadeIn">China</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="country">
+                                            <span class="title animated fadeIn">Germany</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="select-group">
+                                <div>
+                                    <div class="select animated zoomIn">
+                                        <input type="radio" name="city">
+                                        <i class="toggle icon icon-arrow-down"></i>
+                                        <i class="toggle icon icon-arrow-up"></i>
+                                        <span class="placeholder">Choose City</span>
+                                        <label class="option">
+                                            <input type="radio" name="city">
+                                            <span class="title animated fadeIn">Erevan</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="city">
+                                            <span class="title animated fadeIn">Gyumri</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="city">
+                                            <span class="title animated fadeIn">Vanadzor</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="city">
+                                            <span class="title animated fadeIn">Ashtarak</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="select-group">
+                                <div>
+                                    <div class="select animated zoomIn">
+                                        <input type="radio" name="hotel">
+                                        <i class="toggle icon icon-arrow-down"></i>
+                                        <i class="toggle icon icon-arrow-up"></i>
+                                        <span class="placeholder">Choose Hotel</span>
+                                        <label class="option">
+                                            <input type="radio" name="hotel">
+                                            <span class="title animated fadeIn">Alba Hotel</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="hotel">
+                                            <span class="title animated fadeIn">Radisson Blue Hotel</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="hotel">
+                                            <span class="title animated fadeIn">Opera Suite Hotel</span>
+                                        </label>
+                                        <label class="option">
+                                            <input type="radio" name="hotel">
+                                            <span class="title animated fadeIn">Republica Hotel</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="button-content">
+                            <button class="btn next-step">Next</button>
+                        </div>
+                    </div>
+                    <div class="step step3">
+                        <form action="">
+                            <div>
+                                <label class="container-radio">English
+                                    <input type="radio" checked="checked" name="lng">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container-radio">Italian
+                                    <input type="radio" name="lng">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container-radio">Russian
+                                    <input type="radio" name="lng">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container-radio">Irish
+                                    <input type="radio" name="lng">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div>
+                                <label class="container-radio">Spanish
+                                    <input type="radio" name="lng">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container-radio">Franch
+                                    <input type="radio" name="lng">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container-radio">Chinese
+                                    <input type="radio" name="lng">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="container-radio">Greek
+                                    <input type="radio" name="lng">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </form>
+                        <div class="button-content">
+                            <button class="btn">Next</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="dots">
+                    <div data-id="0" class="dot active"></div>
+                    <div data-id="1" class="dot"></div>
+                    <div data-id="2" class="dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

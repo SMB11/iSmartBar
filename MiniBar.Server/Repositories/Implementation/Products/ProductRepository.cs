@@ -12,6 +12,6 @@ namespace Repositories.Implementation.Products
 {
     public class ProductRepository : RepositoryBase<Product, int, IProductRepository>, IProductRepository
     {
-        internal override Expression<Func<DBContext, ITable<Product>>> TableExpression => c=> c.Products;
+        internal override Expression<Func<MiniBarDB, ITable<Product>>> TableExpression => c=> c.Products;
     }
 }

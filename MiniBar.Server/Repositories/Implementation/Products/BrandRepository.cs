@@ -14,7 +14,7 @@ namespace Repositories.Implementation.Products
 {
     public class BrandRepository : RepositoryBase<Brand, int, IBrandRepository>, IBrandRepository
     {
-        internal override Expression<Func<DBContext, ITable<Brand>>> TableExpression => c => c.Brands;
+        internal override Expression<Func<MiniBarDB, ITable<Brand>>> TableExpression => c => c.Brands;
         
     }
 }

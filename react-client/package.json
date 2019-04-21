@@ -31,6 +31,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-sass": "^4.0.2",
     "react-localize-redux": "^3.5.2"
   }
 }

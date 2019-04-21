@@ -7,17 +7,19 @@ class Language extends Component {
     const { language } = this.props;
     const { id, name, checked } = language;
     return (
-      <div>
-        <label htmlFor={"language-radio-" + id}>{name}</label>
-        <input
-          onChange={this.props.onChecked}
-          type="radio"
-          name="languageSelect"
-          id={"language-radio-" + id}
-          value={id}
-          checked={this.props.checked}
-        />
-      </div>
+      <React.Fragment>
+        <label className="container-radio">
+          {name}
+          <input
+            onChange={this.props.onChecked}
+            value={id}
+            checked={this.props.checked}
+            type="radio"
+            name="lng"
+          />
+          <span className="checkmark" />
+        </label>
+      </React.Fragment>
     );
   }
 }

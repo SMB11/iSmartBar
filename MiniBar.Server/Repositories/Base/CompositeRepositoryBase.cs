@@ -1,6 +1,4 @@
-﻿using BusinessEntities;
-using eShop.BusinessEntities;
-using Facade.Repository;
+﻿using Facade.Repository;
 using LinqToDB;
 using LinqToDB.Data;
 using Repositories.LinqToDB;
@@ -92,7 +90,7 @@ namespace Repositories.Base
             return this as R;
         }
 
-        private ITable<T> GetTable(DBContext context)
+        private ITable<T> GetTable(MiniBarDB context)
         {
             ITable<T> table = TableExpression.Compile()(context);
             foreach (var exp in LoadWithList)
@@ -110,7 +108,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public long InsertRange(List<T> list)
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return context.BulkCopy(list).RowsCopied;
             }
@@ -133,7 +131,7 @@ namespace Repositories.Base
         /// <param name="func"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        internal IEnumerable<T> ExecuteSelect(Func<ITable<T>, IEnumerable<T>> func, DBContext context)
+        internal IEnumerable<T> ExecuteSelect(Func<ITable<T>, IEnumerable<T>> func, MiniBarDB context)
         {
             IEnumerable<T> res = func(GetTable(context));
 
@@ -164,7 +162,7 @@ namespace Repositories.Base
         /// <param name="func"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        internal async Task<IEnumerable<T>> ExecuteSelectAsync(Func<ITable<T>, IEnumerable<T>> func, DBContext context)
+        internal async Task<IEnumerable<T>> ExecuteSelectAsync(Func<ITable<T>, IEnumerable<T>> func, MiniBarDB context)
         {
             return await Task.Run(() => ExecuteSelect(func, context));
         }
@@ -172,7 +170,7 @@ namespace Repositories.Base
         /// <summary>
         /// Should be implemeneted in inhereted class to specifiy the db table for Linq2DB DataContext
         /// </summary>
-        internal abstract Expression<Func<DBContext, ITable<T>>> TableExpression { get; }
+        internal abstract Expression<Func<MiniBarDB, ITable<T>>> TableExpression { get; }
        
 
         /// <summary>
@@ -182,7 +180,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual void Insert(T obj)
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 context.Insert(obj);
             }
@@ -196,7 +194,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual async Task InsertAsync(T obj, CancellationToken token = new CancellationToken())
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 await context.InsertWithIdentityAsync(obj);
             }
@@ -209,7 +207,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual int Update(T obj)
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return context.Update(obj);
             }
@@ -223,7 +221,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual async Task<int> UpdateAsync(T obj, CancellationToken token = new CancellationToken())
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return await context.UpdateAsync(obj);
             }
@@ -236,7 +234,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual int Remove(T obj)
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return context.Delete(obj);
             }
@@ -250,7 +248,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual async Task<int> RemoveAsync(T obj, CancellationToken token = new CancellationToken())
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return await context.DeleteAsync(obj);
             }
@@ -277,7 +275,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual List<T> GetAll( )
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return ExecuteSelect(t => t, context).ToList();
             }
@@ -290,9 +288,8 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual async Task<List<T>> GetAllAsync( CancellationToken token = new CancellationToken())
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
-                var a = context.Users.ToList();
                 return (await ExecuteSelectAsync(t => t, context)).ToList();
             }
         }
@@ -304,7 +301,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual List<T> Find(Func<T, bool> where)
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return ExecuteSelect(t => t.Where(where), context).ToList();
             }
@@ -318,7 +315,7 @@ namespace Repositories.Base
         /// <returns></returns>
         public virtual async Task<List<T>> FindAsync(Func<T, bool> where, CancellationToken token = new CancellationToken())
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return (await ExecuteSelectAsync(t => t.Where(where), context)).ToList();
             }

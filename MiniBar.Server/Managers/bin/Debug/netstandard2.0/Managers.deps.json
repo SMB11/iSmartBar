@@ -2133,6 +2133,7 @@
       },
       "Facade/1.0.0": {
         "dependencies": {
+          "AutoMapper": "8.0.0",
           "BusinessEntities": "1.0.0",
           "SharedEntities": "1.0.0"
         },

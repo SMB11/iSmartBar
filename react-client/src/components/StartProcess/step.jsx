@@ -3,12 +3,22 @@ import React, { Component } from "react";
 class Step extends Component {
   render() {
     const { step, stepsCount } = this.props;
+    let stepsHtml = [];
+    for (let i = 0; i < stepsCount; i++) {
+      if (step == i + 1) stepsHtml.push(<div className="dot active" />);
+      else stepsHtml.push(<div className="dot" />);
+    }
     return (
-      <div>
-        <h1>Logo</h1>
-        <div>{this.props.children}</div>
-        <div>
-          {step}/{stepsCount}
+      <div id="container">
+        <div className="page-logo">
+          <img src="images/logo.svg" alt="ISmartBar logo" />
+        </div>
+        <div className="content">
+          <div className="body">
+            <div className="steps">{this.props.children}</div>
+
+            <div className="dots">{stepsHtml}</div>
+          </div>
         </div>
       </div>
     );

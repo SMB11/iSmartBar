@@ -4921,10 +4921,24 @@
           "bin/placeholder/Common.dll": {}
         }
       },
+      "Core.Repositories/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Facade": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Core.Repositories.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.Repositories.dll": {}
+        }
+      },
       "Facade/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
+          "AutoMapper": "8.0.0",
           "BusinessEntities": "1.0.0",
           "SharedEntities": "1.0.0"
         },
@@ -4950,19 +4964,6 @@
         },
         "runtime": {
           "bin/placeholder/Managers.dll": {}
-        }
-      },
-      "Repositories/1.0.0": {
-        "type": "project",
-        "framework": ".NETStandard,Version=v2.0",
-        "dependencies": {
-          "Facade": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/Repositories.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/Repositories.dll": {}
         }
       },
       "SharedEntities/1.0.0": {
@@ -13478,6 +13479,11 @@
       "path": "../Common/Common.csproj",
       "msbuildProject": "../Common/Common.csproj"
     },
+    "Core.Repositories/1.0.0": {
+      "type": "project",
+      "path": "../Repositories/Core.Repositories.csproj",
+      "msbuildProject": "../Repositories/Core.Repositories.csproj"
+    },
     "Facade/1.0.0": {
       "type": "project",
       "path": "../Facade/Facade.csproj",
@@ -13487,11 +13493,6 @@
       "type": "project",
       "path": "../Managers/Managers.csproj",
       "msbuildProject": "../Managers/Managers.csproj"
-    },
-    "Repositories/1.0.0": {
-      "type": "project",
-      "path": "../Repositories/Repositories.csproj",
-      "msbuildProject": "../Repositories/Repositories.csproj"
     },
     "SharedEntities/1.0.0": {
       "type": "project",
@@ -13504,6 +13505,7 @@
       "AutoMapper >= 8.0.0",
       "BusinessEntities >= 1.0.0",
       "Common >= 1.0.0",
+      "Core.Repositories >= 1.0.0",
       "Facade >= 1.0.0",
       "FluentValidation.AspNetCore >= 8.1.3",
       "Managers >= 1.0.0",
@@ -13514,7 +13516,6 @@
       "NLog >= 4.5.11",
       "NLog.Extensions.Logging >= 1.4.0",
       "NLog.Web.AspNetCore >= 4.8.0",
-      "Repositories >= 1.0.0",
       "linq2db >= 2.6.4",
       "linq2db.Identity >= 2.0.1"
     ]
@@ -13565,8 +13566,8 @@
             "D:\\iSmartBar\\MiniBar.Server\\Managers\\Managers.csproj": {
               "projectPath": "D:\\iSmartBar\\MiniBar.Server\\Managers\\Managers.csproj"
             },
-            "D:\\iSmartBar\\MiniBar.Server\\Repositories\\Repositories.csproj": {
-              "projectPath": "D:\\iSmartBar\\MiniBar.Server\\Repositories\\Repositories.csproj"
+            "D:\\iSmartBar\\MiniBar.Server\\Repositories\\Core.Repositories.csproj": {
+              "projectPath": "D:\\iSmartBar\\MiniBar.Server\\Repositories\\Core.Repositories.csproj"
             }
           }
         }

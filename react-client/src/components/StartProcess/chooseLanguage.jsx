@@ -41,21 +41,43 @@ class ChooseLanguage extends Component {
     const { languages } = this.props;
     const isButtonDisabled = !this.state.selected;
     return (
-      <div>
-        {languages.map((value, index) => (
-          <Language
-            onChecked={() => this.handleChecked.bind(this)(value)}
-            key={index}
-            checked={this.state.selected && this.state.selected.id === value.id}
-            language={value}
-          />
-        ))}
-        <button
-          disabled={isButtonDisabled}
-          onClick={this.handleFinish.bind(this)}
-        >
-          <Translate id="select" />
-        </button>
+      <div className="step step3">
+        <form action="">
+          <div>
+            {languages.slice(0, 4).map((value, index) => (
+              <Language
+                onChecked={() => this.handleChecked.bind(this)(value)}
+                key={index}
+                checked={
+                  this.state.selected && this.state.selected.id === value.id
+                }
+                language={value}
+              />
+            ))}
+          </div>
+
+          <div>
+            {languages.slice(4, 8).map((value, index) => (
+              <Language
+                onChecked={() => this.handleChecked.bind(this)(value)}
+                key={index}
+                checked={
+                  this.state.selected && this.state.selected.id === value.id
+                }
+                language={value}
+              />
+            ))}
+          </div>
+        </form>
+        <div className="button-content">
+          <button
+            disabled={isButtonDisabled}
+            onClick={this.handleFinish.bind(this)}
+            className="btn"
+          >
+            <Translate id="select" />
+          </button>
+        </div>
       </div>
     );
   }

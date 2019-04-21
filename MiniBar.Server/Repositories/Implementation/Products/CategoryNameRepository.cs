@@ -15,12 +15,12 @@ namespace Repositories.Implementation.Products
 {
     public class CategoryNameRepository : CompositeRepositoryBase<CategoryName, int, string, CategoryNameRepository>, ICategoryNameRepository
     {
-        internal override Expression<Func<DBContext, ITable<CategoryName>>> TableExpression => c => c.CategoryNames;
+        internal override Expression<Func<MiniBarDB, ITable<CategoryName>>> TableExpression => c => c.CategoryNames;
 
         public override CategoryName FindByID(int categoryID, string languageID)
         {
 
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return ExecuteSelect(t => t.Where(e => e.LanguageID == languageID && e.CategoryID == categoryID), context).Single();
             }
@@ -28,7 +28,7 @@ namespace Repositories.Implementation.Products
 
         public override async Task<CategoryName> FindByIDAsync(int categoryID, string languageID, CancellationToken token = default(CancellationToken))
         {
-            using (DBContext context = new DBContext())
+            using (MiniBarDB context = new MiniBarDB())
             {
                 return (await ExecuteSelectAsync(t => t.Where(e => e.LanguageID == languageID && e.CategoryID == categoryID), context)).Single();
             }

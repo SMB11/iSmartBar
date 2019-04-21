@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using SharedEntities.DTO.Product;
 using Facade.Managers;
 using Microsoft.AspNetCore.Authorization;
+using Common.Core;
 
 namespace CoreAPI.Controllers
 {

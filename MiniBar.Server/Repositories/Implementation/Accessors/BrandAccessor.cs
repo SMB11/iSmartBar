@@ -15,7 +15,7 @@ namespace Repositories.Implementation.Accessors
         [StoredProcedure("GetCategoryBrands")]
         public List<Brand> GetCategoryBrands(int categoryID)
         {
-            using(DBContext context = new DBContext())
+            using(MiniBarDB context = new MiniBarDB())
             {
                 return context.QueryProc<Brand>("GetCategoryBrands",
                    new DataParameter("categoryID", categoryID)).ToList();

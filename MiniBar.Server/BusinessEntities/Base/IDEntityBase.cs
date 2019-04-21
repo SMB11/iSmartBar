@@ -1,5 +1,4 @@
-using eShop.BusinessEntities.Base;
-using LinqToDB.Mapping;
+using BusinessEntities.Base;
 
 namespace BusinessEntities
 {

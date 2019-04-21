@@ -12,6 +12,6 @@ namespace Repositories.Implementation.Culture
 {
     public class LanguageRepository : RepositoryBase<Language, string, ILanguageRepository>, ILanguageRepository
     {
-        internal override Expression<Func<DBContext, ITable<Language>>> TableExpression => c => c.Languages;
+        internal override Expression<Func<MiniBarDB, ITable<Language>>> TableExpression => c => c.Languages;
     }
 }

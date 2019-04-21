@@ -55,6 +55,9 @@ class navBar extends Component {
     this.setState({ isLocationModalOpen: false });
     this.loadFromStorage();
   }
+  refresh() {
+    window.location.reload();
+  }
 
   render() {
     return (
@@ -70,7 +73,7 @@ class navBar extends Component {
           isOpen={this.state.isLanguageModalOpen}
           onRequestClose={this.closeLanguageModal.bind(this)}
         >
-          <ChooseLanguage onFinished={this.closeLanguageModal.bind(this)} />
+          <ChooseLanguage onFinished={this.refresh.bind(this)} />
         </Modal>
 
         <Modal

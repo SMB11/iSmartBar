@@ -21,9 +21,13 @@ class App extends Component {
       translation: globalTranslations,
       options: { renderToStaticMarkup, renderInnerHtml: true }
     });
+    console.log(this.props);
   }
   componentDidMount() {
     Modal.setAppElement("#App");
+  }
+  componentWillUpdate() {
+    console.log(this.props);
   }
   render() {
     return (

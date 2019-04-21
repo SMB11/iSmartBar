@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-
 import language from "./language";
 import locations from "./locations";
 import cart from "./cart";

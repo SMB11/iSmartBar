@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import "../../assets/scss/select.scss";
 import "../../assets/scss/steps.scss";
 import Step from "./step";
 import ChooseLanguage from "./chooseLanguage";

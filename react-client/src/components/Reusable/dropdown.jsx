@@ -1,36 +1,33 @@
 import React, { Component } from "react";
-
+import "../../assets/scss/select.scss";
+import SelectFX from "periodicjs.component.selectfx";
 class DropDown extends Component {
+  componentDidUpdate() {
+    console.log(this.refs.select);
+  }
   render() {
     return (
-      <div className="select-group">
-        <div>
-          <div className="select animated zoomIn">
-            <input
-              disabled={this.props.disabled}
-              type="radio"
-              name={this.props.id}
-            />
-            <i className="toggle icon icon-arrow-down" />
-            <i className="toggle icon icon-arrow-up" />
-            <span className="placeholder">{this.props.label}</span>
-            {this.props.options.map(option => (
-              <label key={option.value} className="option">
-                <input
-                  type="radio"
-                  name={this.props.id}
-                  onChange={this.props.onChange}
-                  checked={
-                    option.value === this.props.selectedValue ? true : false
-                  }
-                  value={option.value}
-                />
-                <span className="title animated fadeIn">{option.name}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-      </div>
+      <section>
+        <select
+          ref="select"
+          value={this.props.selectedValue}
+          disabled={this.props.disabled}
+          onChange={this.props.onChange}
+          id={this.props.id}
+          className="cs-select cs-skin-elastic"
+        >
+          <option value="" disabled selected>
+            {this.props.label}
+          </option>
+
+          <option value="" />
+          {this.props.options.map(option => (
+            <option key={option.value} value={option.value}>
+              {option.name}
+            </option>
+          ))}
+        </select>
+      </section>
 
       // <div>
       //   <label htmlFor={this.props.id}>{this.props.label}</label>

@@ -94,8 +94,8 @@ class ChooseLocation extends Component {
       this.props.hotelsLoading;
     // isButtonDisabled = false;
     return (
-      <div class="step step2">
-        <form action="">
+      <div className="step step2">
+        <form action="" className="container">
           <DropDown
             id="country"
             label="Country"

@@ -1,4 +1,4 @@
-body.steps-body {
+body.step-body {
   width: 100%;
   height: 100%;
   background-image: url(../images/background.svg);
@@ -15,7 +15,7 @@ body.steps-body {
       justify-content: center;
     }
     .content {
-      margin-top: 115px;
+      margin-top: 100px;
       display: flex;
       justify-content: center;
       .body {
@@ -26,10 +26,24 @@ body.steps-body {
         border-radius: 5px;
         background-color: #ffffff;
         position: relative;
+
+        .dots {
+          display: flex;
+          justify-content: center;
+          margin-top: 40px;
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 30px;
+          .dot {
+            margin: 0 18px;
+          }
+        }
       }
     }
   }
 }
+
 .steps {
   .step1 {
     .bars {
@@ -81,177 +95,67 @@ body.steps-body {
     }
   }
   .step2 {
-    form {
-      /*.form-group {
+    form.container {
+      section {
+        margin-bottom: 39px;
         display: flex;
         justify-content: center;
-        .select-css {
-          display: block;
-          font-size: 16px;
-          font-family: "Acrom";
-          font-weight: 600;
-          color: #444;
-          line-height: 1.3;
-          padding: 28px;
-          cursor: pointer;
-          width: 550px;
-          max-width: 100%;
-          box-sizing: border-box;
-          margin: 0;
-          border: 2px solid #d5dadd;
-          border-radius: 1px;
-          -moz-appearance: none;
-          -webkit-appearance: none;
-          appearance: none;
-          background-color: #fff;
-          background-image: url("../images/arrow-down.svg"),
-            linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
-          background-repeat: no-repeat, repeat;
-          background-position: right 0.7em top 50%, 0 0;
-          &::-ms-expand {
-            display: none;
-          }
-          &:hover {
-            border-color: #888;
-          }
-          option {
-            font-weight: normal;
+        &[disabled] {
+          .cs-select {
+            cursor: no-drop;
+            span {
+              pointer-events: none;
+              opacity: 0.7;
+            }
           }
         }
-      }*/
-      .select-group {
-        position: relative;
-        height: 50px;
-        margin-bottom: 50px;
-        &:first-child {
-          > div {
-            z-index: 6;
+        .cs-select {
+          max-width: 500px;
+          width: 100%;
+          &.cs-active {
+            ul {
+              display: block !important;
+            }
+            > span {
+              border-bottom: 0px !important;
+            }
           }
-        }
-        &:last-child {
-          margin-bottom: 30px;
-          > div {
-            z-index: 4;
-          }
-        }
-        > div {
-          max-width: 100%;
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 5;
-          .select {
-            max-width: 100%;
+          span {
+            font-weight: 400;
             position: relative;
-            overflow: hidden;
             display: block;
-            margin: auto;
-            width: 530px;
+            width: 100%;
             height: 100%;
+            font-size: 14px;
+            padding: 1.5em 2em;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-left: 2px solid #d5dadd;
+            border-right: 2px solid #d5dadd;
+            cursor: pointer;
+          }
+        }
+        .cs-skin-elastic {
+          > span {
+            &::after {
+              content: url("../images/arrow-down.svg");
+            }
             border: 2px solid #d5dadd;
-            border-radius: 3px;
-            font-size: 12px;
-            > i.toggle {
-              font-size: 20px;
-              position: absolute;
-              z-index: 4;
-              right: 30px;
-              top: 20px;
-              color: #16263e;
-            }
-            .title,
-            .placeholder {
-              position: relative;
-              display: block;
-              width: 100%;
-              height: 100%;
-              font-size: 14px;
-              padding: 1.5em 2em;
-              background: #fff;
-              border-top: 1px solid rgba(0, 0, 0, 0.05);
-              cursor: pointer;
-            }
-            & > input {
-              position: absolute;
-              left: 0px;
-              top: 0px;
-              z-index: 1;
-              width: 100%;
-              height: 100%;
-              display: block;
-              opacity: 0;
-              cursor: pointer;
-              &:checked {
-                ~ i.toggle.icon-arrow-down {
-                  display: none;
-                }
-                ~ i.toggle.icon-arrow-up {
-                  display: block;
-                }
-                div.options label.option .title {
-                  display: none !important;
+          }
+          .cs-options {
+            ul {
+              max-height: 260px;
+              overflow-y: scroll;
+              display: none;
+              li {
+                &.cs-focus span {
+                  background: #e8e8e8;
                 }
               }
-              &:not(:checked) {
-                z-index: 4;
-                ~ label.option {
-                  > span.title {
-                    display: none;
-                  }
-                }
-                ~ i.toggle.icon-arrow-up {
-                  display: none;
-                }
-                ~ i.toggle.icon-arrow-down {
-                  display: block;
-                }
-              }
-              &:disabled {
-                cursor: no-drop;
-              }
             }
-            & > span.placeholder {
-              position: relative;
-              z-index: 0;
-              display: inline-block;
-              width: 100%;
-              color: #999;
-              border-top: 0px;
-            }
-            label.option {
-              display: block;
-              overflow: hidden;
-              z-index: 1;
-              width: 100%;
-              transition: all 1s ease-out;
-              span.title {
-                position: relative;
-                z-index: 2;
-                transition: background 0.3s ease-out;
-                i.icon {
-                  padding-right: 8px;
-                  color: rgba(146, 168, 209, 1);
-                }
-                &:hover {
-                  color: #000;
-                  background: #eaeaea;
-                  box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.1);
-                }
-              }
-              input {
-                display: none;
-                &:checked ~ span.title {
-                  position: absolute;
-                  display: block;
-                  z-index: 3;
-                  top: 0px;
-                  color: #008efd;
-                  font-size: 14px;
-                  background: #fff;
-                  border-top: 0px;
-                  box-shadow: none;
-                  width: 100%;
-                }
+            span {
+              &:hover {
+                background: #e8e8e8;
               }
             }
           }
@@ -265,17 +169,5 @@ body.steps-body {
       display: flex;
       justify-content: space-evenly;
     }
-  }
-}
-.dots {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 30px;
-  .dot {
-    margin: 0 18px;
   }
 }

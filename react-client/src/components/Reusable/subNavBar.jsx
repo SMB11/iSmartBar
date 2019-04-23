@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withLocalize } from "react-localize-redux";
+import { withLocalize, Translate } from "react-localize-redux";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
@@ -12,29 +12,28 @@ class SubNavBar extends Component {
   render() {
     console.log(this.props.rootCategories);
     return (
-      <div className="top-bar">
-        <div className="left-content">
+      <div class="top-bar">
+        <div class="left-content">
           {this.props.rootCategories.map((root, index) => (
-            <div key={index} className="selectdiv">
-              <label>
-                <select>
-                  <option selected>{root.name} </option>
-                  {this.props
-                    .subCategories(root.id)
-                    .map((subcategory, index) => (
-                      <option key={index}>{subcategory.name}</option>
-                    ))}
-                </select>
-              </label>
+            <div key={index} class="dropdown">
+              <button class="dropbtn">{root.name}</button>
+              <div class="dropdown-content">
+                {this.props.subCategories(root.id).map((subcategory, index) => (
+                  <a key={index}>{subcategory.name}</a>
+                ))}
+              </div>
             </div>
           ))}
         </div>
-
-        <div className="right-content">
+        <div class="right-content">
           <img src="images/items.svg" alt="" />
           <div>
-            <span>Your iSmartBar</span>
-            <span>Items (0)</span>
+            <span>
+              <Translate id="your_smartbar" />
+            </span>
+            <span>
+              <Translate id="items" /> (0)
+            </span>
           </div>
         </div>
       </div>

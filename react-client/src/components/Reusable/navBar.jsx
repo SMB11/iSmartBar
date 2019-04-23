@@ -8,6 +8,7 @@ import ChooseLanguage, {
 } from "../StartProcess/chooseLanguage";
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
+import { withLocalize } from "react-localize-redux";
 
 class navBar extends Component {
   state = {
@@ -60,6 +61,7 @@ class navBar extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <header className="header">
@@ -85,12 +87,17 @@ class navBar extends Component {
               </a>
             </li>
             <li className="search">
-              <input type="search" placeholder="Search" title="Search" />
+              <input
+                type="search"
+                placeholder={this.props.translate("search")}
+                title="Search"
+              />
             </li>
           </ul>
         </header>
         <Modal
-          style={{ content: { bottom: "unset" } }}
+          className="Modal"
+          overlayClassName="Overlay"
           isOpen={this.state.isLanguageModalOpen}
           onRequestClose={this.closeLanguageModal.bind(this)}
         >
@@ -100,7 +107,8 @@ class navBar extends Component {
         </Modal>
 
         <Modal
-          style={{ content: { bottom: "unset" } }}
+          className="Modal"
+          overlayClassName="Overlay"
           isOpen={this.state.isLocationModalOpen}
           onRequestClose={this.closeLocationModal.bind(this)}
         >
@@ -113,4 +121,4 @@ class navBar extends Component {
   }
 }
 
-export default navBar;
+export default withLocalize(navBar);

@@ -1,4 +1,12 @@
 {
   "select": ["Select", "Selectito"],
-  "back": ["Back", "Backito"]
+  "back": ["Back", "Backito"],
+  "categories": ["Categories", "Categorie"],
+  "most_reviewed_products": [
+    "Most Reviewed Products",
+    "I prodotti più recensiti"
+  ],
+  "your_smartbar": ["Your SmartBar", "Il tuo SmartBar"],
+  "search": ["Search", "Ricerca"],
+  "items": ["Items", "Elementi"]
 }

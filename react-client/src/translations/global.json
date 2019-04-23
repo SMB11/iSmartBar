@@ -1,6 +1,6 @@
 {
-  "select": ["Select", "Selectito"],
-  "back": ["Back", "Backito"],
+  "select": ["Select", "Selezionare"],
+  "back": ["Back", "Indietro"],
   "categories": ["Categories", "Categorie"],
   "most_reviewed_products": [
     "Most Reviewed Products",

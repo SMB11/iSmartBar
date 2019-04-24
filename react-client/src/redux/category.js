@@ -1,4 +1,8 @@
 import api from "../api";
+import {
+  rootCategorySelector,
+  categoriesLoadingSelector
+} from "./selectors/category";
 
 export const CATEGORYGET_START = "CATEGORYGET_START";
 export const CATEGORYGET_END = "CATEGORYGET_END";
@@ -28,16 +32,24 @@ export const CategoryGetEnd = categories => ({
 });
 
 export const CategoryGet = lang => {
-  return function(dispatch) {
-    dispatch(CategoryGetStart());
-    return api.categories
-      .getAll(lang)
-      .then(response => {
-        dispatch(CategoryGetEnd(response.data));
-        console.log(response.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  return (dispatch, getState) => {
+    const state = getState();
+    if (
+      !categoriesLoadingSelector(state) &&
+      rootCategorySelector(state).length === 0
+    ) {
+      dispatch(CategoryGetStart());
+      return api.categories
+        .getAll(lang)
+        .then(response => {
+          dispatch(CategoryGetEnd(response.data));
+          console.log(response.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } else {
+      //debugger;
+    }
   };
 };

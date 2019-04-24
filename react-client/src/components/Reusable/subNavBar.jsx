@@ -6,6 +6,8 @@ import {
   rootCategorySelector,
   subCategorySelector
 } from "../../redux/selectors/category";
+import "../../assets/scss/subNavBar.scss";
+import { Link } from "react-router-dom";
 class SubNavBar extends Component {
   state = {};
 
@@ -16,7 +18,9 @@ class SubNavBar extends Component {
         <div class="left-content">
           {this.props.rootCategories.map((root, index) => (
             <div key={index} class="dropdown">
-              <button class="dropbtn">{root.name}</button>
+              <Link to={"/subcategory/" + root.id}>
+                <button class="dropbtn">{root.name}</button>
+              </Link>
               <div class="dropdown-content">
                 {this.props.subCategories(root.id).map((subcategory, index) => (
                   <a key={index}>{subcategory.name}</a>
@@ -26,7 +30,7 @@ class SubNavBar extends Component {
           ))}
         </div>
         <div class="right-content">
-          <img src="images/items.svg" alt="" />
+          <img src="http://localhost:3000/images/items.svg" alt="" />
           <div>
             <span>
               <Translate id="your_smartbar" />

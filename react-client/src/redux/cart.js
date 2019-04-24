@@ -1,50 +1,32 @@
 import api from "../api";
+import cartLogic from "../logic/cart";
 
-export const ADDTOCART_START = "ADDTOCART_START";
-export const ADDTOCART_END = "ADDTOCART_END";
+export const SET_CART = "SET_CART";
 
 const initialState = {
-  cart: [],
+  carts: cartLogic.getCarts(),
   cartLoading: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADDTOCART_START:
-      return { ...state, cartLoading: true };
-    case ADDTOCART_END:
-      let newCart = [...state.cart, action.payload];
-      return { ...state, cartLoading: false, cart: newCart };
+    case SET_CART:
+      return { ...state, carts: action.payload };
     default:
       return { ...state };
   }
 };
 
-export const addToCartStart = () => ({
-  type: ADDTOCART_START
-});
-export const addToCartEnd = product => ({
-  type: ADDTOCART_END,
-  payload: product
+export const setCart = cart => ({
+  type: SET_CART,
+  payload: cart
 });
 
-export const addToCart = id => {
-  return function(dispatch) {
-    dispatch(addToCartStart());
-    return api.locations
-      .getAllCountries()
-      .then(response => {
-        dispatch(
-          addToCartEnd({
-            id: id,
-            name: "xz",
-            price: 12
-          })
-        );
-        console.log("addtocart");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+export const addToCart = (product, quantity) => {
+  return dispatch => {
+    let result = cartLogic.addToCart(product, quantity);
+    if (result) {
+      dispatch(setCart(result));
+    }
   };
 };

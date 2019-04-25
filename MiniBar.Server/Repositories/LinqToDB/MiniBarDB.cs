@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System.Linq;
 using BusinessEntities;
 using BusinessEntities.Culture;
+using BusinessEntities.Global;
 using BusinessEntities.Products;
 using BusinessEntities.Security;
 using LinqToDB;
@@ -61,6 +62,7 @@ namespace Repositories.LinqToDB
         public ITable<Language> Languages => GetTable<Language>();
         public ITable<User> Users => GetTable<User>();
         public ITable<Role> Roles => GetTable<Role>();
+        public ITable<Image> Images => GetTable<Image>();
 
     }
 }

@@ -91,5 +91,7 @@ namespace MiniBar.EntityViewModels.Products
         {
             get { return (Description != null && Description.ContainsKey("en")) ? Description["en"] : ""; }
         }
+
+        public byte[] Image { get; set; }
     }
 }

@@ -20,6 +20,10 @@
     <Grid>
         <dxlc:DataLayoutControl Visibility="{Binding CurrentItem, Converter={StaticResource ObjectVisibilityConverter}}" infdp:ReadOnlyPanel.IsReadOnly="{Binding IsReadOnly, UpdateSourceTrigger=PropertyChanged}"
                                 CurrentItem="{Binding CurrentItem}" dxe:ValidationService.IsValidationContainer="True" AutoGenerateItems="False" Width="auto" >
+
+            <dxlc:DataLayoutItem Label="Image">
+                <dxe:ImageEdit MaxHeight="200" EditValue="{Binding DataContext.ObjectImage, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, RelativeSource={RelativeSource AncestorType=Grid}}" />
+            </dxlc:DataLayoutItem>
             <dxlc:DataLayoutItem Label="Name">
                 <dxe:ButtonEdit ValidateOnTextInput="False" infdp:ReadOnlyPanel.AlwaysReadOnly="True" Text="{Binding MainName, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" AllowDefaultButton="False">
                     <dxe:ButtonEdit.Buttons>

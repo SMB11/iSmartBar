@@ -1,4 +1,5 @@
 ﻿using BusinessEntities.Enums;
+using BusinessEntities.Global;
 using LinqToDB.Mapping;
 using System;
 using System.Collections.Generic;
@@ -23,5 +24,11 @@ namespace BusinessEntities.Products
 
         [Column]
         public ProductSize Size { get; set; }
+
+        [Column]
+        public int ImageID { get; set; }
+
+        [Association(ThisKey = nameof(ImageID), OtherKey = "ID")]
+        public Image Image { get; set; }
     }
 }

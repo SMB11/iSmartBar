@@ -36,6 +36,7 @@ using Repositories.Implementation.Products;
 using Facade.Accessors;
 using Repositories.Implementation.Accessors;
 using Facade.Configuration;
+using Core.Repositories.Implementation;
 
 namespace CoreAPI
 {
@@ -189,6 +190,8 @@ namespace CoreAPI
             services.AddTransient<IProductManager, ProductManager>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IProductInfoRepository, ProductInfoRepository>();
+            services.AddTransient<IImageManager, ImageManager>();
+            services.AddTransient<IImageRepository, ImageRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -210,6 +213,7 @@ namespace CoreAPI
             }
             app.UseErrorHandling();
 
+            app.UseStaticFiles();
             app.UseRequestLocalization();
             app.UseAuthentication();
             app.UseHttpsRedirection();

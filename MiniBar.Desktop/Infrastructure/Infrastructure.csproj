@@ -106,6 +106,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ApiImageHelper.cs" />
     <Compile Include="MVVM\BaseViewModel.cs" />
     <Compile Include="MVVM\Commands\SecureCommand.cs" />
     <Compile Include="Resources\ObjectManagerView.xaml.cs">

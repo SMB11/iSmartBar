@@ -148,7 +148,8 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
                     BrandID = vm.BrandID,
                     CategoryID = vm.CategoryID,
                     Price = vm.Price,
-                    Info = langData
+                    Info = langData,
+                    Image = vm.Image
                 };
 
                 ObjectDetailsManager.IsObjectLoading = true;

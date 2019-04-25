@@ -6,6 +6,7 @@ using System.Windows;
 using AutoMapper;
 using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
+using Infrastructure.Api;
 using Infrastructure.Helpers;
 using Infrastructure.Interface;
 using Infrastructure.MVVM;
@@ -58,6 +59,20 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             }
         }
 
+        private byte[] oldImage;
+        private bool hasObjectImageChanged;
+        private byte[] _ObjectImage;
+        public byte[] ObjectImage
+        {
+            get { return _ObjectImage; }
+            set
+            {
+                if (value != _ObjectImage)
+                    hasObjectImageChanged = true;
+                SetProperty(ref _ObjectImage, value, nameof(ObjectImage));
+            }
+        }
+
         private ProductUploadViewModel oldItem;
         private ProductUploadViewModel currentItem;
         public ProductUploadViewModel CurrentItem
@@ -65,6 +80,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             get { return currentItem; }
             set {
                 SetProperty(ref currentItem, value, nameof(CurrentItem));
+
             }
         }
 
@@ -212,27 +228,45 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             }
         }
 
+
         #region IObjectDetailsManager
-        object IObjectDetailsManager.EditingItem { get => (!this.IsReadOnly)? CurrentItem: null; }
+        object IObjectDetailsManager.EditingItem {
+            get {
+                if (!this.IsReadOnly) {
+                    if (hasObjectImageChanged)
+                    {
+                        CurrentItem.Image = ObjectImage;
+                    }
+                    return CurrentItem;
+                }
+                return null;
+            }
+        }
         
 
         void IObjectDetailsManager.BeginAdd()
         {
             oldItem = CurrentItem;
+            oldImage = ObjectImage;
             CurrentItem = new ProductUploadViewModel();
             IsReadOnly = false;
         }
 
         void IObjectDetailsManager.BeginEdit()
         {
+            oldImage = ObjectImage;
             IsReadOnly = false;
         }
 
         void IObjectDetailsManager.ChangeCurrentItem(object currentItem)
         {
-            if(currentItem == null)
+
+            ObjectImage = null;
+            hasObjectImageChanged = false;
+            if (currentItem == null)
             {
                 CurrentItem = null;
+                
             }
             else
             {
@@ -254,6 +288,18 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
                         Names = names,
                         Description = descriptions
                     };
+
+                    if (dto.ImagePath != null)
+                    {
+                        IObservable<byte[]> imageObs = Observable.FromAsync(() => ApiImageHelper.GetImageBytesAsync(dto.ImagePath));
+                        imageObs.Subscribe((img) => {
+                            ObjectImage = img;
+                            hasObjectImageChanged = false;
+                        }, (e) => {
+
+                            ApiHelper.HandleApiException(e);
+                        });
+                    }
                 }, ex => {
 
                     ApiHelper.HandleApiException(ex);
@@ -262,6 +308,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             }
             
         }
+        
 
         void IObjectDetailsManager.Cancel()
         {
@@ -270,6 +317,8 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
                 CurrentItem = oldItem;
                 oldItem = null;
             }
+
+            ObjectImage = oldImage;
             IsReadOnly = true;
         }
         #endregion

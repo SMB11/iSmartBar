@@ -1,11 +1,15 @@
 ﻿using DXInfrastructure.Attributes;
 using MiniBar.EntityViewModels.Base;
 using MiniBar.EntityViewModels.Interfaces;
-using System.ComponentModel.DataAnnotations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MiniBar.EntityViewModels.Products
 {
-    public class BrandViewModel : EntityViewModelBase<BrandViewModel>, IIdEntityViewModel
+    public class BrandUplaodViewModel : EntityViewModelBase<BrandViewModel>, IIdEntityViewModel
     {
 
         private int _ID;
@@ -19,13 +23,22 @@ namespace MiniBar.EntityViewModels.Products
         }
 
         private string _Name;
-        [GridColumn]
         public string Name
         {
             get { return _Name; }
             set
             {
                 SetProperty(ref _Name, value, nameof(Name));
+            }
+        }
+
+        private byte[] _image;
+        public byte[] Image
+        {
+            get { return _image; }
+            set
+            {
+                SetProperty(ref _image, value, nameof(Image));
             }
         }
     }

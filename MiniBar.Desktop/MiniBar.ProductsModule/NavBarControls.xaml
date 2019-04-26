@@ -10,5 +10,6 @@
              Header="Products">
     <dxn:NavBarGroup.Items>
         <dxn:NavBarItem dxInf:BarCommandManager.CommandName="{x:Static consts:CommandNames.OpenProductManager}"  Content="Product Manager"/>
+        <dxn:NavBarItem dxInf:BarCommandManager.CommandName="{x:Static consts:CommandNames.OpenBrandManager}"  Content="Brand Manager"/>
     </dxn:NavBarGroup.Items>
 </dxn:NavBarGroup>

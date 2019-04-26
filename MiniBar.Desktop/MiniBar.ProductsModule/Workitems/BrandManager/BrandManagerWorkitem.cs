@@ -20,22 +20,22 @@ using System.Reactive.Linq;
 using Prism.Events;
 using Infrastructure.Security;
 
-namespace MiniBar.ProductsModule.Workitems.ProductManager
+namespace MiniBar.ProductsModule.Workitems.BrandManager
 {
-    class ProductManagerWorkitem : ObjectManagerWorkItem<ProductListView, ProductDetailsView>
+    class BrandManagerWorkitem : ObjectManagerWorkItem<BrandListView, BrandDetailsView>
     {
 
         #region Private Fields/Properties
 
-        private ProductService ProductService { get; set; }
+        private BrandService BrandService { get; set; }
 
         #endregion
 
         #region Constructor
 
-        public ProductManagerWorkitem(IContainerExtension container) : base(container)
+        public BrandManagerWorkitem(IContainerExtension container) : base(container)
         {
-            ProductService = Container.Resolve<ProductService>();
+            BrandService = Container.Resolve<BrandService>();
             AppSecurityContext.AppPrincipalChanged += (o, e) => HandleAutheticationStateChanged();
         }
 
@@ -43,7 +43,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
         #endregion
 
         #region Properties
-        public override string WorkItemName => "Product Manager";
+        public override string WorkItemName => "Brand Manager";
 
         #endregion
 
@@ -70,11 +70,11 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
         public override void Run()
         {
             base.Run();
-            BarCommandManager.RegisterCommand(CommandNames.AddProduct, AddCommand);
-            BarCommandManager.RegisterCommand(CommandNames.EditProduct, EditCommand);
-            BarCommandManager.RegisterCommand(CommandNames.SaveProduct, SaveCommand);
-            BarCommandManager.RegisterCommand(CommandNames.RemoveProduct, DeleteCommand);
-            BarCommandManager.RegisterCommand(CommandNames.CancelEditingProduct, CancelCommand);
+            BarCommandManager.RegisterCommand(CommandNames.AddBrand, AddCommand);
+            BarCommandManager.RegisterCommand(CommandNames.EditBrand, EditCommand);
+            BarCommandManager.RegisterCommand(CommandNames.SaveBrand, SaveCommand);
+            BarCommandManager.RegisterCommand(CommandNames.RemoveBrand, DeleteCommand);
+            BarCommandManager.RegisterCommand(CommandNames.CancelEditingBrand, CancelCommand);
             ObjectListManager.RefreshItems();
         }
 
@@ -108,28 +108,22 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
             if (EditMode == EditMode.Add)
             {
 
-                ProductUploadViewModel vm = ObjectDetailsManager.EditingItem as ProductUploadViewModel;
-                Dictionary<string, ProductLangData> langData = new Dictionary<string, ProductLangData>();
-                foreach (var langName in vm.Names)
-                {
-                    langData.Add(langName.Key, new ProductLangData() { Name = langName.Value, Description = vm.Description[langName.Key] });
-                }
-                ProductUploadDTO dto = new ProductUploadDTO
+                BrandUplaodViewModel vm = ObjectDetailsManager.EditingItem as BrandUplaodViewModel;
+                BrandUploadDTO dto = new BrandUploadDTO
                 {
                     ID = vm.ID,
-                    BrandID = vm.BrandID,
-                    CategoryID = vm.CategoryID,
-                    Price = vm.Price,
-                    Info = langData,
-                    Image = vm.Image
+                    Image = vm.Image,
+                    Name = vm.Name
                 };
                 ObjectDetailsManager.IsObjectLoading = true;
-                IObservable<int> obs = Observable.FromAsync(() => ProductService.Add(dto));
-                obs.Subscribe(id => {
+                IObservable<int> obs = Observable.FromAsync(() => BrandService.Add(dto));
+                obs.Subscribe(id =>
+                {
                     CancelEditing();
                     ObjectListManager.RefreshItems(id);
                     ObjectDetailsManager.IsObjectLoading = false;
-                }, ex => {
+                }, ex =>
+                {
                     ApiHelper.HandleApiException(ex);
                     ObjectDetailsManager.IsObjectLoading = false;
                 });
@@ -137,29 +131,24 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
             }
             else if (EditMode == EditMode.Edit)
             {
-                ProductUploadViewModel vm = ObjectDetailsManager.EditingItem as ProductUploadViewModel;
-                Dictionary<string, ProductLangData> langData = new Dictionary<string, ProductLangData>();
-                foreach (var langName in vm.Names)
-                {
-                    langData.Add(langName.Key, new ProductLangData() { Name = langName.Value, Description = vm.Description[langName.Key] });
-                }
-                ProductUploadDTO dto = new ProductUploadDTO
+                BrandUplaodViewModel vm = ObjectDetailsManager.EditingItem as BrandUplaodViewModel;
+
+                BrandUploadDTO dto = new BrandUploadDTO
                 {
                     ID = vm.ID,
-                    BrandID = vm.BrandID,
-                    CategoryID = vm.CategoryID,
-                    Price = vm.Price,
-                    Info = langData,
-                    Image = vm.Image
+                    Image = vm.Image,
+                    Name = vm.Name
                 };
 
                 ObjectDetailsManager.IsObjectLoading = true;
-                IObservable<Unit> obs = Observable.FromAsync(() => ProductService.Update(dto));
-                obs.Subscribe(_ => {
+                IObservable<Unit> obs = Observable.FromAsync(() => BrandService.Update(dto));
+                obs.Subscribe(_ =>
+                {
                     CancelEditing();
                     ObjectListManager.RefreshItems(vm.ID);
                     ObjectDetailsManager.IsObjectLoading = false;
-                }, ex => {
+                }, ex =>
+                {
                     ApiHelper.HandleApiException(ex);
                     ObjectDetailsManager.IsObjectLoading = false;
                 });
@@ -172,7 +161,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
             base.Delete();
             int id = (ObjectListManager.CurrentItem as IIdEntityViewModel).ID;
             ObjectListManager.IsListLoading = true;
-            IObservable<Unit> obs = Observable.FromAsync(() => ProductService.Remove(id));
+            IObservable<Unit> obs = Observable.FromAsync(() => BrandService.Remove(id));
             obs.Subscribe(_ => {
                 ObjectListManager.RemoveByID(id);
                 ObjectListManager.IsListLoading = false;
@@ -184,7 +173,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
 
         protected override RibbonPageCategory GetRibbonCategory()
         {
-            return new ProductManagerRibbonPageGroup();
+            return new BrandManagerRibbonPageGroup();
 
         }
 
@@ -192,11 +181,11 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
         {
             base.Cleanup();
 
-            BarCommandManager.UnregisterCommand(CommandNames.AddProduct, AddCommand);
-            BarCommandManager.UnregisterCommand(CommandNames.EditProduct, EditCommand);
-            BarCommandManager.UnregisterCommand(CommandNames.SaveProduct, SaveCommand);
-            BarCommandManager.UnregisterCommand(CommandNames.RemoveProduct, DeleteCommand);
-            BarCommandManager.UnregisterCommand(CommandNames.CancelEditingProduct, CancelCommand);
+            BarCommandManager.UnregisterCommand(CommandNames.AddBrand, AddCommand);
+            BarCommandManager.UnregisterCommand(CommandNames.EditBrand, EditCommand);
+            BarCommandManager.UnregisterCommand(CommandNames.SaveBrand, SaveCommand);
+            BarCommandManager.UnregisterCommand(CommandNames.RemoveBrand, DeleteCommand);
+            BarCommandManager.UnregisterCommand(CommandNames.CancelEditingBrand, CancelCommand);
         }
 
         #endregion

@@ -17,6 +17,7 @@ using Common.ResponseHandling;
 using Common.Validation;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
+using Common.Enums;
 
 namespace Managers.Implementation
 {
@@ -30,14 +31,25 @@ namespace Managers.Implementation
         {
 
             IBrandRepository brandRepo = ServiceProvider.GetService<IBrandRepository>();
-            return Mapper.Map<List<BrandDTO>>(await brandRepo.GetAllAsync());
+            return (await brandRepo.LoadWith(b => b.Image).GetAllAsync()).Select(b => new BrandDTO
+            {
+                ID = b.ID,
+                Name = b.Name,
+                ImagePath = b.Image?.Path
+            }).ToList();
         }
 
         public async Task<BrandDTO> GetByIDAsync(int id)
         {
             IBrandRepository brandRepo = ServiceProvider.GetService<IBrandRepository>();
-            Brand brand = await brandRepo.FindByIDAsync(id);
-            return Mapper.Map<BrandDTO>(brand);
+            Brand brand = await brandRepo.LoadWith(b => b.Image).FindByIDAsync(id);
+            BrandDTO dto = new BrandDTO
+            {
+                ID = brand.ID,
+                Name = brand.Name,
+                ImagePath = brand.Image?.Path
+            };
+            return dto;
         }
 
         public async Task<List<BrandDTO>> GetCategoryBrands(int id)
@@ -51,23 +63,59 @@ namespace Managers.Implementation
             return res;
         }
 
+
+        public async Task<Dictionary<string, List<BrandDTO>>> GetRootCategoryBrandsWithSubcategories(int id)
+        {
+            IBrandAccessor brandAccessor = ServiceProvider.GetService<IBrandAccessor>();
+            ICategoryManager categoryManager = ServiceProvider.GetService<ICategoryManager>();
+            List<CategoryDTO> subCategories = await categoryManager.GetSubcategoriesAsync(id);
+            Dictionary<string, List<BrandDTO>> res = new Dictionary<string, List<BrandDTO>>();
+            foreach(CategoryDTO category in subCategories)
+            {
+                res.Add(category.Name, new List<BrandDTO>());
+                foreach (Brand brand in brandAccessor.GetCategoryBrands(category.ID))
+                {
+                    res[category.Name].Add(await GetByIDAsync(brand.ID));
+                }
+            }
+            return res;
+        }
+
         [Transaction(System.Transactions.IsolationLevel.Serializable)]
-        public async Task<int> InsertAsync(BrandDTO brand)
+        public async Task<int> InsertAsync(BrandUploadDTO brand)
         {
             IDValidator.AssureEmpty(brand.ID);
             IBrandRepository brandRepo = ServiceProvider.GetService<IBrandRepository>();
-            Brand saved = await brandRepo.InsertAsync(Mapper.Map<Brand>(brand));
+            IImageManager imageManager = ServiceProvider.GetService<IImageManager>();
+            Brand toAdd = new Brand { Name = brand.Name };
+            if(brand.Image != null)
+                toAdd.ImageID = (await imageManager.InsertBytesAsync(brand.Image)).ID;
+            Brand saved = await brandRepo.InsertAsync(toAdd);
 
             return saved.ID;
         }
 
         [Transaction(System.Transactions.IsolationLevel.Serializable)]
-        public async Task UpdateAsync(BrandDTO brand)
+        public async Task UpdateAsync(BrandUploadDTO brand)
         {
             IDValidator.AssureID(brand.ID);
             IBrandRepository brandRepo = ServiceProvider.GetService<IBrandRepository>();
+            IImageManager imageManager = ServiceProvider.GetService<IImageManager>();
+            Brand old = (await brandRepo
+                .LoadWith(b => b.Image)
+                .FindByIDAsync(brand.ID));
 
-            await brandRepo.UpdateAsync(Mapper.Map<Brand>(brand));
+            if (old == null)
+                throw new ApiException(FaultCode.InvalidID);
+            Brand toUpd = new Brand { ID = brand.ID, Name = brand.Name };
+            if (brand.Image != null)
+            {
+                if (old.Image != null)
+                    toUpd.ImageID = (await imageManager.UpdateBytesAsync(brand.Image, old.Image.Path)).ID;
+                else
+                    toUpd.ImageID = (await imageManager.InsertBytesAsync(brand.Image)).ID;
+            }
+            await brandRepo.UpdateAsync(toUpd);
 
         }
 
@@ -76,8 +124,16 @@ namespace Managers.Implementation
         {
             IDValidator.AssureID(id);
             IBrandRepository brandRepo = ServiceProvider.GetService<IBrandRepository>();
-            
+            IImageManager imageManager = ServiceProvider.GetService<IImageManager>();
+            Brand old = (await brandRepo
+                .LoadWith(b => b.Image)
+                .FindByIDAsync(id));
+
+            if (old == null)
+                throw new ApiException(FaultCode.InvalidID);
+
             await brandRepo.RemoveAsync(new Brand { ID = id });
+            await imageManager.RemoveAsync(old.Image);
 
         }
 

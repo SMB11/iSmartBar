@@ -47,6 +47,7 @@
     <Compile Include="Global\LanguageDataViewModel.cs" />
     <Compile Include="Global\LanguageViewModel.cs" />
     <Compile Include="Interfaces\IIdEntityViewModel.cs" />
+    <Compile Include="Products\BrandUploadViewModel.cs" />
     <Compile Include="Products\BrandViewModel.cs" />
     <Compile Include="Products\ProductUploadViewModel.cs" />
     <Compile Include="Products\CategoryViewModel.cs" />

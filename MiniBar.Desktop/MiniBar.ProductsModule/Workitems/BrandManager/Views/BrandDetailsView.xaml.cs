@@ -1,6 +1,10 @@
-﻿using DevExpress.Xpf.Bars;
+﻿using DevExpress.Mvvm;
+using DevExpress.Xpf.Core;
+using Infrastructure.Resources;
+using MiniBar.EntityViewModels.Products;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +18,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MiniBar.ProductsModule.Workitems.ProductManager
+namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
 {
     /// <summary>
-    /// Interaction logic for MainMenuItems.xaml
+    /// Interaction logic for AddItem.xaml
     /// </summary>
-    public partial class MainMenuItems : BarSubItem
+    public partial class BrandDetailsView : UserControl
     {
-        public MainMenuItems()
+        public BrandDetailsView()
         {
             InitializeComponent();
         }

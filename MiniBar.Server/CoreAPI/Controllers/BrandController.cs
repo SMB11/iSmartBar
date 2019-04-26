@@ -28,6 +28,12 @@ namespace CoreAPI.Controllers
             return await manager.GetAll();
         }
 
+        [HttpGet("{id}")]
+        public async Task<BrandDTO> GetByID(int id)
+        {
+            IBrandManager manager = ServiceProvider.GetService<IBrandManager>();
+            return await manager.GetByIDAsync(id);
+        }
 
         [HttpGet("categoryBrands/{id}")]
         [AllowAnonymous]
@@ -37,15 +43,24 @@ namespace CoreAPI.Controllers
             return await manager.GetCategoryBrands(id);
         }
 
+
+        [HttpGet("subcategoriesBrands/{id}")]
+        [AllowAnonymous]
+        public async Task<Dictionary<string, List<BrandDTO>>> GetRootCategoryBrandsWithSubcategories(int id)
+        {
+            IBrandManager manager = ServiceProvider.GetService<IBrandManager>();
+            return await manager.GetRootCategoryBrandsWithSubcategories(id);
+        }
+
         [HttpPost("insert")]
-        public async Task<int> Insert(BrandDTO brand)
+        public async Task<int> Insert(BrandUploadDTO brand)
         {
             return await this.ServiceProvider.GetService<IBrandManager>().InsertAsync(brand);
         }
 
 
         [HttpPost("update")]
-        public async Task Update(BrandDTO brand)
+        public async Task Update(BrandUploadDTO brand)
         {
             await this.ServiceProvider.GetService<IBrandManager>().UpdateAsync(brand);
         }

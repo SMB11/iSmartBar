@@ -7,6 +7,7 @@ import ChooseLanguage, { languageStepStorageKey } from "./chooseLanguage";
 import ChooseLocation from "./chooseLocation";
 import ChooseMiniBar from "./chooseMiniBar";
 import { Translate } from "react-localize-redux";
+import { Redirect } from "react-router-dom";
 class StartProcessPage extends Component {
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "steps-body";
@@ -14,10 +15,10 @@ class StartProcessPage extends Component {
   state = {
     steps: [
       <ChooseLanguage onFinished={this.handleStepFinished.bind(this)} />,
-      <ChooseLocation onFinished={this.handleStepFinished.bind(this)} />,
-      <ChooseMiniBar onFinished={this.handleStepFinished.bind(this)} />
+      <ChooseLocation onFinished={this.handleStepFinished.bind(this)} />
     ],
-    step: 1
+    step: 1,
+    redirectHome: false
   };
 
   handleStepFinished() {
@@ -27,6 +28,8 @@ class StartProcessPage extends Component {
     if (step !== this.state.steps.length) {
       this.setState({ ...this.state, step: step + 1 });
     } else {
+      // this.setState({ ...this.state, redirectHome: true });
+      window.location.href = "http://localhost:3000/";
     }
   }
   backButtonHandler = () => {

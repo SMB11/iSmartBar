@@ -30,8 +30,7 @@ class Routes extends Component {
   render() {
     if (
       !JSON.parse(window.sessionStorage.getItem(languageStepStorageKey)) ||
-      !JSON.parse(window.sessionStorage.getItem(locationStepStorageKey)) ||
-      !JSON.parse(window.sessionStorage.getItem(miniBarStepStorageKey))
+      !JSON.parse(window.sessionStorage.getItem(locationStepStorageKey))
     )
       return <Redirect to="/process" />;
     else {

@@ -16,6 +16,7 @@ import {
   hotelsFetchingSelector,
   hotelsSelector
 } from "../../redux/selectors/locations";
+import { languageStepStorageKey } from "./chooseLanguage";
 
 export const locationStepStorageKey = "ChooseLocationState";
 
@@ -23,17 +24,22 @@ class ChooseLocation extends Component {
   state = {
     country: null,
     city: null,
-    hotel: null
+    hotel: null,
+    lang: "en"
   };
   componentDidMount() {
-    this.props.GetCountries();
+    const language = JSON.parse(
+      window.sessionStorage.getItem(languageStepStorageKey)
+    ).selected.id;
+    this.setState({ ...state, lang: language });
+
+    this.props.GetCountries(language);
     const state = JSON.parse(
       window.sessionStorage.getItem(locationStepStorageKey)
     );
-    console.log(state);
     if (state) {
-      this.props.GetCountries();
-      this.props.GetCities(state.country.id);
+      this.props.GetCountries(language);
+      this.props.GetCities(state.country.id, language);
       this.props.GetHotels(state.city.id);
       this.setState(state);
     }
@@ -51,7 +57,7 @@ class ChooseLocation extends Component {
         city: null,
         hotel: null
       });
-      this.props.GetCities(country.id);
+      this.props.GetCities(country.id, this.state.lang);
     } else {
       this.setState({ ...this.state, country: null, city: null, hotel: null });
     }
@@ -103,7 +109,8 @@ class ChooseLocation extends Component {
             onChange={this.handleCountryChanged.bind(this)}
             options={countries.map(country => ({
               value: country.id,
-              name: country.name
+              name: country.name,
+              disabled: country.id !== 1
             }))}
           />
           <DropDown
@@ -114,7 +121,8 @@ class ChooseLocation extends Component {
             onChange={this.handleCityChanged.bind(this)}
             options={cities.map(city => ({
               value: city.id,
-              name: city.name
+              name: city.name,
+              disabled: city.id !== 1
             }))}
           />
           <DropDown

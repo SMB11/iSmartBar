@@ -22,7 +22,11 @@ class DropDown extends Component {
 
           <option value="" />
           {this.props.options.map(option => (
-            <option key={option.value} value={option.value}>
+            <option
+              disabled={option.disabled}
+              key={option.value}
+              value={option.value}
+            >
               {option.name}
             </option>
           ))}

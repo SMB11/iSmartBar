@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System.Linq;
 using BusinessEntities;
 using BusinessEntities.Culture;
+using BusinessEntities.Location;
 using BusinessEntities.Products;
 using BusinessEntities.Security;
 using LinqToDB;
@@ -9,7 +10,7 @@ using LinqToDB.Data;
 using LinqToDB.Mapping;
 using LinqToDB.Reflection;
 
-namespace Repositories.LinqToDB
+namespace iSmartBar.Repositories.LinqToDB
 {
     internal class ISmartBarDB : DataConnection
     {
@@ -52,8 +53,12 @@ namespace Repositories.LinqToDB
             return ms;
            
         }
+        
 
-        public ITable<Product> Products => GetTable<Product>();
-
+        public ITable<Hotel> Hotels => GetTable<Hotel>();
+        public ITable<CityInfo> CityInfos => GetTable<CityInfo>();
+        public ITable<City> Cities => GetTable<City>();
+        public ITable<Country> Countries => GetTable<Country>();
+        public ITable<CountryInfo> CountryInfos => GetTable<CountryInfo>();
     }
 }

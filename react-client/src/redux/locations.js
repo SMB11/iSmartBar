@@ -63,11 +63,11 @@ export const fetchHotelsEnd = cities => ({
   payload: cities
 });
 
-export function GetCountries() {
+export const GetCountries = lang => {
   return function(dispatch) {
     dispatch(fetchCountriesStart());
     return api.locations
-      .getAllCountries()
+      .getAllCountries(lang)
       .then(response => {
         dispatch(fetchCountriesEnd(response.data));
       })
@@ -75,13 +75,13 @@ export function GetCountries() {
         console.log(err);
       });
   };
-}
+};
 
-export function GetCities(countryID) {
+export function GetCities(countryID, lang) {
   return function(dispatch) {
     dispatch(fetchCitiesStart());
     return api.locations
-      .getAllCities(countryID)
+      .getAllCities(countryID, lang)
       .then(response => {
         dispatch(fetchCitiesEnd(response.data));
       })

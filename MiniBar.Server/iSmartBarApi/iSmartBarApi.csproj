@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\CoreAPI.Client\CoreAPI.Client.csproj" />
+    <ProjectReference Include="..\iSmartBar.Repositories\iSmartBar.Repositories.csproj" />
     <ProjectReference Include="..\Managers\Managers.csproj" />
     <ProjectReference Include="..\Repositories\Core.Repositories.csproj" />
   </ItemGroup>

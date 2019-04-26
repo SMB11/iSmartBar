@@ -1,7 +1,7 @@
 ﻿using Facade.Repository;
+using iSmartBar.Repositories.LinqToDB;
 using LinqToDB;
 using LinqToDB.Data;
-using Repositories.LinqToDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -15,6 +15,7 @@ using Facade.Configuration;
 using Facade.Managers;
 using Facade.Repository;
 using FluentValidation.AspNetCore;
+using iSmartBar.Repositories.Implementation.Location;
 using LinqToDB.Data;
 using LinqToDB.DataProvider.SqlServer;
 using Managers.Implementation;
@@ -123,7 +124,7 @@ namespace iSmartBarApi
                     }
                 );
             });
-            IList<string> languages = (await CoreAPIClient.GetLanguages()).Select(l => l.ID).ToList();
+            List<string> languages = (CoreAPIClient.GetLanguages()).GetAwaiter().GetResult().Select(l => l.ID).ToList();
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(languages[0]);
@@ -137,7 +138,14 @@ namespace iSmartBarApi
 
         private void AddManagers(IServiceCollection services)
         {
-            
+            services.AddTransient<ICountryRepository, CountryRepository>();
+            services.AddTransient<ICountryInfoRepository, CountryInfoRepository>();
+            services.AddTransient<ICountryManager, CountryManager>();
+            services.AddTransient<ICityRepository, CityRepository>();
+            services.AddTransient<ICityInfoRepository, CityInfoRepository>();
+            services.AddTransient<ICityManager, CityManager>();
+            services.AddTransient<IHotelRepository, HotelRepository>();
+            services.AddTransient<IHotelManager, HotelManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

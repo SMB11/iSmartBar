@@ -5,12 +5,16 @@ import thunk from "redux-thunk";
 import rootReducer from "./redux";
 import { initialize, addTranslation } from "react-localize-redux";
 import translations from "./translations/global";
+import { languagesSelector } from "./redux/selectors/language";
 // create our redux store using our reducers and our middleware, and export it for use in index.js
 const store = createStore(rootReducer, applyMiddleware(thunk));
-store.subscribe(_ => {
-  console.log(store.getState());
+let init = true;
+store.subscribe(s => {
+  if (s != undefined) {
+    const languages = languagesSelector(s).map(l => l.id);
+    store.dispatch(initialize(languages));
+    store.dispatch(addTranslation(translations));
+    init = false;
+  }
 });
-const languages = ["en", "it"];
-store.dispatch(initialize(languages));
-store.dispatch(addTranslation(translations));
 export default store;

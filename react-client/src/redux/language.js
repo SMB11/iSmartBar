@@ -1,13 +1,14 @@
 const initialState = {
   languages: [
     { id: "en", name: "English" },
-    { id: "it", name: "Italian" },
-    { id: "ge", name: "German" },
-    { id: "fr", name: "French" },
-    { id: "ch", name: "Chinese" },
-    { id: "mn", name: "Mandarin" },
-    { id: "ru", name: "Russsian" },
-    { id: "am", name: "Armenian" }
+    { id: "it", name: "Italiano" },
+    { id: "de", name: "Deutsch" },
+    { id: "fr", name: "Français" },
+    { id: "ru", name: "Русский" },
+    { id: "es", name: "Español" },
+    { id: "pt", name: "Português" },
+    { id: "zh", name: "中文" },
+    { id: "ja", name: "日本人" }
   ]
 };
 

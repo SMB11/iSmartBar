@@ -3,11 +3,10 @@ import React, { Component } from "react";
 import "../../assets/scss/select.scss";
 import "../../assets/scss/steps.scss";
 import Step from "./step";
-import ChooseLanguage from "./chooseLanguage";
+import ChooseLanguage, { languageStepStorageKey } from "./chooseLanguage";
 import ChooseLocation from "./chooseLocation";
 import ChooseMiniBar from "./chooseMiniBar";
 import { Translate } from "react-localize-redux";
-
 class StartProcessPage extends Component {
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "steps-body";
@@ -28,7 +27,6 @@ class StartProcessPage extends Component {
     if (step !== this.state.steps.length) {
       this.setState({ ...this.state, step: step + 1 });
     } else {
-      console.log("All Finished");
     }
   }
   backButtonHandler = () => {

@@ -1,9 +1,6 @@
 ﻿using BusinessEntities.Enums;
 using BusinessEntities.Global;
 using LinqToDB.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessEntities.Products
 {

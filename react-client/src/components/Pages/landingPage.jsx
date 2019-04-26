@@ -14,14 +14,6 @@ class landingPage extends Component {
   state = {};
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "landing-body";
-    console.log(this.props);
-    // api.categories.getAll(this.props.activeLanguage.code).then(data => {
-    //   console.log(data);
-    // });
-    const language = JSON.parse(
-      window.sessionStorage.getItem(languageStepStorageKey)
-    ).selected.id;
-    this.props.CategoryGet(language);
   }
 
   render() {

@@ -44,7 +44,7 @@ class ChooseLanguage extends Component {
       <div className="step step3">
         <form action="">
           <div>
-            {languages.slice(0, 4).map((value, index) => (
+            {languages.slice(0, 5).map((value, index) => (
               <Language
                 onChecked={() => this.handleChecked.bind(this)(value)}
                 key={index}
@@ -57,7 +57,7 @@ class ChooseLanguage extends Component {
           </div>
 
           <div>
-            {languages.slice(4, 8).map((value, index) => (
+            {languages.slice(5, 9).map((value, index) => (
               <Language
                 onChecked={() => this.handleChecked.bind(this)(value)}
                 key={index}

@@ -9,6 +9,7 @@ import ChooseLanguage, {
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import { withLocalize } from "react-localize-redux";
+import "../../assets/scss/navBar.scss";
 
 class navBar extends Component {
   state = {
@@ -66,7 +67,7 @@ class navBar extends Component {
       <div>
         <header className="header">
           <a href="" className="logo">
-            <img src="images/logo-manu.svg" alt="" />
+            <img src="http://localhost:3000/images/logo-manu.svg" alt="" />
           </a>
           <input className="menu-btn" type="checkbox" id="menu-btn" />
           <label className="menu-icon" htmlFor="menu-btn">
@@ -78,7 +79,10 @@ class navBar extends Component {
                 className="japan-letter"
                 onClick={this.openLanguageModal.bind(this)}
               >
-                <img src="images/japn-letter.svg" alt="" />
+                <img
+                  src="http://localhost:3000/images/japn-letter.svg"
+                  alt=""
+                />
               </a>
             </li>
             <li>

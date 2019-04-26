@@ -5,6 +5,11 @@ import { languageStepStorageKey } from "./StartProcess/chooseLanguage";
 import { locationStepStorageKey } from "./StartProcess/chooseLocation";
 import { miniBarStepStorageKey } from "./StartProcess/chooseMiniBar";
 import { withLocalize } from "react-localize-redux";
+import SubCategoriesPage from "./Pages/subCategoriesPage";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { CategoryGet } from "../redux/category";
+
 class Routes extends Component {
   componentWillUpdate() {
     if (window.sessionStorage.getItem(languageStepStorageKey)) {
@@ -17,6 +22,9 @@ class Routes extends Component {
       ) {
         this.props.setActiveLanguage(language);
       }
+
+      this.props.CategoryGet(language);
+      console.log("category get");
     }
   }
   render() {
@@ -30,10 +38,23 @@ class Routes extends Component {
       return (
         <React.Fragment>
           <Route path="/" component={LandingPage} exact />
+          <Route path="/subcategory/:id" component={SubCategoriesPage} exact />
         </React.Fragment>
       );
     }
   }
 }
 
-export default withLocalize(Routes);
+const mapStateToProps = (state, props) => props;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      CategoryGet
+    },
+    dispatch
+  );
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withLocalize(Routes));

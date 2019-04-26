@@ -11,8 +11,9 @@ namespace Facade.Managers
         Task<List<BrandDTO>> GetAll();
         Task<BrandDTO> GetByIDAsync(int id);
         Task<List<BrandDTO>> GetCategoryBrands(int id);
-        Task<int> InsertAsync(BrandDTO brand);
-        Task UpdateAsync(BrandDTO brand);
+        Task<Dictionary<string, List<BrandDTO>>> GetRootCategoryBrandsWithSubcategories(int id);
+        Task<int> InsertAsync(BrandUploadDTO brand);
+        Task UpdateAsync(BrandUploadDTO brand);
         Task RemoveAsync(int id);
     }
 }

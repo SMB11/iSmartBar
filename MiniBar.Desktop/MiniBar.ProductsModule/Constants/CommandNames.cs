@@ -13,7 +13,15 @@ namespace MiniBar.ProductsModule.Constants
         public const string EditProduct = "ProductManager.Edit";
         public const string SaveProduct = "ProductManager.Save";
         public const string RemoveProduct = "ProductManager.Remove";
-        public const string CancelEditing = "ProductManager.Cancel";
-        
+        public const string CancelEditingProduct = "ProductManager.Cancel";
+
+
+        public const string OpenBrandManager = "ProductsModule.OpenBrandManager";
+        public const string AddBrand = "BrandManager.Add";
+        public const string EditBrand = "BrandManager.Edit";
+        public const string SaveBrand = "BrandManager.Save";
+        public const string RemoveBrand = "BrandManager.Remove";
+        public const string CancelEditingBrand = "BrandManager.Cancel";
+
     }
 }

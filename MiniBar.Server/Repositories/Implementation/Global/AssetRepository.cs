@@ -1,5 +1,6 @@
 ﻿using BusinessEntities.Global;
 using Facade.Repository;
+using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,9 +9,15 @@ namespace Repositories.Implementation.Global
 {
     public class AssetRepository : IAssetRepository
     {
+        IHostingEnvironment Env { get; set; }
+        public AssetRepository(IHostingEnvironment env)
+        {
+            Env = env;
+        }
+
         private string GetFullPath(string relativePath)
         {
-            return Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", relativePath);
+            return Path.Combine(Env.WebRootPath,  relativePath);
         }
 
         public string Insert(Asset asset)

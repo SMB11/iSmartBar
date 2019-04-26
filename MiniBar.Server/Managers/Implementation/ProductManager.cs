@@ -13,6 +13,7 @@ using Common.Core;
 using System.Globalization;
 using Common.ResponseHandling;
 using Common.Validation;
+using Common.Enums;
 
 namespace Managers.Implementation
 {
@@ -33,7 +34,7 @@ namespace Managers.Implementation
         public async Task<ProductUploadDTO> GetForUplaodByID(int id)
         {
             IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
-            Product prod = await productRepo.FindByIDAsync(id);
+            Product prod = await productRepo.LoadWith(p => p.Image).FindByIDAsync(id);
 
             return await GetProductUploadDTO(prod);
         }
@@ -97,21 +98,28 @@ namespace Managers.Implementation
                 CategoryID = product.CategoryID,
                 BrandID = product.BrandID,
                 Price = product.Price,
-                Info = info
+                Info = info,
+                ImagePath = product.Image?.Path
             };
         }
 
         [Transaction(System.Transactions.IsolationLevel.Serializable)]
         public async Task<int> InsertAsync(ProductUploadDTO product)
         {
-            IDValidator.AssureEmpty(product.ID);
+            AssureGoodProduct(product);
+
             IProductRepository prodRepo = ServiceProvider.GetService<IProductRepository>();
+            IImageManager imageManager = ServiceProvider.GetService<IImageManager>();
             IProductInfoRepository prodInfoRepo = ServiceProvider.GetService<IProductInfoRepository>();
-            Product saved = await prodRepo.InsertAsync(new Product() {  
-               BrandID = product.BrandID,
-               CategoryID = product.CategoryID,
-               Price = product.Price
-            });
+            Product toInsert = new Product()
+            {
+                BrandID = product.BrandID,
+                CategoryID = product.CategoryID,
+                Price = product.Price
+            };
+            if(product.Image != null)
+                toInsert.ImageID = (await imageManager.InsertBytesAsync(product.Image)).ID;
+            Product saved = await prodRepo.InsertAsync(toInsert);
             foreach (CultureInfo culture in LocalizationOptions.Value.SupportedCultures)
             {
                 if (!product.Info.ContainsKey(culture.Name))
@@ -136,16 +144,33 @@ namespace Managers.Implementation
         [Transaction(System.Transactions.IsolationLevel.Serializable)]
         public async Task UpdateAsync(ProductUploadDTO product)
         {
-            IDValidator.AssureID(product.ID);
+            AssureGoodProduct(product);
             IProductRepository prodRepo = ServiceProvider.GetService<IProductRepository>();
+            IImageManager imageManager = ServiceProvider.GetService<IImageManager>();
             IProductInfoRepository prodInfoRepo = ServiceProvider.GetService<IProductInfoRepository>();
-            await prodRepo.UpdateAsync(new Product()
+
+            Product old = (await prodRepo
+                .LoadWith(p => p.Image)
+                .FindByIDAsync(product.ID));
+
+            if (old == null)
+                throw new ApiException(FaultCode.InvalidID);
+            Product toUpd = new Product()
             {
                 ID = product.ID,
                 BrandID = product.BrandID,
                 CategoryID = product.CategoryID,
                 Price = product.Price
-            });
+            };
+
+            if (product.Image != null) {
+                if(old.Image != null)
+                    toUpd.ImageID = (await imageManager.UpdateBytesAsync(product.Image, old.Image.Path)).ID;
+                else
+                    toUpd.ImageID = (await imageManager.InsertBytesAsync(product.Image)).ID;
+            }
+
+            await prodRepo.UpdateAsync(toUpd);
             if (product.Info != null)
             {
                 foreach (var pair in product.Info)
@@ -167,7 +192,15 @@ namespace Managers.Implementation
         {
             IDValidator.AssureID(id);
             IProductRepository prodRepo = ServiceProvider.GetService<IProductRepository>();
+            IImageManager imageManager = ServiceProvider.GetService<IImageManager>();
             IProductInfoRepository prodInfoRepo = ServiceProvider.GetService<IProductInfoRepository>();
+
+            Product old = (await prodRepo
+                .LoadWith(p => p.Image)
+                .FindByIDAsync(id));
+
+            if (old == null)
+                throw new ApiException(FaultCode.InvalidID);
 
             List<ProductInfo> infos = await prodInfoRepo.FindAsync(c => c.ProductID == id);
             foreach (ProductInfo info in infos)
@@ -175,7 +208,21 @@ namespace Managers.Implementation
                 await prodInfoRepo.RemoveAsync(info);
             }
             await prodRepo.RemoveAsync(new Product { ID = id });
+            await imageManager.RemoveAsync(old.Image);
+
 
         }
+
+        #region Private Validation Logic
+
+        private void AssureGoodProduct(ProductUploadDTO obj)
+        {
+            IDValidator.AssureID(obj.BrandID);
+            IDValidator.AssureID(obj.CategoryID);
+            IDValidator.AssureID(obj.ID);
+            ImageValidator.AssureNonEmpty(obj.Image);
+        }
+
+        #endregion
     }
 }

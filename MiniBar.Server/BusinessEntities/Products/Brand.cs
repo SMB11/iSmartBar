@@ -12,7 +12,7 @@ namespace BusinessEntities.Products
         [Column]
         public string Name { get; set; }
         [Column]
-        public int ImageID { get; set; }
+        public int? ImageID { get; set; }
 
         [Association(ThisKey = nameof(ImageID), OtherKey = "ID")]
         public Image Image { get; set; }

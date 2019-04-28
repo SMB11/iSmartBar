@@ -160,7 +160,8 @@ namespace Managers.Implementation
                 ID = product.ID,
                 BrandID = product.BrandID,
                 CategoryID = product.CategoryID,
-                Price = product.Price
+                Price = product.Price,
+                ImageID = old.ImageID
             };
 
             if (product.Image != null) {
@@ -220,7 +221,7 @@ namespace Managers.Implementation
             IDValidator.AssureID(obj.BrandID);
             IDValidator.AssureID(obj.CategoryID);
             IDValidator.AssureID(obj.ID);
-            ImageValidator.AssureNonEmpty(obj.Image);
+            //ImageValidator.AssureNonEmpty(obj.Image);
         }
 
         #endregion

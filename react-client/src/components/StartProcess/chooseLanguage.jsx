@@ -14,7 +14,6 @@ class ChooseLanguage extends Component {
     const state = JSON.parse(
       window.sessionStorage.getItem(languageStepStorageKey)
     );
-    console.log(state);
     if (state) this.setState(state);
   }
   componentDidUpdate(prevProps, prevState) {

@@ -10,7 +10,17 @@ import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import "../../assets/scss/home.scss";
 import SubNavBar from "../Reusable/subNavBar";
 import { rootCategorySelector } from "../../redux/selectors/category";
+import Footer from "../Reusable/footer";
+
+import { } from 'react-router';
 class landingPage extends Component {
+
+
+  redirect(target) {
+
+    this.props.history.push(target);
+  }
+
   state = {};
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "landing-body";
@@ -33,7 +43,12 @@ class landingPage extends Component {
             </div>
             <div class="line-horizontal" />
             <div class="categories">
-              <div class="category">
+
+              <div class="category" onClick={() =>
+                this.redirect(
+                  this.props.rootCategories[0]
+                    ? "/subcategory/" + this.props.rootCategories[0].id
+                    : null)}>
                 <h3 class="title">
                   {this.props.rootCategories[0]
                     ? this.props.rootCategories[0].name
@@ -52,7 +67,11 @@ class landingPage extends Component {
                   </div>
                 </div>
               </div>
-              <div class="category">
+              <div class="category" onClick={() =>
+                this.redirect(
+                  this.props.rootCategories[1]
+                    ? "/subcategory/" + this.props.rootCategories[1].id
+                    : null)}>
                 <h3 class="title">
                   {this.props.rootCategories[1]
                     ? this.props.rootCategories[1].name
@@ -71,8 +90,11 @@ class landingPage extends Component {
                   </div>
                 </div>
               </div>
-
-              <div class="category">
+              <div class="category" onClick={() =>
+                this.redirect(
+                  this.props.rootCategories[2]
+                    ? "/subcategory/" + this.props.rootCategories[2].id
+                    : null)}>
                 <h3 class="title">
                   {this.props.rootCategories[2]
                     ? this.props.rootCategories[2].name
@@ -159,59 +181,8 @@ class landingPage extends Component {
             </div>
           </div>
         </div>
-        <footer>
-          <div class="footer-content">
-            <div class="footer-menu">
-              <ul>
-                <li>
-                  <a href="#">Home</a>
-                </li>
-                <li>
-                  <a href="#">About</a>
-                </li>
-                <li>
-                  <a href="#">Categories</a>
-                </li>
-                <li>
-                  <a href="#">iSmartBar</a>
-                </li>
-                <li>
-                  <a href="#">Contact</a>
-                </li>
-              </ul>
-            </div>
-            <div class="footer-line" />
-            <div class="social-icons">
-              <a href="#">
-                <img src="images/gmail.svg" alt="gmail" />
-              </a>
-              <a href="#">
-                <img src="images/ln.svg" alt="ln" />
-              </a>
-              <a href="#">
-                <img src="images/twitter.svg" alt="twitter" />
-              </a>
-              <a href="#">
-                <img src="images/fb.svg" alt="fb" />
-              </a>
-              <a href="#">
-                <img src="images/instagram.svg" alt="instagram" />
-              </a>
-            </div>
-            <div class="footer-info">
-              <a href="mailto:info@companyname.com">
-                Email: info@companyname.com
-              </a>
-              <a href="tel:+37400000000">Phone: (374) xxx xxxx</a>
-              <a href="">Address: Biagio Capone, Via Castagneto 2, Italy</a>
-            </div>
-            <div class="short-line" />
-            <div class="copyright">
-              <span>2019. iSmartBar. All rights reserved</span>
-            </div>
-          </div>
-        </footer>
-      </div>
+        <Footer />
+      </div >
     );
   }
 }

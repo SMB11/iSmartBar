@@ -7,3 +7,13 @@ export const subCategorySelector = (state, id) =>
 
 export const categoriesLoadingSelector = (state, id) =>
   state.category.categoryLoading;
+
+export const rootCategoriesBrandsLoadingSelector = (state) =>
+  state.category.categoryBrandsLoading;
+
+export const rootCategoriesBrandsSelector = (state, id) =>
+  state.category.categoryBrands[id];
+
+
+
+

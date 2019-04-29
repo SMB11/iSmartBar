@@ -12,6 +12,7 @@ namespace SharedEntities.DTO.Product
         public int BrandID { get; set; }
         public float Price { get; set; }
         public string Brand { get; set; }
+        public string ImagePath { get; set; }
     }
 
     public class ProductLangData

@@ -26,7 +26,7 @@ body.steps-body {
         border-radius: 5px;
         background-color: #ffffff;
         position: relative;
-
+        
         .dots {
           display: flex;
           justify-content: center;
@@ -43,7 +43,6 @@ body.steps-body {
     }
   }
 }
-
 .steps {
   .step1 {
     .bars {
@@ -114,7 +113,7 @@ body.steps-body {
           width: 100%;
           &.cs-active {
             ul {
-              display: block !important;
+              display: block!important;
             }
             > span {
               border-bottom: 0px !important;

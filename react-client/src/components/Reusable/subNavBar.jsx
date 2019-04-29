@@ -6,13 +6,12 @@ import {
   rootCategorySelector,
   subCategorySelector
 } from "../../redux/selectors/category";
-import "../../assets/scss/subNavBar.scss";
+import "../../assets/scss/header.scss";
 import { Link } from "react-router-dom";
 class SubNavBar extends Component {
   state = {};
 
   render() {
-    console.log(this.props.rootCategories);
     return (
       <div class="top-bar">
         <div class="left-content">

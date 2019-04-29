@@ -54,7 +54,7 @@ namespace Managers.Implementation
         public async Task<List<ProductDTO>> GetBrandProducts(int id)
         {
             IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
-            List<Product> products = await productRepo.FindAsync(p => p.BrandID == id);
+            List<Product> products = await productRepo.LoadWith(p => p.Image).FindAsync(p => p.BrandID == id);
             List<ProductDTO> dTOs = new List<ProductDTO>();
             foreach(Product prod in products)
             {
@@ -78,7 +78,9 @@ namespace Managers.Implementation
                 BrandID = product.BrandID,
                 Brand = product.Brand?.Name,
                 Name = info.Name,
+                Price = product.Price,
                 Description = info.Description,
+                ImagePath = product.Image?.Path
             };
         }
 
@@ -220,7 +222,6 @@ namespace Managers.Implementation
         {
             IDValidator.AssureID(obj.BrandID);
             IDValidator.AssureID(obj.CategoryID);
-            IDValidator.AssureID(obj.ID);
             //ImageValidator.AssureNonEmpty(obj.Image);
         }
 

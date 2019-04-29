@@ -10,6 +10,7 @@ const getHeader = lang => {
     };
   else return {};
 };
+export const assetBaseUrl = "https://localhost:44396/"
 
 export default {
   locations: {
@@ -22,6 +23,17 @@ export default {
   categories: {
     getAll: lang => {
       return axios.get(`${apiUrl}category`, getHeader(lang));
+    }
+  },
+  brands: {
+    getSubcategoryBrands: (lang, id) => {
+      return axios.get(`${apiUrl}brand/subcategoriesBrands/${id}`, getHeader(lang))
+    }
+  },
+  products: {
+    getProductsByBrandID: (lang, id) => {
+      return axios.get(`${apiUrl}product/brand/${id}`, getHeader(lang))
+
     }
   }
 };

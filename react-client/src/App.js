@@ -21,18 +21,16 @@ class App extends Component {
       translation: globalTranslations,
       options: { renderToStaticMarkup, renderInnerHtml: true }
     });
-    console.log(this.props);
   }
   componentDidMount() {
     Modal.setAppElement("#App");
   }
   componentWillUpdate() {
-    console.log(this.props);
   }
   render() {
     return (
       <BrowserRouter>
-        <div className="App" id="App">
+        <div className="container" id="App">
           <Provider store={store}>
             <Switch>
               <Route path="/process" component={StartProcessPage} exact />

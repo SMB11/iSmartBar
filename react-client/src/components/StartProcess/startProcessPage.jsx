@@ -24,7 +24,6 @@ class StartProcessPage extends Component {
   handleStepFinished() {
     const step = this.state.step;
 
-    console.log("Step " + step + " Finished");
     if (step !== this.state.steps.length) {
       this.setState({ ...this.state, step: step + 1 });
     } else {
@@ -37,7 +36,6 @@ class StartProcessPage extends Component {
 
     if (this.state.step - 1 !== 0) {
       this.setState({ ...this.state, step: step - 1 });
-      // console.log(this.state);
     }
   };
 

@@ -72,7 +72,6 @@ export const GetCountries = lang => {
         dispatch(fetchCountriesEnd(response.data));
       })
       .catch(err => {
-        console.log(err);
       });
   };
 };
@@ -86,7 +85,6 @@ export function GetCities(countryID, lang) {
         dispatch(fetchCitiesEnd(response.data));
       })
       .catch(err => {
-        console.log(err);
       });
   };
 }
@@ -100,7 +98,6 @@ export function GetHotels(cityID) {
         dispatch(fetchHotelsEnd(response.data));
       })
       .catch(err => {
-        console.log(err);
       });
   };
 }

@@ -9,7 +9,7 @@ import ChooseLanguage, {
 import { Link } from "react-router-dom";
 import Modal from "react-modal";
 import { withLocalize } from "react-localize-redux";
-import "../../assets/scss/navBar.scss";
+import "../../assets/scss/header.scss";
 
 class navBar extends Component {
   state = {
@@ -34,7 +34,6 @@ class navBar extends Component {
     const hotel = cityObj.hotel.name;
     const location = hotel + ", " + city;
     const language = languageObj.selected.name;
-    console.log(language);
     let newState = {
       language: language,
       location: location
@@ -62,13 +61,12 @@ class navBar extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
-      <div>
+      <React.Fragment>
         <header className="header">
-          <a href="" className="logo">
+          <Link to="/" className="logo">
             <img src="http://localhost:3000/images/logo-manu.svg" alt="" />
-          </a>
+          </Link>
           <input className="menu-btn" type="checkbox" id="menu-btn" />
           <label className="menu-icon" htmlFor="menu-btn">
             <span className="navicon" />
@@ -120,7 +118,7 @@ class navBar extends Component {
             <ChooseLocation onFinished={this.closeLocationModal.bind(this)} />
           </div>
         </Modal>
-      </div>
+      </React.Fragment>
     );
   }
 }

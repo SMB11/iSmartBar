@@ -16,5 +16,6 @@ store.subscribe(s => {
     store.dispatch(addTranslation(translations));
     init = false;
   }
+  window.store = store;
 });
 export default store;

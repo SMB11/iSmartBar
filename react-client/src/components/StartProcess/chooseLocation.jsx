@@ -73,7 +73,6 @@ class ChooseLocation extends Component {
     } else {
       this.setState({ ...this.state, city: null, hotel: null });
     }
-    console.log(this.state);
   }
   handleHotelChanged(e) {
     const hotel = this.props.hotels.find(

@@ -9,6 +9,7 @@ import SubCategoriesPage from "./Pages/subCategoriesPage";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { CategoryGet } from "../redux/category";
+import BrandPage from "./Pages/brandPage";
 
 class Routes extends Component {
   componentWillUpdate() {
@@ -24,7 +25,6 @@ class Routes extends Component {
       }
 
       this.props.CategoryGet(language);
-      console.log("category get");
     }
   }
   render() {
@@ -38,6 +38,7 @@ class Routes extends Component {
         <React.Fragment>
           <Route path="/" component={LandingPage} exact />
           <Route path="/subcategory/:id" component={SubCategoriesPage} exact />
+          <Route path="/brand/:id" component={BrandPage} exact />
         </React.Fragment>
       );
     }

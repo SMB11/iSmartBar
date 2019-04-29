@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "../../assets/scss/select.scss";
 import SelectFX from "periodicjs.component.selectfx";
 class DropDown extends Component {
-  componentDidUpdate() {
-    console.log(this.refs.select);
+  componentWillUpdate() {
+
   }
   render() {
     return (

@@ -62,7 +62,7 @@ class SubCategoriesPage extends Component {
             </div>
             <div class="right-content">
               {Object.keys(categoryBrands).map(catName => (
-                <div class="products">
+                <div class="products" id={catName}>
                   <div class="category-name">{catName}</div>
                   <div class="content">
                     {categoryBrands[catName].map(brand => (

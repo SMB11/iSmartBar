@@ -10,6 +10,10 @@ namespace BusinessEntities.Products
         [Column]
         public int CategoryID { get; set; }
 
+
+        [Association(ThisKey = nameof(CategoryID), OtherKey = "ID")]
+        public Category Category { get; set; }
+
         [Column]
         public int BrandID { get; set; }
 

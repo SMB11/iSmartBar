@@ -26,7 +26,7 @@ namespace Managers.Implementation
         public async Task<ProductDTO> GetByID(int id)
         {
             IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
-            Product prod = await productRepo.FindByIDAsync(id);
+            Product prod = await productRepo.LoadWith(p => p.Image).LoadWith(p => p.Category).LoadWith(p => p.Brand).FindByIDAsync(id);
 
             return await GetProductDTO(prod);
         }

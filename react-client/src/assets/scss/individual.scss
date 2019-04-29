@@ -1,0 +1,141 @@
+body.product-body{
+.right-content {
+  .title {
+    color: #042f5c;
+    font-family: "Roboto";
+    font-size: 23px;
+    font-weight: 700;
+  }
+  .product-content {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    .image-part {
+      width: 48%;
+      border-radius: 4px;
+      border: 1px solid #288cff66;
+      padding: 35px 0;
+      img {
+        max-width: 100%;
+      }
+    }
+    .info {
+      width: 48%;
+      .name {
+        color: #288cff;
+        font-family: "Roboto";
+        font-size: 26px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .rate {
+        margin: 10px 0 15px;
+        .ratized {
+          position: relative;
+          input[type="radio"] {
+            position: fixed;
+            top: 0;
+            right: 100%;
+            &:checked ~ input + label {
+              background: none;
+              color: #aaa;
+            }
+          }
+          label {
+            font-size: 1.8em;
+            cursor: pointer;
+          }
+          input + label {
+            color: orange;
+          }
+        }
+      }
+      p {
+        color: #707070;
+        font-family: "Roboto";
+        font-size: 16px;
+        font-weight: 400;
+        &:last-child {
+          margin-top: 15px;
+        }
+      }
+      .price {
+        margin-top: 50px;
+        span {
+          color: #288cff;
+          font-family: "Roboto";
+          font-size: 23px;
+          font-weight: 700;
+        }
+      }
+      .prop {
+        display: flex;
+        justify-content: left;
+        .product-count {
+          margin-top: 26px;
+          width: 50px;
+          a {
+            text-decoration: none;
+            font-weight: 700;
+            color: black;
+          }
+          .button-count {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #2196f300;
+            color: #192b3f;
+            font-size: 22px;
+            line-height: 30px;
+            text-align: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            &:last-child {
+              position: relative;
+            }
+          }
+          .number-product {
+            display: inline-block;
+            width: 20px;
+            height: 28px;
+            border: 0;
+            text-align: center;
+            color: #192b3f;
+            font-family: "Roboto", sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+          }
+        }
+
+        .button-content {
+          margin-left: 50px;
+          margin-top: 20px;
+          .btn {
+            width: 168px;
+            height: 44px;
+            color: #288cff;
+            font-family: "Roboto", sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            padding: 12px;
+            border-radius: 28px;
+            border: 2px solid #288cff;
+            background-color: #e8f1ff;
+            img {
+              width: 23px;
+            }
+            span {
+              vertical-align: top;
+            }
+            &:hover {
+              background: #ced6e2;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+}

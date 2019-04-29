@@ -7,11 +7,15 @@ import {
 
 export const PRODUCTGET_START = "PRODUCTGET_START";
 export const PRODUCTGET_END = "PRODUCTGET_END";
+export const PRODUCTDESCTIPTIONGET_START = "PRODUCTDESCTIPTIONGET_START";
+export const PRODUCTDESCTIPTIONGET_END = "PRODUCTDESCTIPTIONGET_END";
 
 
 const initialState = {
     products: [],
-    productsLoading: false
+    productDescription: {},
+    productsLoading: false,
+    productDescriptionLoading: false
 };
 
 
@@ -22,7 +26,17 @@ export default (state = initialState, action) => {
         case PRODUCTGET_END:
             const products = state.products.slice(0);
             products[action.payload.id] = action.payload.data;
-            return { ...state, products };
+            return { ...state, products, productsLoading: false };
+
+        case PRODUCTDESCTIPTIONGET_START:
+            return { ...state, productDescriptionLoading: true };
+        case PRODUCTDESCTIPTIONGET_END:
+            return {
+                ...state, productDescription: action.payload,
+                productDescriptionLoading: false
+            };
+
+
         default:
             return { ...state };
     }
@@ -37,6 +51,13 @@ export const ProductGetEnd = (id, products) => ({
 });
 
 
+export const ProductDescriptionGetStart = () => ({
+    type: PRODUCTDESCTIPTIONGET_START
+});
+export const ProductDescriptionGetEnd = (product) => ({
+    type: PRODUCTDESCTIPTIONGET_END,
+    payload: product
+});
 
 export const GetBrandProducts = (lang, id) => {
 
@@ -48,7 +69,6 @@ export const GetBrandProducts = (lang, id) => {
                 .getProductsByBrandID(lang, id)
                 .then(response => {
                     dispatch(ProductGetEnd(id, response.data));
-                    console.log(response.data);
                 })
                 .catch(err => {
 
@@ -59,5 +79,21 @@ export const GetBrandProducts = (lang, id) => {
     };
 };
 
+export const GetProductDescription = (lang, id) => {
+    console.log("mtav");
 
+    return (dispatch, getState) => {
+        const state = getState();
+        dispatch(ProductDescriptionGetStart());
+        return api.productDescription
+            .getProductDescription(lang, id)
+            .then(response => {
+                dispatch(ProductDescriptionGetEnd(response.data));
+                console.log(response.data);
+            })
+            .catch(err => {
+                console.log(err);
 
+            });
+    };
+};

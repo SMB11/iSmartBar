@@ -3,16 +3,19 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../redux/cart";
 import { assetBaseUrl } from "../../api";
+import { withRouter } from "react-router-dom";
 class Product extends Component {
+  redirect(target) {
+    this.props.history.push(target);
+  }
   render() {
     const { product } = this.props;
 
     if (!product) return "";
     console.log(product);
     return (
-
-      < div class="product" >
-        <img src={product.imagePath ? product.imagePath : ""} alt="" />
+      <div class="product">
+        <img onClick={() => this.redirect("/product/" + product.id)} src={product.imagePath ? product.imagePath : ""} alt="" />
         <span class="product-title">{product.name}</span>
         <span class="price">{product.price}</span>
         <div class="prop">
@@ -29,6 +32,7 @@ class Product extends Component {
           </div>
         </div>
       </div >
+
     );
   }
 }
@@ -46,4 +50,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Product);
+)(withRouter(Product));

@@ -246,3 +246,4 @@ paket-files/
 
 
 appsettings.json
+/MiniBar.Server/CoreAPI/aws-beanstalk-tools-defaults.json

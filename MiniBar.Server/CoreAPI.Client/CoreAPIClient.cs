@@ -10,14 +10,13 @@ namespace CoreAPI.Client
 {
     public static class CoreAPIClient
     {
-        private static string ApiFormat = "https://localhost:44396/api{0}";
+        private static string ApiFormat = "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api{0}";
 
         public static async Task<List<LanguageDTO>> GetLanguages()
         {
             return await String.Format(ApiFormat, "/language/").GetJsonAsync<List<LanguageDTO>>();
         }
-
-
+        
         public static async Task<ProductDTO> GetProductByID(int id)
         {
             return await String.Format(ApiFormat, "/product/" + id).GetJsonAsync<ProductDTO>();

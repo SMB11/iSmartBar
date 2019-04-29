@@ -12,12 +12,9 @@ import SubNavBar from "../Reusable/subNavBar";
 import { rootCategorySelector } from "../../redux/selectors/category";
 import Footer from "../Reusable/footer";
 
-import { } from 'react-router';
+import {} from "react-router";
 class landingPage extends Component {
-
-
   redirect(target) {
-
     this.props.history.push(target);
   }
 
@@ -43,16 +40,22 @@ class landingPage extends Component {
             </div>
             <div class="line-horizontal" />
             <div class="categories">
-
-              <div class="category" onClick={() =>
-                this.redirect(
-                  this.props.rootCategories[0]
-                    ? "/subcategory/" + this.props.rootCategories[0].id
-                    : null)}>
+              <div
+                class="category"
+                onClick={() =>
+                  this.redirect(
+                    this.props.rootCategories[0]
+                      ? "/subcategory/" + this.props.rootCategories[0].id
+                      : null
+                  )
+                }
+              >
                 <h3 class="title">
+                  <div className="titleBefore" />
                   {this.props.rootCategories[0]
                     ? this.props.rootCategories[0].name
                     : ""}
+                  <div className="titleAfter" />
                 </h3>
                 <div class="category-content">
                   <div class="category-image">
@@ -67,15 +70,23 @@ class landingPage extends Component {
                   </div>
                 </div>
               </div>
-              <div class="category" onClick={() =>
-                this.redirect(
-                  this.props.rootCategories[1]
-                    ? "/subcategory/" + this.props.rootCategories[1].id
-                    : null)}>
+              <div
+                class="category"
+                onClick={() =>
+                  this.redirect(
+                    this.props.rootCategories[1]
+                      ? "/subcategory/" + this.props.rootCategories[1].id
+                      : null
+                  )
+                }
+              >
                 <h3 class="title">
+                  <div className="titleBefore" />
                   {this.props.rootCategories[1]
                     ? this.props.rootCategories[1].name
                     : ""}
+
+                  <div className="titleAfter" />
                 </h3>
                 <div class="category-content">
                   <div class="category-image">
@@ -90,15 +101,23 @@ class landingPage extends Component {
                   </div>
                 </div>
               </div>
-              <div class="category" onClick={() =>
-                this.redirect(
-                  this.props.rootCategories[2]
-                    ? "/subcategory/" + this.props.rootCategories[2].id
-                    : null)}>
+              <div
+                class="category"
+                onClick={() =>
+                  this.redirect(
+                    this.props.rootCategories[2]
+                      ? "/subcategory/" + this.props.rootCategories[2].id
+                      : null
+                  )
+                }
+              >
                 <h3 class="title">
+                  <div className="titleBefore" />
                   {this.props.rootCategories[2]
                     ? this.props.rootCategories[2].name
                     : ""}
+
+                  <div className="titleAfter" />
                 </h3>
                 <div class="category-content">
                   <div class="category-image">
@@ -182,7 +201,7 @@ class landingPage extends Component {
           </div>
         </div>
         <Footer />
-      </div >
+      </div>
     );
   }
 }

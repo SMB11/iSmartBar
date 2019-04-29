@@ -1,7 +1,9 @@
 import api from "../api";
 import {
   rootCategorySelector,
-  categoriesLoadingSelector, rootCategoriesBrandsLoadingSelector, rootCategoriesBrandsSelector
+  categoriesLoadingSelector,
+  rootCategoriesBrandsLoadingSelector,
+  rootCategoriesBrandsSelector
 } from "./selectors/category";
 
 export const CATEGORYGET_START = "CATEGORYGET_START";
@@ -50,6 +52,8 @@ export const GetRootCategoryBrandsEnd = (id, categoryBrands) => ({
 });
 
 export const CategoryGet = lang => {
+  console.log(lang);
+
   return (dispatch, getState) => {
     const state = getState();
     if (
@@ -62,23 +66,17 @@ export const CategoryGet = lang => {
         .then(response => {
           dispatch(CategoryGetEnd(response.data));
         })
-        .catch(err => {
-        });
+        .catch(err => {});
     } else {
       //debugger;
     }
   };
 };
 
-
-
-
 export const RootCategoryBrandGet = (lang, id) => {
-
   return (dispatch, getState) => {
     const state = getState();
     if (id && !rootCategoriesBrandsSelector(state, id)) {
-
       dispatch(GetRootCategoryBrandsStart());
       return api.brands
         .getSubcategoryBrands(lang, id)
@@ -86,14 +84,9 @@ export const RootCategoryBrandGet = (lang, id) => {
           dispatch(GetRootCategoryBrandsEnd(id, response.data));
           console.log(response.data);
         })
-        .catch(err => {
-
-        });
+        .catch(err => {});
     } else {
       //debugger;
     }
   };
 };
-
-
-

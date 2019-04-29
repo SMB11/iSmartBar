@@ -11,6 +11,13 @@ const getHeader = lang => {
     };
   else return {};
 };
+
+const getTimestamep = () => new Date().getTime();
+
+const getCoreUrl = (path, cache) => {
+  return apiUrl + path + (cache ? `?t=${getTimestamep()}` : "");
+};
+
 export const assetBaseUrl =
   "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/";
 
@@ -24,20 +31,23 @@ export default {
   },
   categories: {
     getAll: lang => {
-      return axios.get(`${apiUrl}category`, getHeader(lang));
+      return axios.get(getCoreUrl("category", true), getHeader(lang));
     }
   },
   brands: {
     getSubcategoryBrands: (lang, id) => {
       return axios.get(
-        `${apiUrl}brand/subcategoriesBrands/${id}`,
+        getCoreUrl(`brand/subcategoriesBrands/${id}`, true),
         getHeader(lang)
       );
     }
   },
   products: {
     getProductsByBrandID: (lang, id) => {
-      return axios.get(`${apiUrl}product/brand/${id}`, getHeader(lang));
+      return axios.get(
+        getCoreUrl(`product/brand/${id}`, true),
+        getHeader(lang)
+      );
     }
   }
 };

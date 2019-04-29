@@ -29,6 +29,13 @@ namespace CoreAPI.Controllers
             return await this.ServiceProvider.GetService<IProductManager>().GetByID(id);
         }
 
+        [HttpGet("brand/{id}")]
+        [AllowAnonymous]
+        public async Task<List<ProductDTO>> GetBrandProducts(int id)
+        {
+            return await this.ServiceProvider.GetService<IProductManager>().GetBrandProducts(id);
+        }
+
         [HttpGet("forupload/{id}")]
         [AllowAnonymous]
         public async Task<ProductUploadDTO> GetForUplaodByID(int id)

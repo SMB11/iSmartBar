@@ -1,6 +1,7 @@
 import axios from "axios";
 import { withLocalize } from "react-localize-redux";
-const apiUrl = "https://localhost:44396/api/";
+const apiUrl =
+  "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
 const iSmartBarApiUrl = "https://localhost:44316/api/";
 
 const getHeader = lang => {
@@ -10,7 +11,8 @@ const getHeader = lang => {
     };
   else return {};
 };
-export const assetBaseUrl = "https://localhost:44396/"
+export const assetBaseUrl =
+  "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/";
 
 export default {
   locations: {
@@ -27,13 +29,15 @@ export default {
   },
   brands: {
     getSubcategoryBrands: (lang, id) => {
-      return axios.get(`${apiUrl}brand/subcategoriesBrands/${id}`, getHeader(lang))
+      return axios.get(
+        `${apiUrl}brand/subcategoriesBrands/${id}`,
+        getHeader(lang)
+      );
     }
   },
   products: {
     getProductsByBrandID: (lang, id) => {
-      return axios.get(`${apiUrl}product/brand/${id}`, getHeader(lang))
-
+      return axios.get(`${apiUrl}product/brand/${id}`, getHeader(lang));
     }
   }
 };

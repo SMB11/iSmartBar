@@ -192,7 +192,9 @@
             position: absolute;
             pointer-events: none;
           }
-
+          a {
+            cursor: pointer;
+          }
           &:after {
             border-color: rgba(136, 183, 213, 0);
             border-width: 5px;

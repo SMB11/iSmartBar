@@ -21,37 +21,23 @@ namespace iSmartBarApi.Controllers
         [HttpGet("countries")]
         public async Task<List<CountryDTO>> GetCountries()
         {
-            //ICountryManager countryManager = ServiceProvider.GetService<ICountryManager>();
-            //return await countryManager.GetAll();
-            return new List<CountryDTO> {
-                new CountryDTO{ID = 1, Name = "America"},
-                new CountryDTO{ID = 2, Name = "Italia"},
-            };
+            ICountryManager countryManager = ServiceProvider.GetService<ICountryManager>();
+            return await countryManager.GetAll();
         }
 
         [HttpGet("cities/{id}")]
         public async Task<List<CityDTO>> GetCities(int id)
         {
-            //ICityManager cityManager = ServiceProvider.GetService<ICityManager>();
-            //return await cityManager.GetAll(id);
-
-            return new List<CityDTO> {
-                new CityDTO{ID = 1, Name = "America"},
-                new CityDTO{ID = 2, Name = "Italia"},
-            };
+            ICityManager cityManager = ServiceProvider.GetService<ICityManager>();
+            return await cityManager.GetAll(id);
         }
 
 
         [HttpGet("hotels/{id}")]
         public async Task<List<HotelDTO>> GetHotels(int id)
         {
-
-            return new List<HotelDTO> {
-                new HotelDTO{ID = 1, Name = "America"},
-                new HotelDTO{ID = 2, Name = "Italia"},
-            };
-            //IHotelManager hotelManager = ServiceProvider.GetService<IHotelManager>();
-            //return await hotelManager.GetAll(id);
+            IHotelManager hotelManager = ServiceProvider.GetService<IHotelManager>();
+            return await hotelManager.GetAll(id);
         }
     }
 }

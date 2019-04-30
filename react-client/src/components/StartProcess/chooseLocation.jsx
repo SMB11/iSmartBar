@@ -101,40 +101,42 @@ class ChooseLocation extends Component {
     return (
       <div className="step step2">
         <form action="" className="container">
-          <DropDown
-            id="country"
-            label="Country"
-            selectedValue={this.state.country ? this.state.country.id : 0}
-            onChange={this.handleCountryChanged.bind(this)}
-            options={countries.map(country => ({
-              value: country.id,
-              name: country.name,
-              disabled: country.id !== 1
-            }))}
-          />
-          <DropDown
-            disabled={!this.state.country}
-            id="city"
-            label="City"
-            selectedValue={this.state.city ? this.state.city.id : 0}
-            onChange={this.handleCityChanged.bind(this)}
-            options={cities.map(city => ({
-              value: city.id,
-              name: city.name,
-              disabled: city.id !== 1
-            }))}
-          />
-          <DropDown
-            disabled={!(this.state.city && this.state.country)}
-            id="hotel"
-            label="Hotel"
-            selectedValue={this.state.hotel ? this.state.hotel.id : 0}
-            onChange={this.handleHotelChanged.bind(this)}
-            options={hotels.map(hotel => ({
-              value: hotel.id,
-              name: hotel.name
-            }))}
-          />
+          <div className="select-form">
+            <DropDown
+              id="country"
+              label="Country"
+              selectedValue={this.state.country ? this.state.country.id : 0}
+              onChange={this.handleCountryChanged.bind(this)}
+              options={countries.map(country => ({
+                value: country.id,
+                name: country.name,
+                disabled: country.id !== 1
+              }))}
+            />
+            <DropDown
+              disabled={!this.state.country}
+              id="city"
+              label="City"
+              selectedValue={this.state.city ? this.state.city.id : 0}
+              onChange={this.handleCityChanged.bind(this)}
+              options={cities.map(city => ({
+                value: city.id,
+                name: city.name,
+                disabled: city.id !== 1
+              }))}
+            />
+            <DropDown
+              disabled={!(this.state.city && this.state.country)}
+              id="hotel"
+              label="Hotel"
+              selectedValue={this.state.hotel ? this.state.hotel.id : 0}
+              onChange={this.handleHotelChanged.bind(this)}
+              options={hotels.map(hotel => ({
+                value: hotel.id,
+                name: hotel.name
+              }))}
+            />
+          </div>
         </form>
         <div className="button-content">
           <button

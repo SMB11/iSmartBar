@@ -26,7 +26,7 @@ body.steps-body {
         border-radius: 5px;
         background-color: #ffffff;
         position: relative;
-        
+
         .dots {
           display: flex;
           justify-content: center;
@@ -95,69 +95,14 @@ body.steps-body {
   }
   .step2 {
     form.container {
-      section {
-        margin-bottom: 39px;
-        display: flex;
-        justify-content: center;
-        &[disabled] {
-          .cs-select {
-            cursor: no-drop;
-            span {
-              pointer-events: none;
-              opacity: 0.7;
-            }
-          }
-        }
-        .cs-select {
-          max-width: 500px;
+      .select-form {
+        width: 500px;
+        margin: 0 auto;
+
+        @media (max-width: 550px) {
+          display: block;
+
           width: 100%;
-          &.cs-active {
-            ul {
-              display: block!important;
-            }
-            > span {
-              border-bottom: 0px !important;
-            }
-          }
-          span {
-            font-weight: 400;
-            position: relative;
-            display: block;
-            width: 100%;
-            height: 100%;
-            font-size: 14px;
-            padding: 1.5em 2em;
-            background: #fff;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            border-left: 2px solid #d5dadd;
-            border-right: 2px solid #d5dadd;
-            cursor: pointer;
-          }
-        }
-        .cs-skin-elastic {
-          > span {
-            &::after {
-              content: url("../images/arrow-down.svg");
-            }
-            border: 2px solid #d5dadd;
-          }
-          .cs-options {
-            ul {
-              max-height: 260px;
-              overflow-y: scroll;
-              display: none;
-              li {
-                &.cs-focus span {
-                  background: #e8e8e8;
-                }
-              }
-            }
-            span {
-              &:hover {
-                background: #e8e8e8;
-              }
-            }
-          }
         }
       }
     }
@@ -169,4 +114,10 @@ body.steps-body {
       justify-content: space-evenly;
     }
   }
+}
+.Modal .select-form {
+  width: 100% !important;
+}
+.Modal select {
+  max-width: 100% !important;
 }

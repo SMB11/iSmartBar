@@ -32,14 +32,16 @@ class landingPage extends Component {
           <div class="homepage-img">
             <img class="homepage-img" src="images/homepage-img.svg" alt="" />
           </div>
-          <div class="categories-content">
-            <div class="title">
-              <h2>
-                <Translate id="categories" />
-              </h2>
-            </div>
-            <div class="line-horizontal" />
-            <div class="categories">
+        </div>
+        <div class="categories-content">
+          <div class="title">
+            <h2>
+              <Translate id="categories" />
+            </h2>
+          </div>
+          <div class="line-horizontal" />
+          <div class="categories">
+            <div class="categories-row">
               <div
                 class="category"
                 onClick={() =>
@@ -134,6 +136,8 @@ class landingPage extends Component {
               </div>
             </div>
           </div>
+        </div>
+        <div class="content">
           <div class="most-reviewed">
             <div class="title">
               <h2>

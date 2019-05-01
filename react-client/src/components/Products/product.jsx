@@ -13,26 +13,40 @@ class Product extends Component {
 
     if (!product) return "";
     console.log(product);
+    const imageStyle = {
+      backgroundImage: product.imagePath
+        ? `url(${encodeURI(assetBaseUrl + product.imagePath)})`
+        : ""
+    };
+    console.log(product.imagePath);
     return (
       <div class="product">
-        <img onClick={() => this.redirect("/product/" + product.id)} src={product.imagePath ? product.imagePath : ""} alt="" />
+        <div
+          class="product-image"
+          style={imageStyle}
+          onClick={() => this.redirect("/product/" + product.id)}
+        />
         <span class="product-title">{product.name}</span>
         <span class="price">{product.price}</span>
         <div class="prop">
           <div class="product-count">
-            <button class="button-count no-active" disabled>-</button>
+            <button class="button-count no-active" disabled>
+              -
+            </button>
             <input type="text" readonly class="number-product" value="1" />
             <button class="button-count">+</button>
           </div>
           <div class="button-content">
-            <button onClick={() => this.props.addToCart(product.id)} class="btn">
+            <button
+              onClick={() => this.props.addToCart(product.id)}
+              class="btn"
+            >
               <img src="http://localhost:3000/images/add-to-cart.svg" alt="" />
               <span>Add to Cart</span>
             </button>
           </div>
         </div>
-      </div >
-
+      </div>
     );
   }
 }

@@ -22,115 +22,7 @@ svg path {
         width: 100%;
       }
     }
-    .categories-content {
-      padding: 0;
-      > div {
-        padding: 0 6%;
-      }
-      > .title h2 {
-        color: #042f5c;
-        font-family: "Acrom";
-        font-size: 36px;
-        font-weight: 700;
-        letter-spacing: 2.16px;
-        text-align: center;
-      }
-      .line-horizontal {
-        height: 1px;
-        background: #707070;
-        margin: 25px 6%;
-      }
-      .categories {
-        display: flex;
-        justify-content: space-between;
-        background-color: #f3f4f6;
-        @media (max-width: 48em) {
-          display: block;
-          .category {
-            margin: 0 auto;
-          }
-        }
-        .category {
-          width: 50%;
-          cursor: pointer;
-          @media (max-width: 500px) {
-            width: 100%;
-          }
-          &:hover {
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
-            background-color: #ffffff;
-            img {
-              opacity: 0.7;
-            }
-          }
-          .title {
-            margin-top: 20px;
-            color: #042f5c;
-            font-family: "Acrom";
-            font-size: 20px;
-            font-weight: 700;
-            text-align: center;
-            display: flex;
-            position: relative;
-            * {
-              flex: 1;
-            }
-            .titleBefore,
-            .titleAfter {
-              position: relative;
-            }
-            .titleBefore:before,
-            .titleAfter:before {
-              content: "";
-              position: absolute;
-              height: 1px;
-              background: #000;
-              width: 80%;
-              top: 50%;
-            }
-            .titleBefore:before {
-              left: 10%;
-            }
 
-            .titleAfter:before {
-              right: 10%;
-            }
-          }
-          &:last-child {
-            .category-content {
-              border-right: 0;
-            }
-          }
-          .category-content {
-            margin: 25px 0 35px;
-            .category-image {
-              height: 180px;
-              width: 100%;
-              max-width: 100%;
-              position: relative;
-              img {
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                transform: translateX(-50%);
-                max-height: 125px;
-                width: auto;
-              }
-            }
-            .description {
-              padding: 50px 25px;
-              text-align: center;
-            }
-            span {
-              color: #1d1e20;
-              font-family: "Roboto";
-              font-size: 16px;
-              font-weight: 400;
-            }
-          }
-        }
-      }
-    }
     .most-reviewed {
       padding: 6%;
       > .title {
@@ -195,11 +87,18 @@ svg path {
         .product {
           width: 100%;
           margin-top: 25px;
+          & * {
+            cursor: pointer;
+          }
           .product-image {
             width: fit-content;
             margin: 0 auto;
             img {
               max-width: 90%;
+            }
+            &:hover {
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+              opacity: 0.76;
             }
           }
           .info {
@@ -209,6 +108,137 @@ svg path {
               font-size: 20px;
               font-weight: 700;
               font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .categories-content {
+    padding: 0;
+    > div {
+      padding: 0 6%;
+    }
+    > .title h2 {
+      color: #042f5c;
+      font-family: "Acrom";
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 2.16px;
+      text-align: center;
+    }
+    .line-horizontal {
+      height: 1px;
+      margin: 25px 6%;
+      max-width: 1280px;
+    }
+    .categories {
+      background-color: #f3f4f6;
+      & * {
+        cursor: pointer;
+      }
+      .categories-row {
+        padding: 0 6%;
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        @media (max-width: 48em) {
+          display: block;
+          .category {
+            margin: 0 auto;
+            .titleBefore,
+            .titleAfter {
+              position: relative;
+            }
+            .titleBefore:before,
+            .titleAfter:before {
+              content: "";
+              position: absolute;
+              height: 1px;
+              background: #707070;
+              width: 80%;
+              top: 50%;
+            }
+            .titleBefore:before {
+              left: 10%;
+            }
+
+            .titleAfter:before {
+              right: 10%;
+            }
+          }
+        }
+        .category {
+          width: 50%;
+          cursor: pointer;
+          @media (max-width: 500px) {
+            width: 100%;
+          }
+          &:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+            background-color: #ffffff;
+            img {
+              opacity: 0.7;
+            }
+          }
+          .title {
+            margin-top: 20px;
+            color: #042f5c;
+            font-family: "Acrom";
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            position: relative;
+            &::before {
+              content: "";
+              position: absolute;
+              left: 65%;
+              top: 50%;
+              width: 25%;
+              height: 1px;
+              background: #707070;
+            }
+            &::after {
+              content: "";
+              position: absolute;
+              left: 10%;
+              top: 50%;
+              width: 25%;
+              height: 1px;
+              background: #707070;
+            }
+          }
+          &:last-child {
+            .category-content {
+              border-right: 0;
+            }
+          }
+          .category-content {
+            margin: 25px 0 35px;
+            .category-image {
+              height: 180px;
+              width: 100%;
+              max-width: 100%;
+              position: relative;
+              img {
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                max-height: 125px;
+                width: auto;
+              }
+            }
+            .description {
+              padding: 50px 25px;
+              text-align: center;
+              span {
+                color: #1d1e20;
+                font-family: "Roboto", sans-serif;
+                font-size: 16px;
+                font-weight: 400;
+              }
             }
           }
         }

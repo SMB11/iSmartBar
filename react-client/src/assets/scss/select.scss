@@ -20,6 +20,14 @@
       color: #ececec;
     }
   }
+  .select-wrapper {
+    i {
+      position: absolute;
+      top: 53px;
+      right: 20px;
+      color: #3f4864;
+    }
+  }
   select {
     height: 64px;
     border: 2px solid #ececec;
@@ -38,6 +46,9 @@
       border: 2px solid #008efd;
       color: #008efd;
       outline: 0;
+      i {
+        color: #008efd;
+      }
     }
     &::-ms-expand {
       display: none; /* hide the default arrow in ie10 and ie11 */
@@ -48,11 +59,5 @@
     option:not(:disabled) {
       font-weight: bold;
     }
-  }
-  i {
-    position: absolute;
-    top: 53px;
-    right: 20px;
-    color: #3f4864;
   }
 }

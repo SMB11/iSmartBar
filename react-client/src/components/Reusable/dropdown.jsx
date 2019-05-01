@@ -8,8 +8,9 @@ class DropDown extends Component {
       <div
         className={"select-group" + (this.props.disabled ? " disabled" : "")}
       >
+        <div className="select-label"> {this.props.label}</div>
+
         <div className="select-wrapper">
-          <div className="select-label"> {this.props.label}</div>
           <select
             ref="select"
             value={this.props.selectedValue}
@@ -28,8 +29,8 @@ class DropDown extends Component {
               </option>
             ))}
           </select>
+          <i class="fas fa-chevron-down" />
         </div>
-        <i class="fas fa-chevron-down" />
       </div>
 
       // <div>

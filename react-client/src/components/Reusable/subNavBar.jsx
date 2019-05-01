@@ -29,7 +29,9 @@ class SubNavBar extends Component {
           ))}
         </div>
         <div class="right-content">
-          <img src="http://localhost:3000/images/items.svg" alt="" />
+          <Link to="/cart" >
+            <img src="http://localhost:3000/images/items.svg" alt="" />
+          </Link>
           <div>
             <span>
               <Translate id="your_smartbar" />

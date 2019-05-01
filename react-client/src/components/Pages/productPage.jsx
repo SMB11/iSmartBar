@@ -85,6 +85,21 @@ class ProductPage extends Component {
                             </div>
                         </div>
                     </div>
+
+                    <div class="information">
+                        <div class="description">
+                            <div class="title">
+                                <span>Description</span>
+                            </div>
+                            <div class="content">
+                                <span>
+                                    {product.description}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             );
         }

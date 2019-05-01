@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { CategoryGet } from "../redux/category";
 import BrandPage from "./Pages/brandPage";
 import productPage from "./Pages/productPage";
+import CartPage from "./Pages/cartPage";
 
 class Routes extends Component {
   componentWillUpdate() {
@@ -41,6 +42,7 @@ class Routes extends Component {
           <Route path="/subcategory/:id" component={SubCategoriesPage} exact />
           <Route path="/brand/:id" component={BrandPage} exact />
           <Route path="/product/:id" component={productPage} exact />
+          <Route path="/cart" component={CartPage} exact />
         </React.Fragment>
       );
     }

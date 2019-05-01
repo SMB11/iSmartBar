@@ -5,8 +5,27 @@ import { addToCart } from "../../redux/cart";
 import { assetBaseUrl } from "../../api";
 import { withRouter } from "react-router-dom";
 class Product extends Component {
+  state = {
+    quantity: 1,
+
+  }
   redirect(target) {
     this.props.history.push(target);
+  }
+
+  plusButtonClicked = () => {
+    let oldState = { ...this.state }
+    let newQuantity = oldState.quantity + 1
+    return this.setState({ oldState, quantity: newQuantity })
+  }
+
+  minusButtonClicked = () => {
+    let oldState = { ...this.state };
+    let newQuantity = oldState.quantity
+    if (oldState.quantity - 1 >= 1) {
+      newQuantity = oldState.quantity - 1;
+    }
+    return this.setState({ oldState, quantity: newQuantity })
   }
   render() {
     const { product } = this.props;
@@ -27,14 +46,14 @@ class Product extends Component {
           onClick={() => this.redirect("/product/" + product.id)}
         />
         <span class="product-title">{product.name}</span>
-        <span class="price">{product.price}</span>
+        <span class="price">€ {product.price}</span>
         <div class="prop">
           <div class="product-count">
-            <button class="button-count no-active" disabled>
+            <button onClick={this.minusButtonClicked} class="button-count no-active" >
               -
             </button>
-            <input type="text" readonly class="number-product" value="1" />
-            <button class="button-count">+</button>
+            <input type="text" readonly class="number-product" value={this.state.quantity} />
+            <button onClick={this.plusButtonClicked} class="button-count">+</button>
           </div>
           <div class="button-content">
             <button

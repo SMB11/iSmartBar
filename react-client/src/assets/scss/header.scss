@@ -263,6 +263,9 @@
   }
   .right-content {
     display: flex;
+    a{
+      display: inherit;
+    }
     div {
       margin-left: 20px;
       padding-top: 10px;

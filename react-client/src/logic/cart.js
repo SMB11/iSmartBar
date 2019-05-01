@@ -14,10 +14,11 @@ const canAddToCart = (cart, product, quantity) => {
 };
 const addToCart = (product, quantity) => {
   if (!window.sessionStorage.getItem("carts")) {
-    window.sessionStorage.setItem("carts", JSON.stringify([[]]));
+    window.sessionStorage.setItem("carts", JSON.stringify([[[], [], [], [], [], []]]));
   }
   let carts = JSON.parse(window.sessionStorage.getItem("carts"));
   let oldCart = carts[carts.length - 1];
+
   if (canAddToCart(oldCart, product, quantity)) {
     product.quantity = quantity;
     oldCart.push(product);

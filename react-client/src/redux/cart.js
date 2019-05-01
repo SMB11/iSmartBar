@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
   }
 };
 
-export const setCart = cart => ({
+const setCart = cart => ({
   type: SET_CART,
   payload: cart
 });

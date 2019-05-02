@@ -7,7 +7,8 @@ namespace Security
 {
     public abstract class RestConsumingServiceBase
     {
-        public const string BaseUrl = "https://localhost:44396/api/";
+        //public const string BaseUrl = "https://localhost:44396/api/";
+        public const string BaseUrl = "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
 
         private string _controllerName;
 

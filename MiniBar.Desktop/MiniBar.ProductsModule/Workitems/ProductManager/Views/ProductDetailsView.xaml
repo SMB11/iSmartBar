@@ -7,8 +7,10 @@
              xmlns:prism="http://prismlibrary.com/"
              xmlns:infdp="clr-namespace:Infrastructure.DependencyProperties;assembly=Infrastructure"  x:Class="MiniBar.ProductsModule.Workitems.ProductManager.Views.ProductDetailsView"
              xmlns:dxInf="clr-namespace:DXInfrastructure.DependencyProperties;assembly=DXInfrastructure"  
+             xmlns:shared="clr-namespace:SharedEntities.Enum;assembly=SharedEntities"  
              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"  
              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              xmlns:vc ="clr-namespace:Infrastructure.MVVM.ValueConverters;assembly=Infrastructure"  
              mc:Ignorable="d"
              prism:ViewModelLocator.AutoWireViewModel="True"
@@ -61,7 +63,16 @@
                 </dxg:LookUpEdit>
             </dxlc:DataLayoutItem>
             <dxlc:DataLayoutItem Label="Price">
-                <dxe:TextEdit  Mask="c" MaskType="Numeric" Text="{Binding Price, Mode=TwoWay, ValidatesOnDataErrors=True}"/>
+                <dxe:TextEdit  Mask="c" MaskType="Numeric" Text="{Binding Price, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+            </dxlc:DataLayoutItem>
+
+            <dxlc:DataLayoutItem Label="Size">
+
+                <dxe:ComboBoxEdit EditValue="{Binding Size, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                    <dxmvvm:Interaction.Behaviors>
+                        <dxmvvm:EnumItemsSourceBehavior EnumType="{x:Type shared:ProductSize}"/>
+                    </dxmvvm:Interaction.Behaviors>
+                </dxe:ComboBoxEdit>
             </dxlc:DataLayoutItem>
             <dxlc:DataLayoutItem Label="Description">
                 <dxe:ButtonEdit infdp:ReadOnlyPanel.AlwaysReadOnly="True" Text="{Binding MainDescription, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" AllowDefaultButton="False">

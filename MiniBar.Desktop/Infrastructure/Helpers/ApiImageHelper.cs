@@ -12,7 +12,8 @@ namespace Infrastructure.Api
 {
     public static class ApiImageHelper
     {
-        public const string ResourceBaseUrl = "https://localhost:44396/";
+        //public const string ResourceBaseUrl = "https://localhost:44396/";
+        public const string ResourceBaseUrl = "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/";
 
         public static async Task<Bitmap> GetBitmapAsync(string url)
         {

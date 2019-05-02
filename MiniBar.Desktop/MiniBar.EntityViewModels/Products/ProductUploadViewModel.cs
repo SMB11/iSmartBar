@@ -1,6 +1,7 @@
 ﻿using DXInfrastructure.Attributes;
 using MiniBar.EntityViewModels.Base;
 using MiniBar.EntityViewModels.Interfaces;
+using SharedEntities.Enum;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -63,9 +64,20 @@ namespace MiniBar.EntityViewModels.Products
             }
         }
 
+        private ProductSize size;
+        [Range(1, int.MaxValue, ErrorMessage = "Size cannot be unkown")]
+        public ProductSize Size
+        {
+            get { return size; }
+            set
+            {
+                SetProperty(ref size, value, nameof(Size));
+            }
+        }
+
         private float _Price;
         [Required]
-        [Range(1, float.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
+        [Range(0, float.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public float Price
         {
             get { return _Price; }

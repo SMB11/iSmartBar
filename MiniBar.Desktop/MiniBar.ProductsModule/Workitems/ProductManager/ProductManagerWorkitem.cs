@@ -121,7 +121,8 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
                     CategoryID = vm.CategoryID,
                     Price = vm.Price,
                     Info = langData,
-                    Image = vm.Image
+                    Image = vm.Image,
+                    Size = vm.Size
                 };
                 ObjectDetailsManager.IsObjectLoading = true;
                 IObservable<int> obs = Observable.FromAsync(() => ProductService.Add(dto));
@@ -150,7 +151,8 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
                     CategoryID = vm.CategoryID,
                     Price = vm.Price,
                     Info = langData,
-                    Image = vm.Image
+                    Image = vm.Image,
+                    Size = vm.Size
                 };
 
                 ObjectDetailsManager.IsObjectLoading = true;

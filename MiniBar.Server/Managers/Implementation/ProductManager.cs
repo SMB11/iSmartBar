@@ -14,6 +14,7 @@ using System.Globalization;
 using Common.ResponseHandling;
 using Common.Validation;
 using Common.Enums;
+using SharedEntities.Enum;
 
 namespace Managers.Implementation
 {
@@ -79,6 +80,7 @@ namespace Managers.Implementation
                 Brand = product.Brand?.Name,
                 Name = info.Name,
                 Price = product.Price,
+                Size = (ProductSize)product.Size,
                 Description = info.Description,
                 ImagePath = product.Image?.Path
             };
@@ -101,6 +103,7 @@ namespace Managers.Implementation
                 BrandID = product.BrandID,
                 Price = product.Price,
                 Info = info,
+                Size = (ProductSize)product.Size,
                 ImagePath = product.Image?.Path
             };
         }
@@ -117,7 +120,8 @@ namespace Managers.Implementation
             {
                 BrandID = product.BrandID,
                 CategoryID = product.CategoryID,
-                Price = product.Price
+                Price = product.Price,
+                Size = (BusinessEntities.Enums.ProductSize)product.Size
             };
             if(product.Image != null)
                 toInsert.ImageID = (await imageManager.InsertBytesAsync(product.Image)).ID;
@@ -163,7 +167,8 @@ namespace Managers.Implementation
                 BrandID = product.BrandID,
                 CategoryID = product.CategoryID,
                 Price = product.Price,
-                ImageID = old.ImageID
+                ImageID = old.ImageID,
+                Size = (BusinessEntities.Enums.ProductSize)product.Size
             };
 
             if (product.Image != null) {

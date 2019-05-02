@@ -55,6 +55,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\SharedEntities\SharedEntities.csproj">
+      <Project>{4E1E32A8-9705-484C-8443-8118AD678881}</Project>
+      <Name>SharedEntities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DXInfrastructure\DXInfrastructure.csproj">
       <Project>{9f1b50bd-a33f-4989-96bb-7ce0b98b1b85}</Project>
       <Name>DXInfrastructure</Name>

@@ -286,7 +286,8 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
                         CategoryID = dto.CategoryID,
                         Price = dto.Price,
                         Names = names,
-                        Description = descriptions
+                        Description = descriptions,
+                        Size = dto.Size
                     };
 
                     if (dto.ImagePath != null)

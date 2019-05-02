@@ -12,6 +12,9 @@
     overflow: hidden;
     background-color: #fff;
     li {
+      .locationEdit {
+        cursor: pointer;
+      }
       a {
         display: block;
         padding: 20px 20px;
@@ -263,7 +266,7 @@
   }
   .right-content {
     display: flex;
-    a{
+    a {
       display: inherit;
     }
     div {

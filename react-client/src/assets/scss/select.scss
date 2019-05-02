@@ -13,7 +13,7 @@
   }
   &.disabled {
     i {
-      color: #ececec;
+      color: #ececec !important;
     }
 
     .select-label {
@@ -21,9 +21,10 @@
     }
   }
   .select-wrapper {
+    position: relative;
     i {
       position: absolute;
-      top: 53px;
+      top: 24px;
       right: 20px;
       color: #3f4864;
     }

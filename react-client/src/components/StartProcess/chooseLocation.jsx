@@ -107,6 +107,7 @@ class ChooseLocation extends Component {
               label="Country"
               selectedValue={this.state.country ? this.state.country.id : 0}
               onChange={this.handleCountryChanged.bind(this)}
+              loading={this.props.countriesLoading}
               options={countries.map(country => ({
                 value: country.id,
                 name: country.name,
@@ -118,6 +119,7 @@ class ChooseLocation extends Component {
               id="city"
               label="City"
               selectedValue={this.state.city ? this.state.city.id : 0}
+              loading={this.props.citiesLoading}
               onChange={this.handleCityChanged.bind(this)}
               options={cities.map(city => ({
                 value: city.id,
@@ -130,6 +132,7 @@ class ChooseLocation extends Component {
               id="hotel"
               label="Hotel"
               selectedValue={this.state.hotel ? this.state.hotel.id : 0}
+              loading={this.props.hotelsLoading}
               onChange={this.handleHotelChanged.bind(this)}
               options={hotels.map(hotel => ({
                 value: hotel.id,

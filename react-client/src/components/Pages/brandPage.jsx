@@ -10,11 +10,17 @@ import { bindActionCreators } from "redux";
 import { GetBrandProducts } from "../../redux/products";
 import NavBar from "../Reusable/navBar";
 import SubNavBar from "../Reusable/subNavBar";
-import { brandProductsSelector } from "../../redux/selectors/product";
+import {
+  brandProductsSelector,
+  brandProductsLoadingSelector
+} from "../../redux/selectors/product";
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import { assetBaseUrl } from "../../api";
 import Footer from "../Reusable/footer";
 class BrandPage extends Component {
+  state = {
+    hash: undefined
+  };
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "brand-body";
     this.getProducts();
@@ -68,7 +74,14 @@ class BrandPage extends Component {
             </div>
 
             <div class="right-content">
-              <div class="products">
+              <div class="products loading-wrapper">
+                <div
+                  className={
+                    "ui dimmer " + (this.props.loading ? "active" : "")
+                  }
+                >
+                  <div className="ui loader" />
+                </div>
                 <div class="category-name">Tequila</div>
                 <div class="content">
                   {products.map(prod => (
@@ -79,7 +92,6 @@ class BrandPage extends Component {
             </div>
           </div>
         </div>
-        <Footer />
       </React.Fragment>
     );
   }
@@ -87,7 +99,8 @@ class BrandPage extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    products: brandProductsSelector(state, parseInt(props.match.params.id))
+    products: brandProductsSelector(state, parseInt(props.match.params.id)),
+    loading: brandProductsLoadingSelector(state)
   };
 };
 const mapDispatchToProps = dispatch =>

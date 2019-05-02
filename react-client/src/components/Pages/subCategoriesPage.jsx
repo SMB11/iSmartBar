@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import "../../assets/scss/subcategory.scss";
 import SubNavBar from "../Reusable/subNavBar";
 import NavBar from "../Reusable/navBar";
-import { rootCategoriesBrandsSelector } from "../../redux/selectors/category";
+import {
+  rootCategoriesBrandsSelector,
+  rootCategoriesBrandsLoadingSelector
+} from "../../redux/selectors/category";
 import { RootCategoryBrandGet } from "../../redux/category";
 
 import { withLocalize, Translate } from "react-localize-redux";
@@ -13,8 +16,11 @@ import Brand from "../Brands/brand";
 import SideBar from "../Reusable/sidebar";
 import Footer from "../Reusable/footer";
 class SubCategoriesPage extends Component {
-  state = {};
+  state = {
+    hash: undefined
+  };
   getBrands = () => {
+    this.state.hash = window.location.hash.substr(1);
     const language = JSON.parse(
       window.sessionStorage.getItem(languageStepStorageKey)
     ).selected.id;
@@ -32,24 +38,22 @@ class SubCategoriesPage extends Component {
   }
   render() {
     let { categoryBrands } = this.props;
-    console.log(categoryBrands);
 
     if (!categoryBrands) categoryBrands = {};
-    console.log(categoryBrands);
     return (
       <React.Fragment>
         <NavBar />
         <SubNavBar />
-        <div class="content">
-          <div class="breadcrumbs">
+        <div className="content">
+          <div className="breadcrumbs">
             <a href="">Category</a>
             <a href="">Subcategory</a>
           </div>
-          <div class="body">
-            <div class="left-content">
+          <div className="body">
+            <div className="left-content">
               <SideBar>
-                <div class="filter">
-                  <div class="title">Subcategory</div>
+                <div className="filter">
+                  <div className="title">Subcategory</div>
                   <div>
                     {Object.keys(categoryBrands).map(catName => (
                       <p>
@@ -60,11 +64,16 @@ class SubCategoriesPage extends Component {
                 </div>
               </SideBar>
             </div>
-            <div class="right-content">
+            <div className="right-content loading-wrapper">
+              <div
+                className={"ui dimmer " + (this.props.loading ? "active" : "")}
+              >
+                <div className="ui loader" />
+              </div>
               {Object.keys(categoryBrands).map(catName => (
-                <div class="products" id={catName}>
-                  <div class="category-name">{catName}</div>
-                  <div class="content">
+                <div className="products" id={catName}>
+                  <div className="category-name">{catName}</div>
+                  <div className="content">
                     {categoryBrands[catName].map(brand => (
                       <Brand brand={brand} />
                     ))}
@@ -74,7 +83,6 @@ class SubCategoriesPage extends Component {
             </div>
           </div>
         </div>
-        <Footer />
       </React.Fragment>
     );
   }
@@ -85,7 +93,8 @@ const mapStateToProps = (state, props) => {
     categoryBrands: rootCategoriesBrandsSelector(
       state,
       parseInt(props.match.params.id)
-    )
+    ),
+    loading: rootCategoriesBrandsLoadingSelector(state)
   };
 };
 const mapDispatchToProps = dispatch =>

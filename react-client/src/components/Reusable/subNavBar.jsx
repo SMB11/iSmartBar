@@ -13,23 +13,28 @@ class SubNavBar extends Component {
 
   render() {
     return (
-      <div class="top-bar">
-        <div class="left-content">
+      <div className="top-bar">
+        <div className="left-content">
           {this.props.rootCategories.map((root, index) => (
-            <div key={index} class="dropdown">
+            <div key={index} className="dropdown">
               <Link to={"/subcategory/" + root.id}>
-                <button class="dropbtn">{root.name}</button>
+                <button className="dropbtn">{root.name}</button>
               </Link>
-              <div class="dropdown-content">
+              <div className="dropdown-content">
                 {this.props.subCategories(root.id).map((subcategory, index) => (
-                  <a key={index}>{subcategory.name}</a>
+                  <Link
+                    key={index}
+                    to={"/subcategory/" + root.id + "#" + subcategory.name}
+                  >
+                    {subcategory.name}
+                  </Link>
                 ))}
               </div>
             </div>
           ))}
         </div>
-        <div class="right-content">
-          <Link to="/cart" >
+        <div className="right-content">
+          <Link to="/cart">
             <img src="http://localhost:3000/images/items.svg" alt="" />
           </Link>
           <div>

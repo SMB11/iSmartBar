@@ -11,6 +11,13 @@ class DropDown extends Component {
         <div className="select-label"> {this.props.label}</div>
 
         <div className="select-wrapper">
+          <div
+            className={
+              "ui dimmer inverted " + (this.props.loading ? "active" : "")
+            }
+          >
+            <div className="ui loader" />
+          </div>
           <select
             ref="select"
             value={this.props.selectedValue}

@@ -1,396 +1,396 @@
-body.cart-body{
-.content {
-  padding: 100px 6%;
-  max-width: 1280px;
-  margin: 0 auto;
-  h1.title {
-    color: #042f5c;
-    font-family: "Acrom";
-    font-size: 24px;
-    font-weight: 700;
-  }
-  .body {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 35px;
-    .left-content {
-      background-color: #f3f4f6;
-      width: 66%;
-      .head {
-        display: flex;
-        justify-content: space-between;
-        .ismartbar,
-        .other {
-          width: 50%;
-          & * {
-            cursor: pointer;
-          }
-          .title {
-            color: #042f5c;
-            font-family: "Roboto";
-            font-size: 12px;
-            font-weight: 400;
-            text-align: center;
-            border: 1px solid #bcbcbc;
-            background-color: #ebecef;
-            padding: 15px;
-          }
-          &.active {
+body.cart-body {
+  .content {
+    padding: 100px 6%;
+    max-width: 1280px;
+    margin: 0 auto;
+    h1.title {
+      color: #042f5c;
+      font-family: "Acrom";
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .body {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 35px;
+      .left-content {
+        background-color: #f3f4f6;
+        width: 66%;
+        .head {
+          display: flex;
+          justify-content: space-between;
+          .ismartbar,
+          .other {
+            width: 50%;
+            & * {
+              cursor: pointer;
+            }
             .title {
-              font-family: "Acrom";
-              font-weight: 700;
-              border: 0;
-              border-top: 5px solid #042f5c;
-              background-color: #f3f4f6;
+              color: #042f5c;
+              font-family: "Roboto";
+              font-size: 12px;
+              font-weight: 400;
+              text-align: center;
+              border: 1px solid #bcbcbc;
+              background-color: #ebecef;
+              padding: 15px;
+            }
+            &.active {
+              .title {
+                font-family: "Acrom";
+                font-weight: 700;
+                border: 0;
+                border-top: 5px solid #042f5c;
+                background-color: #f3f4f6;
+              }
             }
           }
         }
-      }
-      .myismart {
-        display: none;
-        background-color: #f3f4f6;
-        &.active {
-          display: block;
-        }
-        &.content-ismart.active {
-          display: flex;
-          flex-flow: row wrap;
-          position: relative;
-          padding: 25px;
-          justify-content: space-between;
-          .section {
-            margin-top: 35px;
-            flex: 0 1 calc(50% - 10px);
+        .myismart {
+          display: none;
+          background-color: #f3f4f6;
+          &.active {
+            display: block;
+          }
+          &.content-ismart.active {
+            display: flex;
+            flex-flow: row wrap;
+            position: relative;
+            padding: 25px;
+            justify-content: space-between;
+            .section {
+              margin-top: 35px;
+              flex: 0 1 calc(50% - 10px);
+              .title {
+                color: #042f5c;
+                font-family: "Acrom";
+                font-size: 18px;
+                font-weight: 700;
+              }
+              .section-body {
+                margin-top: 15px;
+                padding: 15px;
+                border: 1px solid #042f5c;
+                .product {
+                  display: flex;
+                  justify-content: space-between;
+                  .prod-data {
+                    display: flex;
+                    margin-left: 5%;
+                    img {
+                      width: 50px;
+                    }
+                    div {
+                      margin-left: 10px;
+                      p {
+                        margin-top: 10px;
+                        color: #042f5c;
+                        font-family: "Acrom";
+                        font-size: 11px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                      }
+                      .wine {
+                        margin-top: 0px;
+                        font-family: "Acrom";
+                        font-size: 8px;
+                        font-weight: 400;
+                        text-transform: none;
+                      }
+                    }
+                  }
+                  .remove {
+                    button {
+                      width: 72px;
+                      height: 21px;
+                      border-radius: 28px;
+                      border: 1px solid #042f5c;
+                      background-color: #00000000;
+                      color: #042f5c;
+                      font-family: "Acrom";
+                      font-size: 8px;
+                      font-weight: 400;
+                      cursor: pointer;
+                      margin-top: 20px;
+                    }
+                  }
+                }
+              }
+            }
+            .horizontal-line {
+              margin-top: 10px;
+              margin-bottom: 70px;
+            }
+            @media (max-width: 650px) {
+              display: block;
+            }
+          }
+          &.content-other.active {
+            padding: 25px;
             .title {
               color: #042f5c;
               font-family: "Acrom";
               font-size: 18px;
               font-weight: 700;
             }
-            .section-body {
-              margin-top: 15px;
-              padding: 15px;
-              border: 1px solid #042f5c;
-              .product {
+            .product {
+              display: flex;
+              justify-content: space-between;
+              padding: 10px;
+              .prod-info {
+                width: 50%;
                 display: flex;
-                justify-content: space-between;
-                .prod-data {
-                  display: flex;
-                  margin-left: 5%;
-                  img {
-                    width: 50px;
-                  }
-                  div {
-                    margin-left: 10px;
-                    p {
-                      margin-top: 10px;
-                      color: #042f5c;
+                justify-content: space-around;
+                img {
+                  height: 90px;
+                }
+                > div {
+                  > p {
+                    color: #042f5c;
+                    font-family: "Acrom";
+                    font-size: 13px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    margin-top: 8px;
+                    &.wine {
                       font-family: "Acrom";
-                      font-size: 11px;
-                      font-weight: 700;
-                      text-transform: uppercase;
-                    }
-                    .wine {
-                      margin-top: 0px;
-                      font-family: "Acrom W 00- Regular";
-                      font-size: 8px;
+                      font-size: 9px;
                       font-weight: 400;
-                      text-transform: none;
                     }
+                  }
+                  .product-count {
+                    margin-top: 15px;
+                    width: 50px;
+                    a {
+                      text-decoration: none;
+                      font-weight: 700;
+                      color: black;
+                    }
+                    .button-count {
+                      display: inline-block;
+                      width: 10px;
+                      height: 20px;
+                      background-color: #2196f300;
+                      color: #192b3f;
+                      font-size: 22px;
+                      line-height: 30px;
+                      text-align: center;
+                      border: none;
+                      outline: none;
+                      cursor: pointer;
+                      &:disabled {
+                        //background-color: silver;
+                      }
+                      &:last-child {
+                        position: relative;
+                      }
+                    }
+                    .number-product {
+                      background: #00000000;
+                      display: inline-block;
+                      width: 20px;
+                      height: 28px;
+                      border: 0;
+                      text-align: center;
+                      color: #192b3f;
+                      font-family: "Roboto", sans-serif;
+                      font-size: 18px;
+                      font-weight: 400;
+                    }
+                  }
+                }
+              }
+              .prod-action {
+                width: 50%;
+                display: flex;
+                justify-content: space-around;
+                .price {
+                  position: relative;
+                  span {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    color: #042f5c;
+                    font-family: "Acrom";
+                    font-size: 13px;
+                    font-weight: 700;
                   }
                 }
                 .remove {
                   button {
-                    width: 72px;
-                    height: 21px;
+                    width: 114px;
+                    height: 35px;
                     border-radius: 28px;
                     border: 1px solid #042f5c;
                     background-color: #00000000;
                     color: #042f5c;
-                    font-family: "Acrom W 00- Regular";
-                    font-size: 8px;
+                    font-family: "Acrom";
+                    font-size: 12px;
                     font-weight: 400;
                     cursor: pointer;
-                    margin-top: 20px;
+                    margin-top: 30px;
                   }
                 }
               }
             }
           }
-          .horizontal-line {
-            margin-top: 10px;
-            margin-bottom: 70px;
-          }
-          @media (max-width: 650px) {
-            display: block;
-          }
         }
-        &.content-other.active {
-          padding: 25px;
+      }
+      .right-content {
+        width: 32%;
+        .summary {
+          box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
+          background-color: #f3f4f5;
+          padding: 25px 25px 50px;
           .title {
             color: #042f5c;
+            font-family: "Acrom";
+            font-size: 24px;
+            font-weight: 700;
+          }
+          div {
+            width: 100%;
+            span {
+              color: #042f5c;
+              font-family: Helvetica;
+              font-size: 16px;
+              font-weight: 400;
+            }
+            .right {
+              float: right;
+            }
+          }
+          button {
+            cursor: pointer;
+            width: 100%;
+            height: 74px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+            background-color: #4ba663;
+            color: #ffffff;
+            font-family: "Acrom";
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 0;
+            margin-top: 50px;
+          }
+        }
+      }
+      @media (max-width: 900px) {
+        display: block;
+        .left-content {
+          width: 100%;
+        }
+        .right-content {
+          margin-top: 30px;
+          width: 100%;
+        }
+      }
+    }
+  }
+  .horizontal-line {
+    width: 100%;
+    border-bottom: 1px solid #acb9c7;
+    margin: 20px 0;
+  }
+  .return {
+    background-color: #f3f4f6;
+    margin-bottom: 60px;
+    .return-content {
+      padding: 30px 6%;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      > div {
+        max-width: 460px;
+        width: 48%;
+        .title {
+          padding: 15px;
+          padding-bottom: 0;
+          i {
+            margin-right: 15px;
+          }
+          span {
+            color: #212121;
             font-family: "Acrom";
             font-size: 18px;
             font-weight: 700;
           }
-          .product {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            .prod-info {
-              width: 50%;
-              display: flex;
-              justify-content: space-around;
-              img {
-                height: 90px;
-              }
-              > div {
-                > p {
-                  color: #042f5c;
-                  font-family: "Acrom";
-                  font-size: 13px;
-                  font-weight: 700;
-                  text-transform: uppercase;
-                  margin-top: 8px;
-                  &.wine {
-                    font-family: "Acrom W 00- Regular";
-                    font-size: 9px;
-                    font-weight: 400;
-                  }
-                }
-                .product-count {
-                  margin-top: 15px;
-                  width: 50px;
-                  a {
-                    text-decoration: none;
-                    font-weight: 700;
-                    color: black;
-                  }
-                  .button-count {
-                    display: inline-block;
-                    width: 10px;
-                    height: 20px;
-                    background-color: #2196f300;
-                    color: #192b3f;
-                    font-size: 22px;
-                    line-height: 30px;
-                    text-align: center;
-                    border: none;
-                    outline: none;
-                    cursor: pointer;
-                    &:disabled {
-                      //background-color: silver;
-                    }
-                    &:last-child {
-                      position: relative;
-                    }
-                  }
-                  .number-product {
-                    background: #00000000;
-                    display: inline-block;
-                    width: 20px;
-                    height: 28px;
-                    border: 0;
-                    text-align: center;
-                    color: #192b3f;
-                    font-family: "Roboto", sans-serif;
-                    font-size: 18px;
-                    font-weight: 400;
-                  }
-                }
-              }
-            }
-            .prod-action {
-              width: 50%;
-              display: flex;
-              justify-content: space-around;
-              .price {
-                position: relative;
-                span {
-                  position: absolute;
-                  top: 50%;
-                  transform: translateY(-50%);
-                  color: #042f5c;
-                  font-family: "Acrom";
-                  font-size: 13px;
-                  font-weight: 700;
-                }
-              }
-              .remove {
-                button {
-                  width: 114px;
-                  height: 35px;
-                  border-radius: 28px;
-                  border: 1px solid #042f5c;
-                  background-color: #00000000;
-                  color: #042f5c;
-                  font-family: "Acrom W 00- Regular";
-                  font-size: 12px;
-                  font-weight: 400;
-                  cursor: pointer;
-                  margin-top: 30px;
-                }
-              }
+        }
+        .description {
+          padding: 15px;
+          span {
+            color: #1d1e20;
+            font-family: "Roboto", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            a {
+              color: #1d1e20;
             }
           }
         }
       }
-    }
-    .right-content {
-      width: 32%;
-      .summary {
-        box-shadow: 0 0 6px rgba(0, 0, 0, 0.16);
-        background-color: #f3f4f5;
-        padding: 25px 25px 50px;
-        .title {
-          color: #042f5c;
-          font-family: "Acrom";
-          font-size: 24px;
-          font-weight: 700;
-        }
-        div {
+      @media (max-width: 990px) {
+        display: block;
+        > div {
           width: 100%;
+        }
+      }
+    }
+  }
+
+  .help {
+    margin-bottom: 60px;
+    max-width: 1280px;
+    padding: 0 6%;
+    .help-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-flow: row wrap;
+      position: relative;
+      justify-content: space-between;
+
+      > div {
+        flex: 0 1 calc(15% - 10px);
+        &:first-child {
+          flex: 0 1 calc(38% - 10px);
+        }
+        &:nth-child(2) {
+          flex: 0 1 calc(32% - 10px);
+        }
+        @media (max-width: 990px) {
+          flex: 0 1 calc(50% - 10px) !important;
+        }
+        @media (max-width: 990px) {
+          flex: 0 1 calc(100% - 10px) !important;
+        }
+        .title {
+          padding: 15px;
+          padding-bottom: 0;
           span {
             color: #042f5c;
-            font-family: Helvetica;
-            font-size: 16px;
+            font-family: "Roboto";
+            font-size: 18px;
+            font-weight: 700;
+          }
+        }
+        .description {
+          padding: 15px;
+          > a {
+            display: block;
+            margin-bottom: 10px;
+            color: #042f5c;
+          }
+          span {
+            color: #042f5c;
+            font-family: "Roboto", sans-serif;
+            font-size: 14px;
             font-weight: 400;
           }
-          .right {
-            float: right;
-          }
-        }
-        button {
-          cursor: pointer;
-          width: 100%;
-          height: 74px;
-          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-          background-color: #4ba663;
-          color: #ffffff;
-          font-family: "Acrom";
-          font-size: 18px;
-          font-weight: 700;
-          text-transform: uppercase;
-          border: 0;
-          margin-top: 50px;
-        }
-      }
-    }
-    @media (max-width: 900px) {
-      display: block;
-      .left-content {
-        width: 100%;
-      }
-      .right-content {
-        margin-top: 30px;
-        width: 100%;
-      }
-    }
-  }
-}
-.horizontal-line {
-  width: 100%;
-  border-bottom: 1px solid #acb9c7;
-  margin: 20px 0;
-}
-.return {
-  background-color: #f3f4f6;
-  margin-bottom: 60px;
-  .return-content {
-    padding: 30px 6%;
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    > div {
-      max-width: 460px;
-      width: 48%;
-      .title {
-        padding: 15px;
-        padding-bottom: 0;
-        i {
-          margin-right: 15px;
-        }
-        span {
-          color: #212121;
-          font-family: "Acrom";
-          font-size: 18px;
-          font-weight: 700;
-        }
-      }
-      .description {
-        padding: 15px;
-        span {
-          color: #1d1e20;
-          font-family: "Roboto", sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          a {
-            color: #1d1e20;
-          }
-        }
-      }
-    }
-    @media (max-width: 990px) {
-      display: block;
-      > div {
-        width: 100%;
-      }
-    }
-  }
-}
-
-.help {
-  margin-bottom: 60px;
-  max-width: 1280px;
-  padding: 0 6%;
-  .help-content {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
-    flex-flow: row wrap;
-    position: relative;
-    justify-content: space-between;
-
-    > div {
-      flex: 0 1 calc(15% - 10px);
-      &:first-child {
-        flex: 0 1 calc(38% - 10px);
-      }
-      &:nth-child(2) {
-        flex: 0 1 calc(32% - 10px);
-      }
-      @media (max-width: 990px) {
-        flex: 0 1 calc(50% - 10px)!important;
-      }
-      @media (max-width: 990px) {
-        flex: 0 1 calc(100% - 10px)!important;
-      }
-      .title {
-        padding: 15px;
-        padding-bottom: 0;
-        span {
-          color: #042f5c;
-          font-family: "Roboto";
-          font-size: 18px;
-          font-weight: 700;
-        }
-      }
-      .description {
-        padding: 15px;
-        > a {
-          display: block;
-          margin-bottom: 10px;
-          color: #042f5c;
-        }
-        span {
-          color: #042f5c;
-          font-family: "Roboto", sans-serif;
-          font-size: 14px;
-          font-weight: 400;
         }
       }
     }
   }
-}
 }

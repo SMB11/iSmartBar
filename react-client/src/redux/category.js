@@ -24,11 +24,13 @@ export default (state = initialState, action) => {
       return { ...state, categoryLoading: true };
     case CATEGORYGET_END:
       return { ...state, categoryLoading: false, categories: action.payload };
+    case GETROOTCATEGORYBRANDS_START:
+      return { ...state, categoryBrandsLoading: true };
     case GETROOTCATEGORYBRANDS_END:
       const categoryBrands = state.categoryBrands.slice(0);
       categoryBrands[action.payload.id] = action.payload.data;
       console.log(action);
-      return { ...state, categoryBrands };
+      return { ...state, categoryBrands, categoryBrandsLoading: false };
     default:
       return { ...state };
   }

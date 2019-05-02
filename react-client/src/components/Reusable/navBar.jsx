@@ -84,7 +84,10 @@ class navBar extends Component {
               </a>
             </li>
             <li>
-              <a onClick={this.openLocationModal.bind(this)}>
+              <a
+                className="locationEdit"
+                onClick={this.openLocationModal.bind(this)}
+              >
                 {this.state.location}
               </a>
             </li>

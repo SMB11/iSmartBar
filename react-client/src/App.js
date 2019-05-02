@@ -9,6 +9,7 @@ import StartProcessPage from "./components/StartProcess/startProcessPage";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Modal from "react-modal";
 import Routes from "./components/routes";
+import Footer from "./components/Reusable/footer";
 
 class App extends Component {
   constructor(props) {
@@ -25,8 +26,7 @@ class App extends Component {
   componentDidMount() {
     Modal.setAppElement("#App");
   }
-  componentWillUpdate() {
-  }
+  componentWillUpdate() {}
   render() {
     return (
       <BrowserRouter>
@@ -37,6 +37,7 @@ class App extends Component {
               <Route component={Routes} />
             </Switch>
           </Provider>
+          <Footer />
         </div>
       </BrowserRouter>
     );

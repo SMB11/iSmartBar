@@ -25,7 +25,8 @@ class landingPage extends Component {
 
   render() {
     return (
-      <div id="container">
+      <React.Fragment>
+        {/* <div id="container"> */}
         <NavBar />
         <SubNavBar />
         <div class="content">
@@ -204,8 +205,8 @@ class landingPage extends Component {
             </div>
           </div>
         </div>
-        <Footer />
-      </div>
+        {/* </div> */}
+      </React.Fragment>
     );
   }
 }

@@ -10,6 +10,7 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Modal from "react-modal";
 import Routes from "./components/routes";
 import Footer from "./components/Reusable/footer";
+import ScrollToTop from "./components/Reusable/ScrollToTop";
 
 class App extends Component {
   constructor(props) {
@@ -30,15 +31,17 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="container" id="App">
-          <Provider store={store}>
-            <Switch>
-              <Route path="/process" component={StartProcessPage} exact />
-              <Route component={Routes} />
-            </Switch>
-          </Provider>
-          <Footer />
-        </div>
+        <ScrollToTop>
+          <div className="container" id="App">
+            <Provider store={store}>
+              <Switch>
+                <Route path="/process" component={StartProcessPage} exact />
+                <Route component={Routes} />
+              </Switch>
+            </Provider>
+            <Footer />
+          </div>
+        </ScrollToTop>
       </BrowserRouter>
     );
   }

@@ -1,27 +1,31 @@
 import React, { Component } from 'react';
 import '../../assets/scss/mybar.scss';
+import { assetBaseUrl } from '../../api';
 
 class MyCartItem extends Component {
 
     render() {
+        const { product } = this.props;
+        const imageStyle = {
+            backgroundImage: product.imagePath
+                ? `url(${encodeURI(assetBaseUrl + product.imagePath)})`
+                : ""
+        }
         return (
             <React.Fragment>
                 <div class="product">
                     <div class="prod-data">
-                        <img src="images/products/product-small.svg" alt="" />
+                        <div className="image" style={imageStyle}></div>
                         <div>
-                            <p class="wine">Wine</p>
-                            <p>KOOR</p>
-                            <p>$29.99</p>
+                            <p>{product.name}</p>
+                            <p>€{product.price}</p>
                         </div>
                     </div>
                     <div class="remove">
                         <button>Remove</button>
                     </div>
                 </div>
-                <div class="horizontal-line"></div>
-                <div class="horizontal-line"></div>
-                <div class="horizontal-line"></div>
+
             </React.Fragment>
         );
     }

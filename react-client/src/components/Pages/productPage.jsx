@@ -16,6 +16,9 @@ import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import { assetBaseUrl } from "../../api";
 
 class ProductPage extends Component {
+  state = {
+    quantity: 1
+  };
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "product-body";
     const language = JSON.parse(
@@ -24,6 +27,22 @@ class ProductPage extends Component {
     const id = this.props.match.params.id;
     this.props.GetProductDescription(language, id);
   }
+
+  plusButtonClicked = () => {
+    let oldState = { ...this.state };
+    let newQuantity = oldState.quantity + 1;
+    return this.setState({ oldState, quantity: newQuantity });
+  };
+
+  minusButtonClicked = () => {
+    let oldState = { ...this.state };
+    let newQuantity = oldState.quantity;
+    if (oldState.quantity - 1 >= 1) {
+      newQuantity = oldState.quantity - 1;
+    }
+    return this.setState({ oldState, quantity: newQuantity });
+  };
+
   render() {
     const { product } = this.props;
     console.log(product);
@@ -61,16 +80,19 @@ class ProductPage extends Component {
               </div>
               <div class="prop">
                 <div class="product-count">
-                  <button class="button-count no-active" disabled>
+                  <button class="button-count no-active"
+                    onClick={this.minusButtonClicked}
+                  >
                     -
                   </button>
                   <input
                     type="text"
                     readonly
                     class="number-product"
-                    value="1"
+                    value={this.state.quantity}
                   />
-                  <button class="button-count">+</button>
+                  <button class="button-count"
+                    onClick={this.plusButtonClicked}>+</button>
                 </div>
                 <div class="button-content">
                   <button class="btn">

@@ -4,8 +4,10 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
   rootCategorySelector,
-  subCategorySelector
+  subCategorySelector,
+
 } from "../../redux/selectors/category";
+import { cartFullCountSelector } from '../../redux/selectors/cart'
 import "../../assets/scss/header.scss";
 import { Link } from "react-router-dom";
 class SubNavBar extends Component {
@@ -42,7 +44,7 @@ class SubNavBar extends Component {
               <Translate id="your_smartbar" />
             </span>
             <span>
-              <Translate id="items" /> (0)
+              <Translate id="items" /> ({this.props.cartQuantity})
             </span>
           </div>
         </div>
@@ -52,7 +54,9 @@ class SubNavBar extends Component {
 }
 const mapStateToProps = (state, props) => ({
   rootCategories: rootCategorySelector(state),
-  subCategories: id => subCategorySelector(state, id)
+  subCategories: id => subCategorySelector(state, id),
+  cartQuantity: cartFullCountSelector(state)
+
 });
 
 export default connect(mapStateToProps)(withLocalize(SubNavBar));

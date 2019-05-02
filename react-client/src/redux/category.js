@@ -55,7 +55,6 @@ export const GetRootCategoryBrandsEnd = (id, categoryBrands) => ({
 
 export const CategoryGet = lang => {
   console.log(lang);
-
   return (dispatch, getState) => {
     const state = getState();
     if (
@@ -68,7 +67,7 @@ export const CategoryGet = lang => {
         .then(response => {
           dispatch(CategoryGetEnd(response.data));
         })
-        .catch(err => {});
+        .catch(err => { });
     } else {
       //debugger;
     }
@@ -86,7 +85,7 @@ export const RootCategoryBrandGet = (lang, id) => {
           dispatch(GetRootCategoryBrandsEnd(id, response.data));
           console.log(response.data);
         })
-        .catch(err => {});
+        .catch(err => { });
     } else {
       //debugger;
     }

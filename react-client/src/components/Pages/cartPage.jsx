@@ -6,6 +6,9 @@ import Section from "../Reusable/section";
 import MyCartOtherItem from "../Reusable/myCartOtherItem";
 import SideBar from "../Reusable/sidebar";
 import Footer from "../Reusable/footer";
+import { connect } from 'react-redux';
+import { sectionCartSelector, insidePriceSelector, outisdePriceSelector } from '../../redux/selectors/cart'
+import { OutgoingMessage } from "http";
 class CartPage extends Component {
   state = {
     smartBar: true,
@@ -23,6 +26,7 @@ class CartPage extends Component {
     this.setState({ ...this.state, other: false, smartBar: true });
   };
   render() {
+    const prod = this.props.products;
     return (
       <React.Fragment>
         <NavBar />
@@ -63,7 +67,7 @@ class CartPage extends Component {
                   (this.state.smartBar ? " active" : "")
                 }
               >
-                <Section sectionTitle="Section 1" />
+                <Section sectionTitle="Section 1" size={1} />
                 <Section sectionTitle="Section 2" />
                 <Section sectionTitle="Section 3" />
                 <Section sectionTitle="Section 4" />
@@ -76,10 +80,13 @@ class CartPage extends Component {
                 }
               >
                 <h2 class="title">Other</h2>
-                <MyCartOtherItem />
-                <MyCartOtherItem />
-                <MyCartOtherItem />
-                <MyCartOtherItem />
+
+
+                {prod.map((p, index) => {
+                  return <MyCartOtherItem key={index} product={p} />
+                })}
+
+
               </div>
             </div>
             <div class="right-content">
@@ -87,25 +94,17 @@ class CartPage extends Component {
                 <span class="title">Order Summary</span>
                 <div class="horizontal-line" />
                 <div>
-                  <span>Items:</span>
-                  <span class="right">$99.99</span>
+                  <span>Items inside MiniBar:</span>
+                  <span class="right">€ {this.props.insidePrice}</span>
                 </div>
                 <div>
-                  <span>Shipping:</span>
-                  <span class="right">$0.00</span>
-                </div>
-                <div>
-                  <span>Total before tax:</span>
-                  <span class="right">$99.99</span>
-                </div>
-                <div>
-                  <span>Estimated tax to be collected:*</span>
-                  <span class="right">$0.00</span>
+                  <span>Items outisde MiniBar:</span>
+                  <span class="right">€ {this.props.outsidePrice}</span>
                 </div>
                 <div class="horizontal-line" />
                 <div>
                   <span>Order total:</span>
-                  <span class="right">$99.99</span>
+                  <span class="right">€ {this.props.total}</span>
                 </div>
                 <button>CHECKOUT</button>
               </div>
@@ -119,4 +118,20 @@ class CartPage extends Component {
   }
 }
 
-export default CartPage;
+const mapStateToProps = (state, props) => {
+  const insidePrice = insidePriceSelector(state);
+  const outsidePrice = outisdePriceSelector(state);
+  let total = (parseFloat(insidePrice) + parseFloat(outsidePrice)).toFixed(2);
+  console.log(total);
+  return {
+    products: sectionCartSelector(
+      state,
+      6
+    ),
+    insidePrice,
+    outsidePrice,
+    total
+  };
+};
+
+export default connect(mapStateToProps)(CartPage);

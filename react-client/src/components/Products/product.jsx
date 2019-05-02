@@ -66,7 +66,7 @@ class Product extends Component {
           </div>
           <div class="button-content">
             <button
-              onClick={() => this.props.addToCart(product.id)}
+              onClick={() => this.props.addToCart(product, this.state.quantity)}
               class="btn"
             >
               <img src="http://localhost:3000/images/add-to-cart.svg" alt="" />

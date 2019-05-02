@@ -71,9 +71,22 @@ body.cart-body {
                 margin-top: 15px;
                 padding: 15px;
                 border: 1px solid #042f5c;
+                .product:not(:last-child) {
+                  border-bottom: 1px solid #acb9c7;
+                }
                 .product {
+                  
+                  padding: 10px 0;
                   display: flex;
                   justify-content: space-between;
+                  .image{
+                    width: 50px;
+                    height: 50px;
+                    background-size: contain;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    z-index: 10;
+                  }
                   .prod-data {
                     display: flex;
                     margin-left: 5%;
@@ -141,8 +154,14 @@ body.cart-body {
                 width: 50%;
                 display: flex;
                 justify-content: space-around;
-                img {
-                  height: 90px;
+                
+                .image{
+                  width: 100px;
+                  height: 100px;
+                  background-size: contain;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  margin-right: 10px;
                 }
                 > div {
                   > p {

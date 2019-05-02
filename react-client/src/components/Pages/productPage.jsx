@@ -112,6 +112,8 @@ class ProductPage extends Component {
             {product ? rightContent : ""}
           </div>
         </div>
+
+        <Footer />
       </React.Fragment>
     );
   }

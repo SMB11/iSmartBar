@@ -101,6 +101,8 @@ class BrandPage extends Component {
             </div>
           </div>
         </div>
+
+        <Footer />
       </React.Fragment>
     );
   }

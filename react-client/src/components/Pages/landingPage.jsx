@@ -206,6 +206,8 @@ class landingPage extends Component {
           </div>
         </div>
         {/* </div> */}
+
+        <Footer />
       </React.Fragment>
     );
   }

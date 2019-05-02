@@ -39,7 +39,6 @@ class App extends Component {
                 <Route component={Routes} />
               </Switch>
             </Provider>
-            <Footer />
           </div>
         </ScrollToTop>
       </BrowserRouter>

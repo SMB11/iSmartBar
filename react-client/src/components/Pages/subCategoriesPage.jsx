@@ -4,12 +4,14 @@ import SubNavBar from "../Reusable/subNavBar";
 import NavBar from "../Reusable/navBar";
 import {
   rootCategoriesBrandsSelector,
-  rootCategoriesBrandsLoadingSelector
+  rootCategoriesBrandsLoadingSelector,
+  categorySelector
 } from "../../redux/selectors/category";
-import { RootCategoryBrandGet } from "../../redux/category";
+import category, { RootCategoryBrandGet } from "../../redux/category";
 
 import { withLocalize, Translate } from "react-localize-redux";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import Brand from "../Brands/brand";
@@ -37,7 +39,7 @@ class SubCategoriesPage extends Component {
     this.getBrands();
   }
   render() {
-    let { categoryBrands } = this.props;
+    let { categoryBrands, category } = this.props;
 
     if (!categoryBrands) categoryBrands = {};
     return (
@@ -46,8 +48,8 @@ class SubCategoriesPage extends Component {
         <SubNavBar />
         <div className="content">
           <div className="breadcrumbs">
-            <a href="">Category</a>
-            <a href="">Subcategory</a>
+            <Link to="/">Home</Link>
+            <Link>{category ? category.name : ""}</Link>
           </div>
           <div className="body">
             <div className="left-content">
@@ -94,6 +96,7 @@ const mapStateToProps = (state, props) => {
       state,
       parseInt(props.match.params.id)
     ),
+    category: categorySelector(state, parseInt(props.match.params.id)),
     loading: rootCategoriesBrandsLoadingSelector(state)
   };
 };

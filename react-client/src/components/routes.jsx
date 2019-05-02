@@ -40,7 +40,7 @@ class Routes extends Component {
         <React.Fragment>
           <Route path="/" component={LandingPage} exact />
           <Route path="/subcategory/:id" component={SubCategoriesPage} exact />
-          <Route path="/brand/:id" component={BrandPage} exact />
+          <Route path="/brand/:id/:brand" component={BrandPage} exact />
           <Route path="/product/:id" component={productPage} exact />
           <Route path="/cart" component={CartPage} exact />
         </React.Fragment>

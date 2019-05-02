@@ -8,6 +8,7 @@ import { withLocalize, Translate } from "react-localize-redux";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { GetBrandProducts } from "../../redux/products";
+import { Link } from "react-router-dom";
 import NavBar from "../Reusable/navBar";
 import SubNavBar from "../Reusable/subNavBar";
 import {
@@ -17,6 +18,7 @@ import {
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import { assetBaseUrl } from "../../api";
 import Footer from "../Reusable/footer";
+import { categorySelector } from "../../redux/selectors/category";
 class BrandPage extends Component {
   state = {
     hash: undefined
@@ -35,17 +37,24 @@ class BrandPage extends Component {
     this.props.GetBrandProducts(language, parseInt(this.props.match.params.id));
   }
   render() {
-    let products = this.props.products;
+    let { products, category } = this.props;
     if (!products) products = [];
+    console.log(category);
     return (
       <React.Fragment>
         <NavBar />
         <SubNavBar />
         <div class="content">
           <div class="breadcrumbs">
-            <a href="">Category</a>
-            <a href="">Subcategory</a>
-            <a href="">Brand</a>
+            <Link to="/">Home</Link>
+            {category ? (
+              <Link to={"/subcategory/" + category.id}>
+                {category ? category.name : ""}
+              </Link>
+            ) : (
+              ""
+            )}
+            <Link>{this.props.match.params.brand}</Link>
           </div>
           <div class="body">
             <div class="left-content">
@@ -82,7 +91,7 @@ class BrandPage extends Component {
                 >
                   <div className="ui loader" />
                 </div>
-                <div class="category-name">Tequila</div>
+                <div class="category-name">{this.props.match.params.brand}</div>
                 <div class="content">
                   {products.map(prod => (
                     <Product product={prod} />
@@ -100,6 +109,7 @@ class BrandPage extends Component {
 const mapStateToProps = (state, props) => {
   return {
     products: brandProductsSelector(state, parseInt(props.match.params.id)),
+    category: categorySelector(state, parseInt(props.match.params.catId)),
     loading: brandProductsLoadingSelector(state)
   };
 };

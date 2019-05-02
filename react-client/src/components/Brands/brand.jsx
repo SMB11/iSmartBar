@@ -12,7 +12,9 @@ class Brand extends Component {
     return (
       <div
         class="product"
-        onClick={() => this.redirect.bind(this)("/brand/" + brand.id)}
+        onClick={() =>
+          this.redirect.bind(this)("/brand/" + brand.id + "/" + brand.name)
+        }
       >
         <img src={assetBaseUrl + brand.imagePath} alt="" />
         <div class="background" />

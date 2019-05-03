@@ -32,7 +32,7 @@ class ProductHome extends Component {
         <div className="info">
           <p>{product.category}</p>
           <p>{product.name}</p>
-          <p>$ {product.price}</p>
+          <p>€ {product.price}</p>
         </div>
       </div>
     );

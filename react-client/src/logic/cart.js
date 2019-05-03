@@ -8,19 +8,14 @@ const canAddToCart = (cart, product, quantity) => {
   if (quantitySum + quantity > 5) {
     const outside = quantitySum + quantity - 5;
     let inside = 0;
-    if (quantitySum <= 5)
-      inside = 5 - quantitySum;
+    if (quantitySum <= 5) inside = 5 - quantitySum;
     return { outside, inside };
-  }
-  else {
+  } else {
     return { outside: 0, inside: quantity };
   }
 };
 const addToCart = (product, quantity) => {
-  if (!window.sessionStorage.getItem("carts")) {
-    window.sessionStorage.setItem("carts", JSON.stringify([[[], [], [], [], [], []]]));
-  }
-  let carts = JSON.parse(window.sessionStorage.getItem("carts"));
+  let carts = getCarts();
   if (quantity === 0) return carts;
   product.quantity = quantity;
   let oldCart = carts[carts.length - 1];
@@ -29,28 +24,30 @@ const addToCart = (product, quantity) => {
   const productInside = { ...product, quantity: distribution.inside };
   const productOutside = { ...product, quantity: distribution.outside };
   if (productInside.quantity > 0) {
-    const index = oldCart[product.size - 1].findIndex(p => p.id === productInside.id);
+    const index = oldCart[product.size - 1].findIndex(
+      p => p.id === productInside.id
+    );
     if (index >= 0)
       oldCart[product.size - 1][index].quantity += productInside.quantity;
-    else
-      oldCart[product.size - 1].push(productInside);
+    else oldCart[product.size - 1].push(productInside);
   }
   if (productOutside.quantity > 0) {
     const index = oldCart[5].findIndex(p => p.id === productOutside.id);
-    if (index >= 0)
-      oldCart[5][index].quantity += productOutside.quantity;
-    else
-      oldCart[5].push(productOutside);
+    if (index >= 0) oldCart[5][index].quantity += productOutside.quantity;
+    else oldCart[5].push(productOutside);
   }
   carts[carts.length - 1] = oldCart;
   window.sessionStorage.setItem("carts", JSON.stringify(carts));
   return carts;
-
 };
 const getCarts = () => {
-  const carts = JSON.parse(window.sessionStorage.getItem("carts"));
-  if (!carts) return [[]];
-
+  if (!window.sessionStorage.getItem("carts")) {
+    window.sessionStorage.setItem(
+      "carts",
+      JSON.stringify([[[], [], [], [], [], []]])
+    );
+  }
+  let carts = JSON.parse(window.sessionStorage.getItem("carts"));
   return carts;
 };
 export default {

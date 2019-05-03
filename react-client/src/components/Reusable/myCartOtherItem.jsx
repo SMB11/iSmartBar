@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/scss/mybar.scss'
 import { assetBaseUrl } from '../../api';
+import { Link } from 'react-router-dom';
 
 class myCartOtherItem extends Component {
 
@@ -17,7 +18,7 @@ class myCartOtherItem extends Component {
                     <div class="prod-info">
                         <div style={imageStyle} className="image"></div>
                         <div>
-                            <p>{product.name}</p>
+                            <Link className='product-name' to={"/product/" + product.id}> {product.name}</Link>
                             <div class="product-count">
                                 <button class="button-count no-active" disabled>-</button>
                                 <input type="text" readOnly class="number-product" value={product.quantity} />

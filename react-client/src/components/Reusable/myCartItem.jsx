@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../assets/scss/mybar.scss';
 import { assetBaseUrl } from '../../api';
+import { Link } from 'react-router-dom'
 
 class MyCartItem extends Component {
 
@@ -17,7 +18,7 @@ class MyCartItem extends Component {
                     <div class="prod-data">
                         <div className="image" style={imageStyle}></div>
                         <div>
-                            <p>{product.name}</p>
+                            <Link className="product-name" to={"/product/" + product.id}> {product.name} </Link>
                             <p>€{product.price}</p>
                         </div>
                     </div>

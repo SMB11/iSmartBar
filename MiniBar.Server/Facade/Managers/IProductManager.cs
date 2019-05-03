@@ -10,6 +10,7 @@ namespace Facade.Managers
     {
         Task<ProductUploadDTO> GetForUplaodByID(int id);
         Task<List<ProductDTO>> GetAll();
+        Task<List<ProductDTO>> GetTopFive();
         Task<ProductDTO> GetByID(int id);
         Task<List<ProductDTO>> GetBrandProducts(int id);
         Task<int> InsertAsync(ProductUploadDTO product);

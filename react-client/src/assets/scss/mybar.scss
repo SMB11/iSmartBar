@@ -75,17 +75,20 @@ body.cart-body {
                   border-bottom: 1px solid #acb9c7;
                 }
                 .product {
-                  
                   padding: 10px 0;
                   display: flex;
                   justify-content: space-between;
-                  .image{
+                  .image {
                     width: 50px;
                     height: 50px;
                     background-size: contain;
                     background-position: center;
                     background-repeat: no-repeat;
                     z-index: 10;
+
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                    flex-basis: 50px;
                   }
                   .prod-data {
                     display: flex;
@@ -101,7 +104,9 @@ body.cart-body {
                         font-family: "Acrom";
                         font-size: 11px;
                         font-weight: 700;
-                        text-transform: uppercase;
+                        overflow: hidden;
+                        max-height: 25px;
+                        padding-right: 10px;
                       }
                       .wine {
                         margin-top: 0px;
@@ -154,14 +159,18 @@ body.cart-body {
                 width: 50%;
                 display: flex;
                 justify-content: space-around;
-                
-                .image{
+
+                .image {
                   width: 100px;
                   height: 100px;
                   background-size: contain;
                   background-position: center;
                   background-repeat: no-repeat;
                   margin-right: 10px;
+
+                  flex-grow: 0;
+                  flex-shrink: 0;
+                  flex-basis: 100px;
                 }
                 > div {
                   > p {
@@ -292,6 +301,38 @@ body.cart-body {
             text-transform: uppercase;
             border: 0;
             margin-top: 50px;
+          }
+          .go-back {
+            margin-top: 35px;
+
+            a {
+              cursor: pointer;
+              color: #042f5c;
+              font-family: Roboto;
+              font-size: 13px;
+              font-weight: 400;
+              text-decoration: none;
+              text-align: center;
+              display: block;
+              position: relative;
+              &::before {
+                position: relative;
+                top: -1px;
+                content: "";
+                display: inline-block;
+                width: 5px;
+                height: 5px;
+                border-left: 1px solid #192b3f;
+                border-bottom: 1px solid #192b3f;
+                transform: rotate(45deg);
+                left: -4px;
+                transition: all 0.2s ease-out;
+              }
+            }
+
+            &:hover a::before {
+              left: -8px;
+            }
           }
         }
       }

@@ -1,290 +1,189 @@
 body.product-body {
-  .right-content {
-    .title {
-      color: #042f5c;
-      font-family: "Roboto", sans-serif;
-      font-size: 23px;
-      font-weight: 700;
-    }
-    .product-content {
-      margin-top: 15px;
+  // .right-content {
+  .product-wrapper {
+    width: 100%;
+  }
+  .title {
+    color: #042f5c;
+    font-family: "Roboto", sans-serif;
+    font-size: 23px;
+    font-weight: 700;
+  }
+  .product-content {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    .image-part {
+      width: 48%;
+      border-radius: 4px;
+      border: 1px solid #288cff66;
+      padding: 35px 0;
       display: flex;
-      justify-content: space-between;
-      .image-part {
-        width: 48%;
-        border-radius: 4px;
-        border: 1px solid #288cff66;
-        padding: 35px 0;
-        img {
-          max-width: 100%;
+      justify-content: center;
+      align-items: center;
+      img {
+        max-width: 100%;
+
+        height: 400px;
+      }
+    }
+    .info {
+      width: 48%;
+      .name {
+        color: #288cff;
+        font-family: "Roboto", sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        margin-bottom: 12px;
+      }
+      .rate {
+        margin: 10px 0 15px;
+        .ratized {
+          position: relative;
+          input[type="radio"] {
+            position: fixed;
+            top: 0;
+            right: 100%;
+            &:checked ~ input + label {
+              background: none;
+              color: #aaa;
+            }
+          }
+          label {
+            font-size: 1.8em;
+            cursor: pointer;
+          }
+          input + label {
+            color: orange;
+          }
         }
       }
-      .info {
-        width: 48%;
-        .name {
+      p {
+        color: #707070;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        &:last-child {
+          margin-top: 15px;
+        }
+      }
+      .price {
+        margin-top: 50px;
+        span {
           color: #288cff;
           font-family: "Roboto", sans-serif;
-          font-size: 26px;
+          font-size: 23px;
           font-weight: 700;
-          text-transform: uppercase;
-
-          margin-bottom: 12px;
-        }
-        .rate {
-          margin: 10px 0 15px;
-          .ratized {
-            position: relative;
-            input[type="radio"] {
-              position: fixed;
-              top: 0;
-              right: 100%;
-              &:checked ~ input + label {
-                background: none;
-                color: #aaa;
-              }
-            }
-            label {
-              font-size: 1.8em;
-              cursor: pointer;
-            }
-            input + label {
-              color: orange;
-            }
-          }
-        }
-        p {
-          color: #707070;
-          font-family: "Roboto", sans-serif;
-          font-size: 16px;
-          font-weight: 400;
-          &:last-child {
-            margin-top: 15px;
-          }
-        }
-        .price {
-          margin-top: 50px;
-          span {
-            color: #288cff;
-            font-family: "Roboto", sans-serif;
-            font-size: 23px;
-            font-weight: 700;
-          }
-        }
-        .prop {
-          display: flex;
-          justify-content: left;
-          .product-count {
-            margin-top: 26px;
-            width: 50px;
-            a {
-              text-decoration: none;
-              font-weight: 700;
-              color: black;
-            }
-            .button-count {
-              display: inline-block;
-              width: 10px;
-              height: 20px;
-              background-color: #2196f300;
-              color: #192b3f;
-              font-size: 22px;
-              line-height: 30px;
-              text-align: center;
-              border: none;
-              outline: none;
-              cursor: pointer;
-              &:last-child {
-                position: relative;
-              }
-            }
-            .number-product {
-              display: inline-block;
-              width: 20px;
-              height: 28px;
-              border: 0;
-              text-align: center;
-              color: #192b3f;
-              font-family: "Roboto", sans-serif;
-              font-size: 18px;
-              font-weight: 400;
-            }
-          }
-
-          .button-content {
-            margin-left: 50px;
-            margin-top: 20px;
-            .btn {
-              width: 168px;
-              height: 44px;
-              color: #288cff;
-              font-family: "Roboto", sans-serif;
-              font-size: 11px;
-              font-weight: 400;
-              padding: 12px;
-              border-radius: 28px;
-              border: 2px solid #288cff;
-              background-color: #e8f1ff;
-              img {
-                width: 23px;
-              }
-              span {
-                vertical-align: top;
-              }
-              &:hover {
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
-              }
-            }
-          }
         }
       }
-    }
-    .information {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 100px;
-      .description,
-      .chemical-compound {
-        width: 100%;
-        .title {
-          border: 1px solid #707070;
-          background-color: #042f5c;
-          width: 100%;
-          padding: 20px 25px;
-          span {
-            color: #ffffff;
-            font-family: "Acrom";
-            font-size: 16px;
+      .prop {
+        display: flex;
+        justify-content: left;
+        .product-count {
+          margin-top: 26px;
+          width: 50px;
+          a {
+            text-decoration: none;
             font-weight: 700;
+            color: black;
           }
-        }
-        &.description {
-          .title {
-            border-right: 0;
-          }
-        }
-        &.chemical-compound {
-          .title {
-            border-left: 0;
-          }
-          .content {
-            span {
-              margin-bottom: 15px;
-              display: block;
+          .button-count {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #2196f300;
+            color: #192b3f;
+            font-size: 22px;
+            line-height: 30px;
+            text-align: center;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            &:last-child {
+              position: relative;
             }
           }
-        }
-        .content {
-          padding: 25px;
-          span {
+          .number-product {
+            display: inline-block;
+            width: 20px;
+            height: 28px;
+            border: 0;
+            text-align: center;
             color: #192b3f;
             font-family: "Roboto", sans-serif;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 400;
           }
         }
-      }
-    }
-    .line-horizontal {
-      margin: 50px 0;
-      border: 1px solid #707070;
-    }
-    .recommended {
-      padding: 15px 25px;
-      h3 {
-        color: #192b3f;
-        font-family: "Acrom";
-        font-size: 16px;
-        font-weight: 700;
-      }
 
-      // Wrapper
-      .wrapper {
-        width: 100%;
-        transform: translateY(20%); //Testing
-        margin-right: auto;
-        margin-left: auto;
-      }
-
-      .product-slider {
-        position: relative;
-        height: 300px;
-      }
-
-      .icon {
-        height: 30px;
-        width: 30px;
-        fill: #000;
-        cursor: pointer;
-      }
-
-      .prev-btn {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        left: -20px;
-        transform: translateY(-50%);
-        margin: 0 10px;
-      }
-
-      .next-btn {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        right: -20px;
-        transform: translateY(-50%);
-        margin: 0 10px;
-      }
-
-      .slider {
-        height: 100%;
-        margin: 0 20px;
-        position: relative;
-        overflow: hidden;
-
-        &__wrapper {
-          height: 100%;
-          width: 10000%;
-          & > :not(:last-child) {
-            margin-right: 30px;
-          }
-          transition: margin-left 0.5s ease;
-        }
-      }
-
-      .item {
-        height: 100%;
-        width: 240px;
-        float: left;
-        position: relative;
-        & * {
-          cursor: pointer;
-        }
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          .item__info {
-            box-shadow: 0 0 2px rgba(0, 0, 0, 0.07);
+        .button-content {
+          margin-left: 50px;
+          margin-top: 20px;
+          .btn {
+            width: 168px;
+            height: 44px;
+            color: #288cff;
+            font-family: "Roboto", sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            padding: 12px;
+            border-radius: 28px;
+            border: 2px solid #288cff;
             background-color: #e8f1ff;
+            img {
+              width: 23px;
+            }
+            span {
+              vertical-align: top;
+            }
+            &:hover {
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+            }
           }
         }
-
-        &__image {
-          height: 190px;
-          width: 100%;
-          margin: 0 auto;
-          position: relative;
-          overflow: hidden;
-
-          & > a > img {
-            height: 180px;
-            width: 100%;
-            transform: scale(1);
+      }
+    }
+  }
+  .information {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    .description,
+    .chemical-compound {
+      width: 100%;
+      .title {
+        border: 1px solid #707070;
+        background-color: #042f5c;
+        width: 100%;
+        padding: 20px 25px;
+        span {
+          color: #ffffff;
+          font-family: "Acrom";
+          font-size: 16px;
+          font-weight: 700;
+        }
+      }
+      &.description {
+        .title {
+          border-right: 0;
+        }
+      }
+      &.chemical-compound {
+        .title {
+          border-left: 0;
+        }
+        .content {
+          span {
+            margin-bottom: 15px;
+            display: block;
           }
         }
-
-        &__info {
-          height: 50px;
-          width: 100%;
-          padding: 0 10px;
+      }
+      .content {
+        padding: 25px;
+        span {
           color: #192b3f;
           font-family: "Roboto", sans-serif;
           font-size: 16px;
@@ -293,4 +192,113 @@ body.product-body {
       }
     }
   }
+  .line-horizontal {
+    margin: 50px 0;
+    border: 1px solid #707070;
+  }
+  .recommended {
+    padding: 15px 25px;
+    h3 {
+      color: #192b3f;
+      font-family: "Acrom";
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    // Wrapper
+    .wrapper {
+      width: 100%;
+      transform: translateY(20%); //Testing
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .product-slider {
+      position: relative;
+      height: 300px;
+    }
+
+    .icon {
+      height: 30px;
+      width: 30px;
+      fill: #000;
+      cursor: pointer;
+    }
+
+    .prev-btn {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: -20px;
+      transform: translateY(-50%);
+      margin: 0 10px;
+    }
+
+    .next-btn {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transform: translateY(-50%);
+      margin: 0 10px;
+    }
+
+    .slider {
+      height: 100%;
+      margin: 0 20px;
+      position: relative;
+      overflow: hidden;
+
+      &__wrapper {
+        height: 100%;
+        width: 10000%;
+        & > :not(:last-child) {
+          margin-right: 30px;
+        }
+        transition: margin-left 0.5s ease;
+      }
+    }
+
+    .item {
+      height: 100%;
+      width: 240px;
+      float: left;
+      position: relative;
+      & * {
+        cursor: pointer;
+      }
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        .item__info {
+          box-shadow: 0 0 2px rgba(0, 0, 0, 0.07);
+          background-color: #e8f1ff;
+        }
+      }
+
+      &__image {
+        height: 190px;
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+
+        & > a > img {
+          height: 180px;
+          width: 100%;
+          transform: scale(1);
+        }
+      }
+
+      &__info {
+        height: 50px;
+        width: 100%;
+        padding: 0 10px;
+        color: #192b3f;
+        font-family: "Roboto", sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+  }
+  // }
 }

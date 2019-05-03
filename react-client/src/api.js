@@ -2,7 +2,8 @@ import axios from "axios";
 import { withLocalize } from "react-localize-redux";
 const apiUrl =
   "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
-const iSmartBarApiUrl = "http://ismartbarapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
+const iSmartBarApiUrl =
+  "http://ismartbarapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
 
 const getHeader = lang => {
   if (lang)
@@ -48,15 +49,12 @@ export default {
         getCoreUrl(`product/brand/${id}`, true),
         getHeader(lang)
       );
-    }
-  },
-  productDescription: {
+    },
     getProductDescription: (lang, id) => {
-      return axios.get(
-        getCoreUrl(`product/${id}`, true),
-        getHeader(lang)
-      );
+      return axios.get(getCoreUrl(`product/${id}`, true), getHeader(lang));
+    },
+    getTopFive: lang => {
+      return axios.get(getCoreUrl(`product/topFive`, true), getHeader(lang));
     }
   }
-
 };

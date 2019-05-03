@@ -6,9 +6,16 @@ import Section from "../Reusable/section";
 import MyCartOtherItem from "../Reusable/myCartOtherItem";
 import SideBar from "../Reusable/sidebar";
 import Footer from "../Reusable/footer";
-import { connect } from 'react-redux';
-import { sectionCartSelector, insidePriceSelector, outisdePriceSelector } from '../../redux/selectors/cart'
+import { connect } from "react-redux";
+import {
+  sectionCartSelector,
+  insidePriceSelector,
+  outisdePriceSelector
+} from "../../redux/selectors/cart";
 import { OutgoingMessage } from "http";
+import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+
 class CartPage extends Component {
   state = {
     smartBar: true,
@@ -31,11 +38,11 @@ class CartPage extends Component {
       <React.Fragment>
         <NavBar />
         <SubNavBar />
-        <div class="content">
-          <h1 class="title">My iSmartBar</h1>
-          <div class="body">
-            <div class="left-content">
-              <div class="head">
+        <div className="content">
+          <h1 className="title">My iSmartBar</h1>
+          <div className="body">
+            <div className="left-content">
+              <div className="head">
                 <div
                   data-id="0"
                   className={
@@ -44,7 +51,7 @@ class CartPage extends Component {
                 >
                   <div
                     onClick={this.smartBarButtonClicked.bind(this)}
-                    class="title"
+                    className="title"
                   >
                     <span>iSmartBar</span>
                   </div>
@@ -55,7 +62,7 @@ class CartPage extends Component {
                 >
                   <div
                     onClick={this.otherButtonClicked.bind(this)}
-                    class="title"
+                    className="title"
                   >
                     <span>Other</span>
                   </div>
@@ -79,34 +86,34 @@ class CartPage extends Component {
                   "myismart content-other" + (this.state.other ? " active" : "")
                 }
               >
-                <h2 class="title">Other</h2>
-
+                <h2 className="title">Other</h2>
 
                 {prod.map((p, index) => {
-                  return <MyCartOtherItem key={index} product={p} />
+                  return <MyCartOtherItem key={index} product={p} />;
                 })}
-
-
               </div>
             </div>
-            <div class="right-content">
-              <div class="summary">
-                <span class="title">Order Summary</span>
-                <div class="horizontal-line" />
+            <div className="right-content">
+              <div className="summary">
+                <span className="title">Order Summary</span>
+                <div className="horizontal-line" />
                 <div>
                   <span>Items inside MiniBar:</span>
-                  <span class="right">€ {this.props.insidePrice}</span>
+                  <span className="right">€ {this.props.insidePrice}</span>
                 </div>
                 <div>
                   <span>Items outisde MiniBar:</span>
-                  <span class="right">€ {this.props.outsidePrice}</span>
+                  <span className="right">€ {this.props.outsidePrice}</span>
                 </div>
-                <div class="horizontal-line" />
+                <div className="horizontal-line" />
                 <div>
                   <span>Order total:</span>
-                  <span class="right">€ {this.props.total}</span>
+                  <span className="right">€ {this.props.total}</span>
                 </div>
                 <button>CHECKOUT</button>
+                <div className="go-back">
+                  <Link to="/">Continue Shopping</Link>
+                </div>
               </div>
             </div>
           </div>
@@ -124,14 +131,11 @@ const mapStateToProps = (state, props) => {
   let total = (parseFloat(insidePrice) + parseFloat(outsidePrice)).toFixed(2);
   console.log(total);
   return {
-    products: sectionCartSelector(
-      state,
-      6
-    ),
+    products: sectionCartSelector(state, 6),
     insidePrice,
     outsidePrice,
     total
   };
 };
 
-export default connect(mapStateToProps)(CartPage);
+export default connect(mapStateToProps)(withRouter(CartPage));

@@ -15,9 +15,9 @@ import CartPage from "./Pages/cartPage";
 
 class Routes extends Component {
   componentWillUpdate() {
-    if (window.sessionStorage.getItem(languageStepStorageKey)) {
+    if (window.localStorage.getItem(languageStepStorageKey)) {
       const language = JSON.parse(
-        window.sessionStorage.getItem(languageStepStorageKey)
+        window.localStorage.getItem(languageStepStorageKey)
       ).selected.id;
       if (
         !this.props.activeLanguage ||
@@ -31,8 +31,8 @@ class Routes extends Component {
   }
   render() {
     if (
-      !JSON.parse(window.sessionStorage.getItem(languageStepStorageKey)) ||
-      !JSON.parse(window.sessionStorage.getItem(locationStepStorageKey))
+      !JSON.parse(window.localStorage.getItem(languageStepStorageKey)) ||
+      !JSON.parse(window.localStorage.getItem(locationStepStorageKey))
     )
       return <Redirect to="/process" />;
     else {

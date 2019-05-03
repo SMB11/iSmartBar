@@ -11,14 +11,14 @@ class Brand extends Component {
     const { brand } = this.props;
     return (
       <div
-        class="product"
+        className="product"
         onClick={() =>
           this.redirect.bind(this)("/brand/" + brand.id + "/" + brand.name)
         }
       >
         <img src={assetBaseUrl + brand.imagePath} alt="" />
-        <div class="background" />
-        <span class="product-title">{brand.name}</span>
+        <div className="background" />
+        <span className="product-title">{brand.name}</span>
       </div>
     );
   }

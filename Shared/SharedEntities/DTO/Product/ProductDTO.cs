@@ -14,7 +14,7 @@ namespace SharedEntities.DTO.Product
         public float Price { get; set; }
         public string Brand { get; set; }
         public string ImagePath { get; set; }
-        public ProductSize Size { get; set; }
+        public int Size { get; set; }
     }
 
     public class ProductLangData

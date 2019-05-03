@@ -116,6 +116,10 @@ svg path {
     }
   }
 }
+
+.categories-row .category:not(:last-child) .category-content {
+  border-right: 1px solid #7070701f;
+}
 .categories-content {
   padding: 0;
   > div {

@@ -12,7 +12,7 @@ class ChooseLanguage extends Component {
   };
   componentDidMount() {
     const state = JSON.parse(
-      window.sessionStorage.getItem(languageStepStorageKey)
+      window.localStorage.getItem(languageStepStorageKey)
     );
     if (state) this.setState(state);
   }
@@ -30,7 +30,7 @@ class ChooseLanguage extends Component {
     this.setState({ ...this.state, selected: language });
   }
   handleFinish() {
-    window.sessionStorage.setItem(
+    window.localStorage.setItem(
       languageStepStorageKey,
       JSON.stringify(this.state)
     );
@@ -38,7 +38,7 @@ class ChooseLanguage extends Component {
   }
   render() {
     const { languages } = this.props;
-    const isButtonDisabled = !this.state.selected;
+    const isButtonDisabled = !this.state.selected.id;
     return (
       <div className="step step3">
         <form action="">

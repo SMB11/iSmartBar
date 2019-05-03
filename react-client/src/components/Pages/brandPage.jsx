@@ -32,7 +32,7 @@ class BrandPage extends Component {
   }
   getProducts() {
     const language = JSON.parse(
-      window.sessionStorage.getItem(languageStepStorageKey)
+      window.localStorage.getItem(languageStepStorageKey)
     ).selected.id;
     this.props.GetBrandProducts(language, parseInt(this.props.match.params.id));
   }
@@ -44,8 +44,8 @@ class BrandPage extends Component {
       <React.Fragment>
         <NavBar />
         <SubNavBar />
-        <div class="content">
-          <div class="breadcrumbs">
+        <div className="content">
+          <div className="breadcrumbs">
             <Link to="/">Home</Link>
             {category ? (
               <Link to={"/subcategory/" + category.id}>
@@ -56,51 +56,30 @@ class BrandPage extends Component {
             )}
             <Link>{this.props.match.params.brand}</Link>
           </div>
-          <div class="body">
-            <div class="left-content">
-              <SideBar>
-                <div class="filter">
-                  <div class="title">Subcategory</div>
-                  <div>
-                    <p>
-                      <label for="test1">Sub 1</label>
-                    </p>
-                    <p>
-                      <label for="test2">Sub 2</label>
-                    </p>
-                    <p>
-                      <label for="test3">Sub 3</label>
-                    </p>
-                    <p>
-                      <label for="test4">Sub 4</label>
-                    </p>
-                    <p>
-                      <label for="test5">Sub 5</label>
-                    </p>
-                  </div>
-                </div>
-              </SideBar>
-            </div>
-
-            <div class="right-content">
-              <div class="products loading-wrapper">
-                <div
-                  className={
-                    "ui dimmer " + (this.props.loading ? "active" : "")
-                  }
-                >
-                  <div className="ui loader" />
-                </div>
-                <div class="category-name">{this.props.match.params.brand}</div>
-                <div class="content">
-                  {products.map(prod => (
-                    <Product product={prod} />
-                  ))}
-                </div>
+          <div className="body">
+            {/* <div className="right-content"> */}
+            <div
+              className={
+                "products  " + (this.props.loading ? "loading-wrapper" : "")
+              }
+            >
+              <div
+                className={"ui dimmer " + (this.props.loading ? "active" : "")}
+              >
+                <div className="ui loader" />
+              </div>
+              <div className="category-name">
+                {this.props.match.params.brand}
+              </div>
+              <div className="content">
+                {products.map(prod => (
+                  <Product product={prod} />
+                ))}
               </div>
             </div>
           </div>
         </div>
+        {/* </div> */}
 
         <Footer />
       </React.Fragment>

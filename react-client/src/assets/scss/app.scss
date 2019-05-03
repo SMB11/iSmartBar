@@ -90,7 +90,10 @@ body {
     letter-spacing: 1.02px;
     text-transform: uppercase;
     cursor: pointer;
-
+    &:disabled {
+      opacity: 0.7;
+      cursor: no-drop;
+    }
     &:hover {
       color: #fff;
       box-shadow: $button-box-shadow-hover;
@@ -772,4 +775,9 @@ body {
 .loading-wrapper {
   position: relative;
   min-height: 400px;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  width: 100%;
 }

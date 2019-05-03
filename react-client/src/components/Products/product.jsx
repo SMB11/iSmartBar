@@ -38,36 +38,36 @@ class Product extends Component {
     };
     console.log(product.imagePath);
     return (
-      <div class="product">
+      <div className="product">
         <div
-          class="product-image"
+          className="product-image"
           style={imageStyle}
           onClick={() => this.redirect("/product/" + product.id)}
         />
-        <span class="product-title">{product.name}</span>
-        <span class="price">€ {product.price}</span>
-        <div class="prop">
-          <div class="product-count">
+        <span className="product-title">{product.name}</span>
+        <span className="price">€ {product.price}</span>
+        <div className="prop">
+          <div className="product-count">
             <button
               onClick={this.minusButtonClicked}
-              class="button-count no-active"
+              className="button-count no-active"
             >
               -
             </button>
             <input
               type="text"
               readonly
-              class="number-product"
+              className="number-product"
               value={this.state.quantity}
             />
-            <button onClick={this.plusButtonClicked} class="button-count">
+            <button onClick={this.plusButtonClicked} className="button-count">
               +
             </button>
           </div>
-          <div class="button-content">
+          <div className="button-content">
             <button
               onClick={() => this.props.addToCart(product, this.state.quantity)}
-              class="btn"
+              className="btn"
             >
               <img src="http://localhost:3000/images/add-to-cart.svg" alt="" />
               <span>Add to Cart</span>

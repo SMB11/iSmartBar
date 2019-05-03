@@ -6,6 +6,7 @@ import { withLocalize, Translate } from "react-localize-redux";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { CategoryGet } from "../../redux/category";
+import { GetTopFive } from "../../redux/products";
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import "../../assets/scss/home.scss";
 import SubNavBar from "../Reusable/subNavBar";
@@ -13,6 +14,11 @@ import { rootCategorySelector } from "../../redux/selectors/category";
 import Footer from "../Reusable/footer";
 
 import {} from "react-router";
+import {
+  topFiveSelector,
+  topFiveLoadingSelector
+} from "../../redux/selectors/product";
+import ProductHome from "../Products/productHome";
 class landingPage extends Component {
   redirect(target) {
     this.props.history.push(target);
@@ -21,30 +27,41 @@ class landingPage extends Component {
   state = {};
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "landing-body";
+    this.getProducts();
+  }
+  componentDidUpdate() {
+    this.getProducts();
+  }
+  getProducts() {
+    const language = JSON.parse(
+      window.localStorage.getItem(languageStepStorageKey)
+    ).selected.id;
+    this.props.GetTopFive(language);
   }
 
   render() {
+    console.log(this.props.topFive);
     return (
       <React.Fragment>
         {/* <div id="container"> */}
         <NavBar />
         <SubNavBar />
-        <div class="content">
-          <div class="homepage-img">
-            <img class="homepage-img" src="images/homepage-img.svg" alt="" />
+        <div className="content">
+          <div className="homepage-img">
+            <img className="homepage-img" src="images/home-image.png" alt="" />
           </div>
         </div>
-        <div class="categories-content">
-          <div class="title">
+        <div className="categories-content">
+          <div className="title">
             <h2>
               <Translate id="categories" />
             </h2>
           </div>
-          <div class="line-horizontal" />
-          <div class="categories">
-            <div class="categories-row">
+          <div className="line-horizontal" />
+          <div className="categories">
+            <div className="categories-row">
               <div
-                class="category"
+                className="category"
                 onClick={() =>
                   this.redirect(
                     this.props.rootCategories[0]
@@ -53,18 +70,18 @@ class landingPage extends Component {
                   )
                 }
               >
-                <h3 class="title">
+                <h3 className="title">
                   <div className="titleBefore" />
                   {this.props.rootCategories[0]
                     ? this.props.rootCategories[0].name
                     : ""}
                   <div className="titleAfter" />
                 </h3>
-                <div class="category-content">
-                  <div class="category-image">
+                <div className="category-content">
+                  <div className="category-image">
                     <img src="images/food.svg" alt="" />
                   </div>
-                  <div class="description">
+                  <div className="description">
                     <span>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -74,7 +91,7 @@ class landingPage extends Component {
                 </div>
               </div>
               <div
-                class="category"
+                className="category"
                 onClick={() =>
                   this.redirect(
                     this.props.rootCategories[1]
@@ -83,7 +100,7 @@ class landingPage extends Component {
                   )
                 }
               >
-                <h3 class="title">
+                <h3 className="title">
                   <div className="titleBefore" />
                   {this.props.rootCategories[1]
                     ? this.props.rootCategories[1].name
@@ -91,11 +108,11 @@ class landingPage extends Component {
 
                   <div className="titleAfter" />
                 </h3>
-                <div class="category-content">
-                  <div class="category-image">
+                <div className="category-content">
+                  <div className="category-image">
                     <img src="images/drink.svg" alt="" />
                   </div>
-                  <div class="description">
+                  <div className="description">
                     <span>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -105,7 +122,7 @@ class landingPage extends Component {
                 </div>
               </div>
               <div
-                class="category"
+                className="category"
                 onClick={() =>
                   this.redirect(
                     this.props.rootCategories[2]
@@ -114,7 +131,7 @@ class landingPage extends Component {
                   )
                 }
               >
-                <h3 class="title">
+                <h3 className="title">
                   <div className="titleBefore" />
                   {this.props.rootCategories[2]
                     ? this.props.rootCategories[2].name
@@ -122,11 +139,11 @@ class landingPage extends Component {
 
                   <div className="titleAfter" />
                 </h3>
-                <div class="category-content">
-                  <div class="category-image">
+                <div className="category-content">
+                  <div className="category-image">
                     <img src="images/kids.svg" alt="" />
                   </div>
-                  <div class="description">
+                  <div className="description">
                     <span>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -138,69 +155,26 @@ class landingPage extends Component {
             </div>
           </div>
         </div>
-        <div class="content">
-          <div class="most-reviewed">
-            <div class="title">
+        <div className="content">
+          <div className="most-reviewed">
+            <div className="title">
               <h2>
                 <Translate id="most_reviewed_products" />
               </h2>
             </div>
-            <div class="products-columns">
-              <div class="products-column">
-                <div class="product">
-                  <div class="product-image">
-                    <img src="images/product1.svg" alt="" />
-                  </div>
-                  <div class="info">
-                    <p>Category</p>
-                    <p>Name</p>
-                    <p>$ XX.xx</p>
-                  </div>
-                </div>
-                <div class="product">
-                  <div class="product-image">
-                    <img src="images/product2.svg" alt="" />
-                  </div>
-                  <div class="info">
-                    <p>Category</p>
-                    <p>Name</p>
-                    <p>$ XX.xx</p>
-                  </div>
+            <div className="products-columns">
+              <div className="products-column">
+                <ProductHome product={this.props.topFive[0]} />
+                <ProductHome product={this.props.topFive[1]} />
+              </div>
+              <div className="products-column">
+                <div className="product">
+                  <ProductHome product={this.props.topFive[2]} />
                 </div>
               </div>
-              <div class="products-column">
-                <div class="product">
-                  <div class="product-image">
-                    <img src="images/big-product.svg" alt="" />
-                  </div>
-                  <div class="info">
-                    <p>Category</p>
-                    <p>Name</p>
-                    <p>$ XX.xx</p>
-                  </div>
-                </div>
-              </div>
-              <div class="products-column">
-                <div class="product">
-                  <div class="product-image">
-                    <img src="images/product3.svg" alt="" />
-                  </div>
-                  <div class="info">
-                    <p>Category</p>
-                    <p>Name</p>
-                    <p>$ XX.xx</p>
-                  </div>
-                </div>
-                <div class="product">
-                  <div class="product-image">
-                    <img src="images/product1.svg" alt="" />
-                  </div>
-                  <div class="info">
-                    <p>Category</p>
-                    <p>Name</p>
-                    <p>$ XX.xx</p>
-                  </div>
-                </div>
+              <div className="products-column">
+                <ProductHome product={this.props.topFive[3]} />
+                <ProductHome product={this.props.topFive[4]} />
               </div>
             </div>
           </div>
@@ -213,12 +187,15 @@ class landingPage extends Component {
   }
 }
 const mapStateToProps = (state, props) => ({
-  rootCategories: rootCategorySelector(state)
+  rootCategories: rootCategorySelector(state),
+  topFive: topFiveSelector(state),
+  topFiveLaoding: topFiveLoadingSelector(state)
 });
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      CategoryGet
+      CategoryGet,
+      GetTopFive
     },
     dispatch
   );

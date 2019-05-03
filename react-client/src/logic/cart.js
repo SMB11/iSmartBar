@@ -37,17 +37,17 @@ const addToCart = (product, quantity) => {
     else oldCart[5].push(productOutside);
   }
   carts[carts.length - 1] = oldCart;
-  window.sessionStorage.setItem("carts", JSON.stringify(carts));
+  window.localStorage.setItem("carts", JSON.stringify(carts));
   return carts;
 };
 const getCarts = () => {
-  if (!window.sessionStorage.getItem("carts")) {
-    window.sessionStorage.setItem(
+  if (!window.localStorage.getItem("carts")) {
+    window.localStorage.setItem(
       "carts",
       JSON.stringify([[[], [], [], [], [], []]])
     );
   }
-  let carts = JSON.parse(window.sessionStorage.getItem("carts"));
+  let carts = JSON.parse(window.localStorage.getItem("carts"));
   return carts;
 };
 export default {

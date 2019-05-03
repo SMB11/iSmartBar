@@ -250,15 +250,29 @@
         min-width: 260px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
-        padding: 10px 0;
+        padding: 20px 0;
         a {
-          color: #213a5f;
-          padding: 12px 16px;
+          padding: 0 20px;
           text-decoration: none;
           display: block;
+
+          color: #213a5f;
+          span {
+            font-family: "Roboto";
+            color: #3f4864;
+            padding: 12px 16px;
+            font-size: 16px;
+            font-weight: 400;
+            display: block;
+          }
+          &:not(:last-child) span {
+            border-bottom: 1px solid #eaecee;
+          }
           &:hover {
-            color: #288cff;
-            background-color: #949fbf66;
+            background-color: #d5daddb3;
+            span {
+              color: #008efd;
+            }
           }
         }
       }

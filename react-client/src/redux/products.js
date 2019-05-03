@@ -1,17 +1,25 @@
 import api from "../api";
 
-import { brandProductsSelector } from "./selectors/product";
+import {
+  brandProductsSelector,
+  topFiveSelector,
+  topFiveLoadingSelector
+} from "./selectors/product";
 
 export const PRODUCTGET_START = "PRODUCTGET_START";
 export const PRODUCTGET_END = "PRODUCTGET_END";
 export const PRODUCTDESCTIPTIONGET_START = "PRODUCTDESCTIPTIONGET_START";
 export const PRODUCTDESCTIPTIONGET_END = "PRODUCTDESCTIPTIONGET_END";
+export const TOPFIVEGET_START = "TOPFIVEGET_START";
+export const TOPFIVEGET_END = "TOPFIVEGET_END";
 
 const initialState = {
   products: [],
   productDescription: {},
   productsLoading: false,
-  productDescriptionLoading: false
+  productDescriptionLoading: false,
+  topFive: [],
+  topFiveLoading: false
 };
 
 export default (state = initialState, action) => {
@@ -36,6 +44,11 @@ export default (state = initialState, action) => {
         productDescriptionLoading: false
       };
 
+    case TOPFIVEGET_START:
+      return { ...state, topFiveLoading: true };
+    case TOPFIVEGET_END:
+      return { ...state, topFive: action.payload, topFiveLoading: false };
+
     default:
       return { ...state };
   }
@@ -49,6 +62,13 @@ export const ProductGetEnd = (id, products) => ({
   payload: { id: id, data: products }
 });
 
+export const TopFiveGetStart = () => ({
+  type: TOPFIVEGET_START
+});
+export const TopFiveGetEnd = products => ({
+  type: TOPFIVEGET_END,
+  payload: products
+});
 export const ProductDescriptionGetStart = () => ({
   type: PRODUCTDESCTIPTIONGET_START
 });
@@ -75,12 +95,10 @@ export const GetBrandProducts = (lang, id) => {
 };
 
 export const GetProductDescription = (lang, id) => {
-  console.log("mtav");
-
   return (dispatch, getState) => {
     const state = getState();
     dispatch(ProductDescriptionGetStart());
-    return api.productDescription
+    return api.products
       .getProductDescription(lang, id)
       .then(response => {
         dispatch(ProductDescriptionGetEnd(response.data));
@@ -89,5 +107,21 @@ export const GetProductDescription = (lang, id) => {
       .catch(err => {
         console.log(err);
       });
+  };
+};
+export const GetTopFive = lang => {
+  return (dispatch, getState) => {
+    const state = getState();
+    if (!topFiveLoadingSelector(state) && !topFiveSelector(state).length) {
+      dispatch(TopFiveGetStart());
+      return api.products
+        .getTopFive(lang)
+        .then(response => {
+          dispatch(TopFiveGetEnd(response.data));
+        })
+        .catch(err => {});
+    } else {
+      //debugger;
+    }
   };
 };

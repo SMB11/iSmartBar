@@ -1,7 +1,7 @@
 body.steps-body {
   width: 100%;
   height: 100%;
-  background-image: url(../images/background.svg);
+  background-image: url(../images/steps_background.jpg);
   background-position: center;
   background-size: cover;
   #container {
@@ -13,6 +13,9 @@ body.steps-body {
     .page-logo {
       display: flex;
       justify-content: center;
+      img {
+        height: 100px;
+      }
     }
     .content {
       margin-top: 80px;

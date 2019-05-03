@@ -29,13 +29,13 @@ class ChooseLocation extends Component {
   };
   componentDidMount() {
     const language = JSON.parse(
-      window.sessionStorage.getItem(languageStepStorageKey)
+      window.localStorage.getItem(languageStepStorageKey)
     ).selected.id;
     this.setState({ ...state, lang: language });
 
     this.props.GetCountries(language);
     const state = JSON.parse(
-      window.sessionStorage.getItem(locationStepStorageKey)
+      window.localStorage.getItem(locationStepStorageKey)
     );
     if (state) {
       this.props.GetCountries(language);
@@ -82,7 +82,7 @@ class ChooseLocation extends Component {
     else this.setState({ ...this.state, hotel: null });
   }
   handleFinish() {
-    window.sessionStorage.setItem(
+    window.localStorage.setItem(
       locationStepStorageKey,
       JSON.stringify(this.state)
     );

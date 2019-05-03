@@ -33,6 +33,12 @@ namespace Managers.Implementation
             return await GetDTOs(await catRepo.GetAllAsync());
         }
 
+        public async Task<CategoryDTO> GetByID(int id)
+        {
+            ICategoryRepository catRepo = ServiceProvider.GetService<ICategoryRepository>();
+            return await GetDTO(await catRepo.FindByIDAsync(id));
+        }
+
         public Task<List<CategoryDTO>> GetRootCategoriesAsync()
         {
             return GetSubcategoriesAsync(null);

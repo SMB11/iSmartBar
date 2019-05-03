@@ -11,7 +11,7 @@ class Step extends Component {
     return (
       <div id="container">
         <div className="page-logo">
-          <img src="images/logo.svg" alt="ISmartBar logo" />
+          <img src="images/Logo_big.png" alt="ISmartBar logo" />
         </div>
         <div className="content">
           <div className="body">

@@ -9,6 +9,8 @@ namespace Facade.Repository
     public interface IRepository<T, K, R>
     {
         R LoadWith(Expression<Func<T, object>> exp);
+        R Limit(int limit);
+        R Offset(int offset);
         List<T> GetAll();
         Task<List<T>> GetAllAsync(CancellationToken token = new CancellationToken());
         T Insert(T obj);

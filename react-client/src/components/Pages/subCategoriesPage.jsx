@@ -24,7 +24,7 @@ class SubCategoriesPage extends Component {
   getBrands = () => {
     this.state.hash = window.location.hash.substr(1);
     const language = JSON.parse(
-      window.sessionStorage.getItem(languageStepStorageKey)
+      window.localStorage.getItem(languageStepStorageKey)
     ).selected.id;
     this.props.RootCategoryBrandGet(
       language,
@@ -58,7 +58,7 @@ class SubCategoriesPage extends Component {
                   <div className="title">Subcategory</div>
                   <div>
                     {Object.keys(categoryBrands).map(catName => (
-                      <p>
+                      <p key={catName}>
                         <a href={"#" + catName}>{catName}</a>
                       </p>
                     ))}
@@ -66,18 +66,23 @@ class SubCategoriesPage extends Component {
                 </div>
               </SideBar>
             </div>
-            <div className="right-content loading-wrapper">
+            <div
+              className={
+                "right-content  " +
+                (this.props.loading ? "loading-wrapper" : "")
+              }
+            >
               <div
                 className={"ui dimmer " + (this.props.loading ? "active" : "")}
               >
                 <div className="ui loader" />
               </div>
               {Object.keys(categoryBrands).map(catName => (
-                <div className="products" id={catName}>
+                <div className="products" key={catName} id={catName}>
                   <div className="category-name">{catName}</div>
                   <div className="content">
                     {categoryBrands[catName].map(brand => (
-                      <Brand brand={brand} />
+                      <Brand key={brand.id} brand={brand} />
                     ))}
                   </div>
                 </div>

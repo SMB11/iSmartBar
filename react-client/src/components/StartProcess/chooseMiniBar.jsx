@@ -12,11 +12,11 @@ export const miniBarStepStorageKey = "MiniBarType";
 
 class ChooseMiniBar extends Component {
   handleDefaultClicked() {
-    window.sessionStorage.setItem(miniBarStepStorageKey, "0");
+    window.localStorage.setItem(miniBarStepStorageKey, "0");
     this.props.onFinished();
   }
   handleCustomClicked() {
-    window.sessionStorage.setItem(miniBarStepStorageKey, "1");
+    window.localStorage.setItem(miniBarStepStorageKey, "1");
     this.props.onFinished();
   }
   render() {

@@ -25,10 +25,10 @@ class navBar extends Component {
 
   loadFromStorage() {
     const cityObj = JSON.parse(
-      window.sessionStorage.getItem(locationStepStorageKey)
+      window.localStorage.getItem(locationStepStorageKey)
     );
     const languageObj = JSON.parse(
-      window.sessionStorage.getItem(languageStepStorageKey)
+      window.localStorage.getItem(languageStepStorageKey)
     );
     const city = cityObj.city.name;
     const hotel = cityObj.hotel.name;
@@ -65,7 +65,7 @@ class navBar extends Component {
       <React.Fragment>
         <header className="header">
           <Link to="/" className="logo">
-            <img src="http://localhost:3000/images/logo-manu.svg" alt="" />
+            <img src="http://localhost:3000/images/logo.png" alt="" />
           </Link>
           <input className="menu-btn" type="checkbox" id="menu-btn" />
           <label className="menu-icon" htmlFor="menu-btn">
@@ -77,10 +77,7 @@ class navBar extends Component {
                 className="japan-letter"
                 onClick={this.openLanguageModal.bind(this)}
               >
-                <img
-                  src="http://localhost:3000/images/japn-letter.svg"
-                  alt=""
-                />
+                <img src="http://localhost:3000/images/language.svg" alt="" />
               </a>
             </li>
             <li>

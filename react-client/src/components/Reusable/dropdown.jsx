@@ -36,7 +36,7 @@ class DropDown extends Component {
               </option>
             ))}
           </select>
-          <i class="fas fa-chevron-down" />
+          <i className="fas fa-chevron-down" />
         </div>
       </div>
 

@@ -52,6 +52,18 @@ namespace Managers.Implementation
             return dTOs;
         }
 
+        public async Task<List<ProductDTO>> GetTopFive()
+        {
+            IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
+            List<Product> products = await productRepo.Limit(5).LoadWith(r => r.Brand).LoadWith(r => r.Category).LoadWith(r => r.Image).GetAllAsync();
+            List<ProductDTO> dTOs = new List<ProductDTO>();
+            foreach (Product prod in products)
+            {
+                dTOs.Add(await GetProductDTO(prod));
+            }
+            return dTOs;
+        }
+
         public async Task<List<ProductDTO>> GetBrandProducts(int id)
         {
             IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
@@ -80,7 +92,7 @@ namespace Managers.Implementation
                 Brand = product.Brand?.Name,
                 Name = info.Name,
                 Price = product.Price,
-                Size = (ProductSize)product.Size,
+                Size = (int)product.Size,
                 Description = info.Description,
                 ImagePath = product.Image?.Path
             };

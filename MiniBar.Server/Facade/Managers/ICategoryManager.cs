@@ -10,6 +10,7 @@ namespace Facade.Managers
     public interface ICategoryManager
     {
         Task<List<CategoryDTO>> GetAllAsync();
+        Task<CategoryDTO> GetByID(int id);
         Task<List<CategoryDTO>> GetRootCategoriesAsync();
         Task<List<CategoryDTO>> GetSubcategoriesAsync(int? id);
         Task<int> InsertAsync(CategoryUploadDTO category);

@@ -50,6 +50,14 @@ namespace CoreAPI.Controllers
             return await this.ServiceProvider.GetService<IProductManager>().GetAll();
         }
 
+
+        [HttpGet("topFive")]
+        [AllowAnonymous]
+        public async Task<List<ProductDTO>> GetTopFive()
+        {
+            return await this.ServiceProvider.GetService<IProductManager>().GetTopFive();
+        }
+
         [HttpPost("insert")]
         public async Task<int> Insert(ProductUploadDTO product)
         {

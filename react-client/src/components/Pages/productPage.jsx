@@ -14,6 +14,8 @@ import { withLocalize } from "react-localize-redux";
 import "../../assets/scss/individual.scss";
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import { assetBaseUrl } from "../../api";
+import { Link } from "react-router-dom";
+import { addToCart } from "../../redux/cart";
 
 class ProductPage extends Component {
   state = {
@@ -22,7 +24,7 @@ class ProductPage extends Component {
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "product-body";
     const language = JSON.parse(
-      window.sessionStorage.getItem(languageStepStorageKey)
+      window.localStorage.getItem(languageStepStorageKey)
     ).selected.id;
     const id = this.props.match.params.id;
     this.props.GetProductDescription(language, id);
@@ -49,13 +51,17 @@ class ProductPage extends Component {
     let rightContent;
     if (product) {
       rightContent = (
-        <div class="right-content loading-wrapper">
+        <div
+          className={
+            "product-wrapper " + this.props.loading ? "loading-wrapper" : ""
+          }
+        >
           <div className={"ui dimmer " + (this.props.loading ? "active" : "")}>
             <div className="ui loader" />
           </div>
-          <div class="title">{product.brand}</div>
-          <div class="product-content">
-            <div class="image-part">
+          <div className="title">{product.brand}</div>
+          <div className="product-content">
+            <div className="image-part">
               <img
                 src={
                   product.imagePath ? assetBaseUrl + product.imagePath : null
@@ -63,8 +69,8 @@ class ProductPage extends Component {
                 alt=""
               />
             </div>
-            <div class="info">
-              <h2 class="name">{product.name}</h2>
+            <div className="info">
+              <h2 className="name">{product.name}</h2>
               <div>
                 <p>Volume: 0.75 l</p>
                 <p>Color: red </p>
@@ -75,12 +81,13 @@ class ProductPage extends Component {
                 <p>Produced in Armenia</p>
                 <p>Code: 00130</p>
               </div>
-              <div class="price">
+              <div className="price">
                 <span>€ {product.price}</span>
               </div>
-              <div class="prop">
-                <div class="product-count">
-                  <button class="button-count no-active"
+              <div className="prop">
+                <div className="product-count">
+                  <button
+                    className="button-count no-active"
                     onClick={this.minusButtonClicked}
                   >
                     -
@@ -88,14 +95,23 @@ class ProductPage extends Component {
                   <input
                     type="text"
                     readonly
-                    class="number-product"
+                    className="number-product"
                     value={this.state.quantity}
                   />
-                  <button class="button-count"
-                    onClick={this.plusButtonClicked}>+</button>
+                  <button
+                    className="button-count"
+                    onClick={this.plusButtonClicked}
+                  >
+                    +
+                  </button>
                 </div>
-                <div class="button-content">
-                  <button class="btn">
+                <div className="button-content">
+                  <button
+                    onClick={() =>
+                      this.props.addToCart(product, this.state.quantity)
+                    }
+                    className="btn"
+                  >
                     <img src="images/add-to-cart.svg" alt="" />
                     <span>Add to Cart</span>
                   </button>
@@ -104,12 +120,12 @@ class ProductPage extends Component {
             </div>
           </div>
 
-          <div class="information">
-            <div class="description">
-              <div class="title">
+          <div className="information">
+            <div className="description">
+              <div className="title">
                 <span>Description</span>
               </div>
-              <div class="content">
+              <div className="content">
                 <span>{product.description}</span>
               </div>
             </div>
@@ -121,18 +137,12 @@ class ProductPage extends Component {
       <React.Fragment>
         <NavBar />
         <SubNavBar />
-        <div class="content">
-          <div class="breadcrumbs">
-            <a href="">Category</a>
-            <a href="">Subcategory</a>
-            <a href="">Brand</a>
+        <div className="content">
+          <div className="breadcrumbs">
+            <Link to="/">Home</Link>
+            <Link to="/">{product ? product.category : ""}</Link>
           </div>
-          <div class="body">
-            <div class="left-content">
-              <SideBar />
-            </div>
-            {product ? rightContent : ""}
-          </div>
+          <div className="body">{product ? rightContent : ""}</div>
         </div>
 
         <Footer />
@@ -144,13 +154,14 @@ class ProductPage extends Component {
 const mapStateToProps = (state, props) => {
   return {
     product: productDescriptionSelector(state),
-    laoding: productDescriptionLaodingSelector(state)
+    loading: productDescriptionLaodingSelector(state)
   };
 };
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      GetProductDescription
+      GetProductDescription,
+      addToCart
     },
     dispatch
   );

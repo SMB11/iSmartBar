@@ -4,10 +4,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import {
   rootCategorySelector,
-  subCategorySelector,
-
+  subCategorySelector
 } from "../../redux/selectors/category";
-import { cartFullCountSelector } from '../../redux/selectors/cart'
+import { cartFullCountSelector } from "../../redux/selectors/cart";
 import "../../assets/scss/header.scss";
 import { Link } from "react-router-dom";
 class SubNavBar extends Component {
@@ -28,7 +27,7 @@ class SubNavBar extends Component {
                     key={index}
                     to={"/subcategory/" + root.id + "#" + subcategory.name}
                   >
-                    {subcategory.name}
+                    <span>{subcategory.name}</span>
                   </Link>
                 ))}
               </div>
@@ -56,7 +55,6 @@ const mapStateToProps = (state, props) => ({
   rootCategories: rootCategorySelector(state),
   subCategories: id => subCategorySelector(state, id),
   cartQuantity: cartFullCountSelector(state)
-
 });
 
 export default connect(mapStateToProps)(withLocalize(SubNavBar));

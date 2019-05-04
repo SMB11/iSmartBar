@@ -15,7 +15,9 @@ import {
 import { OutgoingMessage } from "http";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-
+import { CategoryGet } from '../../redux/category';
+import { bindActionCreators } from 'redux';
+import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 class CartPage extends Component {
   state = {
     smartBar: true,
@@ -24,6 +26,14 @@ class CartPage extends Component {
 
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "cart-body";
+    this.apiCalls();
+  }
+
+  apiCalls() {
+    const language = JSON.parse(
+      window.localStorage.getItem(languageStepStorageKey)
+    ).selected.id;
+    this.props.CategoryGet(language);
   }
 
   otherButtonClicked = () => {
@@ -125,6 +135,7 @@ class CartPage extends Component {
   }
 }
 
+
 const mapStateToProps = (state, props) => {
   const insidePrice = insidePriceSelector(state);
   const outsidePrice = outisdePriceSelector(state);
@@ -137,5 +148,13 @@ const mapStateToProps = (state, props) => {
     total
   };
 };
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      CategoryGet
+    },
+    dispatch
+  );
 
-export default connect(mapStateToProps)(withRouter(CartPage));
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CartPage));

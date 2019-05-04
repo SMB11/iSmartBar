@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "../../assets/scss/mybar.scss";
 import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { changeProductQuantity, removeProduct } from "../../redux/cart";
 class myCartOtherItem extends Component {
   render() {
     const { product } = this.props;
@@ -20,7 +23,7 @@ class myCartOtherItem extends Component {
                 {product.name}
               </Link>
               <div className="product-count">
-                <button className="button-count no-active" disabled>
+                <button onClick={() => this.props.changeProductQuantity(product.id, 6, Math.max(product.quantity - 1, 1))} className="button-count no-active">
                   -
                 </button>
                 <input
@@ -29,7 +32,7 @@ class myCartOtherItem extends Component {
                   className="number-product"
                   value={product.quantity}
                 />
-                <button className="button-count">+</button>
+                <button onClick={() => this.props.changeProductQuantity(product.id, 6, product.quantity + 1)} className="button-count">+</button>
               </div>
             </div>
           </div>
@@ -38,7 +41,7 @@ class myCartOtherItem extends Component {
               <span>€{product.price}</span>
             </div>
             <div className="remove">
-              <button>Remove</button>
+              <button onClick={() => this.props.removeProduct(product.id, 6)}  >Remove</button>
             </div>
           </div>
         </div>
@@ -48,4 +51,19 @@ class myCartOtherItem extends Component {
   }
 }
 
-export default myCartOtherItem;
+
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      changeProductQuantity,
+      removeProduct
+    },
+    dispatch
+  );
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(myCartOtherItem);
+

@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import "../../assets/scss/mybar.scss";
 import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
+import { bindActionCreators } from "redux";
+import { removeProduct } from '../../redux/cart'
+import { connect } from 'react-redux'
 class MyCartItem extends Component {
   render() {
     const { product } = this.props;
@@ -24,11 +27,24 @@ class MyCartItem extends Component {
             </div>
           </div>
           <div className="remove">
-            <button>Remove</button>
+            <button onClick={() => this.props.removeProduct(product.id, product.size)}>Remove</button>
           </div>
         </div>
       </React.Fragment>
     );
   }
 }
-export default MyCartItem;
+
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      removeProduct
+    },
+    dispatch
+  );
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(MyCartItem);

@@ -46,11 +46,11 @@ class StartProcessPage extends Component {
         <Step step={step} stepsCount={this.state.steps.length}>
           {this.state.steps[step - 1]}
         </Step>
-        {this.state.step - 1 !== 0 ? (
+        {/* {this.state.step - 1 !== 0 ? (
           <button onClick={this.backButtonHandler}>
             <Translate id="back" />
           </button>
-        ) : null}
+        ) : null} */}
       </div>
     );
   }

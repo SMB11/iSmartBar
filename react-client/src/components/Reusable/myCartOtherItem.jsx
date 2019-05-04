@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../../assets/scss/mybar.scss";
 import { assetBaseUrl } from "../../api";
-
+import { Link } from "react-router-dom";
 class myCartOtherItem extends Component {
   render() {
     const { product } = this.props;
@@ -16,7 +16,9 @@ class myCartOtherItem extends Component {
           <div className="prod-info">
             <div style={imageStyle} className="image" />
             <div>
-              <p>{product.name}</p>
+              <Link className="product-name" to={"/product/" + product.id}>
+                {product.name}
+              </Link>
               <div className="product-count">
                 <button className="button-count no-active" disabled>
                   -

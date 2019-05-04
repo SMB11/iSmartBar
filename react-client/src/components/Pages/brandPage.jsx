@@ -56,12 +56,12 @@ class BrandPage extends Component {
           <div className="breadcrumbs">
             <Link to="/">Home</Link>
             {category ? (
-              <Link to={"/subcategory/" + category.parentid}>
+              <Link to={"/subcategory/" + category.parentID}>
                 {category ? category.name : ""}
               </Link>
             ) : (
-              ""
-            )}
+                ""
+              )}
             <Link>{this.props.brandName}</Link>
           </div>
           <div className="body">

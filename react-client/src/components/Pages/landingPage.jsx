@@ -51,7 +51,7 @@ class landingPage extends Component {
             <img className="homepage-img" src="images/home-image.png" alt="" />
           </div>
         </div>
-        <div className="categories-content">
+        <div className="categories-content" id="category">
           <div className="title">
             <h2>
               <Translate id="categories" />

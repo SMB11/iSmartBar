@@ -11,6 +11,7 @@ class Brand extends Component {
     const { brand } = this.props;
     return (
       <div
+        ref={this.props.refProp}
         className="product"
         onClick={() =>
           this.redirect.bind(this)("/brand/" + brand.id + "/" + brand.name)

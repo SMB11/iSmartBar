@@ -19,10 +19,31 @@ import SideBar from "../Reusable/sidebar";
 import Footer from "../Reusable/footer";
 class SubCategoriesPage extends Component {
   state = {
-    hash: undefined
+    scrollTo: undefined,
+    scrolled: false
+  };
+  catRefs = {};
+  getParameterByName = (name, url) => {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return "";
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
   };
   getBrands = () => {
-    this.state.hash = window.location.hash.substr(1);
+    const oldScrollTo = this.state.scrollTo;
+    const newState = { ...this.state };
+    newState.scrollTo = this.getParameterByName(
+      "scrollTo",
+      window.location.href
+    );
+    if (newState.scrollTo !== oldScrollTo) {
+      newState.scrolled = false;
+      this.setState(newState);
+    }
+
     const language = JSON.parse(
       window.localStorage.getItem(languageStepStorageKey)
     ).selected.id;
@@ -37,6 +58,18 @@ class SubCategoriesPage extends Component {
   }
   componentDidUpdate() {
     this.getBrands();
+    if (
+      this.props.categoryBrands &&
+      !this.state.scrolled &&
+      this.state.scrollTo
+    ) {
+      console.log(this.catRefs);
+      if (this.catRefs[this.state.scrollTo]) {
+        console.log(this.catRefs[this.state.scrollTo].offsetTop);
+        window.scrollTo(0, this.catRefs[this.state.scrollTo].offsetTop);
+      }
+      this.setState({ ...this.state, scrolled: true });
+    }
   }
   render() {
     let { categoryBrands, category } = this.props;
@@ -78,7 +111,12 @@ class SubCategoriesPage extends Component {
                 <div className="ui loader" />
               </div>
               {Object.keys(categoryBrands).map(catName => (
-                <div className="products" key={catName} id={catName}>
+                <div
+                  className="products"
+                  ref={ref => (this.catRefs[catName] = ref)}
+                  key={catName}
+                  id={catName}
+                >
                   <div className="category-name">{catName}</div>
                   <div className="content">
                     {categoryBrands[catName].map(brand => (

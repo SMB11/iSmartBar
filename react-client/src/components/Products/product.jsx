@@ -4,6 +4,7 @@ import { bindActionCreators } from "redux";
 import { addToCart } from "../../redux/cart";
 import { assetBaseUrl } from "../../api";
 import { withRouter } from "react-router-dom";
+import AddToCart from "./addToCart";
 class Product extends Component {
   state = {
     quantity: 1
@@ -65,13 +66,9 @@ class Product extends Component {
             </button>
           </div>
           <div className="button-content">
-            <button
+            <AddToCart
               onClick={() => this.props.addToCart(product, this.state.quantity)}
-              className="btn"
-            >
-              <img src="http://localhost:3000/images/add-to-cart.svg" alt="" />
-              <span>Add to Cart</span>
-            </button>
+            />
           </div>
         </div>
       </div>

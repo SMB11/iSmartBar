@@ -47,7 +47,8 @@ body:not(.steps-body):not(.cart-body) {
         .sidebar {
           width: 100%;
           border: 1px solid #3f4864;
-          padding: 40px 35px;
+          padding: 15px 35px;
+          padding-bottom: 25px;
           form {
             @media (max-width: 850px) {
               display: flex;
@@ -73,7 +74,15 @@ body:not(.steps-body):not(.cart-body) {
               font-weight: 700;
             }
             p {
-              margin-top: 20px;
+              margin-top: 10px;
+              margin-left: 10px;
+              a {
+                color: #192b3f;
+                text-decoration: none;
+                &:hover {
+                  font-weight: bold;
+                }
+              }
             }
             .show-more {
               text-decoration: none;

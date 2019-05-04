@@ -112,7 +112,7 @@ class CartPage extends Component {
                 </div>
                 <button>CHECKOUT</button>
                 <div className="go-back">
-                  <Link to="/">Continue Shopping</Link>
+                  <Link to="/#category">Continue Shopping</Link>
                 </div>
               </div>
             </div>

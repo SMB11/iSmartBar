@@ -16,6 +16,7 @@ import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../redux/cart";
+import AddToCart from "../Products/addToCart";
 
 class ProductPage extends Component {
   state = {
@@ -106,15 +107,11 @@ class ProductPage extends Component {
                   </button>
                 </div>
                 <div className="button-content">
-                  <button
+                  <AddToCart
                     onClick={() =>
                       this.props.addToCart(product, this.state.quantity)
                     }
-                    className="btn"
-                  >
-                    <img src="images/add-to-cart.svg" alt="" />
-                    <span>Add to Cart</span>
-                  </button>
+                  />
                 </div>
               </div>
             </div>

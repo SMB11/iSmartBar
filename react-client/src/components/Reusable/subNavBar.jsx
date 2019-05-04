@@ -25,7 +25,12 @@ class SubNavBar extends Component {
                 {this.props.subCategories(root.id).map((subcategory, index) => (
                   <Link
                     key={index}
-                    to={"/subcategory/" + root.id + "#" + subcategory.name}
+                    to={
+                      "/subcategory/" +
+                      root.id +
+                      "?scrollTo=" +
+                      subcategory.name
+                    }
                   >
                     <span>{subcategory.name}</span>
                   </Link>
@@ -37,15 +42,16 @@ class SubNavBar extends Component {
         <div className="right-content">
           <Link to="/cart">
             <img src="http://localhost:3000/images/items.svg" alt="" />
+
+            <div>
+              <span>
+                <Translate id="your_smartbar" />
+              </span>
+              <span>
+                <Translate id="items" /> ({this.props.cartQuantity})
+              </span>
+            </div>
           </Link>
-          <div>
-            <span>
-              <Translate id="your_smartbar" />
-            </span>
-            <span>
-              <Translate id="items" /> ({this.props.cartQuantity})
-            </span>
-          </div>
         </div>
       </div>
     );

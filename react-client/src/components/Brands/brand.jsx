@@ -4,18 +4,13 @@ import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 class Brand extends Component {
-  redirect(target) {
-    this.props.history.push(target);
-  }
   render() {
     const { brand } = this.props;
     return (
       <div
         ref={this.props.refProp}
         className="product"
-        onClick={() =>
-          this.redirect.bind(this)("/brand/" + brand.id + "/" + brand.name)
-        }
+        onClick={this.props.onClick}
       >
         <img src={assetBaseUrl + brand.imagePath} alt="" />
         <div className="background" />

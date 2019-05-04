@@ -17,6 +17,8 @@ import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../redux/cart";
 import AddToCart from "../Products/addToCart";
+import { categorySelector } from "../../redux/selectors/category";
+import { CategoryGet } from "../../redux/category";
 
 class ProductPage extends Component {
   state = {
@@ -29,6 +31,7 @@ class ProductPage extends Component {
     ).selected.id;
     const id = this.props.match.params.id;
     this.props.GetProductDescription(language, id);
+    this.props.CategoryGet(language);
   }
 
   plusButtonClicked = () => {
@@ -47,7 +50,7 @@ class ProductPage extends Component {
   };
 
   render() {
-    const { product } = this.props;
+    const { product, category } = this.props;
     console.log(product);
     let rightContent;
     if (product) {
@@ -130,6 +133,7 @@ class ProductPage extends Component {
         </div>
       );
     }
+
     return (
       <React.Fragment>
         <NavBar />
@@ -137,7 +141,20 @@ class ProductPage extends Component {
         <div className="content">
           <div className="breadcrumbs">
             <Link to="/">Home</Link>
-            <Link to="/">{product ? product.category : ""}</Link>
+            {category ? (
+              <Link
+                to={
+                  "/subcategory/" +
+                  category.parentID +
+                  "?scrollTo=" +
+                  category.name
+                }
+              >
+                {category.name}
+              </Link>
+            ) : (
+              ""
+            )}
           </div>
           <div className="body">{product ? rightContent : ""}</div>
         </div>
@@ -149,16 +166,22 @@ class ProductPage extends Component {
 }
 
 const mapStateToProps = (state, props) => {
+  const product = productDescriptionSelector(state);
+  let category;
+  if (product) category = categorySelector(state, product.categoryID);
+
   return {
-    product: productDescriptionSelector(state),
-    loading: productDescriptionLaodingSelector(state)
+    product,
+    loading: productDescriptionLaodingSelector(state),
+    category
   };
 };
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       GetProductDescription,
-      addToCart
+      addToCart,
+      CategoryGet
     },
     dispatch
   );

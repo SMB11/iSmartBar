@@ -76,6 +76,18 @@ namespace Managers.Implementation
             return dTOs;
         }
 
+        public async Task<List<ProductDTO>> GetCategoryBrandProducts(int brandID, int categoryID)
+        {
+            IProductRepository productRepo = ServiceProvider.GetService<IProductRepository>();
+            List<Product> products = await productRepo.LoadWith(p => p.Image).FindAsync(p => p.BrandID == brandID && p.CategoryID == categoryID);
+            List<ProductDTO> dTOs = new List<ProductDTO>();
+            foreach (Product prod in products)
+            {
+                dTOs.Add(await GetProductDTO(prod));
+            }
+            return dTOs;
+        }
+
         private async Task<ProductDTO> GetProductDTO(Product product)
         {
 
@@ -241,6 +253,7 @@ namespace Managers.Implementation
             IDValidator.AssureID(obj.CategoryID);
             //ImageValidator.AssureNonEmpty(obj.Image);
         }
+
 
         #endregion
     }

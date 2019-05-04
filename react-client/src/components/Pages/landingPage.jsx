@@ -27,16 +27,14 @@ class landingPage extends Component {
   state = {};
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "landing-body";
-    this.getProducts();
+    this.apiCalls();
   }
-  componentDidUpdate() {
-    this.getProducts();
-  }
-  getProducts() {
+  apiCalls() {
     const language = JSON.parse(
       window.localStorage.getItem(languageStepStorageKey)
     ).selected.id;
     this.props.GetTopFive(language);
+    this.props.CategoryGet(language);
   }
 
   render() {

@@ -5,7 +5,9 @@ import NavBar from "../Reusable/navBar";
 import {
   rootCategoriesBrandsSelector,
   rootCategoriesBrandsLoadingSelector,
-  categorySelector
+  categorySelector,
+  categoryByNameSelector,
+  categoriesLoadingSelector
 } from "../../redux/selectors/category";
 import category, { RootCategoryBrandGet } from "../../redux/category";
 
@@ -17,11 +19,12 @@ import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import Brand from "../Brands/brand";
 import SideBar from "../Reusable/sidebar";
 import Footer from "../Reusable/footer";
+import { withRouter } from "react-router";
+import { CategoryGet } from "../../redux/category";
 class SubCategoriesPage extends Component {
-  state = {
-    scrollTo: undefined,
-    scrolled: false
-  };
+  redirect(target) {
+    this.props.history.push(target);
+  }
   catRefs = {};
   getParameterByName = (name, url) => {
     if (!url) url = window.location.href;
@@ -32,43 +35,29 @@ class SubCategoriesPage extends Component {
     if (!results[2]) return "";
     return decodeURIComponent(results[2].replace(/\+/g, " "));
   };
-  getBrands = () => {
-    const oldScrollTo = this.state.scrollTo;
-    const newState = { ...this.state };
-    newState.scrollTo = this.getParameterByName(
-      "scrollTo",
-      window.location.href
-    );
-    if (newState.scrollTo !== oldScrollTo) {
-      newState.scrolled = false;
-      this.setState(newState);
-    }
-
+  getBrands = id => {
     const language = JSON.parse(
       window.localStorage.getItem(languageStepStorageKey)
     ).selected.id;
-    this.props.RootCategoryBrandGet(
-      language,
-      parseInt(this.props.match.params.id)
-    );
+    this.props.RootCategoryBrandGet(language, id);
+    this.props.CategoryGet(language);
   };
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "subcategory-body";
-    this.getBrands();
+    this.getBrands(this.props.id);
   }
-  componentDidUpdate() {
-    this.getBrands();
-    if (
-      this.props.categoryBrands &&
-      !this.state.scrolled &&
-      this.state.scrollTo
-    ) {
-      console.log(this.catRefs);
-      if (this.catRefs[this.state.scrollTo]) {
-        console.log(this.catRefs[this.state.scrollTo].offsetTop);
-        window.scrollTo(0, this.catRefs[this.state.scrollTo].offsetTop);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.id != this.props.id) {
+      this.getBrands(nextProps.id);
+    }
+    if (nextProps.loading === false && this.props.loading === true) {
+      const scrollTo = this.getParameterByName(
+        "scrollTo",
+        window.location.href
+      );
+      if (this.catRefs[scrollTo]) {
+        window.scrollTo(0, this.catRefs[scrollTo].offsetTop);
       }
-      this.setState({ ...this.state, scrolled: true });
     }
   }
   render() {
@@ -82,7 +71,7 @@ class SubCategoriesPage extends Component {
         <div className="content">
           <div className="breadcrumbs">
             <Link to="/">Home</Link>
-            <Link>{category ? category.name : ""}</Link>
+            {category ? <Link> {category.name}</Link> : ""}
           </div>
           <div className="body">
             <div className="left-content">
@@ -120,7 +109,17 @@ class SubCategoriesPage extends Component {
                   <div className="category-name">{catName}</div>
                   <div className="content">
                     {categoryBrands[catName].map(brand => (
-                      <Brand key={brand.id} brand={brand} />
+                      <Brand
+                        onClick={() =>
+                          this.redirect(
+                            `/category/${
+                              this.props.getCategoryByName(catName).id
+                            }/brand/${brand.id}/${brand.name}`
+                          )
+                        }
+                        key={brand.id}
+                        brand={brand}
+                      />
                     ))}
                   </div>
                 </div>
@@ -142,13 +141,18 @@ const mapStateToProps = (state, props) => {
       parseInt(props.match.params.id)
     ),
     category: categorySelector(state, parseInt(props.match.params.id)),
-    loading: rootCategoriesBrandsLoadingSelector(state)
+    id: parseInt(props.match.params.id),
+    loading:
+      rootCategoriesBrandsLoadingSelector(state) ||
+      categoriesLoadingSelector(state),
+    getCategoryByName: name => categoryByNameSelector(state, name)
   };
 };
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      RootCategoryBrandGet
+      RootCategoryBrandGet,
+      CategoryGet
     },
     dispatch
   );
@@ -156,4 +160,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withLocalize(SubCategoriesPage));
+)(withLocalize(withRouter(SubCategoriesPage)));

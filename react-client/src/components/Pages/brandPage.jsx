@@ -18,28 +18,36 @@ import {
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 import { assetBaseUrl } from "../../api";
 import Footer from "../Reusable/footer";
-import { categorySelector } from "../../redux/selectors/category";
+import {
+  categorySelector,
+  categoriesLoadingSelector
+} from "../../redux/selectors/category";
+import { CategoryGet } from "../../redux/category";
 class BrandPage extends Component {
   state = {
     hash: undefined
   };
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "brand-body";
-    this.getProducts();
+    this.getProducts(this.props.brandID, this.props.categoryID);
   }
-  componentDidUpdate() {
-    this.getProducts();
+  componentWillReceiveProps(nextProps) {
+    if (
+      nextProps.brandID !== this.props.brandID ||
+      nextProps.categoryID !== this.props.categoryID
+    )
+      this.getProducts(nextProps.brandID, nextProps.categoryID);
   }
-  getProducts() {
+  getProducts(brandID, categoryID) {
     const language = JSON.parse(
       window.localStorage.getItem(languageStepStorageKey)
     ).selected.id;
-    this.props.GetBrandProducts(language, parseInt(this.props.match.params.id));
+    this.props.GetBrandProducts(language, brandID, categoryID);
+    this.props.CategoryGet(language);
   }
   render() {
     let { products, category } = this.props;
     if (!products) products = [];
-    console.log(category);
     return (
       <React.Fragment>
         <NavBar />
@@ -48,13 +56,13 @@ class BrandPage extends Component {
           <div className="breadcrumbs">
             <Link to="/">Home</Link>
             {category ? (
-              <Link to={"/subcategory/" + category.id}>
+              <Link to={"/subcategory/" + category.parentid}>
                 {category ? category.name : ""}
               </Link>
             ) : (
               ""
             )}
-            <Link>{this.props.match.params.brand}</Link>
+            <Link>{this.props.brandName}</Link>
           </div>
           <div className="body">
             {/* <div className="right-content"> */}
@@ -68,12 +76,10 @@ class BrandPage extends Component {
               >
                 <div className="ui loader" />
               </div>
-              <div className="category-name">
-                {this.props.match.params.brand}
-              </div>
+              <div className="category-name">{this.props.brandName}</div>
               <div className="content">
                 {products.map(prod => (
-                  <Product product={prod} />
+                  <Product key={prod.id} product={prod} />
                 ))}
               </div>
             </div>
@@ -89,15 +95,24 @@ class BrandPage extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    products: brandProductsSelector(state, parseInt(props.match.params.id)),
-    category: categorySelector(state, parseInt(props.match.params.catId)),
-    loading: brandProductsLoadingSelector(state)
+    products: brandProductsSelector(
+      state,
+      parseInt(props.match.params.brandID),
+      parseInt(props.match.params.catID)
+    ),
+    categoryID: parseInt(props.match.params.catID),
+    brandID: parseInt(props.match.params.brandID),
+    brandName: props.match.params.brand,
+    category: categorySelector(state, parseInt(props.match.params.catID)),
+    loading:
+      brandProductsLoadingSelector(state) || categoriesLoadingSelector(state)
   };
 };
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      GetBrandProducts
+      GetBrandProducts,
+      CategoryGet
     },
     dispatch
   );

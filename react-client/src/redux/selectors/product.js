@@ -1,7 +1,8 @@
 export const brandProductsLoadingSelector = state =>
   state.products.productsLoading;
 
-export const brandProductsSelector = (state, id) => state.products.products[id];
+export const brandProductsSelector = (state, brandID, categoryID) =>
+  state.products.products[`brand/${brandID}/category/${categoryID}`];
 
 export const productDescriptionSelector = state =>
   state.products.productDescription;

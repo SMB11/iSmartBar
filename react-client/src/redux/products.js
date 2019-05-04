@@ -28,7 +28,9 @@ export default (state = initialState, action) => {
       return { ...state, productsLoading: true };
     case PRODUCTGET_END:
       const products = state.products.slice(0);
-      products[action.payload.id] = action.payload.data;
+      products[
+        `brand/${action.payload.brandID}/category/${action.payload.categoryID}`
+      ] = action.payload.data;
       return { ...state, products, productsLoading: false };
 
     case PRODUCTDESCTIPTIONGET_START:
@@ -57,9 +59,9 @@ export default (state = initialState, action) => {
 export const ProductGetStart = () => ({
   type: PRODUCTGET_START
 });
-export const ProductGetEnd = (id, products) => ({
+export const ProductGetEnd = (brandID, categoryID, products) => ({
   type: PRODUCTGET_END,
-  payload: { id: id, data: products }
+  payload: { brandID, categoryID, data: products }
 });
 
 export const TopFiveGetStart = () => ({
@@ -77,15 +79,19 @@ export const ProductDescriptionGetEnd = product => ({
   payload: product
 });
 
-export const GetBrandProducts = (lang, id) => {
+export const GetBrandProducts = (lang, brandID, categoryID) => {
   return (dispatch, getState) => {
     const state = getState();
-    if (id && !brandProductsSelector(state, id)) {
+    if (
+      brandID &&
+      categoryID &&
+      !brandProductsSelector(state, brandID, categoryID)
+    ) {
       dispatch(ProductGetStart());
       return api.products
-        .getProductsByBrandID(lang, id)
+        .getProductsByBrandAndCategory(lang, brandID, categoryID)
         .then(response => {
-          dispatch(ProductGetEnd(id, response.data));
+          dispatch(ProductGetEnd(brandID, categoryID, response.data));
         })
         .catch(err => {});
     } else {

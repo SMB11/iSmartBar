@@ -3,6 +3,7 @@ import language from "./language";
 import locations from "./locations";
 import cart from "./cart";
 import category from "./category";
+import popup from "./popup";
 import products from "./products";
 
 const rootReducer = combineReducers({
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
   locations,
   cart,
   category,
-  products
+  products,
+  popup
 });
 
 export default rootReducer;

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "../../assets/scss/addToCart.scss";
 class AddToCart extends Component {
   state = {};
   btnRef;
@@ -12,26 +13,28 @@ class AddToCart extends Component {
   }
   render() {
     return (
-      <button
-        ref={ref => (this.btnRef = ref)}
-        onClick={this.onClick.bind(this)}
-        className="btn"
-      >
-        <img src="http://localhost:3000/images/add-to-cart.svg" alt="" />
-        <span>Add to Cart</span>
-        <svg
-          className="cart-ok"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
+      <div className="button-content addToCart">
+        <button
+          ref={ref => (this.btnRef = ref)}
+          onClick={this.onClick.bind(this)}
+          className="btn"
         >
-          <path
-            style={{ fill: "#288cff " }}
-            d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"
-          />
-        </svg>
-      </button>
+          <img src="http://localhost:3000/images/add-to-cart.svg" alt="" />
+          <span>Add to Cart</span>
+          <svg
+            className="cart-ok"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              style={{ fill: "#288cff " }}
+              d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"
+            />
+          </svg>
+        </button>
+      </div>
     );
   }
 }

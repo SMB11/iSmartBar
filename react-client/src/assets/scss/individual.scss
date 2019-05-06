@@ -24,7 +24,7 @@ body.product-body {
       img {
         max-width: 100%;
 
-        height: 400px;
+        max-height: 400px;
       }
     }
     .info {
@@ -115,57 +115,6 @@ body.product-body {
             font-family: "Roboto", sans-serif;
             font-size: 18px;
             font-weight: 400;
-          }
-        }
-        .button-content {
-          margin-left: 50px;
-          margin-top: 20px;
-          .btn {
-            overflow: hidden;
-
-            width: 168px;
-            height: 44px;
-            color: #288cff;
-            font-family: "Roboto", sans-serif;
-            font-size: 11px;
-            font-weight: 400;
-            padding: 0px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 28px;
-            border: 2px solid #288cff;
-            background-color: #e8f1ff;
-            transition: width 0.5s;
-            img {
-              width: 23px;
-            }
-            span {
-              opacity: 1;
-              transition: 2s;
-            }
-            .cart-ok {
-              display: none;
-              width: 21px;
-              height: 21px;
-            }
-            &:hover {
-              box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
-            }
-            &.added {
-              width: 46px;
-              padding: 0;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              img,
-              span {
-                display: none;
-              }
-              .cart-ok {
-                display: inline-block;
-              }
-            }
           }
         }
       }

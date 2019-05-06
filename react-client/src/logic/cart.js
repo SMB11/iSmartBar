@@ -38,7 +38,10 @@ const addToCart = (product, quantity) => {
   }
   carts[carts.length - 1] = oldCart;
   window.localStorage.setItem("carts", JSON.stringify(carts));
-  return { carts };
+  return {
+    carts,
+    popupMessage: `${quantity} items were added to your MiniBar.`
+  };
 };
 
 const changeProductQuantity = (id, size, quantity) => {
@@ -53,44 +56,44 @@ const changeProductQuantity = (id, size, quantity) => {
     window.localStorage.setItem("carts", JSON.stringify(carts));
   }
   return { carts };
-}
+};
 
 const removeProduct = (id, size) => {
   const carts = getCarts();
   let oldCart = carts[carts.length - 1];
   const index = oldCart[size - 1].findIndex(p => p.id === id);
 
-
   if (index >= 0) {
     let product = oldCart[size - 1][index];
     if (size !== 6) {
-      if (
-        product.quantity > 1) {
+      if (product.quantity > 1) {
         product.quantity -= 1;
         oldCart[size - 1][index] = product;
-      }
-      else {
+      } else {
         oldCart[size - 1].splice(index, 1);
-
       }
       // get one from other
-      if (oldCart[5].length > 0) {
-        const toMove = oldCart[5][0];
+
+      const toMoveIndex = oldCart[5].findIndex(p => p.size === size);
+      if (toMoveIndex >= 0) {
+        const toMove = oldCart[5][toMoveIndex];
+
         if (toMove.quantity > 1) {
-          oldCart[5][0] = { ...toMove, quantity: toMove.quantity - 1 };
-        }
-        else {
+          oldCart[5][toMoveIndex] = {
+            ...toMove,
+            quantity: toMove.quantity - 1
+          };
+        } else {
           oldCart[5].splice(0, 1);
         }
 
         carts[carts.length - 1] = oldCart;
         window.localStorage.setItem("carts", JSON.stringify(carts));
         const res = addToCart(toMove, 1);
-        //res.popupMessage = "One item was moved to inside of MiniBar.";
+        res.popupMessage = "One item was moved to inside of MiniBar.";
         return res;
       }
-    }
-    else {
+    } else {
       oldCart[size - 1].splice(index, 1);
     }
   }
@@ -98,7 +101,7 @@ const removeProduct = (id, size) => {
   window.localStorage.setItem("carts", JSON.stringify(carts));
 
   return { carts };
-}
+};
 
 const getCarts = () => {
   if (!window.localStorage.getItem("carts")) {

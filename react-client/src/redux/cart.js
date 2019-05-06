@@ -1,5 +1,6 @@
 import api from "../api";
 import cartLogic from "../logic/cart";
+import { SetPopupMessage } from "./popup";
 
 export const SET_CART = "SET_CART";
 const initialState = {
@@ -21,32 +22,33 @@ const setCart = cart => ({
   type: SET_CART,
   payload: cart
 });
+const processResult = (dispatch, result) => {
+  if (result.carts) {
+    dispatch(setCart(result.carts));
+  }
+  if (result.popupMessage) {
+    dispatch(SetPopupMessage(result.popupMessage));
+  }
+};
 
 export const addToCart = (product, quantity) => {
   return dispatch => {
     let result = cartLogic.addToCart(product, quantity);
-    if (result.carts) {
-      dispatch(setCart(result.carts));
-    }
+
+    processResult(dispatch, result);
   };
 };
 
 export const changeProductQuantity = (id, size, quantity) => {
   return dispatch => {
     let result = cartLogic.changeProductQuantity(id, size, quantity);
-    if (result.carts) {
-      dispatch(setCart(result.carts));
-    }
+
+    processResult(dispatch, result);
   };
-}
+};
 export const removeProduct = (id, size) => {
   return dispatch => {
     let result = cartLogic.removeProduct(id, size);
-    if (result.carts) {
-      dispatch(setCart(result.carts));
-    }
-    if (result.popupMessage) {
-      alert(result.popupMessage);
-    }
+    processResult(dispatch, result);
   };
-}
+};

@@ -57,7 +57,7 @@ class Product extends Component {
             </button>
             <input
               type="text"
-              readonly
+              readOnly
               className="number-product"
               value={this.state.quantity}
             />
@@ -65,11 +65,9 @@ class Product extends Component {
               +
             </button>
           </div>
-          <div className="button-content">
-            <AddToCart
-              onClick={() => this.props.addToCart(product, this.state.quantity)}
-            />
-          </div>
+          <AddToCart
+            onClick={() => this.props.addToCart(product, this.state.quantity)}
+          />
         </div>
       </div>
     );

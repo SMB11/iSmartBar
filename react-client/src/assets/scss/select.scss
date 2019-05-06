@@ -60,5 +60,8 @@
     option:not(:disabled) {
       font-weight: bold;
     }
+    option:disabled {
+      color: #e3e3e3;
+    }
   }
 }

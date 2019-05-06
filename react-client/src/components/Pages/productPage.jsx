@@ -109,13 +109,11 @@ class ProductPage extends Component {
                     +
                   </button>
                 </div>
-                <div className="button-content">
-                  <AddToCart
-                    onClick={() =>
-                      this.props.addToCart(product, this.state.quantity)
-                    }
-                  />
-                </div>
+                <AddToCart
+                  onClick={() =>
+                    this.props.addToCart(product, this.state.quantity)
+                  }
+                />
               </div>
             </div>
           </div>

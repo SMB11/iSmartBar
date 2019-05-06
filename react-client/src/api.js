@@ -1,7 +1,8 @@
 import axios from "axios";
 import { withLocalize } from "react-localize-redux";
-const apiUrl = "https://localhost:44396/api/";
-// "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
+const apiUrl =
+  //"https://localhost:44396/api/";
+  "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
 const iSmartBarApiUrl =
   "http://ismartbarapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
 

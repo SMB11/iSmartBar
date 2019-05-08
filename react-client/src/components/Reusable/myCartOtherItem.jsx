@@ -17,13 +17,24 @@ class myCartOtherItem extends Component {
       <React.Fragment>
         <div className="product">
           <div className="prod-info">
-            <div style={imageStyle} className="image" />
+            <Link to={"/product/" + product.id}>
+              <div style={imageStyle} className="image" />
+            </Link>
             <div>
               <Link className="product-name" to={"/product/" + product.id}>
                 {product.name}
               </Link>
               <div className="product-count">
-                <button onClick={() => this.props.changeProductQuantity(product.id, 6, Math.max(product.quantity - 1, 1))} className="button-count no-active">
+                <button
+                  onClick={() =>
+                    this.props.changeProductQuantity(
+                      product.id,
+                      6,
+                      Math.max(product.quantity - 1, 1)
+                    )
+                  }
+                  className="button-count no-active"
+                >
                   -
                 </button>
                 <input
@@ -32,7 +43,18 @@ class myCartOtherItem extends Component {
                   className="number-product"
                   value={product.quantity}
                 />
-                <button onClick={() => this.props.changeProductQuantity(product.id, 6, product.quantity + 1)} className="button-count">+</button>
+                <button
+                  onClick={() =>
+                    this.props.changeProductQuantity(
+                      product.id,
+                      6,
+                      product.quantity + 1
+                    )
+                  }
+                  className="button-count"
+                >
+                  +
+                </button>
               </div>
             </div>
           </div>
@@ -41,7 +63,9 @@ class myCartOtherItem extends Component {
               <span>€{product.price}</span>
             </div>
             <div className="remove">
-              <button onClick={() => this.props.removeProduct(product.id, 6)}  >Remove</button>
+              <button onClick={() => this.props.removeProduct(product.id, 6)}>
+                Remove
+              </button>
             </div>
           </div>
         </div>
@@ -50,8 +74,6 @@ class myCartOtherItem extends Component {
     );
   }
 }
-
-
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
@@ -66,4 +88,3 @@ export default connect(
   null,
   mapDispatchToProps
 )(myCartOtherItem);
-

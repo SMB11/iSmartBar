@@ -3,8 +3,8 @@ import "../../assets/scss/mybar.scss";
 import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
-import { removeProduct } from '../../redux/cart'
-import { connect } from 'react-redux'
+import { removeProduct } from "../../redux/cart";
+import { connect } from "react-redux";
 class MyCartItem extends Component {
   render() {
     const { product } = this.props;
@@ -17,8 +17,10 @@ class MyCartItem extends Component {
       <React.Fragment>
         <div className="product">
           <div className="prod-data">
-            <div className="image" style={imageStyle} />
-            <div>
+            <Link to={"/product/" + product.id}>
+              <div className="image" style={imageStyle} />
+            </Link>
+            <div className="name-container">
               <Link className="product-name" to={"/product/" + product.id}>
                 {" "}
                 {product.name}{" "}
@@ -27,14 +29,17 @@ class MyCartItem extends Component {
             </div>
           </div>
           <div className="remove">
-            <button onClick={() => this.props.removeProduct(product.id, product.size)}>Remove</button>
+            <a
+              onClick={() => this.props.removeProduct(product.id, product.size)}
+            >
+              Remove
+            </a>
           </div>
         </div>
       </React.Fragment>
     );
   }
 }
-
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(

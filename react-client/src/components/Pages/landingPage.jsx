@@ -38,7 +38,6 @@ class landingPage extends Component {
   }
 
   render() {
-    console.log(this.props.topFive);
     return (
       <React.Fragment>
         {/* <div id="container"> */}

@@ -51,7 +51,6 @@ class ProductPage extends Component {
 
   render() {
     const { product, category } = this.props;
-    console.log(product);
     let rightContent;
     const imageStyle = {
       backgroundImage: product.imagePath
@@ -96,7 +95,7 @@ class ProductPage extends Component {
                   </button>
                   <input
                     type="text"
-                    readonly
+                    readOnly
                     className="number-product"
                     value={this.state.quantity}
                   />

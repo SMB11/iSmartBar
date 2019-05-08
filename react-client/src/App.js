@@ -41,10 +41,7 @@ class PageWrapper extends Component {
     });
   }
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     if (!nextProps.popupShown) {
-      console.log("mtav");
-
       this.addNotification(nextProps.popupMessage);
       this.props.SetPopupShown();
     }

@@ -15,8 +15,8 @@ import {
 import { OutgoingMessage } from "http";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import { CategoryGet } from '../../redux/category';
-import { bindActionCreators } from 'redux';
+import { CategoryGet } from "../../redux/category";
+import { bindActionCreators } from "redux";
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
 class CartPage extends Component {
   state = {
@@ -135,12 +135,10 @@ class CartPage extends Component {
   }
 }
 
-
 const mapStateToProps = (state, props) => {
   const insidePrice = insidePriceSelector(state);
   const outsidePrice = outisdePriceSelector(state);
   let total = (parseFloat(insidePrice) + parseFloat(outsidePrice)).toFixed(2);
-  console.log(total);
   return {
     products: sectionCartSelector(state, 6),
     insidePrice,
@@ -156,5 +154,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(CartPage));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(CartPage));

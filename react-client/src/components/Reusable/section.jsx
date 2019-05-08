@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { read } from "fs";
 class Section extends Component {
   render() {
-    console.log("size: " + this.props.size);
     const prod = this.props.products;
     return (
       <div className="section">

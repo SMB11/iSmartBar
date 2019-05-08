@@ -29,7 +29,6 @@ export default (state = initialState, action) => {
     case GETROOTCATEGORYBRANDS_END:
       const categoryBrands = state.categoryBrands.slice(0);
       categoryBrands[action.payload.id] = action.payload.data;
-      console.log(action);
       return { ...state, categoryBrands, categoryBrandsLoading: false };
     default:
       return { ...state };
@@ -54,7 +53,6 @@ export const GetRootCategoryBrandsEnd = (id, categoryBrands) => ({
 });
 
 export const CategoryGet = lang => {
-  console.log(lang);
   return (dispatch, getState) => {
     const state = getState();
     if (
@@ -67,7 +65,7 @@ export const CategoryGet = lang => {
         .then(response => {
           dispatch(CategoryGetEnd(response.data));
         })
-        .catch(err => { });
+        .catch(err => {});
     } else {
       //debugger;
     }
@@ -83,9 +81,8 @@ export const RootCategoryBrandGet = (lang, id) => {
         .getSubcategoryBrands(lang, id)
         .then(response => {
           dispatch(GetRootCategoryBrandsEnd(id, response.data));
-          console.log(response.data);
         })
-        .catch(err => { });
+        .catch(err => {});
     } else {
       //debugger;
     }

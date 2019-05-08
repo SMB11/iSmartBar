@@ -92,12 +92,11 @@ body.cart-body {
                   }
                   .prod-data {
                     display: flex;
-                    margin-left: 5%;
                     img {
                       width: 50px;
                     }
-                    div {
-                      margin-left: 10px;
+                    div.name-container {
+                      padding-left: 10px;
                       p {
                         margin-top: 10px;
                         color: #042f5c;
@@ -118,18 +117,22 @@ body.cart-body {
                     }
                   }
                   .remove {
-                    button {
+                    a {
                       width: 72px;
                       height: 21px;
-                      border-radius: 28px;
-                      border: 1px solid #042f5c;
                       background-color: #00000000;
                       color: #042f5c;
-                      font-family: "Acrom";
-                      font-size: 8px;
+                      font-size: 12px;
                       font-weight: 400;
                       cursor: pointer;
-                      margin-top: 20px;
+                      display: flex;
+                      justify-content: flex-end;
+                      align-items: center;
+                      height: 100%;
+
+                      &:hover {
+                        text-decoration: underline;
+                      }
                     }
                   }
                 }
@@ -279,7 +282,6 @@ body.cart-body {
             width: 100%;
             span {
               color: #042f5c;
-              font-family: Helvetica;
               font-size: 16px;
               font-weight: 400;
             }

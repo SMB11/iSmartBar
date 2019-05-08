@@ -108,11 +108,8 @@ export const GetProductDescription = (lang, id) => {
       .getProductDescription(lang, id)
       .then(response => {
         dispatch(ProductDescriptionGetEnd(response.data));
-        console.log(response.data);
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
   };
 };
 export const GetTopFive = lang => {

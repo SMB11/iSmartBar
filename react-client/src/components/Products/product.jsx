@@ -31,13 +31,11 @@ class Product extends Component {
     const { product } = this.props;
 
     if (!product) return "";
-    console.log(product);
     const imageStyle = {
       backgroundImage: product.imagePath
         ? `url(${encodeURI(assetBaseUrl + product.imagePath)})`
         : ""
     };
-    console.log(product.imagePath);
     return (
       <div className="product">
         <div

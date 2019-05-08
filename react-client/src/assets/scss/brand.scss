@@ -71,13 +71,13 @@ body.brand-body {
               color: #192b3f;
               font-family: "Roboto", sans-serif;
               font-size: 15px;
-              font-weight: 700;
+              font-weight: 400;
             }
             .price {
               color: #288cff;
               font-family: "Roboto", sans-serif;
               font-size: 23px;
-              font-weight: 700;
+              font-weight: 400;
               display: block;
             }
             .prop {
@@ -88,7 +88,7 @@ body.brand-body {
                 width: 50px;
                 a {
                   text-decoration: none;
-                  font-weight: 700;
+                  font-weight: 300;
                   color: black;
                 }
                 .button-count {
@@ -102,6 +102,7 @@ body.brand-body {
                   text-align: center;
                   border: none;
                   outline: none;
+                  font-weight: 300;
                   cursor: pointer;
                   &:disabled {
                     //background-color: silver;
@@ -119,7 +120,7 @@ body.brand-body {
                   color: #192b3f;
                   font-family: "Roboto", sans-serif;
                   font-size: 18px;
-                  font-weight: 400;
+                  font-weight: 300;
                 }
               }
             }

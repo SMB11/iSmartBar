@@ -71,6 +71,7 @@ body.cart-body {
                 margin-top: 15px;
                 padding: 15px;
                 border: 1px solid #042f5c;
+                font-weight: 300;
                 .product:not(:last-child) {
                   border-bottom: 1px solid #acb9c7;
                 }
@@ -161,7 +162,6 @@ body.cart-body {
               .prod-info {
                 width: 50%;
                 display: flex;
-                justify-content: space-around;
                 .image {
                   width: 100px;
                   height: 100px;
@@ -207,6 +207,7 @@ body.cart-body {
                       text-align: center;
                       border: none;
                       outline: none;
+                      font-weight: 300;
                       cursor: pointer;
                       &:disabled {
                         //background-color: silver;
@@ -225,7 +226,7 @@ body.cart-body {
                       color: #192b3f;
                       font-family: "Roboto", sans-serif;
                       font-size: 18px;
-                      font-weight: 400;
+                      font-weight: 300;
                     }
                   }
                 }

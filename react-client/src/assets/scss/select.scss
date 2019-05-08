@@ -38,7 +38,6 @@
     font-size: 14px;
     border-radius: 3px;
 
-    font-weight: bold;
     appearance: none;
 
     max-width: 500px;
@@ -58,7 +57,6 @@
       color: #3f4864;
     }
     option:not(:disabled) {
-      font-weight: bold;
     }
     option:disabled {
       color: #e3e3e3;

@@ -36,7 +36,7 @@ body.product-body {
         color: #288cff;
         font-family: "Roboto", sans-serif;
         font-size: 26px;
-        font-weight: 700;
+        font-weight: 500;
         text-transform: uppercase;
 
         margin-bottom: 12px;
@@ -67,7 +67,7 @@ body.product-body {
         color: #707070;
         font-family: "Roboto", sans-serif;
         font-size: 16px;
-        font-weight: 400;
+        font-weight: 300;
         &:last-child {
           margin-top: 15px;
         }
@@ -78,7 +78,7 @@ body.product-body {
           color: #288cff;
           font-family: "Roboto", sans-serif;
           font-size: 23px;
-          font-weight: 700;
+          font-weight: 400;
         }
       }
       .prop {
@@ -104,6 +104,7 @@ body.product-body {
             border: none;
             outline: none;
             cursor: pointer;
+            font-weight: 300;
             &:last-child {
               position: relative;
             }
@@ -117,7 +118,7 @@ body.product-body {
             color: #192b3f;
             font-family: "Roboto", sans-serif;
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 300;
           }
         }
       }
@@ -164,7 +165,7 @@ body.product-body {
           color: #192b3f;
           font-family: "Roboto", sans-serif;
           font-size: 16px;
-          font-weight: 400;
+          font-weight: 300;
         }
       }
     }

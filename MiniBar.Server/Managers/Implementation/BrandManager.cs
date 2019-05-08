@@ -68,6 +68,10 @@ namespace Managers.Implementation
         {
             IBrandAccessor brandAccessor = ServiceProvider.GetService<IBrandAccessor>();
             ICategoryManager categoryManager = ServiceProvider.GetService<ICategoryManager>();
+            CategoryDTO cat = await categoryManager.GetByID(id);
+            int rootId = 0;
+            if (cat.ParentID.HasValue) rootId = cat.ParentID.Value;
+            else rootId = cat.ID;
             List<CategoryDTO> subCategories = await categoryManager.GetSubcategoriesAsync(id);
             Dictionary<string, List<BrandDTO>> res = new Dictionary<string, List<BrandDTO>>();
             foreach(CategoryDTO category in subCategories)

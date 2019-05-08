@@ -26,13 +26,13 @@ class ProductHome extends Component {
         className="product"
         onClick={() => this.redirect("/product/" + product.id)}
       >
-        <div className="product-image">
-          <img src={assetBaseUrl + product.imagePath} alt="" />
-        </div>
+        <div className="product-image" style={imageStyle} />
         <div className="info">
           <p>{product.category}</p>
-          <p>{product.name}</p>
-          <p>€ {product.price}</p>
+          <div className="p-group">
+            <p className="name">{product.name}</p>
+            <p className="nowrap">{"€ " + product.price}</p>
+          </div>
         </div>
       </div>
     );

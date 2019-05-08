@@ -165,10 +165,8 @@ class landingPage extends Component {
                 <ProductHome product={this.props.topFive[0]} />
                 <ProductHome product={this.props.topFive[1]} />
               </div>
-              <div className="products-column">
-                <div className="product">
-                  <ProductHome product={this.props.topFive[2]} />
-                </div>
+              <div className="products-column middle">
+                <ProductHome product={this.props.topFive[2]} />
               </div>
               <div className="products-column">
                 <ProductHome product={this.props.topFive[3]} />

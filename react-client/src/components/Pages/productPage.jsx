@@ -53,6 +53,11 @@ class ProductPage extends Component {
     const { product, category } = this.props;
     console.log(product);
     let rightContent;
+    const imageStyle = {
+      backgroundImage: product.imagePath
+        ? `url(${encodeURI(assetBaseUrl + product.imagePath)})`
+        : ""
+    };
     if (product) {
       rightContent = (
         <div
@@ -65,14 +70,7 @@ class ProductPage extends Component {
           </div>
           <div className="title">{product.brand}</div>
           <div className="product-content">
-            <div className="image-part">
-              <img
-                src={
-                  product.imagePath ? assetBaseUrl + product.imagePath : null
-                }
-                alt=""
-              />
-            </div>
+            <div className="image-part" style={imageStyle} />
             <div className="info">
               <h2 className="name">{product.name}</h2>
               <div>

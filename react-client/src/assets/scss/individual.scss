@@ -16,9 +16,12 @@ body.product-body {
     .image-part {
       width: 48%;
       border-radius: 4px;
+      min-height: 300px;
       border: 1px solid #288cff66;
-      padding: 35px 0;
       display: flex;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
       justify-content: center;
       align-items: center;
       img {

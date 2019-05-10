@@ -17,6 +17,7 @@ import {
   hotelsSelector
 } from "../../redux/selectors/locations";
 import { languageStepStorageKey } from "./chooseLanguage";
+import AutoSuggestDropdown from "../Reusable/autoSuggestDropdown";
 
 export const locationStepStorageKey = "ChooseLocationState";
 
@@ -74,12 +75,11 @@ class ChooseLocation extends Component {
       this.setState({ ...this.state, city: null, hotel: null });
     }
   }
-  handleHotelChanged(e) {
-    const hotel = this.props.hotels.find(
-      h => h.id === parseInt(e.target.value)
-    );
-    if (hotel) this.setState({ ...this.state, hotel: hotel });
-    else this.setState({ ...this.state, hotel: null });
+  handleHotelChanged(name) {
+    const hotel = this.props.hotels.find(h => h.name === name);
+    if (hotel) {
+      this.setState({ ...this.state, hotel: hotel });
+    } else this.setState({ ...this.state, hotel: null });
   }
   handleFinish() {
     window.localStorage.setItem(
@@ -100,7 +100,7 @@ class ChooseLocation extends Component {
     // isButtonDisabled = false;
     return (
       <div className="step step2">
-        <form action="" className="container">
+        <div className="container">
           <div className="select-form">
             <DropDown
               id="country"
@@ -127,7 +127,18 @@ class ChooseLocation extends Component {
                 disabled: city.id !== 1
               }))}
             />
-            <DropDown
+            <AutoSuggestDropdown
+              disabled={!this.state.country}
+              onChange={this.handleHotelChanged.bind(this)}
+              label="Hotel"
+              selectedValue={this.state.hotel ? this.state.hotel.name : ""}
+              loading={this.props.hotelsLoading}
+              options={hotels.map(hotel => ({
+                id: hotel.id,
+                name: hotel.name
+              }))}
+            />
+            {/* <DropDown
               disabled={!(this.state.city && this.state.country)}
               id="hotel"
               label="Hotel"
@@ -138,9 +149,9 @@ class ChooseLocation extends Component {
                 value: hotel.id,
                 name: hotel.name
               }))}
-            />
+            /> */}
           </div>
-        </form>
+        </div>
         <div className="button-content">
           <button
             disabled={isButtonDisabled}

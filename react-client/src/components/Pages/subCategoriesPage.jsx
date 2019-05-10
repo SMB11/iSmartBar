@@ -26,15 +26,6 @@ class SubCategoriesPage extends Component {
     this.props.history.push(target);
   }
   catRefs = {};
-  getParameterByName = (name, url) => {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return "";
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-  };
   getBrands = id => {
     const language = JSON.parse(
       window.localStorage.getItem(languageStepStorageKey)
@@ -42,22 +33,29 @@ class SubCategoriesPage extends Component {
     this.props.RootCategoryBrandGet(language, id);
     this.props.CategoryGet(language);
   };
+  doScrollTo() {
+    const scrollTo = this.props.scrollTo;
+    if (this.catRefs[scrollTo]) {
+      setTimeout(() => {
+        window.scrollTo(0, this.catRefs[scrollTo].offsetTop);
+      }, 50);
+    }
+  }
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "subcategory-body";
     this.getBrands(this.props.id);
+    this.doScrollTo();
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.id != this.props.id) {
-      this.getBrands(nextProps.id);
+  componentDidUpdate(prevProps) {
+    if (this.props.id != prevProps.id) {
+      this.getBrands(this.props.id);
     }
-    if (nextProps.loading === false && this.props.loading === true) {
-      const scrollTo = this.getParameterByName(
-        "scrollTo",
-        window.location.href
-      );
-      if (this.catRefs[scrollTo]) {
-        window.scrollTo(0, this.catRefs[scrollTo].offsetTop);
-      }
+    if (
+      (this.props.loading === false && prevProps.loading === true) ||
+      (this.props.loading === false &&
+        this.props.scrollTo !== prevProps.scrollTo)
+    ) {
+      this.doScrollTo();
     }
   }
   render() {
@@ -71,7 +69,7 @@ class SubCategoriesPage extends Component {
         <div className="content">
           <div className="breadcrumbs">
             <Link to="/">Home</Link>
-            {category ? <Link> {category.name}</Link> : ""}
+            {category ? <a> {category.name}</a> : ""}
           </div>
           <div className="body">
             <div className="left-content">
@@ -134,12 +132,23 @@ class SubCategoriesPage extends Component {
   }
 }
 
+const getParameterByName = (name, url) => {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, "\\$&");
+  var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return "";
+  return decodeURIComponent(results[2].replace(/\+/g, " "));
+};
+
 const mapStateToProps = (state, props) => {
   return {
     categoryBrands: rootCategoriesBrandsSelector(
       state,
       parseInt(props.match.params.id)
     ),
+    scrollTo: getParameterByName("scrollTo", props.location.search),
     category: categorySelector(state, parseInt(props.match.params.id)),
     id: parseInt(props.match.params.id),
     loading:

@@ -6,6 +6,15 @@ import { bindActionCreators } from "redux";
 import { removeProduct } from "../../redux/cart";
 import { connect } from "react-redux";
 class MyCartItem extends Component {
+  prodRef;
+  componentDidUpdate(prevProps) {
+    // if (prevProps.product.id !== this.props.product.id) {
+    //   this.prodRef.classList.add("animate");
+    //   setTimeout(() => {
+    //     this.prodRef.classList.remove("animate");
+    //   }, 50);
+    // }
+  }
   render() {
     const { product } = this.props;
     const imageStyle = {
@@ -15,7 +24,7 @@ class MyCartItem extends Component {
     };
     return (
       <React.Fragment>
-        <div className="product">
+        <div className="product" ref={ref => (this.prodRef = ref)}>
           <div className="prod-data">
             <Link to={"/product/" + product.id}>
               <div className="image" style={imageStyle} />

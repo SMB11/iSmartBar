@@ -14,7 +14,7 @@ body.subcategory-body {
           font-weight: 700;
         }
         .content {
-          margin-top: 35px;
+          // margin-top: 35px;
           display: flex;
           flex-flow: row wrap;
           position: relative;
@@ -27,11 +27,8 @@ body.subcategory-body {
             @media (max-width: 1000px) {
               flex: 0 1 calc(33% - 8px);
             }
-            @media (max-width: 850px) {
+            @media (max-width: 500px) {
               flex: 0 1 calc(50% - 8px);
-            }
-            @media (max-width: 550px) {
-              flex: 0 1 calc(100% - 8px);
             }
             img {
               width: 100%;

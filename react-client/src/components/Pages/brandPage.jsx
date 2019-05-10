@@ -60,9 +60,9 @@ class BrandPage extends Component {
                 {category ? category.name : ""}
               </Link>
             ) : (
-                ""
-              )}
-            <Link>{this.props.brandName}</Link>
+              ""
+            )}
+            <a>{this.props.brandName}</a>
           </div>
           <div className="body">
             {/* <div className="right-content"> */}

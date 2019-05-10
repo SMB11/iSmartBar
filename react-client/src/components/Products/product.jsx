@@ -27,6 +27,10 @@ class Product extends Component {
     }
     return this.setState({ oldState, quantity: newQuantity });
   };
+  quantityChanged(e) {
+    const val = parseInt(e.target.value) ? parseInt(e.target.value) : 0;
+    this.setState({ ...this.state, quantity: val });
+  }
   render() {
     const { product } = this.props;
 
@@ -55,7 +59,7 @@ class Product extends Component {
             </button>
             <input
               type="text"
-              readOnly
+              onChange={this.quantityChanged.bind(this)}
               className="number-product"
               value={this.state.quantity}
             />

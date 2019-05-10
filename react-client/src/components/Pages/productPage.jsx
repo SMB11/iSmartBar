@@ -49,6 +49,10 @@ class ProductPage extends Component {
     return this.setState({ oldState, quantity: newQuantity });
   };
 
+  quantityChanged(e) {
+    const val = parseInt(e.target.value) ? parseInt(e.target.value) : 0;
+    this.setState({ ...this.state, quantity: val });
+  }
   render() {
     const { product, category } = this.props;
     let rightContent;
@@ -73,14 +77,16 @@ class ProductPage extends Component {
             <div className="info">
               <h2 className="name">{product.name}</h2>
               <div>
-                <p>Volume: 0.75 l</p>
-                <p>Color: red </p>
-                <p>Type: dry</p>
-                <p>Alcohol by volume: 13.5%</p>
-                <p>Production year: 2015</p>
-                <p>Manufacturer: Highland Cellars LLC </p>
-                <p>Produced in Armenia</p>
-                <p>Code: 00130</p>
+                <p>
+                  Volume: 0.75 l <br />
+                  Color: red <br />
+                  Type: dry <br />
+                  Alcohol by volume: 13.5% <br />
+                  Production year: 2015 <br />
+                  Manufacturer: Highland Cellars LLC <br />
+                  Produced in Armenia <br />
+                  Code: 00130 <br />
+                </p>
               </div>
               <div className="price">
                 <span>€ {product.price}</span>
@@ -95,7 +101,7 @@ class ProductPage extends Component {
                   </button>
                   <input
                     type="text"
-                    readOnly
+                    onChange={this.quantityChanged.bind(this)}
                     className="number-product"
                     value={this.state.quantity}
                   />
@@ -137,19 +143,29 @@ class ProductPage extends Component {
           <div className="breadcrumbs">
             <Link to="/">Home</Link>
             {category ? (
-              <Link
-                to={
-                  "/subcategory/" +
-                  category.parentID +
-                  "?scrollTo=" +
-                  category.name
-                }
-              >
-                {category.name}
-              </Link>
+              <React.Fragment>
+                <Link
+                  to={
+                    "/subcategory/" +
+                    category.parentID +
+                    "?scrollTo=" +
+                    category.name
+                  }
+                >
+                  {category.name}
+                </Link>
+                <Link
+                  to={`/category/${category.id}/brand/${product.brandID}/${
+                    product.brand
+                  }`}
+                >
+                  {product.brand}
+                </Link>
+              </React.Fragment>
             ) : (
               ""
             )}
+            <a>{product.name}</a>
           </div>
           <div className="body">{product ? rightContent : ""}</div>
         </div>

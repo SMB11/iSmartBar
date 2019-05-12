@@ -41,6 +41,7 @@ class AutoSuggestDropdown extends Component {
     let { suggestions, value } = this.state;
     const { selectedValue } = this.props;
     if (!value && selectedValue) value = selectedValue;
+    if (this.props.loading) value = "";
     const inputProps = {
       value,
       onChange: this.onChange

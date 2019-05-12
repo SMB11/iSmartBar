@@ -5,10 +5,12 @@
   "dependencies": {
     "axios": "^0.18.0",
     "ismobilejs": "^0.5.1",
+    "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "periodicjs.component.selectfx": "^1.0.0",
     "react": "^16.8.6",
     "react-autosuggest": "^9.4.3",
+    "react-dates": "^20.1.0",
     "react-dom": "^16.8.6",
     "react-isolated-scroll": "^0.1.1",
     "react-modal": "^3.8.1",

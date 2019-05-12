@@ -98,7 +98,7 @@
 .react-autosuggest__suggestions-container {
   overflow-x: hidden;
   overflow-y: scroll;
-  max-height: 300px;
+  max-height: 170px;
   position: absolute;
   top: 64px;
   width: 100%;
@@ -120,9 +120,13 @@
 .react-autosuggest__suggestion {
   cursor: pointer;
   padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #3f4864;
 }
 .react-autosuggest__suggestion--highlighted {
-  background: #e3e3e3;
+  background: #d5dadd;
+  color: #008efd;
 }
 .react-autosuggest__suggestion--focused {
   background-color: #ddd;

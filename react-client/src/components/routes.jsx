@@ -12,6 +12,7 @@ import { CategoryGet } from "../redux/category";
 import BrandPage from "./Pages/brandPage";
 import productPage from "./Pages/productPage";
 import CartPage from "./Pages/cartPage";
+import { dateStepStorageKey } from "./StartProcess/chooseDate";
 
 class Routes extends Component {
   componentWillUpdate() {
@@ -30,7 +31,8 @@ class Routes extends Component {
   render() {
     if (
       !JSON.parse(window.localStorage.getItem(languageStepStorageKey)) ||
-      !JSON.parse(window.localStorage.getItem(locationStepStorageKey))
+      !JSON.parse(window.localStorage.getItem(locationStepStorageKey)) ||
+      !JSON.parse(window.localStorage.getItem(dateStepStorageKey))
     )
       return <Redirect to="/process" />;
     else {

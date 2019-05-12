@@ -173,6 +173,7 @@
   background-color: #3f48641a;
   .left-content {
     display: flex;
+    align-items: center;
     .dropdown {
       position: relative;
       display: inline-block;
@@ -230,16 +231,14 @@
         &::after {
           content: url("../images/arrow-down-smoll.svg");
           position: absolute;
-          left: 80%;
+
+          margin-left: 8px;
         }
         @media (max-width: 500px) {
           font-size: 13px;
           margin-left: 0;
           margin-right: 15px;
           padding: 16px 10px;
-          &::after {
-            left: 60px;
-          }
         }
       }
       .dropdown-content {
@@ -285,7 +284,7 @@
     }
     div {
       margin-left: 20px;
-      padding-top: 10px;
+      padding: 5px 0;
       span {
         display: block;
         color: #042e5d;

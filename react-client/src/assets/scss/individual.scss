@@ -13,6 +13,9 @@ body.product-body {
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
+    @media (max-width: 700px) {
+      flex-direction: column;
+    }
     .image-part {
       width: 48%;
       border-radius: 4px;
@@ -24,6 +27,10 @@ body.product-body {
       background-repeat: no-repeat;
       justify-content: center;
       align-items: center;
+
+      @media (max-width: 700px) {
+        width: 100%;
+      }
       img {
         max-width: 100%;
 
@@ -32,6 +39,10 @@ body.product-body {
     }
     .info {
       width: 48%;
+
+      @media (max-width: 700px) {
+        width: 100%;
+      }
       .name {
         color: #288cff;
         font-family: "Roboto", sans-serif;

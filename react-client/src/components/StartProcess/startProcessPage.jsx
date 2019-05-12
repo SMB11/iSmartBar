@@ -8,6 +8,7 @@ import ChooseLocation from "./chooseLocation";
 import ChooseMiniBar from "./chooseMiniBar";
 import { Translate } from "react-localize-redux";
 import { Redirect } from "react-router-dom";
+import ChooseDate from "./chooseDate";
 class StartProcessPage extends Component {
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "steps-body";
@@ -15,7 +16,8 @@ class StartProcessPage extends Component {
   state = {
     steps: [
       <ChooseLanguage onFinished={this.handleStepFinished.bind(this)} />,
-      <ChooseLocation onFinished={this.handleStepFinished.bind(this)} />
+      <ChooseLocation onFinished={this.handleStepFinished.bind(this)} />,
+      <ChooseDate onFinished={this.handleStepFinished.bind(this)} />
     ],
     step: 1,
     redirectHome: false

@@ -1,0 +1,45 @@
+.CalendarMonthGrid {
+  width: unset !important;
+}
+.DateRangePicker {
+  width: 100%;
+  & > div {
+    width: 100%;
+    .DateRangePickerInput {
+      width: 100%;
+      display: flex;
+      .DateInput {
+        flex: 1;
+        .DateInput_input {
+          font-weight: 300;
+        }
+        .DateInput_input__focused {
+          border-bottom: 2px solid #008efd;
+        }
+      }
+      .DateRangePickerInput_arrow {
+        display: flex;
+        align-items: center;
+      }
+      .CalendarDay__selected_span {
+        background: #e8f1ff;
+      }
+      .CalendarDay {
+        border: 1px solid #70707020;
+      }
+      .CalendarDay__default {
+        color: #042f5c;
+      }
+      .CalendarDay__selected,
+      .CalendarDay__selected:active,
+      .CalendarDay__selected:hover {
+        background: #008efd;
+        color: #fff;
+      }
+      .CalendarDay__blocked_out_of_range {
+        background: #fff;
+        color: #cacccd;
+      }
+    }
+  }
+}

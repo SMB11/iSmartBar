@@ -1,0 +1,53 @@
+.content{
+    padding: 100px 6%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+.title{
+    color: #192b3f;
+    font-family: "Acrom";
+    font-size: 24px;
+    font-weight: 700;
+
+}
+
+.body{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+    background-color: #ffffff;
+}
+.bodyContent{
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+    padding: 25px;
+    justify-content: space-between;
+}
+.section{
+    margin-top: 35px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 50%;
+}
+.titleSection{
+
+}
+.selectCountry{
+    height: 43px;
+    width: 300px;
+    border: 1px solid #042F5C;
+    font-size: 14px;
+    border-radius: 3px;
+    max-width: 500px;
+    // width: 100%;
+}
+.input{
+    height: 43px;
+    width: 300px;
+    border: 1px solid #042F5C;
+    font-size: 14px;
+    border-radius: 3px;
+    max-width: 500px;
+    // width: 100%;
+}

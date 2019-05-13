@@ -58,18 +58,15 @@ class myCartOtherItem extends Component {
               </div>
             </div>
           </div>
-          <div className="prod-action">
-            <div className="price">
-              <span>€{product.price}</span>
-            </div>
-            <div className="remove">
-              <button onClick={() => this.props.removeProduct(product.id, 6)}>
-                Remove
-              </button>
-            </div>
+          <div className="price">€{product.price}</div>
+
+          <div
+            className="remove"
+            onClick={() => this.props.removeProduct(product.id, 6)}
+          >
+            <img src="http://localhost:3000/images/close.svg" />
           </div>
         </div>
-        <div className="horizontal-line" />
       </React.Fragment>
     );
   }

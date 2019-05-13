@@ -156,13 +156,16 @@ body.cart-body {
               font-family: "Acrom";
               font-size: 18px;
               font-weight: 700;
+              margin-bottom: 10px;
             }
             .product {
               display: flex;
               justify-content: space-between;
               padding: 10px;
+              position: relative;
+
               .prod-info {
-                width: 50%;
+                //   width: 50%;
                 display: flex;
                 .image {
                   width: 100px;
@@ -192,7 +195,6 @@ body.cart-body {
                   }
                   .product-count {
                     margin-top: 15px;
-                    // width: 50px`;
                     a {
                       text-decoration: none;
                       font-weight: 700;
@@ -233,38 +235,44 @@ body.cart-body {
                   }
                 }
               }
-              .prod-action {
-                width: 50%;
+              .price {
                 display: flex;
-                justify-content: space-around;
-                .price {
-                  position: relative;
-                  span {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    color: #042f5c;
-                    font-family: "Acrom";
-                    font-size: 13px;
-                    font-weight: 700;
-                  }
+                justify-content: center;
+                align-items: center;
+                color: #042f5c;
+                font-family: "Acrom";
+                font-size: 13px;
+                font-weight: 700;
+              }
+              .remove {
+                display: none;
+                position: absolute;
+                right: 7px;
+                top: 6px;
+                img {
+                  border-radius: 100px;
+                  width: 20px;
+                  height: 20px;
+                  padding: 5px;
                 }
-                .remove {
-                  button {
-                    width: 114px;
-                    height: 35px;
-                    border-radius: 28px;
-                    border: 1px solid #042f5c;
-                    background-color: #00000000;
-                    color: #042f5c;
-                    font-family: "Acrom";
-                    font-size: 12px;
-                    font-weight: 400;
-                    cursor: pointer;
-                    margin-top: 30px;
+                &:hover {
+                  img {
+                    background: #00000010;
                   }
                 }
               }
+
+              &:hover {
+                box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+                .remove {
+                  display: block;
+                  cursor: pointer;
+                }
+              }
+            }
+
+            & .product:not(:last-child) {
+              margin-bottom: 10px;
             }
           }
         }

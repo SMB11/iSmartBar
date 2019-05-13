@@ -9,6 +9,7 @@ import {
 import { cartFullCountSelector } from "../../redux/selectors/cart";
 import "../../assets/scss/header.scss";
 import { Link } from "react-router-dom";
+import CartHover from "./cartHover";
 class SubNavBar extends Component {
   state = {};
 
@@ -52,6 +53,7 @@ class SubNavBar extends Component {
               </span>
             </div>
           </Link>
+          <CartHover />
         </div>
       </div>
     );

@@ -1,10 +1,17 @@
 .CalendarMonthGrid {
   width: unset !important;
 }
+
+.DayPickerKeyboardShortcuts_buttonReset {
+  display: none;
+}
 .DateRangePicker {
   width: 100%;
   & > div {
     width: 100%;
+    .DateRangePickerInput_arrow_svg {
+      fill: #bcbcbc;
+    }
     .DateRangePickerInput {
       width: 100%;
       display: flex;
@@ -12,6 +19,7 @@
         flex: 1;
         .DateInput_input {
           font-weight: 300;
+          font-size: 16px;
         }
         .DateInput_input__focused {
           border-bottom: 2px solid #008efd;

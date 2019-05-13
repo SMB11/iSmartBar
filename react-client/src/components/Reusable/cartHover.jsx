@@ -11,7 +11,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import MyCartOtherItem from "./myCartOtherItem";
-
+import { Link } from "react-router-dom";
 class CartHover extends Component {
   state = {
     smartBar: true,
@@ -140,6 +140,17 @@ class CartHover extends Component {
                 })}
           </div>
         </div>
+
+        <div className="subtotal">
+          <div className="text">Subtotal</div>
+          <div className="value">€ {this.props.total}</div>
+        </div>
+
+        <div className="viewCart">
+          <Link className="button" to="/cart">
+            View Cart
+          </Link>
+        </div>
       </div>
     );
   }
@@ -153,8 +164,6 @@ const mapStateToProps = (state, props) => {
     otherProducts: sectionCartSelector(state, 6),
     getSectionProducts: id => sectionCartSelector(state, id),
     getSectionProductsCount: id => sectionCartCountSelector(state, id),
-    insidePrice,
-    outsidePrice,
     total
   };
 };

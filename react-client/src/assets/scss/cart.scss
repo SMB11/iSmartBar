@@ -2,7 +2,7 @@
   position: absolute;
   top: 51px;
   width: 350px;
-  max-height: 500px;
+  max-height: 550px;
   right: 0;
   background: #fff;
   box-shadow: -3px 1px 7px 0 rgba(0, 0, 0, 0.1);
@@ -114,7 +114,7 @@
     &.content-ismart {
       .products {
         overflow-y: scroll;
-        max-height: 282px;
+        max-height: 200px;
         width: 97%;
         margin: 0 auto;
         padding: 10px 5%;
@@ -144,6 +144,11 @@
         }
         .prod-data {
           display: flex;
+
+          > a {
+            display: flex;
+            align-items: center;
+          }
           img {
             width: 50px;
           }
@@ -326,6 +331,49 @@
       opacity: 0.1;
       margin: 0 auto;
       margin-top: 15px;
+    }
+  }
+  .subtotal {
+    width: 100%;
+    height: 52px;
+    background: #042f5c;
+    color: white;
+    display: flex;
+    align-items: center;
+    .text,
+    .value {
+      flex: 1;
+      display: flex;
+      font-weight: 500;
+      font-family: Acrom;
+      font-size: 14px;
+    }
+    .text {
+      justify-content: flex-end;
+    }
+    .value {
+      justify-content: center;
+    }
+  }
+  .viewCart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: Acrom;
+      background: #288cff;
+      width: 185px;
+      height: 53px;
+      border: none;
+      font-weight: 500;
+      color: #fff;
     }
   }
 }

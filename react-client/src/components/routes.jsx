@@ -13,6 +13,7 @@ import BrandPage from "./Pages/brandPage";
 import productPage from "./Pages/productPage";
 import CartPage from "./Pages/cartPage";
 import { dateStepStorageKey } from "./StartProcess/chooseDate";
+import CheckoutPage from './Pages/checkoutPage';
 
 class Routes extends Component {
   componentWillUpdate() {
@@ -47,6 +48,7 @@ class Routes extends Component {
           />
           <Route path="/product/:id" component={productPage} exact />
           <Route path="/cart" component={CartPage} exact />
+          <Route path="/checkout" component={CheckoutPage} exact />
         </React.Fragment>
       );
     }

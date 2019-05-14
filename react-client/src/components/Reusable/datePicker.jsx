@@ -14,7 +14,10 @@ class DatePicker extends Component {
           orientation={isMobile.any ? "vertical" : "horizontal"}
           verticalHeight={isMobile.any ? 350 : undefined}
           numberOfMonths={isMobile.any ? 1 : undefined}
+          isReadOnly={true}
+          readOnly={true}
           // withPortal={true}
+          showClearDates={true}
           startDate={this.props.startDate} // momentPropTypes.momentObj or null,
           startDateId="startDateID" // PropTypes.string.isRequired,
           endDate={this.props.endDate} // momentPropTypes.momentObj or null,

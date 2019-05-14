@@ -42,7 +42,7 @@ class SubNavBar extends Component {
         </div>
         <div className="right-content">
           <Link to="/cart">
-            <img src="http://localhost:3000/images/items.svg" alt="" />
+            <img src="http://beta.ismartbar.it/images/items.svg" alt="" />
 
             <div>
               <span>

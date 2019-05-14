@@ -64,7 +64,7 @@ class CartHover extends Component {
         >
           <div className="minibarArea">
             <div className="minibar">
-              <img src="http://localhost:3000/images/minibar.svg" />
+              <img src="http://beta.ismartbar.it/images/minibar.svg" />
               <div
                 className={
                   "section section1 " +

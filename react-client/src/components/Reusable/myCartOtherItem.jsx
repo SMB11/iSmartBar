@@ -64,7 +64,7 @@ class myCartOtherItem extends Component {
             className="remove"
             onClick={() => this.props.removeProduct(product.id, 6)}
           >
-            <img src="http://localhost:3000/images/close.svg" />
+            <img src="http://beta.ismartbar.it/images/close.svg" />
           </div>
         </div>
       </React.Fragment>

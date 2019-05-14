@@ -19,7 +19,7 @@ class AddToCart extends Component {
           onClick={this.onClick.bind(this)}
           className="btn"
         >
-          <img src="http://localhost:3000/images/add-to-cart.svg" alt="" />
+          <img src="http://beta.ismartbar.it/images/add-to-cart.svg" alt="" />
           <span>Add to Cart</span>
           <svg
             className="cart-ok"

@@ -30,7 +30,7 @@ class StartProcessPage extends Component {
       this.setState({ ...this.state, step: step + 1 });
     } else {
       // this.setState({ ...this.state, redirectHome: true });
-      window.location.href = "http://localhost:3000/";
+      window.location.href = "http://beta.ismartbar.it/";
     }
   }
   backButtonHandler = () => {

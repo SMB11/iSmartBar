@@ -8,15 +8,31 @@ class DatePicker extends Component {
   render() {
     return (
       <div className="select-group">
-        <div className="select-label"> {this.props.label}</div>
+        <div
+          className={
+            "date-label-checkin " + (this.props.startDate ? "" : "empty")
+          }
+        >
+          Check in
+        </div>
+        <div
+          className={
+            "date-label-checkout " + (this.props.endDate ? "" : "empty")
+          }
+        >
+          Check out
+        </div>
 
         <DateRangePicker
           orientation={isMobile.any ? "vertical" : "horizontal"}
           verticalHeight={isMobile.any ? 350 : undefined}
           numberOfMonths={isMobile.any ? 1 : undefined}
-          isReadOnly={true}
           readOnly={true}
-          // withPortal={true}
+          showDefaultInputIcon={true}
+          // keepOpenOnDateSelect={true}
+          hideKeyboardShortcutsPanel={true}
+          startDatePlaceholderText=""
+          endDatePlaceholderText=""
           showClearDates={true}
           startDate={this.props.startDate} // momentPropTypes.momentObj or null,
           startDateId="startDateID" // PropTypes.string.isRequired,

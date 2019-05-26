@@ -65,7 +65,7 @@ class navBar extends Component {
       <React.Fragment>
         <header className="header">
           <Link to="/" className="logo">
-            <img src="http://beta.ismartbar.it/images/logo.png" alt="" />
+            <img src="http://localhost:3000/images/logo.png" alt="" />
           </Link>
           <input className="menu-btn" type="checkbox" id="menu-btn" />
           <label className="menu-icon" htmlFor="menu-btn">
@@ -77,10 +77,7 @@ class navBar extends Component {
                 className="japan-letter"
                 onClick={this.openLanguageModal.bind(this)}
               >
-                <img
-                  src="http://beta.ismartbar.it/images/language.svg"
-                  alt=""
-                />
+                <img src="http://localhost:3000/images/language.svg" alt="" />
               </a>
             </li>
             <li>

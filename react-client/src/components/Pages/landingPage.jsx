@@ -43,11 +43,6 @@ class landingPage extends Component {
         {/* <div id="container"> */}
         <NavBar />
         <SubNavBar />
-        <div className="content">
-          <div className="homepage-img">
-            <img className="homepage-img" src="images/home-image.png" alt="" />
-          </div>
-        </div>
         <div className="categories-content" id="category">
           <div className="title">
             <h2>
@@ -152,6 +147,12 @@ class landingPage extends Component {
             </div>
           </div>
         </div>
+        {/* 
+        <div className="content">
+          <div className="homepage-img">
+            <img className="homepage-img" src="images/home-image.png" alt="" />
+          </div>
+        </div> */}
         <div className="content">
           <div className="most-reviewed">
             <div className="title">

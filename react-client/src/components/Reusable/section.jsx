@@ -14,6 +14,7 @@ class Section extends Component {
           {!prod || prod.length === 0
             ? "Empty"
             : prod.map((p, index) => {
+                return <MyCartItem key={index} product={p} />;
                 const res = [];
                 for (let i = 0; i < p.quantity; i++) {
                   res.push(<MyCartItem key={i} product={p} />);

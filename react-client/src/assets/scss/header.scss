@@ -317,7 +317,7 @@
         }
       }
     }
-    &:hover .cartHover {
+    &:hover .cartHover:not(.mobile) {
       display: block;
     }
   }

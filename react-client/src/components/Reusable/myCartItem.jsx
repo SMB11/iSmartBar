@@ -3,7 +3,7 @@ import "../../assets/scss/mybar.scss";
 import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
-import { removeProduct } from "../../redux/cart";
+import { removeProduct, changeProductQuantity } from "../../redux/cart";
 import { connect } from "react-redux";
 class MyCartItem extends Component {
   prodRef;
@@ -24,25 +24,58 @@ class MyCartItem extends Component {
     };
     return (
       <React.Fragment>
-        <div className="product" ref={ref => (this.prodRef = ref)}>
-          <div className="prod-data">
+        <div className="product">
+          <div className="prod-info">
             <Link to={"/product/" + product.id}>
-              <div className="image" style={imageStyle} />
+              <div style={imageStyle} className="image" />
             </Link>
-            <div className="name-container">
+            <div>
               <Link className="product-name" to={"/product/" + product.id}>
-                {" "}
-                {product.name}{" "}
+                {product.name}
               </Link>
-              <p>€{product.price}</p>
+              <div className="product-count">
+                <button
+                  onClick={() =>
+                    this.props.changeProductQuantity(
+                      product.id,
+                      product.size,
+                      Math.max(product.quantity - 1, 1)
+                    )
+                  }
+                  className="button-count no-active"
+                >
+                  -
+                </button>
+                <input
+                  type="text"
+                  readOnly
+                  className="number-product"
+                  value={product.quantity}
+                />
+                <button
+                  onClick={() =>
+                    this.props.changeProductQuantity(
+                      product.id,
+                      product.size,
+                      product.quantity + 1
+                    )
+                  }
+                  className="button-count"
+                >
+                  +
+                </button>
+              </div>
             </div>
           </div>
-          <div className="remove">
-            <a
-              onClick={() => this.props.removeProduct(product.id, product.size)}
-            >
-              Remove
-            </a>
+          <div className="price">€{product.price}</div>
+
+          <div
+            className="remove"
+            onClick={() =>
+              this.props.removeProduct(product.id, product.size, true)
+            }
+          >
+            <img src="http://localhost:3000/images/close.svg" />
           </div>
         </div>
       </React.Fragment>
@@ -53,6 +86,7 @@ class MyCartItem extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
+      changeProductQuantity,
       removeProduct
     },
     dispatch

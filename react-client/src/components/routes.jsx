@@ -13,7 +13,7 @@ import BrandPage from "./Pages/brandPage";
 import productPage from "./Pages/productPage";
 import CartPage from "./Pages/cartPage";
 import { dateStepStorageKey } from "./StartProcess/chooseDate";
-import CheckoutPage from './Pages/checkoutPage';
+import CheckoutPage from "./Pages/checkoutPage";
 
 class Routes extends Component {
   componentWillUpdate() {

@@ -27,26 +27,23 @@ class Footer extends Component {
           <div className="footer-line" />
           <div className="social-icons">
             <a href="#">
-              <img
-                src="http://beta.ismartbar.it/images/gmail.svg"
-                alt="gmail"
-              />
+              <img src="http://localhost:3000/images/gmail.svg" alt="gmail" />
             </a>
             <a href="#">
-              <img src="http://beta.ismartbar.it/images/ln.svg" alt="ln" />
+              <img src="http://localhost:3000/images/ln.svg" alt="ln" />
             </a>
             <a href="#">
               <img
-                src="http://beta.ismartbar.it/images/twitter.svg"
+                src="http://localhost:3000/images/twitter.svg"
                 alt="twitter"
               />
             </a>
             <a href="#">
-              <img src="http://beta.ismartbar.it/images/fb.svg" alt="fb" />
+              <img src="http://localhost:3000/images/fb.svg" alt="fb" />
             </a>
             <a href="#">
               <img
-                src="http://beta.ismartbar.it/images/instagram.svg"
+                src="http://localhost:3000/images/instagram.svg"
                 alt="instagram"
               />
             </a>

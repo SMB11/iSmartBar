@@ -29,7 +29,7 @@ class myCartOtherItem extends Component {
                   onClick={() =>
                     this.props.changeProductQuantity(
                       product.id,
-                      6,
+                      3,
                       Math.max(product.quantity - 1, 1)
                     )
                   }
@@ -47,7 +47,7 @@ class myCartOtherItem extends Component {
                   onClick={() =>
                     this.props.changeProductQuantity(
                       product.id,
-                      6,
+                      3,
                       product.quantity + 1
                     )
                   }
@@ -62,9 +62,9 @@ class myCartOtherItem extends Component {
 
           <div
             className="remove"
-            onClick={() => this.props.removeProduct(product.id, 6)}
+            onClick={() => this.props.removeProduct(product.id, 3)}
           >
-            <img src="http://beta.ismartbar.it/images/close.svg" />
+            <img src="http://localhost:3000/images/close.svg" />
           </div>
         </div>
       </React.Fragment>

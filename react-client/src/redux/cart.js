@@ -46,9 +46,9 @@ export const changeProductQuantity = (id, size, quantity) => {
     processResult(dispatch, result);
   };
 };
-export const removeProduct = (id, size) => {
+export const removeProduct = (id, size, forceAll = false) => {
   return dispatch => {
-    let result = cartLogic.removeProduct(id, size);
+    let result = cartLogic.removeProduct(id, size, forceAll);
     processResult(dispatch, result);
   };
 };

@@ -63,7 +63,7 @@ class CartPage extends Component {
                     onClick={this.smartBarButtonClicked.bind(this)}
                     className="title"
                   >
-                    <span>iSmartBar</span>
+                    <span>Inside</span>
                   </div>
                 </div>
                 <div
@@ -74,7 +74,7 @@ class CartPage extends Component {
                     onClick={this.otherButtonClicked.bind(this)}
                     className="title"
                   >
-                    <span>Other</span>
+                    <span>Outside</span>
                   </div>
                 </div>
               </div>
@@ -85,10 +85,7 @@ class CartPage extends Component {
                 }
               >
                 <Section sectionTitle="Section 1" size={1} />
-                <Section sectionTitle="Section 2" />
-                <Section sectionTitle="Section 3" />
-                <Section sectionTitle="Section 4" />
-                <Section sectionTitle="Section 5" />
+                <Section sectionTitle="Large Bottles" size={2} />
               </div>
 
               <div
@@ -140,7 +137,7 @@ const mapStateToProps = (state, props) => {
   const outsidePrice = outisdePriceSelector(state);
   let total = (parseFloat(insidePrice) + parseFloat(outsidePrice)).toFixed(2);
   return {
-    products: sectionCartSelector(state, 6),
+    products: sectionCartSelector(state, 3),
     insidePrice,
     outsidePrice,
     total

@@ -5,20 +5,22 @@ import {
   insidePriceSelector,
   outisdePriceSelector,
   sectionCartSelector,
-  sectionCartCountSelector
+  sectionCartCountSelector,
+  cartAllSelector
 } from "../../redux/selectors/cart";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import MyCartOtherItem from "./myCartOtherItem";
 import { Link } from "react-router-dom";
+import isMobile from "ismobilejs";
 class CartHover extends Component {
   state = {
     smartBar: true,
     other: false,
     focused: 1
   };
-
+  mainElement;
   otherButtonClicked = () => {
     this.setState({ ...this.state, other: true, smartBar: false });
   };
@@ -29,12 +31,26 @@ class CartHover extends Component {
     if (id !== this.state.focused)
       this.setState({ ...this.state, focused: id });
   };
+  handleViewCartClick = () => {
+    const el = this.mainElement;
+    window.focus();
+  };
   render() {
-    const sectionOneCount = this.props.getSectionProductsCount(1);
-    const prods = this.props.getSectionProducts(this.state.focused);
+    const {
+      prods,
+      isBarInsideProductsFilled,
+      isBarInsideProductsFull,
+      isBarLargeBottlesFilled,
+      isBarLargeBottlesFull,
+      barInsideProductsCount,
+      barLargeBottlesCount
+    } = this.props;
     const otherProds = this.props.otherProducts;
     return (
-      <div className="cartHover">
+      <div
+        className={"cartHover " + (isMobile.any ? "mobile" : "")}
+        ref={ref => (this.mainElement = ref)}
+      >
         <div className="head">
           <div
             data-id="0"
@@ -44,7 +60,7 @@ class CartHover extends Component {
               onClick={this.smartBarButtonClicked.bind(this)}
               className="title"
             >
-              <span>iSmartBar</span>
+              <span>Inside</span>
             </div>
           </div>
           <div
@@ -52,7 +68,7 @@ class CartHover extends Component {
             className={"other" + (this.state.other ? " active" : "")}
           >
             <div onClick={this.otherButtonClicked.bind(this)} className="title">
-              <span>Other</span>
+              <span>Outside</span>
             </div>
           </div>
         </div>
@@ -64,43 +80,30 @@ class CartHover extends Component {
         >
           <div className="minibarArea">
             <div className="minibar">
-              <img src="http://beta.ismartbar.it/images/minibar.svg" />
+              <img src="http://localhost:3000/images/minibar.svg" />
               <div
                 className={
                   "section section1 " +
-                  (sectionOneCount === 5
+                  (isBarInsideProductsFull
                     ? "full"
-                    : sectionOneCount > 0
+                    : isBarInsideProductsFilled
                     ? "filled"
                     : "")
                 }
-                onClick={() => this.selectSection(1)}
               >
-                {sectionOneCount + "/5"}
+                {barInsideProductsCount + "/20"}
               </div>
               <div
-                className="section section2"
-                onClick={() => this.selectSection(2)}
+                className={
+                  "section section2 " +
+                  (isBarLargeBottlesFull
+                    ? "full"
+                    : isBarLargeBottlesFilled
+                    ? "filled"
+                    : "")
+                }
               >
-                {this.props.getSectionProductsCount(2) + "/5"}
-              </div>
-              <div
-                className="section section3"
-                onClick={() => this.selectSection(3)}
-              >
-                {this.props.getSectionProductsCount(3) + "/5"}
-              </div>
-              <div
-                className="section section4"
-                onClick={() => this.selectSection(4)}
-              >
-                {this.props.getSectionProductsCount(4) + "/5"}
-              </div>
-              <div
-                className="section section5"
-                onClick={() => this.selectSection(5)}
-              >
-                {this.props.getSectionProductsCount(5) + "/5"}
+                {barLargeBottlesCount + "/5"}
               </div>
             </div>
           </div>
@@ -112,13 +115,7 @@ class CartHover extends Component {
           >
             {!prods || prods.length === 0
               ? "Empty"
-              : prods.map((p, index) => {
-                  const res = [];
-                  for (let i = 0; i < p.quantity; i++) {
-                    res.push(<MyCartItem key={i} product={p} />);
-                  }
-                  return res;
-                })}
+              : prods.map((p, index) => <MyCartItem key={index} product={p} />)}
           </div>
         </div>
 
@@ -147,7 +144,11 @@ class CartHover extends Component {
         </div>
 
         <div className="viewCart">
-          <Link className="button" to="/cart">
+          <Link
+            className="button"
+            onClick={this.handleViewCartClick.bind(this)}
+            to="/cart"
+          >
             View Cart
           </Link>
         </div>
@@ -160,8 +161,17 @@ const mapStateToProps = (state, props) => {
   const insidePrice = insidePriceSelector(state);
   const outsidePrice = outisdePriceSelector(state);
   let total = (parseFloat(insidePrice) + parseFloat(outsidePrice)).toFixed(2);
+  const barInsideProductsCount = sectionCartCountSelector(state, 1);
+  const barLargeBottlesCount = sectionCartCountSelector(state, 2);
   return {
-    otherProducts: sectionCartSelector(state, 6),
+    prods: cartAllSelector(state),
+    otherProducts: sectionCartSelector(state, 3),
+    isBarInsideProductsFilled: barInsideProductsCount !== 0,
+    isBarInsideProductsFull: barInsideProductsCount === 20,
+    barInsideProductsCount: barInsideProductsCount,
+    isBarLargeBottlesFilled: barLargeBottlesCount !== 0,
+    isBarLargeBottlesFull: barLargeBottlesCount === 5,
+    barLargeBottlesCount: barLargeBottlesCount,
     getSectionProducts: id => sectionCartSelector(state, id),
     getSectionProductsCount: id => sectionCartCountSelector(state, id),
     total

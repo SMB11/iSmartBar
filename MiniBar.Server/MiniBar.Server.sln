@@ -17,11 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facade", "Facade\Facade.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Managers", "Managers\Managers.csproj", "{191F09B9-C0B1-4859-9FCF-20F041FF5139}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iSmartBarApi", "iSmartBarApi\iSmartBarApi.csproj", "{6345B276-D209-4F39-AB84-4B1AC5498D22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iSmartBarApi", "iSmartBarApi\iSmartBarApi.csproj", "{6345B276-D209-4F39-AB84-4B1AC5498D22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iSmartBar.Repositories", "iSmartBar.Repositories\iSmartBar.Repositories.csproj", "{727E74D0-E428-449E-ABE0-56480AECF761}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "iSmartBar.Repositories", "iSmartBar.Repositories\iSmartBar.Repositories.csproj", "{727E74D0-E428-449E-ABE0-56480AECF761}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreAPI.Client", "CoreAPI.Client\CoreAPI.Client.csproj", "{27EAB747-9099-421C-BB2F-2101B37B5740}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreAPI.Client", "CoreAPI.Client\CoreAPI.Client.csproj", "{27EAB747-9099-421C-BB2F-2101B37B5740}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updates", "Updates\Updates.csproj", "{9C2933B4-84B9-468A-AF0E-2E11A9C27568}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{27EAB747-9099-421C-BB2F-2101B37B5740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27EAB747-9099-421C-BB2F-2101B37B5740}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27EAB747-9099-421C-BB2F-2101B37B5740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C2933B4-84B9-468A-AF0E-2E11A9C27568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C2933B4-84B9-468A-AF0E-2E11A9C27568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C2933B4-84B9-468A-AF0E-2E11A9C27568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C2933B4-84B9-468A-AF0E-2E11A9C27568}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

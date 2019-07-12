@@ -100,6 +100,15 @@ namespace Managers.Implementation
         }
 
         [Transaction(System.Transactions.IsolationLevel.Serializable)]
+        public async Task InsertMultipleAsync(List<BrandUploadDTO> brands)
+        {
+            foreach (BrandUploadDTO brand in brands)
+            {
+                await InsertAsync(brand);
+            }
+        }
+
+        [Transaction(System.Transactions.IsolationLevel.Serializable)]
         public async Task UpdateAsync(BrandUploadDTO brand)
         {
             IDValidator.AssureID(brand.ID);
@@ -111,10 +120,12 @@ namespace Managers.Implementation
 
             if (old == null)
                 throw new ApiException(FaultCode.InvalidID);
-            Brand toUpd = new Brand { ID = brand.ID, Name = brand.Name };
-            if (brand.Image != null)
+            Brand toUpd = new Brand { ID = brand.ID, Name = brand.Name, ImageID = old.ImageID };
+            if (brand.ImageChanged)
             {
-                if (old.Image != null)
+                if (brand.Image == null)
+                    toUpd.ImageID = null;
+                else if (old.Image != null)
                     toUpd.ImageID = (await imageManager.UpdateBytesAsync(brand.Image, old.Image.Path)).ID;
                 else
                     toUpd.ImageID = (await imageManager.InsertBytesAsync(brand.Image)).ID;
@@ -137,7 +148,8 @@ namespace Managers.Implementation
                 throw new ApiException(FaultCode.InvalidID);
 
             await brandRepo.RemoveAsync(new Brand { ID = id });
-            await imageManager.RemoveAsync(old.Image);
+            if(old.Image != null)
+                await imageManager.RemoveAsync(old.Image);
 
         }
 

@@ -7,10 +7,7 @@ namespace SharedEntities.Enum
     public enum ProductSize
     {
         Unknown = 0,
-        DoorTop = 1,
-        DoorBottom = 2,
-        Top = 3,
-        Middle = 4,
-        Bottom = 5
+        Small = 1,
+        LargeBottle = 2
     }
 }

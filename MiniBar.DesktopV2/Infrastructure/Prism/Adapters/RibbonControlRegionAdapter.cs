@@ -1,0 +1,64 @@
+﻿using DevExpress.Xpf.Ribbon;
+using Infrastructure.Resources;
+using Prism.Regions;
+using System.Collections.Specialized;
+using System.Linq;
+
+namespace Infrastructure.Prism.Adapters
+{
+    public class RibbonControlRegionAdapter : RegionAdapterBase<RibbonControl>
+    {
+        public RibbonControlRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory) : base(regionBehaviorFactory)
+        {
+        }
+        
+
+        protected override void Adapt(IRegion region, RibbonControl regionTarget)
+        {
+            region.Views.CollectionChanged += (sender, e) =>
+            {
+                bool isFirstAdd = true;
+                switch (e.Action)
+                {
+                    case NotifyCollectionChangedAction.Add:
+                        foreach (RibbonPageCategory cat in e.NewItems.OfType<RibbonPageCategory>())
+                        {
+                            regionTarget.Items.Add(cat);
+                            var page = cat.GetFirstSelectablePage();
+                            if (page != null && isFirstAdd)
+                                regionTarget.SelectedPage = page;
+                            isFirstAdd = false;
+                        }
+
+                        foreach (var toolbar in e.NewItems.OfType<BarLinkHolder>())
+                        {
+                            foreach (var item in toolbar.Items)
+                            {
+                                regionTarget.ToolbarItems.Add(item);
+                            }
+                        }
+                        break;
+                    case NotifyCollectionChangedAction.Remove:
+                        foreach (RibbonPageCategory cat in e.OldItems.OfType<RibbonPageCategory>())
+                        {
+                            regionTarget.Items.Remove(cat);
+                        }
+
+                        foreach (var toolbar in e.OldItems.OfType<BarLinkHolder>())
+                        {
+                            foreach (var item in toolbar.Items)
+                            {
+                                regionTarget.ToolbarItems.Remove(item);
+                            }
+                        }
+                        break;
+                }
+            };
+        }
+
+        protected override IRegion CreateRegion()
+        {
+            return new Region();
+        }
+    }
+}

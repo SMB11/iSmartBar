@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using SharedEntities.DTO.Global;
 using SharedEntities.DTO.Product;
 
 namespace CoreAPI.Controllers
@@ -29,6 +30,13 @@ namespace CoreAPI.Controllers
         {
             return await this.ServiceProvider.GetService<ICategoryManager>().GetAllAsync();
         }
+
+        [HttpGet("forupload/{id}")]
+        public async Task<CategoryUploadDTO> GetForUplaodByID(int id)
+        {
+            return await this.ServiceProvider.GetService<ICategoryManager>().GetForUplaodByID(id);
+        }
+
 
         [HttpGet("root")]
         [AllowAnonymous]
@@ -51,6 +59,11 @@ namespace CoreAPI.Controllers
             return await this.ServiceProvider.GetService<ICategoryManager>().InsertAsync(category);
         }
 
+        [HttpPost("insertChanges")]
+        public async Task InsertChangesAsync(ListChanges<CategoryUploadDTO> changes)
+        {
+            await this.ServiceProvider.GetService<ICategoryManager>().InsertChangesAsync(changes);
+        }
 
         [HttpPost("update")]
         public async Task Update(CategoryUploadDTO category)

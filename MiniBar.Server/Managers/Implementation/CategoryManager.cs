@@ -2,23 +2,16 @@
 using SharedEntities.DTO.Product;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using Facade.Repository;
 using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Common.Core;
 using System.Globalization;
 using Managers.Base;
 using BusinessEntities.Products;
-using System.Linq;
-using BusinessEntities.Culture;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Options;
 using Common.ResponseHandling;
 using Common.Validation;
-using System.Threading;
+using SharedEntities.DTO.Global;
 
 namespace Managers.Implementation
 {
@@ -38,6 +31,32 @@ namespace Managers.Implementation
         {
             ICategoryRepository catRepo = ServiceProvider.GetService<ICategoryRepository>();
             return await GetDTO(await catRepo.FindByIDAsync(id));
+        }
+
+        public async Task<CategoryUploadDTO> GetForUplaodByID(int id)
+        {
+            ICategoryRepository categoryRepository = ServiceProvider.GetService<ICategoryRepository>();
+            Category category = await categoryRepository.FindByIDAsync(id);
+
+            return await GetCategoryUploadDTO(category);
+        }
+
+        private async Task<CategoryUploadDTO> GetCategoryUploadDTO(Category category)
+        {
+
+            ICategoryNameRepository categoryNameRepository = ServiceProvider.GetService<ICategoryNameRepository>();
+            List<CategoryName> infos = await categoryNameRepository.FindAsync((inf) => inf.CategoryID == category.ID);
+            Dictionary<string, string> info = new Dictionary<string, string>();
+            foreach (var data in infos)
+            {
+                info.Add(data.LanguageID,  data.Name );
+            }
+            return new CategoryUploadDTO()
+            {
+                ID = category.ID,
+                ParentID = category.ParentID,
+                Names = info
+            };
         }
 
         public Task<List<CategoryDTO>> GetRootCategoriesAsync()
@@ -79,6 +98,28 @@ namespace Managers.Implementation
             }
             
             return saved.ID;
+        }
+
+
+        [Transaction(System.Transactions.IsolationLevel.Serializable)]
+        public async Task InsertChangesAsync(ListChanges<CategoryUploadDTO> changes)
+        {
+            foreach(var item in changes.NewItems)
+            {
+                await InsertAsync(item);
+            }
+
+            foreach (var item in changes.OldItems)
+            {
+                await RemoveAsync(item.ID);
+            }
+
+
+            foreach (var item in changes.ChangedItems)
+            {
+                await UpdateAsync(item);
+            }
+
         }
 
         [Transaction(System.Transactions.IsolationLevel.Serializable)]

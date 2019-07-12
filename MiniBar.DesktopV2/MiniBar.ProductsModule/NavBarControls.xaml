@@ -1,0 +1,17 @@
+﻿<dxn:NavBarGroup x:Class="MiniBar.ProductsModule.NavBarControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
+             xmlns:consts="clr-namespace:MiniBar.ProductsModule.Constants"
+             mc:Ignorable="d" 
+             Header="Products">
+    <dxn:NavBarGroup.Items>
+        <dxn:NavBarItem ImageSource="{dxc:DXImage Image=BO_Product_Group_32x32.png}" inf:CommandManager.CommandName="{x:Static consts:CommandNames.OpenProductManager}"  Content="Product Manager"/>
+        <dxn:NavBarItem ImageSource="{dxc:DXImage Image=RecentlyUse_32x32.png}" inf:CommandManager.CommandName="{x:Static consts:CommandNames.OpenBrandManager}"  Content="Brand Manager"/>
+        <dxn:NavBarItem ImageSource="{dxc:DXImage Image=BO_Category_32x32.png}" inf:CommandManager.CommandName="{x:Static consts:CommandNames.OpenCategoryManager}"  Content="Category Manager"/>
+    </dxn:NavBarGroup.Items>
+</dxn:NavBarGroup>

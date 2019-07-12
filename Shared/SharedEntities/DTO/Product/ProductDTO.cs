@@ -33,5 +33,6 @@ namespace SharedEntities.DTO.Product
         public Dictionary<string, ProductLangData> Info { get; set; }
         public string ImagePath { get; set; }
         public byte[] Image { get; set; }
+        public bool ImageChanged { get; set; }
     }
 }

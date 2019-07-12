@@ -15,6 +15,7 @@ namespace Facade.Managers
         Task<List<ProductDTO>> GetBrandProducts(int id);
         Task<List<ProductDTO>> GetCategoryBrandProducts(int brandID, int categoryID);
         Task<int> InsertAsync(ProductUploadDTO product);
+        Task InsertMultipleAsync(List<ProductUploadDTO> products);
         Task UpdateAsync(ProductUploadDTO product);
         Task RemoveAsync(int id);
     }

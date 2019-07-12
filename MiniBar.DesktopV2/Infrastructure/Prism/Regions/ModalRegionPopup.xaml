@@ -1,0 +1,10 @@
+﻿<dx:ThemedWindow
+    x:Class="Infrastructure.Prism.Regions.ModalRegionPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:infC="clr-namespace:Infrastructure.Constants"
+    xmlns:prism="http://prismlibrary.com/"
+    >
+    <ContentControl x:Name="ContentControl"></ContentControl>
+</dx:ThemedWindow>

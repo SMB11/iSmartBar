@@ -200,7 +200,7 @@ namespace CoreAPI
             app.UseStaticFiles();
             app.UseResponseCaching();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
-            
+            //app.UseSimulatedLatency(TimeSpan.FromMilliseconds(2000), TimeSpan.FromMilliseconds(6000));
 
             if (env.IsDevelopment())
             {

@@ -18,6 +18,7 @@ namespace SharedEntities.DTO.Product
         public string Name { get; set; }
         public string ImagePath { get; set; }
         public byte[] Image { get; set; }
+        public bool ImageChanged { get; set; }
     }
     
 }

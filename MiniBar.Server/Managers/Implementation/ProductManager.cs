@@ -171,6 +171,16 @@ namespace Managers.Implementation
             return saved.ID;
         }
 
+
+        [Transaction(System.Transactions.IsolationLevel.Serializable)]
+        public async Task InsertMultipleAsync(List<ProductUploadDTO> products)
+        {
+            foreach(ProductUploadDTO product in products)
+            {
+                await InsertAsync(product);
+            }
+        }
+
         [Transaction(System.Transactions.IsolationLevel.Serializable)]
         public async Task UpdateAsync(ProductUploadDTO product)
         {
@@ -195,8 +205,11 @@ namespace Managers.Implementation
                 Size = (BusinessEntities.Enums.ProductSize)product.Size
             };
 
-            if (product.Image != null) {
-                if(old.Image != null)
+            if(product.ImageChanged)
+            {
+                if (product.Image == null)
+                    toUpd.ImageID = null;
+                else if (old.Image != null)
                     toUpd.ImageID = (await imageManager.UpdateBytesAsync(product.Image, old.Image.Path)).ID;
                 else
                     toUpd.ImageID = (await imageManager.InsertBytesAsync(product.Image)).ID;
@@ -240,7 +253,8 @@ namespace Managers.Implementation
                 await prodInfoRepo.RemoveAsync(info);
             }
             await prodRepo.RemoveAsync(new Product { ID = id });
-            await imageManager.RemoveAsync(old.Image);
+            if(old.Image != null)
+                await imageManager.RemoveAsync(old.Image);
 
 
         }

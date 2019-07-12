@@ -57,7 +57,12 @@ namespace CoreAPI.Controllers
         {
             return await this.ServiceProvider.GetService<IBrandManager>().InsertAsync(brand);
         }
-
+        
+        [HttpPost("insertMultiple")]
+        public async Task InsertMultiple(List<BrandUploadDTO> brands)
+        {
+            await this.ServiceProvider.GetService<IBrandManager>().InsertMultipleAsync(brands);
+        }
 
         [HttpPost("update")]
         public async Task Update(BrandUploadDTO brand)

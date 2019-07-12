@@ -19,21 +19,11 @@ namespace Managers.Implementation
         {
             serviceProvider = provider;
         }
-
-        private string GetRandomFileName()
-        {
-            return Guid.NewGuid().ToString();
-        }
-
-        private string GetRelativeFilePath(byte[] image)
-        {
-            return Path.Combine("images", GetRandomFileName() + "." + ImageHelper.GetImageExtension(image));
-        }
         
         public async Task<Image> InsertBytesAsync(byte[] image, CancellationToken token = new CancellationToken())
         {
             string path = await serviceProvider.GetService<IAssetRepository>()
-                .InsertAsync(new Asset() { Contents = image, RelativePath = GetRelativeFilePath(image) }, token);
+                .InsertAsync(new ImageAsset(image), token);
             return await serviceProvider.GetService<IImageRepository>()
                 .InsertAsync(new Image() { Path = path }, token);
         }
@@ -44,7 +34,7 @@ namespace Managers.Implementation
             Image image = (await serviceProvider.GetService<IImageRepository>()
                 .FindAsync(i => i.Path == path)).First();
             path = await serviceProvider.GetService<IAssetRepository>()
-                .UpdateAsync(new Asset() { Contents = bytes, RelativePath = path }, token);
+                .UpdateAsync(new ImageAsset(bytes, path ), token);
             return image;
         }
         

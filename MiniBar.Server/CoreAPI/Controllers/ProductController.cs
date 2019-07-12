@@ -72,6 +72,12 @@ namespace CoreAPI.Controllers
             return await this.ServiceProvider.GetService<IProductManager>().InsertAsync(product);
         }
         
+        [HttpPost("insertMultiple")]
+        public async Task Insert(List<ProductUploadDTO> products)
+        {
+            await this.ServiceProvider.GetService<IProductManager>().InsertMultipleAsync(products);
+        }
+
         [HttpPost("update")]
         public async Task Update(ProductUploadDTO product)
         {

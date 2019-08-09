@@ -16,13 +16,58 @@
              mc:Ignorable="d"
                    
                    >
-    <ui:InformativeTile Size="Small" Style="{StaticResource infTile}" InformativeText="{Binding ProductManagerInformativeText}" inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenProductManager}" Content="Product Manager">
+    <ui:TileCollection.Resources>
+        <ContextMenu x:Key="prodMenu">
+            <MenuItem Header="Open in new window" inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenProductManager}" CommandParameter="True">
+                <MenuItem.Icon>
+                    <Image Source="{dxc:DXImage Image=Window_16x16.png}" ></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+        <ContextMenu x:Key="brandMenu">
+            <MenuItem Header="Open in new window" inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenBrandManager}" CommandParameter="True">
+                <MenuItem.Icon>
+                    <Image Source="{dxc:DXImage Image=Window_16x16.png}" ></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+        <ContextMenu x:Key="catMenu">
+            <MenuItem Header="Open in new window" inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenCategoryManager}" CommandParameter="True" >
+                <MenuItem.Icon>
+                    <Image Source="{dxc:DXImage Image=Window_16x16.png}" ></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+    </ui:TileCollection.Resources>
+
+    <ui:InformativeTile Size="Small" InformativeText="{Binding ProductManagerInformativeText}" inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenProductManager}" Content="Product Manager">
+        <ui:InformativeTile.Style>
+            <Style BasedOn="{StaticResource infTile}" TargetType="ui:InformativeTile">
+                <Setter Property="ContextMenu" Value="{StaticResource prodMenu}">
+
+                </Setter>
+            </Style>
+        </ui:InformativeTile.Style>
     </ui:InformativeTile>
 
-    <ui:InformativeTile Size="Small" Style="{StaticResource infTile}" InformativeText="{Binding BrandManagerInformativeText}"  inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenBrandManager}" Content="Brand Manager">
+    <ui:InformativeTile Size="Small"  InformativeText="{Binding BrandManagerInformativeText}"  inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenBrandManager}" Content="Brand Manager">
+        <ui:InformativeTile.Style>
+            <Style BasedOn="{StaticResource infTile}" TargetType="ui:InformativeTile">
+                <Setter Property="ContextMenu" Value="{StaticResource brandMenu}">
+
+                </Setter>
+            </Style>
+        </ui:InformativeTile.Style>
     </ui:InformativeTile>
 
 
-    <ui:InformativeTile Size="Small" Style="{StaticResource infTile}" InformativeText="{Binding CategoryManagerInformativeText}"  inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenCategoryManager}" Content="Category Manager">
+    <ui:InformativeTile Size="Small" InformativeText="{Binding CategoryManagerInformativeText}"  inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenCategoryManager}" Content="Category Manager">
+        <ui:InformativeTile.Style>
+            <Style BasedOn="{StaticResource infTile}" TargetType="ui:InformativeTile">
+                <Setter Property="ContextMenu" Value="{StaticResource catMenu}">
+
+                </Setter>
+            </Style>
+        </ui:InformativeTile.Style>
     </ui:InformativeTile>
 </ui:TileCollection>

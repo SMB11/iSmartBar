@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PostSharp.6.2.7\build\PostSharp.props" Condition="Exists('..\packages\PostSharp.6.2.7\build\PostSharp.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{08533750-FBD1-4409-85A9-9C1F86301378}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MiniBar.ConfigurationModule</RootNamespace>
+    <AssemblyName>MiniBar.ConfigurationModule</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Mvvm.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Core.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpf.Docking.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Grid.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.LayoutControl.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.NavBar.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Ribbon.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v17.1, Version=17.1.11.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Flurl, Version=2.8.1.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Flurl.Http, Version=2.4.1.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="PostSharp, Version=6.2.7.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL">
+      <HintPath>..\packages\PostSharp.Redist.6.2.7\lib\net45\PostSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.7.1.0.431\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Unity.Wpf, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Unity.7.1.0.431\lib\net45\Prism.Unity.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=7.1.0.431, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.7.1.0.431\lib\net45\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Reactive, Version=4.1.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.7.1.0.431\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=3.3.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.3.3.1\lib\net46\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.11.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.8.11\lib\net46\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConfigurationModule.cs" />
+    <Compile Include="Constants\CommandNames.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\HotelManagerRibbonCategory.xaml.cs">
+      <DependentUpon>HotelManagerRibbonCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\MainPageMenuGroup.xaml.cs">
+      <DependentUpon>MainPageMenuGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\MainPageMenuGroupViewModel.cs" />
+    <Compile Include="Resources\NavBarControls.xaml.cs">
+      <DependentUpon>NavBarControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CityService.cs" />
+    <Compile Include="Services\CountryService.cs" />
+    <Compile Include="Services\HotelService.cs" />
+    <Compile Include="Workitems\HotelQC\HotelQCWorkitem.cs" />
+    <Compile Include="Workitems\HotelQC\Views\HotelQCView.xaml.cs">
+      <DependentUpon>HotelQCView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Workitems\HotelQC\Views\HotelQCViewModel.cs" />
+    <Compile Include="Workitems\CityManager\CityManagerWorkitem.cs" />
+    <Compile Include="Workitems\CityManager\Services\CityManagerOMService.cs" />
+    <Compile Include="Workitems\CityManager\Views\CityDetailsManagerViewModel.cs" />
+    <Compile Include="Workitems\CityManager\Views\CityListManagerViewModel.cs" />
+    <Compile Include="Workitems\CityManager\Views\CityManagerView.xaml.cs">
+      <DependentUpon>CityManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Workitems\CityManager\Views\CityManagerViewModel.cs" />
+    <Compile Include="Workitems\HotelManager\HotelManagerWorkitem.cs" />
+    <Compile Include="Workitems\HotelManager\Services\HotelManagerOMService.cs" />
+    <Compile Include="Workitems\HotelManager\Views\HotelDetailsManagerViewModel.cs" />
+    <Compile Include="Workitems\HotelManager\Views\HotelListManagerViewModel.cs" />
+    <Compile Include="Workitems\HotelManager\Views\HotelManagerView.xaml.cs">
+      <DependentUpon>HotelManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Workitems\HotelManager\Views\HotelManagerViewModel.cs" />
+    <Compile Include="Workitems\CountryManager\CountryManagerWorkitem.cs" />
+    <Compile Include="Workitems\CountryManager\Services\CountryManagerOMService.cs" />
+    <Compile Include="Workitems\CountryManager\Views\CountryDetailsManagerViewModel.cs" />
+    <Compile Include="Workitems\CountryManager\Views\CountryListManagerViewModel.cs" />
+    <Compile Include="Workitems\CountryManager\Views\CountryManagerView.xaml.cs">
+      <DependentUpon>CountryManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Workitems\CountryManager\Views\CountryManagerViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\SharedEntities\SharedEntities.csproj">
+      <Project>{7DD68BB2-F476-4CA6-AFF9-B16716044F3D}</Project>
+      <Name>SharedEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CommonModule\MiniBar.CommonModule.csproj">
+      <Project>{CD4D50E2-7087-4706-B69B-4F0F4EF24861}</Project>
+      <Name>MiniBar.CommonModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Documents\Core.Documents.csproj">
+      <Project>{B316AB52-8556-410A-9F95-E8681D91D187}</Project>
+      <Name>Core.Documents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.UI\Core.UI.csproj">
+      <Project>{335CC8BB-E8B3-4688-9B03-775B42BB9406}</Project>
+      <Name>Core.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Interface\Infrastructure.Interface.csproj">
+      <Project>{C50D185A-4BA0-4899-8C73-4C0A995ECD57}</Project>
+      <Name>Infrastructure.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{C8EBBB0C-1F43-46EE-9535-A53F94B90211}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MiniBar.EntityViewModels\MiniBar.EntityViewModels.csproj">
+      <Project>{DB371131-E837-4F6F-BD59-B73276A89FA8}</Project>
+      <Name>MiniBar.EntityViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SecurityModule\SecurityModule.csproj">
+      <Project>{BD54315E-9718-41FA-BA33-E39259B334FD}</Project>
+      <Name>SecurityModule</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\HotelManagerRibbonCategory.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\MainPageMenuGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\NavBarControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Workitems\HotelQC\Views\HotelQCView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Workitems\CityManager\Views\CityManagerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Workitems\HotelManager\Views\HotelManagerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Workitems\CountryManager\Views\CountryManagerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\PostSharp.6.2.7\build\PostSharp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.6.2.7\build\PostSharp.props'))" />
+    <Error Condition="!Exists('..\packages\PostSharp.6.2.7\build\PostSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PostSharp.6.2.7\build\PostSharp.targets'))" />
+  </Target>
+  <Import Project="..\packages\PostSharp.6.2.7\build\PostSharp.targets" Condition="Exists('..\packages\PostSharp.6.2.7\build\PostSharp.targets')" />
+</Project>

@@ -1,18 +1,15 @@
-﻿using System;
-using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm;
-using Infrastructure.Interface;
+﻿using Infrastructure.Interface;
 using System.Linq;
 using MiniBar.ProductsModule.Workitems.ProductManager;
-using Infrastructure.MVVM;
 using MiniBar.ProductsModule.Workitems.CategoryManager;
 using MiniBar.ProductsModule.Workitems.BrandManager;
+using Infrastructure.Framework;
 
 namespace MiniBar.ProductsModule.Resources
 {
     public class MainPageMenuGroupViewModel : BaseViewModel
     {
-        public MainPageMenuGroupViewModel(ICurrentContextService currentContextService)
+        public MainPageMenuGroupViewModel(IContextService currentContextService)
         {
             currentContextService.WorkitemCollectionChanged += CurrentContextService_WorkitemCollectionChanged;
         }

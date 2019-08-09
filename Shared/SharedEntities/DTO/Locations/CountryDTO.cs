@@ -10,4 +10,12 @@ namespace SharedEntities.DTO.Locations
 
         public string Name { get; set; }
     }
+
+
+    public class CountryUploadDTO
+    {
+        public int ID { get; set; }
+        
+        public Dictionary<string, string> Names { get; set; }
+    }
 }

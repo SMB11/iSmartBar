@@ -1,4 +1,5 @@
-﻿using Infrastructure.MVVM;
+﻿using Infrastructure.Interface;
+
 using MiniBar.EntityViewModels.Base;
 using MiniBar.EntityViewModels.Global;
 using System.ComponentModel.DataAnnotations;

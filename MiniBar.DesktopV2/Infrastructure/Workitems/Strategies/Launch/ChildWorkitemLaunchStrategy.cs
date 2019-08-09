@@ -1,36 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Infrastructure.Extensions;
 using Infrastructure.Interface;
+using Infrastructure.Utility;
 
 namespace Infrastructure.Workitems.Strategies.Launch
 {
     internal class ChildWorkitemLaunchStrategy : WorkitemLaunchStrategy
     {
-        public ChildWorkitemLaunchStrategy(CurrentContextService currentContextService, IWorkItem workItem, IWorkItem parent = null, object data = null) : base(currentContextService, workItem, parent, data)
+        public ChildWorkitemLaunchStrategy(ContextService currentContextService, IWorkItem workItem, IWorkItem parent = null, object data = null) : base(currentContextService, workItem, parent, data)
         {
         }
 
-        protected override void Execute()
+        protected override async Task Execute()
         {
-
+            if (Parent.IsModal && !ShouldOpenModal)
+                throw new ArgumentException("Child workitem of modal must be modal");
             Type type = Workitem.GetType();
-            CurrentContextService.Collection.Add(Workitem);
             IWorkItem workitem = Workitem as IWorkItem;
             Workitem.Parent = Parent;
-            Workitem.Window.Owner = Parent.Window;
-            Application.Current.Dispatcher.InvokeIfNeeded(() =>
-            {
-                BeforeWorkitemRun();
-                Workitem.Run();
-            });
+            if (ShouldOpenModal)
+                Application.Current.Dispatcher.InvokeIfNeeded(() => ((Window) Workitem.Window).Owner = ((Window)Parent.Window) ?? Application.Current.MainWindow);
 
-            if (!(Workitem is IModalWorkitem))
-                CurrentContextService.FocusWorkitem(Workitem);
+            BeforeWorkitemRun();
+            await RunWorkitem().ConfigureAwait(false);
+            
         }
 
         protected virtual void BeforeWorkitemRun()

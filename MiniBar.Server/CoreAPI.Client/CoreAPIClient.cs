@@ -10,7 +10,7 @@ namespace CoreAPI.Client
 {
     public static class CoreAPIClient
     {
-        private static string ApiFormat = "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api{0}";
+        private static string ApiFormat = "http://localhost/MiniBar.Core/api{0}";
 
         public static async Task<List<LanguageDTO>> GetLanguages()
         {

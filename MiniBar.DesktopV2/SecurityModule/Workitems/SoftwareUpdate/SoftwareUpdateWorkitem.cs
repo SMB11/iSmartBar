@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Interface;
+using Infrastructure.Modularity;
 using Infrastructure.Workitems;
 using Prism.Ioc;
 using Security.Workitems.SoftwareUpdate.Views;
@@ -11,22 +12,24 @@ using System.Windows;
 
 namespace Security.Workitems.SoftwareUpdate
 {
-    public class SoftwareUpdateWorkitem : ModalWorkitem
+    public class SoftwareUpdateWorkitem : Workitem
     {
         public SoftwareUpdateWorkitem(IContainerExtension container) : base(container)
         {
         }
 
-        public override Size Size => new Size(400, 200);
-
-        public override ResizeMode ResizeMode => ResizeMode.NoResize;
+        public override void Configure()
+        {
+            base.Configure();
+            Configuration.Configure(new ModalOptions(new Size(400, 180), ResizeMode.NoResize, WindowStartupLocation.CenterOwner, false));
+        }
 
         public override string WorkItemName => "Software Update";
 
         protected override void RegisterViews(IViewContainer container)
         {
             base.RegisterViews(container);
-            Popup.SetContent(container.Register(new UpdateView()));
+            container.Register(new UpdateView(), ScreenRegion.Content);
         }
     }
 }

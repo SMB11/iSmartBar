@@ -1,17 +1,17 @@
 ﻿using DevExpress.Mvvm;
-using Infrastructure.Connection;
-using Infrastructure.MVVM;
+using Infrastructure.ErrorHandling;
+using Infrastructure.Framework;
 using Security.Internal.Controllers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Security.Workitems.Login.Views
 {
     public class LoginViewModel : WorkitemViewModel
     {
+        CancellationTokenSource cancellationToken;
+        
         internal AuthenticationController AuthenticationController { get; private set; }
 
         public LoginViewModel(AuthenticationController authenticationController)
@@ -57,8 +57,10 @@ namespace Security.Workitems.Login.Views
             LoginCommand?.RaiseCanExecuteChanged();
             try
             {
-                await AuthenticationController.AuthenticateAsync(Username, Password);
-                Workitem.Close();
+                cancellationToken?.Cancel();
+                cancellationToken = new CancellationTokenSource();
+                await AuthenticationController.AuthenticateAsync(Username, Password, cancellationToken.Token);
+                await Workitem.Close();
             }
             catch (ApiException apiEx)
             {
@@ -69,7 +71,7 @@ namespace Security.Workitems.Login.Views
             {
                 ErrorText = "Couldn't connect to server";
             }
-            catch
+            catch (Exception e)
             {
                 ErrorText = "An unkown error occured, please contact your administrator.";
             }
@@ -84,6 +86,12 @@ namespace Security.Workitems.Login.Views
         bool CanExecuteLoginCommand()
         {
             return !IsLoginCommandExecuting;
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            cancellationToken?.Cancel();
         }
     }
 }

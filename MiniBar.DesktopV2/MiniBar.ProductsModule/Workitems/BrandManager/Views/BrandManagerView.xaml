@@ -8,13 +8,12 @@
              mc:Ignorable="d"
              xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-             xmlns:dxInf="clr-namespace:Infrastructure.DX.DependencyProperties;assembly=Infrastructure"
              xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
              xmlns:prism="http://prismlibrary.com/"
-             xmlns:infdp="clr-namespace:Infrastructure.DependencyProperties;assembly=Infrastructure"  
+             xmlns:infdp="clr-namespace:Infrastructure;assembly=Infrastructure"  
              xmlns:shared="clr-namespace:SharedEntities.Enum;assembly=SharedEntities"  
              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
-             xmlns:vc ="clr-namespace:Infrastructure.MVVM.ValueConverters;assembly=Infrastructure"  
+             xmlns:vc ="clr-namespace:Infrastructure.Framework;assembly=Infrastructure"  
 
              prism:ViewModelLocator.AutoWireViewModel="True">
     <UserControl.Resources>
@@ -27,7 +26,7 @@
 
                 <dx:LoadingDecorator DockPanel.Dock="Left" >
                     <Grid>
-                        <dxg:GridControl x:Name="grid"  ShowBorder="False"  IsEnabled="{Binding IsListEnabled}" AllowInitiallyFocusedRow="True" SelectionMode="Row" CurrentItem="{Binding CurrentItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" dxInf:GridProperties.GenerateColumns="True" ItemsSource="{Binding ListItems}" AutoGenerateColumns="None" EnableSmartColumnsGeneration="True">
+                        <dxg:GridControl x:Name="grid"  ShowBorder="False"  IsEnabled="{Binding IsListEnabled}" AllowInitiallyFocusedRow="True" SelectionMode="Row" CurrentItem="{Binding CurrentItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" infdp:GridProperties.GenerateColumns="True" ItemsSource="{Binding ListItems}" AutoGenerateColumns="None" EnableSmartColumnsGeneration="True">
                             <dxg:GridControl.View>
                                 <dxg:TableView AutoWidth="True" ShowSearchPanelMode="{Binding ShowSearchPanelMode}" AllowPerPixelScrolling="True" AllowEditing="False" ShowTotalSummary="True" ShowFixedTotalSummary="True"/>
                             </dxg:GridControl.View>
@@ -51,31 +50,30 @@
             </dxdo:LayoutPanel>
             <dxdo:LayoutPanel Caption="Details" AllowClose="False" ItemWidth="2*" >
 
-                <dx:LoadingDecorator DockPanel.Dock="Left" >
-                    <Grid>
-                        <dxlc:DataLayoutControl IsEnabled="{Binding IsDetailsEnabled}" Visibility="{Binding CurrentItemDetails, Converter={StaticResource ObjectVisibilityConverter}}" infdp:ReadOnlyPanel.IsReadOnly="{Binding IsReadOnly, UpdateSourceTrigger=PropertyChanged}"
+
+                <Grid DockPanel.Dock="Left" >
+                    <dxlc:DataLayoutControl IsEnabled="{Binding IsDetailsEnabled}" Visibility="{Binding CurrentItemDetails, Converter={StaticResource ObjectVisibilityConverter}}" infdp:ReadOnlyPanel.IsReadOnly="{Binding IsReadOnly, UpdateSourceTrigger=PropertyChanged}"
                                 CurrentItem="{Binding CurrentItemDetails}" dxe:ValidationService.IsValidationContainer="True" AutoGenerateItems="False" Width="auto" >
 
-                            <dxlc:DataLayoutItem Label="Image">
-                                <dxe:ImageEdit MaxHeight="200" EditValue="{Binding Image.Bytes, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                            </dxlc:DataLayoutItem>
+                        <dxlc:DataLayoutItem Label="Image">
+                            <dxe:ImageEdit MaxHeight="200" EditValue="{Binding Image.Bytes, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </dxlc:DataLayoutItem>
 
-                            <dxlc:DataLayoutItem Label="Name" dxInf:DataProperties.Required="True">
-                                <dxe:TextEdit Text="{Binding Name, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                            </dxlc:DataLayoutItem>
-                        </dxlc:DataLayoutControl>
-                        <dx:WaitIndicator DeferedVisibility="{Binding IsObjectLoading}">
-                            <dx:WaitIndicator.ContentTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="Please Wait" FontSize="20"/>
-                                        <TextBlock Text="{Binding}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </dx:WaitIndicator.ContentTemplate>
-                        </dx:WaitIndicator>
-                    </Grid>
-                </dx:LoadingDecorator>
+                        <dxlc:DataLayoutItem Label="Name" infdp:DataProperties.Required="True">
+                            <dxe:TextEdit Text="{Binding Name, ValidatesOnDataErrors=True, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </dxlc:DataLayoutItem>
+                    </dxlc:DataLayoutControl>
+                    <dx:WaitIndicator DeferedVisibility="{Binding IsObjectLoading}">
+                        <dx:WaitIndicator.ContentTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="Please Wait" FontSize="20"/>
+                                    <TextBlock Text="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </dx:WaitIndicator.ContentTemplate>
+                    </dx:WaitIndicator>
+                </Grid>
             </dxdo:LayoutPanel>
         </dxdo:LayoutGroup>
     </dxdo:DockLayoutManager>

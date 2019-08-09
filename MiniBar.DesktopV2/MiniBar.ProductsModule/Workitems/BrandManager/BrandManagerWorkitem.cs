@@ -2,31 +2,33 @@
 using Infrastructure.Workitems;
 using MiniBar.ProductsModule.Workitems.BrandManager.Views;
 using MiniBar.EntityViewModels.Products;
-using Unity.Attributes;
 using MiniBar.ProductsModule.Services;
-using Core.Documents.Excel;
-using Core.Documents.Adapter;
 using System.Collections.Generic;
 using DevExpress.Xpf.Ribbon;
 using MiniBar.ProductsModule.Resources;
 using MiniBar.ProductsModule.Workitems.BrandQC;
 using SharedEntities.DTO.Product;
-using MiniBar.Common.Workitems;
 using System.Reactive.Linq;
 using System;
 using System.Reactive;
+using System.Threading.Tasks;
+using Infrastructure.Interface;
+using MiniBar.Common.Workitems.ObjectManager;
+using Infrastructure.Office;
+using Documents.Adapter;
 
 namespace MiniBar.ProductsModule.Workitems.BrandManager
 {
-    class BrandManagerWorkitem : ObjectManagerWorkitem<BrandManagerView, BrandViewModel, BrandUplaodViewModel>
+    public class BrandManagerWorkitem : ObjectManagerWorkitem<BrandManagerView, BrandViewModel, BrandUplaodViewModel>
     {
 
         public static WorkitemMetadata Metadata = new WorkitemMetadata("Brand Manager", "Add/Edit/Remove Brands");
 
         #region Constructor
 
-        public BrandManagerWorkitem(IContainerExtension container) : base(container)
+        public BrandManagerWorkitem(IContainerExtension container, BrandService brandService) : base(container)
         {
+            BrandService = brandService;
         }
 
 
@@ -43,7 +45,6 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager
             }
         }
 
-        [Dependency]
         public BrandService BrandService { get; set; }
         #endregion
 
@@ -58,11 +59,9 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager
             return new ExcelDocument<BrandUplaodViewModel>(documentAdapter);
         }
         
-        protected override void LaunchQCWorkitem(List<BrandUplaodViewModel> res)
+        protected override Task<IObservable<WorkitemEventArgs>> LaunchQCWorkitem(List<BrandUplaodViewModel> res)
         {
-
-            if (res != null)
-                CurrentContextService.LaunchWorkItem<BrandQCWorkitem>(res, this);
+            return CurrentContextService.LaunchModalWorkItem<BrandQCWorkitem>(res, this);
         }
 
         protected override IObservable<Unit> AddList(List<BrandUplaodViewModel> list)

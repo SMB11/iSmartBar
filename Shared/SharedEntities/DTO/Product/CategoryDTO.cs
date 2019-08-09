@@ -21,6 +21,6 @@ namespace SharedEntities.DTO.Product
 
         public int? ParentID { get; set; }
 
-        public Dictionary<string, string> Names { get; set; }
+        public IDictionary<string, string> Names { get; set; }
     }
 }

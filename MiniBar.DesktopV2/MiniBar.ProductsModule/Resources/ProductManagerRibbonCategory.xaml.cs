@@ -1,4 +1,5 @@
-﻿using Infrastructure.Resources;
+﻿using Infrastructure.Modularity;
+using Infrastructure.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Infrastructure.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\close_all_windows_16.png" />
+    <None Remove="Resources\Icons\close_all_windows_32.png" />
+    <None Remove="Resources\Icons\excel_32.png" />
+    <None Remove="Resources\Icons\excel_32_.png" />
+    <None Remove="Resources\Icons\images_edit_16.png" />
+    <None Remove="Resources\Icons\minus_16.png" />
+    <None Remove="Resources\Icons\plus_16.png" />
+    <None Remove="Resources\Icons\table_export_excel_16.png" />
+    <None Remove="Resources\Icons\table_export_excel_32.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Icons\close_all_windows_16.png" />
+    <Content Include="Resources\Icons\close_all_windows_32.png" />
+    <Content Include="Resources\Icons\excel_32.png" />
+    <Content Include="Resources\Icons\excel_32_.png" />
+    <Content Include="Resources\Icons\images_edit_16.png" />
+    <Content Include="Resources\Icons\minus_16.png" />
+    <Content Include="Resources\Icons\plus_16.png" />
+    <Content Include="Resources\Icons\table_export_excel_16.png" />
+    <Content Include="Resources\Icons\table_export_excel_32.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Flurl.Http" Version="2.4.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Prism.Core" Version="7.2.0.1367" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="System.Reactive" Version="4.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

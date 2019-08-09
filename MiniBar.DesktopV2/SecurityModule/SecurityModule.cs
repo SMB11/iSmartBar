@@ -1,6 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using Infrastructure;
-using Infrastructure.Connection;
+using Infrastructure.Utility;
 using Prism.Ioc;
 using Security;
 using Security.Constants;
@@ -11,7 +11,7 @@ using Security.Workitems.SoftwareUpdate;
 using System;
 using System.Threading.Tasks;
 
-namespace MiniBar.Modules
+namespace Core.Modules
 {
     public class SecurityModule : Module
     {
@@ -23,19 +23,19 @@ namespace MiniBar.Modules
         {
             base.OnInitialized(containerProvider);
             Container = containerProvider;
-            CommandManager.RegisterCommand(CommandNames.Login, OpenLoginWorkitem);
+            CommandManager.RegisterCommand(CommandNames.Login, new AsyncCommand(OpenLoginWorkitem));
             CommandManager.RegisterCommand(CommandNames.Logout, new AsyncCommand(Logout));
-            CommandManager.RegisterCommand(CommandNames.CheckSoftwareUpdate, OpenUpdateWorkitem);
+            CommandManager.RegisterCommand(CommandNames.CheckSoftwareUpdate, new AsyncCommand(OpenUpdateWorkitem));
         }
 
-        private void OpenUpdateWorkitem()
+        private async Task OpenUpdateWorkitem()
         {
-            CurrentContextService.LaunchWorkItem<SoftwareUpdateWorkitem>();
+            await CurrentContextService.LaunchModalWorkItem<SoftwareUpdateWorkitem>();
         }
 
-        private void OpenLoginWorkitem()
+        private async Task OpenLoginWorkitem()
         {
-            CurrentContextService.LaunchWorkItem<LoginWorkitem>();
+            await CurrentContextService.LaunchModalWorkItem<LoginWorkitem>();
         }
 
         private async Task Logout()

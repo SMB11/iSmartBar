@@ -1,18 +1,17 @@
 ﻿using MiniBar.ProductsModule;
 using MiniBar.ProductsModule.Constants;
 using MiniBar.ProductsModule.Workitems.ProductManager;
-using MiniBar.ProductsModule.Workitems.ProductManager.Views;
 using Prism.Ioc;
 using Prism.Regions;
-using Unity.Attributes;
 using MiniBar.ProductsModule.Services;
 using Security;
 using MiniBar.ProductsModule.Workitems.BrandManager;
 using Infrastructure;
-using Infrastructure.MVVM;
 using MiniBar.ProductsModule.Workitems.CategoryManager;
 using MiniBar.ProductsModule.Resources;
-using AutoMapper;
+using Infrastructure.Workitems;
+using System.Threading.Tasks;
+using Infrastructure.Framework;
 
 namespace MiniBar.Modules
 {
@@ -20,17 +19,21 @@ namespace MiniBar.Modules
     public class ProductsModule : Module
     {
 
-        [Dependency]
         public IRegionManager RegionManager { get; set; }
+
+        public ProductsModule(IRegionManager regionManager)
+        {
+            RegionManager = regionManager;
+        }
 
         public override string Name => "Products";
 
         public override void OnInitialized(IContainerProvider containerProvider)
         {
             base.OnInitialized(containerProvider);
-            CommandManager.RegisterCommand(CommandNames.OpenProductManager, new SecureCommand(OpenProductManager));
-            CommandManager.RegisterCommand(CommandNames.OpenBrandManager, new SecureCommand(OpenBrandManager));
-            CommandManager.RegisterCommand(CommandNames.OpenCategoryManager, new SecureCommand(OpenCategoryManager));
+            CommandManager.RegisterCommand(CommandNames.OpenProductManager, new SecureAsyncCommand<bool>(OpenProductManager));
+            CommandManager.RegisterCommand(CommandNames.OpenBrandManager, new SecureAsyncCommand<bool>(OpenBrandManager));
+            CommandManager.RegisterCommand(CommandNames.OpenCategoryManager, new SecureAsyncCommand<bool>(OpenCategoryManager));
         }
 
         public override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -49,21 +52,29 @@ namespace MiniBar.Modules
             
         }
 
-        private void OpenProductManager()
+        private async Task OpenProductManager(bool isModal)
         {
-            CurrentContextService.LaunchWorkItem<ProductManagerWorkitem>();
+            if(isModal)
+                await CurrentContextService.LaunchModalWorkItem<ProductManagerWorkitem>();
+            else
+                await CurrentContextService.LaunchWorkItem<ProductManagerWorkitem>();
         }
 
-
-        private void OpenBrandManager()
+        private async Task OpenBrandManager(bool isModal)
         {
-            CurrentContextService.LaunchWorkItem<BrandManagerWorkitem>();
+
+            if (isModal)
+                await CurrentContextService.LaunchModalWorkItem<BrandManagerWorkitem>();
+            else
+                await CurrentContextService.LaunchWorkItem<BrandManagerWorkitem>();
         }
 
-
-        private void OpenCategoryManager()
+        private async Task OpenCategoryManager(bool isModal)
         {
-            CurrentContextService.LaunchWorkItem<CategoryManagerWorkitem>();
+            if (isModal)
+                await CurrentContextService.LaunchModalWorkItem<CategoryManagerWorkitem>();
+            else
+                await CurrentContextService.LaunchWorkItem<CategoryManagerWorkitem>();
         }
     }
 }

@@ -13,64 +13,72 @@
     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
     xmlns:sc="clr-namespace:Security.Constants;assembly=SecurityModule"
     xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
-    xmlns:infC="clr-namespace:Infrastructure.Constants;assembly=Infrastructure"
+    xmlns:infC="clr-namespace:Infrastructure.Constants;assembly=Infrastructure.Core"
+    xmlns:const="clr-namespace:MiniBar.Common.Constants;assembly=MiniBar.CommonModule"
      UseLayoutRounding="True"
     dx:ScrollBarExtensions.ScrollBarMode="TouchOverlap"
     prism:ViewModelLocator.AutoWireViewModel="True"
     ShowIcon="True"
     >
-    <dx:LoadingDecorator>
-        <DockPanel>
+    <DockPanel>
 
+        <dxr:RibbonControl inf:RegionNameManager.ScreenRegion="Ribbon" DockPanel.Dock="Top" MinimizationButtonVisibility="Visible" ShowApplicationButton="False" ToolbarShowMode="ShowAbove" >
+            <dxr:RibbonControl.ToolbarItems >
+                <dxb:BarButtonItem inf:CommandManager.CommandName="{x:Static const:CommandNames.Reconnect}" Glyph="{Binding ConnectedStatusImage}" ToolTip="{Binding ConnectedStatusToolTip}" />
+                <dxb:BarButtonItem inf:CommandManager.CommandName="{x:Static infC:CommandNames.CloseAllTabs}" ToolTip="Close All Tabs" RibbonStyle="Large" Glyph="{inf:CustomImage Image=close_all_windows_16}"  LargeGlyph="{inf:CustomImage Image=close_all_windows_32}" />
 
-            <dxr:RibbonControl   prism:RegionManager.RegionName="{x:Static infC:RegionNames.RibbonRegion}" DockPanel.Dock="Top" MinimizationButtonVisibility="Visible" ShowApplicationButton="False" ToolbarShowMode="ShowAbove" >
-                <dxr:RibbonControl.ToolbarItems >
-                    <dxb:BarButtonItem inf:CommandManager.CommandName="{x:Static infC:CommandNames.Reconnect}" Glyph="{Binding ConnectedStatusImage}" ToolTip="{Binding ConnectedStatusToolTip}" />
-                    <dxb:BarButtonItem inf:CommandManager.CommandName="{x:Static infC:CommandNames.CloseAllTabs}" ToolTip="Close All Tabs" RibbonStyle="Large" Glyph="{inf:CustomImage Image=close_all_windows_16}"  LargeGlyph="{inf:CustomImage Image=close_all_windows_32}" />
+            </dxr:RibbonControl.ToolbarItems>
+            <dxr:RibbonDefaultPageCategory Caption="Default Category">
+                <dxr:RibbonPage Caption="Home" MergeType="Replace">
+                    <dxr:RibbonPageGroup Caption="Main" MergeOrder="10">
+                        <dxb:BarButtonItem x:Name="loginBarItem" Content="Login" inf:CommandManager.CommandName="{x:Static sc:CommandNames.Login}" RibbonStyle="Large" Glyph="{dxc:DXImage Image=BOCustomer_16x16.png}" LargeGlyph="{dxc:DXImage Image=BOCustomer_32x32.png}"/>
+                        <dxb:BarButtonItem x:Name="logoutBarItem" IsVisible="false" Content="Logout" inf:CommandManager.CommandName="{x:Static sc:CommandNames.Logout}" RibbonStyle="Large" Glyph="{dxc:DXImage Image=Action_Logoff.png}"  LargeGlyph="{dxc:DXImage Image=Action_Logoff_32x32.png}" />
+                    </dxr:RibbonPageGroup>
+                    <dxr:RibbonPageGroup Caption="Close" MergeOrder="10">
+                        <dxb:BarButtonItem inf:CommandManager.CommandName="{x:Static infC:CommandNames.CloseAllTabs}" Content="Close All Tabs" RibbonStyle="Large" Glyph="{inf:CustomImage Image=close_all_windows_16}"  LargeGlyph="{inf:CustomImage Image=close_all_windows_32}" />
+                        <dxb:BarButtonItem x:Name="exit" Content="Exit" RibbonStyle="Large" Glyph="{dxc:DXImage Image=Action_Exit.png}"  LargeGlyph="{dxc:DXImage Image=Action_Exit_32x32.png}" />
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+                <dxr:RibbonPage Caption="Help" MergeType="Replace">
+                    <dxr:RibbonPageGroup Caption="Online" MergeOrder="10">
+                        <dxb:BarButtonItem Content="Software Update" inf:CommandManager.CommandName="{x:Static sc:CommandNames.CheckSoftwareUpdate}" RibbonStyle="Large" Glyph="{dxc:DXImage Image=Down_16x16.png}" LargeGlyph="{dxc:DXImage Image=Down_32x32.png}"/>
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+            </dxr:RibbonDefaultPageCategory>
+        </dxr:RibbonControl>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <dxdo:DockLayoutManager x:Name="dockLayoutManager"  Grid.Column="0" Grid.Row="1">
+                <dxdo:LayoutGroup  Caption="LayoutRoot">
+                    <dxdo:LayoutPanel Caption="Main Menu" AllowDrag="False" AllowMove="False" AllowMaximize="False" AllowMinimize="False" AllowFloat="False" AllowClose="False" ItemWidth="200" >
+                        <dxn:NavBarControl Width="200" prism:RegionManager.RegionName="{x:Static infC:RegionNames.NavBarControlRegion}"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">
 
-                </dxr:RibbonControl.ToolbarItems>
-                <dxr:RibbonDefaultPageCategory Caption="Default Category">
-                    <dxr:RibbonPage Caption="Home" MergeType="Replace">
-                        <dxr:RibbonPageGroup Caption="Main" MergeOrder="10">
-                            <dxb:BarButtonItem x:Name="loginBarItem" Content="Login" inf:CommandManager.CommandName="{x:Static sc:CommandNames.Login}" RibbonStyle="Large" Glyph="{dxc:DXImage Image=BOCustomer_16x16.png}" LargeGlyph="{dxc:DXImage Image=BOCustomer_32x32.png}"/>
-                            <dxb:BarButtonItem x:Name="logoutBarItem" IsVisible="false" Content="Logout" inf:CommandManager.CommandName="{x:Static sc:CommandNames.Logout}" RibbonStyle="Large" Glyph="{dxc:DXImage Image=Action_Logoff.png}"  LargeGlyph="{dxc:DXImage Image=Action_Logoff_32x32.png}" />
-                        </dxr:RibbonPageGroup>
-                        <dxr:RibbonPageGroup Caption="Close" MergeOrder="10">
-                            <dxb:BarButtonItem inf:CommandManager.CommandName="{x:Static infC:CommandNames.CloseAllTabs}" Content="Close All Tabs" RibbonStyle="Large" Glyph="{inf:CustomImage Image=close_all_windows_16}"  LargeGlyph="{inf:CustomImage Image=close_all_windows_32}" />
-                            <dxb:BarButtonItem x:Name="exit" Content="Exit" RibbonStyle="Large" Glyph="{dxc:DXImage Image=Action_Exit.png}"  LargeGlyph="{dxc:DXImage Image=Action_Exit_32x32.png}" />
-                        </dxr:RibbonPageGroup>
-                    </dxr:RibbonPage>
-                    <dxr:RibbonPage Caption="Help" MergeType="Replace">
-                        <dxr:RibbonPageGroup Caption="Online" MergeOrder="10">
-                            <dxb:BarButtonItem Content="Software Update" inf:CommandManager.CommandName="{x:Static sc:CommandNames.CheckSoftwareUpdate}" RibbonStyle="Large" Glyph="{dxc:DXImage Image=Down_16x16.png}" LargeGlyph="{dxc:DXImage Image=Down_32x32.png}"/>
-                        </dxr:RibbonPageGroup>
-                    </dxr:RibbonPage>
-                </dxr:RibbonDefaultPageCategory>
-            </dxr:RibbonControl>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <dxdo:DockLayoutManager x:Name="dockLayoutManager"  Grid.Column="0" Grid.Row="1">
-                    <dxdo:LayoutGroup  Caption="LayoutRoot">
-                        <dxdo:LayoutPanel Caption="Main Menu" AllowDrag="False" AllowMove="False" AllowMaximize="False" AllowMinimize="False" AllowFloat="False" AllowClose="False" ItemWidth="200" >
-                            <dxn:NavBarControl Width="200" prism:RegionManager.RegionName="{x:Static infC:RegionNames.NavBarControlRegion}"  Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        </dxn:NavBarControl>
+                    </dxdo:LayoutPanel>
 
-                            </dxn:NavBarControl>
-                        </dxdo:LayoutPanel>
+                </dxdo:LayoutGroup>
+            </dxdo:DockLayoutManager>
 
-                    </dxdo:LayoutGroup>
-                </dxdo:DockLayoutManager>
-                
-                <dx:DXTabControl Padding="0" TabHiding="DXTabControl_TabHiding" SelectionChanging="DXTabControl_SelectionChanging" Grid.Column="1" prism:RegionManager.RegionName="{x:Static infC:RegionNames.TabRegion}">
-                    <dxc:DXTabControl.View>
-                        <dxc:TabControlScrollView HideButtonShowMode="InAllTabs">
-                        </dxc:TabControlScrollView>
-                    </dxc:DXTabControl.View>
-                    <!---->
+            <dx:DXTabControl Padding="0" AllowDrop="True"  inf:TabManager.IsWorkitemTabControl="True"  Grid.Column="1" inf:RegionNameManager.ScreenRegion="Content">
+                <dxc:DXTabControl.View>
+                    <dxc:TabControlStretchView DragDropRegion="Header" PinnedTabAllowDrag="False" PinnedTabAllowHide="False"  RemoveTabItemsOnHiding="False" DragDropMode="Full" HideButtonShowMode="InAllTabs" NewButtonShowMode="InTabPanel" NewTabCommand="{Binding NewTabCommand}" >
+                    </dxc:TabControlStretchView>
+                </dxc:DXTabControl.View>
+                <!---->
                 </dx:DXTabControl>
+                <dx:WaitIndicator Grid.Column="1" DeferedVisibility="{Binding IsLoading}" Content="{Binding LoadingAction}">
+                    <dx:WaitIndicator.ContentTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Please Wait" FontSize="20"/>
+                                <TextBlock Text="{Binding}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </dx:WaitIndicator.ContentTemplate>
+                </dx:WaitIndicator>
             </Grid>
         </DockPanel>
-    </dx:LoadingDecorator>
 </dx:ThemedWindow>

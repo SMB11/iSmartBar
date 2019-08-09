@@ -1,23 +1,26 @@
-﻿using Infrastructure.Interface;
+﻿using Infrastructure.Utility;
+using Infrastructure.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Infrastructure.Workitems.Strategies.Focus
 {
     internal class ModalWorkitemFocusStrategy : WorkitemFocusStrategy
     {
-        public ModalWorkitemFocusStrategy(CurrentContextService currentContextService, IWorkItem workItem) : base(currentContextService, workItem)
+        public ModalWorkitemFocusStrategy(ContextService currentContextService, IWorkItem workItem) : base(currentContextService, workItem)
         {
         }
 
-        public override void Focus()
+        protected override async Task Execute()
         {
-            base.Focus();
-
-            Workitem.IsFocused = true;
+            await TaskManager.Run(() =>
+            {
+                Workitem.IsFocused = true;
+            }).ConfigureAwait(false);
         }
     }
 }

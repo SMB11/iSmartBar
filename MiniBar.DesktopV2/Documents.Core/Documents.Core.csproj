@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.Document.Processor" Version="19.1.4" />
+    <PackageReference Include="DevExpress.Office.Core" Version="19.1.4" />
+    <PackageReference Include="DevExpress.Spreadsheet.Core" Version="19.1.4" />
+  </ItemGroup>
+
+</Project>

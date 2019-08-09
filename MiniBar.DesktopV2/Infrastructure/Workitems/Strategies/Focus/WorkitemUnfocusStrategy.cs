@@ -4,27 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Infrastructure.Extensions;
+using Infrastructure.Utility;
 using Infrastructure.Interface;
 
 namespace Infrastructure.Workitems.Strategies.Focus
 {
     internal class WorkitemUnfocusStrategy : WorkitemFocusStrategy
     {
-        public WorkitemUnfocusStrategy(CurrentContextService currentContextService, IWorkItem workItem) : base(currentContextService, workItem)
+        public WorkitemUnfocusStrategy(ContextService currentContextService, IWorkItem workItem) : base(currentContextService, workItem)
         {
         }
 
-        public override void Focus()
+        protected override async Task Execute()
         {
-            base.Focus();
-
-            foreach (IWorkItem item in CurrentContextService.Collection)
+            await TaskManager.Run(() =>
             {
-                bool isFocused = false;
-                if (item.IsFocused != isFocused)
-                    Application.Current.Dispatcher.InvokeIfNeeded(() => item.IsFocused = isFocused);
-            }
+                foreach (IWorkItem item in CurrentContextService.Collection.ToList())
+                {
+                    if (item.IsFocused != false)
+                        item.IsFocused = false;
+                }
+                if(CurrentContextService.Collection.Null != null)
+                    CurrentContextService.Collection.Null.IsFocused = true;
+            });
         }
     }
 }

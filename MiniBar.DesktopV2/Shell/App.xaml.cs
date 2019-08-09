@@ -1,76 +1,37 @@
-﻿using DevExpress.Xpf.Bars;
-using DevExpress.Xpf.Core;
-using DevExpress.Xpf.NavBar;
-using DevExpress.Xpf.Prism;
+﻿using DevExpress.Xpf.Core;
 using MiniBar.Modules;
 using Prism.Ioc;
 using Prism.Modularity;
-using Prism.Regions;
-using Prism.Unity;
 using System;
 using System.Windows;
-using DevExpress.Xpf.Ribbon;
-using DevExpress.Xpf.WindowsUI;
 using AutoMapper;
-using Prism.Mvvm;
-using System.Reflection;
 using System.Globalization;
 using Infrastructure.Interface;
-using Infrastructure.Util;
-using Infrastructure.Workitems;
-using System.Runtime.InteropServices;
-using System.Windows.Interop;
-using Unity;
-using Infrastructure.Services;
-using Infrastructure.Prism.Adapters;
-using DevExpress.Xpf.LayoutControl;
-using Infrastructure.Connection;
-using Infrastructure.Prism.Modules;
-using System.IO;
+using Core.Modules;
+using Infrastructure.Utility;
+using MiniBar.EntityViewModels.Global;
+using MiniBar.Common.Workitems.Main;
+using Infrastructure.Security;
+using System.Threading.Tasks;
+using System.Threading;
+using DryIoc;
 
 namespace Shell
 {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : PrismApplication
+    public partial class App : Infrastructure.Framework.PrismApplication
     {
-        Window Shell;
-
-        const int SW_RESTORE = 9;
-
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        static extern bool SetForegroundWindow(IntPtr hWnd);
-
-        [DllImport("user32.dll")]
-        static extern bool IsIconic(IntPtr hWnd);
-
-        [DllImport("user32.dll")]
-        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
-
-        private void ActivateMainWindow(IntPtr hWnd)
-        {
-
-            SetForegroundWindow(hWnd);
-
-            // If program is minimized, restore it.
-            if (IsIconic(hWnd))
-            {
-                ShowWindow(hWnd, SW_RESTORE);
-            }
-        }
+        ShellWindow ShellWindow;
+        ShellWindowViewModel ShellViewModel;
 
         protected override Window CreateShell()
         {
-            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
-
-            ShellWindow window = Container.Resolve<ShellWindow>();
-            window.Loaded += (o, e) =>
-            {
-
-            };
-            return window;
+            ShellWindow = Container.Resolve<ShellWindow>();
+            ShellViewModel = (ShellWindowViewModel)ShellWindow.DataContext;
+            ((IContainerRegistry)Container).RegisterInstance<IShell>(ShellViewModel);
+            return ShellWindow;
         }
 
         protected override void OnInitialized()
@@ -79,57 +40,10 @@ namespace Shell
             MainWindow?.Hide();
         }
 
-        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        protected override void ConfigureMappings(IMapperConfigurationExpression cfg)
         {
-            if(e.Exception is ApiConnectionException)
-            {
-                e.Handled = true;
-
-                UIHelper.Error(e.Exception.Message);
-                Shutdown();
-            }
-        }
-
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-            containerRegistry.RegisterSingleton(typeof(ICurrentContextService), typeof(CurrentContextService));
-            containerRegistry.RegisterSingleton(typeof(IConnectionMonitoringService), typeof(ConnectionMonitoringService));
-            Mapper.Initialize(cfg => cfg.AddProfiles(typeof(App).Assembly));
-            Mapper.AssertConfigurationIsValid();
-
-        }
-
-        protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings mappings)
-        {
-            base.ConfigureRegionAdapterMappings(mappings);
-            var factory = Container.Resolve<IRegionBehaviorFactory>();
-            
-            mappings.RegisterMapping(typeof(NavBarControl),
-                DevExpress.Xpf.Prism.AdapterFactory.Make<RegionAdapterBase<NavBarControl>>(factory));
-
-            mappings.RegisterMapping(typeof(NavigationFrame),
-                DevExpress.Xpf.Prism.AdapterFactory.Make<RegionAdapterBase<NavigationFrame>>(factory));
-
-            mappings.RegisterMapping(typeof(MainMenuControl), 
-                new MainMenuControlRegionAdapter(factory));
-
-            mappings.RegisterMapping(typeof(BarContainerControl),
-                new BarContainerControlRegionAdapter(factory));
-
-            mappings.RegisterMapping(typeof(RibbonControl),
-                new RibbonControlRegionAdapter(factory));
-
-            mappings.RegisterMapping(typeof(TileLayoutControl),
-                new TileLayoutControlRegionAdapter(factory));
-
-            mappings.RegisterMapping(typeof(FlowLayoutControl),
-                new FlowLayoutControlRegionAdapter(factory));
-
-            mappings.RegisterMapping(typeof(DXTabControl),
-                DevExpress.Xpf.Prism.AdapterFactory.Make<RegionAdapterBase<DXTabControl>>(factory));
-
-            DXRegionManager.PrismVersion = PrismVersion.Prism7;
-
+            base.ConfigureMappings(cfg);
+            cfg.AddMaps(typeof(ImageViewModel).Assembly);
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -141,7 +55,6 @@ namespace Shell
             {
                 try
                 {
-
                     DXSplashScreen.SetState(String.Format("Loading {0}", e.ModuleInfo.ModuleName));
                 }
                 catch
@@ -149,63 +62,55 @@ namespace Shell
 
                 }
             };
-            moduleCatalog.AddModule<SecurityModule>();
-            moduleCatalog.AddModule<CommonModule>();
-            //moduleCatalog.AddModule<ProductsModule>();
-           
-            
-        }
+            moduleCatalog
+                .AddModule<SecurityModule>()
+                .AddModule<CommonModule>()
+                .AddModule<ConfigurationModule>()
+                .AddModule<ProductsModule>();
 
-        protected override IModuleCatalog CreateModuleCatalog()
-        {
-            DynamicDirectoryModuleCatalog catalog = new DynamicDirectoryModuleCatalog(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Modules"), Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin"));
-            return catalog;
-        }
-
-        protected override void ConfigureViewModelLocator()
-        {
-            base.ConfigureViewModelLocator();
-
-            ViewModelLocationProvider.SetDefaultViewTypeToViewModelTypeResolver((viewType) =>
-            {
-                var viewName = viewType.FullName;
-                var viewAssemblyName = viewType.GetTypeInfo().Assembly.FullName;
-                if (viewName.EndsWith("view", StringComparison.CurrentCultureIgnoreCase))
-                {
-                    viewName = viewName.Remove(viewName.Length - 4, 4);
-                }
-                var viewModelName = String.Format(CultureInfo.InvariantCulture, "{0}ViewModel, {1}", viewName, viewAssemblyName);
-                return Type.GetType(viewModelName);
-            });
         }
 
         protected override void OnStartup(StartupEventArgs eventArgs)
         {
+
             DXSplashScreen.Show<SplashScreen>();
             base.OnStartup(eventArgs);
 
-            var d = Application.Current.Dispatcher;
-            d.Invoke(() =>
+            Current.Dispatcher.Invoke(() =>
             {
                 DXSplashScreen.Close();
                 if (MainWindow != null)
                 {
                     MainWindow.Show();
-                    MainWindow.Activate();
-                    MainWindow.Focus();
-                    MainWindow.Topmost = true;
-                    MainWindow.Topmost = false;
-                    IntPtr handle = new WindowInteropHelper(MainWindow).Handle;
-                    ActivateMainWindow(handle);
+                    UIHelper.TryFocusWindow(MainWindow, true);
                 }
             });
 
             CultureInfo culture = (CultureInfo)CultureInfo.GetCultureInfo("en").Clone();
-            culture.NumberFormat.CurrencySymbol = "€";
+            culture.NumberFormat.CurrencySymbol = "֏";
             CultureInfo.CurrentCulture = culture;
             CultureInfo.CurrentUICulture = culture;
 
+            Container.Resolve<IContextService>().LaunchWorkItem<MainWorkitem>();
+            AppSecurityContext.AppPrincipalChanged += AppSecurityContext_AppPrincipalChanged;
+        }
 
+        private void AppSecurityContext_AppPrincipalChanged(object sender, EventArgs e)
+        {
+            IContextService currentContextService = Container.Resolve<IContextService>();
+            Task.Factory.StartNew(async () =>
+            {
+                Thread.Sleep(1000);
+                for (int i = 0; i < 0; i++)
+                {
+                    //await currentContextService.LaunchModalWorkItem<CountryManagerWorkitem>();
+                    //await currentContextService.LaunchModalWorkItem<CityManagerWorkitem>();
+                    //await currentContextService.LaunchModalWorkItem<HotelManagerWorkitem>();
+                    //await currentContextService.LaunchModalWorkItem<ProductManagerWorkitem>();
+                    //await currentContextService.LaunchModalWorkItem<CategoryManagerWorkitem>();
+                    //await currentContextService.LaunchModalWorkItem<BrandManagerWorkitem>();
+                }
+            });
         }
     }
 }

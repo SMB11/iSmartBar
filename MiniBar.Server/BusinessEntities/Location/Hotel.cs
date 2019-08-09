@@ -13,4 +13,13 @@ namespace BusinessEntities.Location
         [Column]
         public string Name { get; set; }
     }
+
+
+    public class HotelWithCity
+    {
+        public int HotelID { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string Name { get; set; }
+    }
 }

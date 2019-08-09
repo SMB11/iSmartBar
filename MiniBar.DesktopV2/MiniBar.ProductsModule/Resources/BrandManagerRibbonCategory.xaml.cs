@@ -1,4 +1,5 @@
-﻿using Infrastructure.Resources;
+﻿using Infrastructure.Modularity;
+using Infrastructure.Utility;
 
 namespace MiniBar.ProductsModule.Resources
 {

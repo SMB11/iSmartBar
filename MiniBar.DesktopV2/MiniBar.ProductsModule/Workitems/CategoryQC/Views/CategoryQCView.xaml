@@ -8,7 +8,7 @@
              xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
              xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-             xmlns:res="clr-namespace:Infrastructure.Resources;assembly=Infrastructure"
+             xmlns:res="clr-namespace:Infrastructure.Modularity;assembly=Infrastructure"
              xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
              xmlns:commonres="clr-namespace:MiniBar.Common.Resources;assembly=MiniBar.CommonModule"
              xmlns:infC="clr-namespace:Infrastructure.Constants;assembly=Infrastructure"
@@ -19,19 +19,6 @@
 
     <dx:LoadingDecorator>
         <DockPanel>
-            <dxr:RibbonControl x:Name="ribbon" DockPanel.Dock="Top" MinimizationButtonVisibility="Visible" ShowApplicationButton="False" ToolbarShowMode="ShowAbove" >
-                <dxr:RibbonControl.ToolbarItems >
-
-                </dxr:RibbonControl.ToolbarItems>
-                <dxr:RibbonDefaultPageCategory Caption="Default Category">
-                    <dxr:RibbonPage Caption="Control" MergeType="Replace">
-                        <commonres:QCActionsRibbonPageGroup />
-                        <res:DataPageGroup/>
-                        <res:WorkitemClosePageGroup></res:WorkitemClosePageGroup>
-                    </dxr:RibbonPage>
-
-                </dxr:RibbonDefaultPageCategory>
-            </dxr:RibbonControl>
             <Grid>
                 <dxg:GridControl x:Name="grid"  ShowBorder="False" IsEnabled="{Binding IsListEnabled}" AllowInitiallyFocusedRow="True" SelectionMode="Row" CurrentItem="{Binding CurrentItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" ItemsSource="{Binding List}" AutoGenerateColumns="None" EnableSmartColumnsGeneration="True">
                     <dxg:GridControl.View>

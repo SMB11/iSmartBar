@@ -1,10 +1,9 @@
-﻿using Core.Documents.Adapter;
-using Core.Documents.Editors;
-using Core.Documents.Excel;
-using DevExpress.Xpf.Ribbon;
-using Infrastructure.Connection;
-using Infrastructure.Util;
-using MiniBar.Common.Workitems;
+﻿using DevExpress.Xpf.Ribbon;
+using Documents.Adapter;
+using Documents.Editors;
+using Infrastructure.Office;
+using Infrastructure.Interface;
+using MiniBar.Common.Workitems.ObjectManager;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Resources;
 using MiniBar.ProductsModule.Services;
@@ -16,14 +15,14 @@ using System;
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Unity.Attributes;
 
 namespace MiniBar.ProductsModule.Workitems.CategoryManager
 {
-    class CategoryManagerWorkitem : ObjectManagerWorkitem<CategoryManagerView, CategoryViewModel, CategoryUploadViewModel>
+    public class CategoryManagerWorkitem : ObjectManagerWorkitem<CategoryManagerView, CategoryViewModel, CategoryUploadViewModel>
     {
-        public CategoryManagerWorkitem(IContainerExtension container) : base(container)
+        public CategoryManagerWorkitem(IContainerExtension container, CategoryService categoryService) : base(container)
         {
+            CategoryService = categoryService;
         }
 
 
@@ -44,9 +43,9 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager
             }
         }
 
-        public override void Run()
+        protected override void AfterWorkitemRun()
         {
-            base.Run();
+            base.AfterWorkitemRun();
             Resource("RootCategories", () => CategoryManagerViewModel.RootCategories);
         }
 
@@ -57,7 +56,6 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager
             return new CategoryManagerRibbonCategory();
         }
 
-        [Dependency]
         public CategoryService CategoryService { get; set; }
 
         protected override ExcelDocument<CategoryUploadViewModel> GetDocument()
@@ -82,11 +80,9 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager
             return new ExcelDocument<CategoryUploadViewModel>(documentAdapter);
         }
 
-        protected override void LaunchQCWorkitem(List<CategoryUploadViewModel> details)
+        protected override Task<IObservable<WorkitemEventArgs>> LaunchQCWorkitem(List<CategoryUploadViewModel> details)
         {
-
-
-            CurrentContextService.LaunchWorkItem<CategoryQCWorkitem>(details, this);
+            return CurrentContextService.LaunchModalWorkItem<CategoryQCWorkitem>(details, this);
         }
 
         protected override IObservable<System.Reactive.Unit> AddList(List<CategoryUploadViewModel> list)
@@ -99,7 +95,7 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager
                 CategoryUploadDTO dto = new CategoryUploadDTO
                 {
                     ID = vm.ID,
-                    Names = vm.Names.ToDictionary(),
+                    Names = vm.Names,
                     ParentID = vm.ParentID
                 };
                 dtos.Add(dto);

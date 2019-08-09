@@ -4,20 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon" 
-             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars" 
-             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core" 
-             xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure" 
-             xmlns:const="clr-namespace:MiniBar.ProductsModule.Constants" 
-             xmlns:infC="clr-namespace:Infrastructure.Constants;assembly=Infrastructure" 
-             xmlns:res="clr-namespace:Infrastructure.Resources;assembly=Infrastructure"
+             xmlns:res="clr-namespace:Infrastructure.Modularity;assembly=Infrastructure"
+             xmlns:commonres="clr-namespace:MiniBar.Common.Resources;assembly=MiniBar.CommonModule"
              xmlns:local="clr-namespace:MiniBar.ProductsModule.Resources"
              mc:Ignorable="d" >
     <dxr:RibbonPage Caption="Manage">
-        <res:ObjectManagerActionsPageGroup/>
-        <res:DataPageGroup/>
+        <commonres:ObjectManagerActionsPageGroup/>
+        <commonres:DataPageGroup/>
         <res:WorkitemClosePageGroup/>
     </dxr:RibbonPage>
     <dxr:RibbonPage Caption="Import">
-        <local:ImportRibbonPageGroup/>
+        <commonres:ImportRibbonPageGroup/>
     </dxr:RibbonPage>
 </res:WorkitemRibbonPageCategory>

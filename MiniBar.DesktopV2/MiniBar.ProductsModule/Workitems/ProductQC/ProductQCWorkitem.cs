@@ -1,18 +1,11 @@
-﻿using Infrastructure;
-using Infrastructure.Interface;
-using Infrastructure.MVVM;
-using Infrastructure.Util;
-using MiniBar.Common.Workitems.EntityQC;
+﻿using MiniBar.Common.Workitems.EntityQC;
 using MiniBar.EntityViewModels.Global;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Workitems.ProductQC.Views;
 using Prism.Ioc;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MiniBar.ProductsModule.Workitems.ProductQC
@@ -38,9 +31,9 @@ namespace MiniBar.ProductsModule.Workitems.ProductQC
             }
         }
 
-        public override void Run()
+        protected override void AfterWorkitemRun()
         {
-            base.Run();
+            base.AfterWorkitemRun();
             object root = Parent.RequestResource("ChildCategories");
             if (root != null && root is IEnumerable<CategoryViewModel>)
                 ProductQCViewModel.ChildCategories = new ObservableCollection<CategoryViewModel>((IEnumerable<CategoryViewModel>)root);

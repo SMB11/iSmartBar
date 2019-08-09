@@ -1,14 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Windows;
 using DevExpress.Xpf.Core;
-using Infrastructure.DX;
 using Infrastructure;
-using Infrastructure.Interface;
 using Infrastructure.Security;
-using Infrastructure.Security.Entities;
-using Prism.Events;
-using Infrastructure.Util;
+using Infrastructure.Modularity;
+using Infrastructure.Utility;
 
 namespace Shell
 {
@@ -23,10 +19,8 @@ namespace Shell
             AppSecurityContext.AppPrincipalChanged += (o,e) => HandleAuthenticationStateChanged();
             loginBarItem.PerformClick();
             exit.ItemClick += Exit_ItemClick;
-        }
-        protected override void OnContentRendered(EventArgs e)
-        {
-            base.OnContentRendered(e);
+            var names = new DynamicRegionNames();
+            RegionNameManager.SetDynamicRegionNames(this, names);
         }
 
         private void Exit_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -54,26 +48,6 @@ namespace Shell
                 logoutBarItem.IsVisible = true;
             }
         }
-
-        private void DXTabControl_TabHiding(object sender, TabControlTabHidingEventArgs e)
-        {
-            DependencyObject tabItem = e.Item as DependencyObject;
-            e.Cancel = true;
-            if (tabItem != null)
-                WorkitemManager.GetOwner(tabItem).Close();
-        }
-
-        private void DXTabControl_SelectionChanging(object sender, TabControlSelectionChangingEventArgs e)
-        {
-
-            DependencyObject tabItem = e.NewSelectedItem as DependencyObject;
-            if (tabItem != null)
-            {
-                IWorkItem owner = WorkitemManager.GetOwner(tabItem);
-                if (e.OldSelectedItem != null && owner != null)
-                    e.Cancel = true;
-                CommandManager.ExecuteCommand(Infrastructure.Constants.CommandNames.FocusWorkitem, owner);
-            }
-        }
+        
     }
 }

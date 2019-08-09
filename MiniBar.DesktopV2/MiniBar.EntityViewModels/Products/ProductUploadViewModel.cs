@@ -1,10 +1,8 @@
-﻿using Infrastructure.Attributes;
-using Infrastructure.DX.Attributes;
-using Infrastructure.MVVM;
+﻿using Infrastructure.Interface;
+using Infrastructure.Localization;
 using MiniBar.EntityViewModels.Base;
 using MiniBar.EntityViewModels.Global;
 using SharedEntities.Enum;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -137,7 +135,7 @@ namespace MiniBar.EntityViewModels.Products
         [Required]
         public string MainDescription
         {
-            get { return (Description != null && Description.ContainsKey("en")) ? Description["en"] : ""; }
+            get { return (Description != null && Description.ContainsKey(CultureInfo.CurrentCulture.Name)) ? Description[CultureInfo.CurrentCulture.Name] : ""; }
         }
 
 

@@ -6,641 +6,693 @@
 
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder" Name="ProgramFilesFolder">
-        <Directory Id="ProgramFilesFolder.iSmartBar" Name="iSmartBar">
-          <Directory Id="INSTALLDIR" Name="MiniBar">
+        <Directory Id="ProgramFilesFolder.MyBar" Name="MyBar">
+          <Directory Id="INSTALLDIR" Name="Admin">
 
-            <Component Id="Component.MiniBar.CommonModule.dll_1755195266" Guid="6f330b47-2577-43ad-9095-18616082f8f1">
-              <File Id="MiniBar.CommonModule.dll_1755195266" Source="..\Shell\bin\Release\MiniBar.CommonModule.dll" />
+            <Component Id="Component.MiniBar.CommonModule.dll_15960708" Guid="6f330b47-2577-43ad-9095-1861c67a4ef4">
+              <File Id="MiniBar.CommonModule.dll_15960708" Source="..\Shell\bin\Release\MiniBar.CommonModule.dll" />
             </Component>
 
-            <Component Id="Component.MiniBar.CommonModule.dll.config_2032185463" Guid="6f330b47-2577-43ad-9095-1861b372c7e6">
-              <File Id="MiniBar.CommonModule.dll.config_2032185463" Source="..\Shell\bin\Release\MiniBar.CommonModule.dll.config" />
+            <Component Id="Component.MiniBar.CommonModule.dll.config_424266267" Guid="6f330b47-2577-43ad-9095-1861f9d4945a">
+              <File Id="MiniBar.CommonModule.dll.config_424266267" Source="..\Shell\bin\Release\MiniBar.CommonModule.dll.config" />
             </Component>
 
-            <Component Id="Component.MiniBar.EntityViewModels.dll_283817786" Guid="6f330b47-2577-43ad-9095-18614d4e4b30">
-              <File Id="MiniBar.EntityViewModels.dll_283817786" Source="..\Shell\bin\Release\MiniBar.EntityViewModels.dll" />
+            <Component Id="Component.MiniBar.EntityViewModels.dll_1732852851" Guid="6f330b47-2577-43ad-9095-186166f214b3">
+              <File Id="MiniBar.EntityViewModels.dll_1732852851" Source="..\Shell\bin\Release\MiniBar.EntityViewModels.dll" />
             </Component>
 
-            <Component Id="Component.MiniBarManager.exe_41890225" Guid="6f330b47-2577-43ad-9095-1861de99ad22">
-              <File Id="MiniBarManager.exe_41890225" Source="..\Shell\bin\Release\MiniBarManager.exe" />
+            <Component Id="Component.MiniBar.EntityViewModels.dll.config_1337584850" Guid="6f330b47-2577-43ad-9095-1861f0d9ab6d">
+              <File Id="MiniBar.EntityViewModels.dll.config_1337584850" Source="..\Shell\bin\Release\MiniBar.EntityViewModels.dll.config" />
             </Component>
 
-            <Component Id="Component.MiniBarManager.exe.config_1086136914" Guid="6f330b47-2577-43ad-9095-1861a633289a">
-              <File Id="MiniBarManager.exe.config_1086136914" Source="..\Shell\bin\Release\MiniBarManager.exe.config" />
+            <Component Id="Component.MiniBarManager.exe_1780104730" Guid="6f330b47-2577-43ad-9095-18616c3d4caf">
+              <File Id="MiniBarManager.exe_1780104730" Source="..\Shell\bin\Release\MiniBarManager.exe" />
             </Component>
 
-            <Component Id="Component.MiniBarManager.pssym_454820083" Guid="6f330b47-2577-43ad-9095-1861557e55da">
-              <File Id="MiniBarManager.pssym_454820083" Source="..\Shell\bin\Release\MiniBarManager.pssym" />
+            <Component Id="Component.MiniBarManager.exe.config_1966732583" Guid="6f330b47-2577-43ad-9095-1861839f052f">
+              <File Id="MiniBarManager.exe.config_1966732583" Source="..\Shell\bin\Release\MiniBarManager.exe.config" />
             </Component>
 
             <Directory Id="INSTALLDIR.bin" Name="bin">
 
-              <Component Id="Component.AutoMapper.dll_427306819" Guid="6f330b47-2577-43ad-9095-1861344382ca">
-                <File Id="AutoMapper.dll_427306819" Source="..\Shell\bin\Release\AutoMapper.dll" />
+              <Component Id="Component.AutoMapper.dll_384434202" Guid="6f330b47-2577-43ad-9095-18615d05dc46">
+                <File Id="AutoMapper.dll_384434202" Source="..\Shell\bin\Release\AutoMapper.dll" />
               </Component>
 
-              <Component Id="Component.CommonServiceLocator.dll_1761636318" Guid="6f330b47-2577-43ad-9095-186158399a32">
-                <File Id="CommonServiceLocator.dll_1761636318" Source="..\Shell\bin\Release\CommonServiceLocator.dll" />
+              <Component Id="Component.CommonServiceLocator.dll_1244577189" Guid="6f330b47-2577-43ad-9095-18617fa011bf">
+                <File Id="CommonServiceLocator.dll_1244577189" Source="..\Shell\bin\Release\CommonServiceLocator.dll" />
               </Component>
 
-              <Component Id="Component.Core.Documents.dll_250506326" Guid="6f330b47-2577-43ad-9095-1861160af6af">
-                <File Id="Core.Documents.dll_250506326" Source="..\Shell\bin\Release\Core.Documents.dll" />
+              <Component Id="Component.Core.UI.dll_1158976013" Guid="6f330b47-2577-43ad-9095-1861bfab314f">
+                <File Id="Core.UI.dll_1158976013" Source="..\Shell\bin\Release\Core.UI.dll" />
               </Component>
 
-              <Component Id="Component.Core.UI.dll_1388125313" Guid="6f330b47-2577-43ad-9095-1861b8aff30d">
-                <File Id="Core.UI.dll_1388125313" Source="..\Shell\bin\Release\Core.UI.dll" />
+              <Component Id="Component.DevExpress.Charts.v19.1.Core.dll_566491325" Guid="6f330b47-2577-43ad-9095-18615732ff68">
+                <File Id="DevExpress.Charts.v19.1.Core.dll_566491325" Source="..\Shell\bin\Release\DevExpress.Charts.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Charts.v18.2.Core.dll_1107544331" Guid="6f330b47-2577-43ad-9095-18610629aa38">
-                <File Id="DevExpress.Charts.v18.2.Core.dll_1107544331" Source="..\Shell\bin\Release\DevExpress.Charts.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.CodeParser.v19.1.dll_1503456141" Guid="6f330b47-2577-43ad-9095-186153a9cafb">
+                <File Id="DevExpress.CodeParser.v19.1.dll_1503456141" Source="..\Shell\bin\Release\DevExpress.CodeParser.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.CodeParser.v18.2.dll_1735719698" Guid="6f330b47-2577-43ad-9095-1861cf2c24c5">
-                <File Id="DevExpress.CodeParser.v18.2.dll_1735719698" Source="..\Shell\bin\Release\DevExpress.CodeParser.v18.2.dll" />
+              <Component Id="Component.DevExpress.Data.v19.1.dll_1523619844" Guid="6f330b47-2577-43ad-9095-1861414553c8">
+                <File Id="DevExpress.Data.v19.1.dll_1523619844" Source="..\Shell\bin\Release\DevExpress.Data.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Data.v18.2.dll_966337180" Guid="6f330b47-2577-43ad-9095-18613da723cf">
-                <File Id="DevExpress.Data.v18.2.dll_966337180" Source="..\Shell\bin\Release\DevExpress.Data.v18.2.dll" />
+              <Component Id="Component.DevExpress.DataAccess.v19.1.dll_455794886" Guid="6f330b47-2577-43ad-9095-18618efdc561">
+                <File Id="DevExpress.DataAccess.v19.1.dll_455794886" Source="..\Shell\bin\Release\DevExpress.DataAccess.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.DataAccess.v18.2.dll_987044550" Guid="6f330b47-2577-43ad-9095-186150a5e3b6">
-                <File Id="DevExpress.DataAccess.v18.2.dll_987044550" Source="..\Shell\bin\Release\DevExpress.DataAccess.v18.2.dll" />
+              <Component Id="Component.DevExpress.Docs.v19.1.dll_1445394480" Guid="6f330b47-2577-43ad-9095-18616bde60db">
+                <File Id="DevExpress.Docs.v19.1.dll_1445394480" Source="..\Shell\bin\Release\DevExpress.Docs.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Docs.v18.2.dll_1258721453" Guid="6f330b47-2577-43ad-9095-1861d34a79c4">
-                <File Id="DevExpress.Docs.v18.2.dll_1258721453" Source="..\Shell\bin\Release\DevExpress.Docs.v18.2.dll" />
+              <Component Id="Component.DevExpress.Images.v19.1.dll_847540632" Guid="6f330b47-2577-43ad-9095-1861679bc4c7">
+                <File Id="DevExpress.Images.v19.1.dll_847540632" Source="..\Shell\bin\Release\DevExpress.Images.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Images.v18.2.dll_1860309687" Guid="6f330b47-2577-43ad-9095-186155c4f7e3">
-                <File Id="DevExpress.Images.v18.2.dll_1860309687" Source="..\Shell\bin\Release\DevExpress.Images.v18.2.dll" />
+              <Component Id="Component.DevExpress.Mvvm.v19.1.DataModel.dll_2023194762" Guid="6f330b47-2577-43ad-9095-186125c51f2a">
+                <File Id="DevExpress.Mvvm.v19.1.DataModel.dll_2023194762" Source="..\Shell\bin\Release\DevExpress.Mvvm.v19.1.DataModel.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Mvvm.v18.2.dll_1809086791" Guid="6f330b47-2577-43ad-9095-186193bdb4e0">
-                <File Id="DevExpress.Mvvm.v18.2.dll_1809086791" Source="..\Shell\bin\Release\DevExpress.Mvvm.v18.2.dll" />
+              <Component Id="Component.DevExpress.Mvvm.v19.1.dll_1377028646" Guid="6f330b47-2577-43ad-9095-186133d1398c">
+                <File Id="DevExpress.Mvvm.v19.1.dll_1377028646" Source="..\Shell\bin\Release\DevExpress.Mvvm.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Office.v18.2.Core.dll_1022620562" Guid="6f330b47-2577-43ad-9095-186157d3a491">
-                <File Id="DevExpress.Office.v18.2.Core.dll_1022620562" Source="..\Shell\bin\Release\DevExpress.Office.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.Mvvm.v19.1.ViewModel.dll_1237703353" Guid="6f330b47-2577-43ad-9095-1861cde26782">
+                <File Id="DevExpress.Mvvm.v19.1.ViewModel.dll_1237703353" Source="..\Shell\bin\Release\DevExpress.Mvvm.v19.1.ViewModel.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Pdf.v18.2.Core.dll_562576840" Guid="6f330b47-2577-43ad-9095-1861d873c11f">
-                <File Id="DevExpress.Pdf.v18.2.Core.dll_562576840" Source="..\Shell\bin\Release\DevExpress.Pdf.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.Office.v19.1.Core.dll_409476693" Guid="6f330b47-2577-43ad-9095-1861de785e15">
+                <File Id="DevExpress.Office.v19.1.Core.dll_409476693" Source="..\Shell\bin\Release\DevExpress.Office.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Pdf.v18.2.Drawing.dll_1199119445" Guid="6f330b47-2577-43ad-9095-186169fa3031">
-                <File Id="DevExpress.Pdf.v18.2.Drawing.dll_1199119445" Source="..\Shell\bin\Release\DevExpress.Pdf.v18.2.Drawing.dll" />
+              <Component Id="Component.DevExpress.Pdf.v19.1.Core.dll_1342769940" Guid="6f330b47-2577-43ad-9095-18617dd993f3">
+                <File Id="DevExpress.Pdf.v19.1.Core.dll_1342769940" Source="..\Shell\bin\Release\DevExpress.Pdf.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Printing.v18.2.Core.dll_1932614458" Guid="6f330b47-2577-43ad-9095-1861471bf4f4">
-                <File Id="DevExpress.Printing.v18.2.Core.dll_1932614458" Source="..\Shell\bin\Release\DevExpress.Printing.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.Pdf.v19.1.Drawing.dll_1634458069" Guid="6f330b47-2577-43ad-9095-1861e40d23e5">
+                <File Id="DevExpress.Pdf.v19.1.Drawing.dll_1634458069" Source="..\Shell\bin\Release\DevExpress.Pdf.v19.1.Drawing.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.RichEdit.v18.2.Core.dll_298386486" Guid="6f330b47-2577-43ad-9095-1861ede646cc">
-                <File Id="DevExpress.RichEdit.v18.2.Core.dll_298386486" Source="..\Shell\bin\Release\DevExpress.RichEdit.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.Printing.v19.1.Core.dll_624239013" Guid="6f330b47-2577-43ad-9095-18610985d420">
+                <File Id="DevExpress.Printing.v19.1.Core.dll_624239013" Source="..\Shell\bin\Release\DevExpress.Printing.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Snap.v18.2.Core.dll_905957728" Guid="6f330b47-2577-43ad-9095-1861094dd4f9">
-                <File Id="DevExpress.Snap.v18.2.Core.dll_905957728" Source="..\Shell\bin\Release\DevExpress.Snap.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.RichEdit.v19.1.Core.dll_797660205" Guid="6f330b47-2577-43ad-9095-1861a7518e13">
+                <File Id="DevExpress.RichEdit.v19.1.Core.dll_797660205" Source="..\Shell\bin\Release\DevExpress.RichEdit.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Sparkline.v18.2.Core.dll_2085230569" Guid="6f330b47-2577-43ad-9095-186194aafd44">
-                <File Id="DevExpress.Sparkline.v18.2.Core.dll_2085230569" Source="..\Shell\bin\Release\DevExpress.Sparkline.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.Snap.v19.1.Core.dll_1658453978" Guid="6f330b47-2577-43ad-9095-1861993f8641">
+                <File Id="DevExpress.Snap.v19.1.Core.dll_1658453978" Source="..\Shell\bin\Release\DevExpress.Snap.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Spreadsheet.v18.2.Core.dll_191585073" Guid="6f330b47-2577-43ad-9095-1861a2a4acf2">
-                <File Id="DevExpress.Spreadsheet.v18.2.Core.dll_191585073" Source="..\Shell\bin\Release\DevExpress.Spreadsheet.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.Sparkline.v19.1.Core.dll_648847792" Guid="6f330b47-2577-43ad-9095-18617d2a0e5f">
+                <File Id="DevExpress.Sparkline.v19.1.Core.dll_648847792" Source="..\Shell\bin\Release\DevExpress.Sparkline.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Utils.v18.2.dll_2060672440" Guid="6f330b47-2577-43ad-9095-18617247a5e0">
-                <File Id="DevExpress.Utils.v18.2.dll_2060672440" Source="..\Shell\bin\Release\DevExpress.Utils.v18.2.dll" />
+              <Component Id="Component.DevExpress.Spreadsheet.v19.1.Core.dll_53522902" Guid="6f330b47-2577-43ad-9095-1861d4a199a3">
+                <File Id="DevExpress.Spreadsheet.v19.1.Core.dll_53522902" Source="..\Shell\bin\Release\DevExpress.Spreadsheet.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.Accordion.v18.2.dll_975740094" Guid="6f330b47-2577-43ad-9095-186181c49f98">
-                <File Id="DevExpress.Xpf.Accordion.v18.2.dll_975740094" Source="..\Shell\bin\Release\DevExpress.Xpf.Accordion.v18.2.dll" />
+              <Component Id="Component.DevExpress.Utils.v19.1.dll_1864568155" Guid="6f330b47-2577-43ad-9095-18611e27ee1c">
+                <File Id="DevExpress.Utils.v19.1.dll_1864568155" Source="..\Shell\bin\Release\DevExpress.Utils.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.Controls.v18.2.dll_1841697857" Guid="6f330b47-2577-43ad-9095-1861459efabe">
-                <File Id="DevExpress.Xpf.Controls.v18.2.dll_1841697857" Source="..\Shell\bin\Release\DevExpress.Xpf.Controls.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.Accordion.v19.1.dll_716660796" Guid="6f330b47-2577-43ad-9095-1861f71ab770">
+                <File Id="DevExpress.Xpf.Accordion.v19.1.dll_716660796" Source="..\Shell\bin\Release\DevExpress.Xpf.Accordion.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.Core.v18.2.dll_399124939" Guid="6f330b47-2577-43ad-9095-18611ad616ef">
-                <File Id="DevExpress.Xpf.Core.v18.2.dll_399124939" Source="..\Shell\bin\Release\DevExpress.Xpf.Core.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.Controls.v19.1.dll_1685599959" Guid="6f330b47-2577-43ad-9095-1861a69a4edb">
+                <File Id="DevExpress.Xpf.Controls.v19.1.dll_1685599959" Source="..\Shell\bin\Release\DevExpress.Xpf.Controls.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.Docking.v18.2.dll_1867406100" Guid="6f330b47-2577-43ad-9095-18612faaff76">
-                <File Id="DevExpress.Xpf.Docking.v18.2.dll_1867406100" Source="..\Shell\bin\Release\DevExpress.Xpf.Docking.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.Core.v19.1.dll_239035257" Guid="6f330b47-2577-43ad-9095-1861b31dd18e">
+                <File Id="DevExpress.Xpf.Core.v19.1.dll_239035257" Source="..\Shell\bin\Release\DevExpress.Xpf.Core.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.Gauges.v18.2.dll_1148148786" Guid="6f330b47-2577-43ad-9095-1861bc9103e0">
-                <File Id="DevExpress.Xpf.Gauges.v18.2.dll_1148148786" Source="..\Shell\bin\Release\DevExpress.Xpf.Gauges.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.Docking.v19.1.dll_1308380253" Guid="6f330b47-2577-43ad-9095-18612458fb04">
+                <File Id="DevExpress.Xpf.Docking.v19.1.dll_1308380253" Source="..\Shell\bin\Release\DevExpress.Xpf.Docking.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.Grid.v18.2.Core.dll_1886619781" Guid="6f330b47-2577-43ad-9095-1861624d59a8">
-                <File Id="DevExpress.Xpf.Grid.v18.2.Core.dll_1886619781" Source="..\Shell\bin\Release\DevExpress.Xpf.Grid.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.Xpf.Gauges.v19.1.dll_1051895609" Guid="6f330b47-2577-43ad-9095-18611ac2678d">
+                <File Id="DevExpress.Xpf.Gauges.v19.1.dll_1051895609" Source="..\Shell\bin\Release\DevExpress.Xpf.Gauges.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.Grid.v18.2.dll_1202379811" Guid="6f330b47-2577-43ad-9095-1861dffc007b">
-                <File Id="DevExpress.Xpf.Grid.v18.2.dll_1202379811" Source="..\Shell\bin\Release\DevExpress.Xpf.Grid.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.Grid.v19.1.Core.dll_1173009349" Guid="6f330b47-2577-43ad-9095-186117ca89de">
+                <File Id="DevExpress.Xpf.Grid.v19.1.Core.dll_1173009349" Source="..\Shell\bin\Release\DevExpress.Xpf.Grid.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.Layout.v18.2.Core.dll_429053122" Guid="6f330b47-2577-43ad-9095-18615947d2a4">
-                <File Id="DevExpress.Xpf.Layout.v18.2.Core.dll_429053122" Source="..\Shell\bin\Release\DevExpress.Xpf.Layout.v18.2.Core.dll" />
+              <Component Id="Component.DevExpress.Xpf.Grid.v19.1.dll_1568649839" Guid="6f330b47-2577-43ad-9095-1861fb91e0f6">
+                <File Id="DevExpress.Xpf.Grid.v19.1.dll_1568649839" Source="..\Shell\bin\Release\DevExpress.Xpf.Grid.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.LayoutControl.v18.2.dll_2015186000" Guid="6f330b47-2577-43ad-9095-18618c0120e0">
-                <File Id="DevExpress.Xpf.LayoutControl.v18.2.dll_2015186000" Source="..\Shell\bin\Release\DevExpress.Xpf.LayoutControl.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.Layout.v19.1.Core.dll_1296492844" Guid="6f330b47-2577-43ad-9095-18611e44fdfe">
+                <File Id="DevExpress.Xpf.Layout.v19.1.Core.dll_1296492844" Source="..\Shell\bin\Release\DevExpress.Xpf.Layout.v19.1.Core.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.NavBar.v18.2.dll_114046637" Guid="6f330b47-2577-43ad-9095-186167cb70f1">
-                <File Id="DevExpress.Xpf.NavBar.v18.2.dll_114046637" Source="..\Shell\bin\Release\DevExpress.Xpf.NavBar.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.LayoutControl.v19.1.dll_1842481529" Guid="6f330b47-2577-43ad-9095-1861aa4b55e0">
+                <File Id="DevExpress.Xpf.LayoutControl.v19.1.dll_1842481529" Source="..\Shell\bin\Release\DevExpress.Xpf.LayoutControl.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.PrismAdapters.v18.2.dll_923711778" Guid="6f330b47-2577-43ad-9095-1861edb2f332">
-                <File Id="DevExpress.Xpf.PrismAdapters.v18.2.dll_923711778" Source="..\Shell\bin\Release\DevExpress.Xpf.PrismAdapters.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.NavBar.v19.1.dll_1301648962" Guid="6f330b47-2577-43ad-9095-1861666943f4">
+                <File Id="DevExpress.Xpf.NavBar.v19.1.dll_1301648962" Source="..\Shell\bin\Release\DevExpress.Xpf.NavBar.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpf.Ribbon.v18.2.dll_1168622408" Guid="6f330b47-2577-43ad-9095-18618ecc0a67">
-                <File Id="DevExpress.Xpf.Ribbon.v18.2.dll_1168622408" Source="..\Shell\bin\Release\DevExpress.Xpf.Ribbon.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.PrismAdapters.v19.1.dll_1665521013" Guid="6f330b47-2577-43ad-9095-1861590abb45">
+                <File Id="DevExpress.Xpf.PrismAdapters.v19.1.dll_1665521013" Source="..\Shell\bin\Release\DevExpress.Xpf.PrismAdapters.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.Xpo.v18.2.dll_708246616" Guid="6f330b47-2577-43ad-9095-18616b7ed9e6">
-                <File Id="DevExpress.Xpo.v18.2.dll_708246616" Source="..\Shell\bin\Release\DevExpress.Xpo.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpf.Ribbon.v19.1.dll_54076005" Guid="6f330b47-2577-43ad-9095-186131131e9e">
+                <File Id="DevExpress.Xpf.Ribbon.v19.1.dll_54076005" Source="..\Shell\bin\Release\DevExpress.Xpf.Ribbon.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.DevExpress.XtraCharts.v18.2.dll_318572469" Guid="6f330b47-2577-43ad-9095-18619aec74de">
-                <File Id="DevExpress.XtraCharts.v18.2.dll_318572469" Source="..\Shell\bin\Release\DevExpress.XtraCharts.v18.2.dll" />
+              <Component Id="Component.DevExpress.Xpo.v19.1.dll_982080424" Guid="6f330b47-2577-43ad-9095-18613d51fdf2">
+                <File Id="DevExpress.Xpo.v19.1.dll_982080424" Source="..\Shell\bin\Release\DevExpress.Xpo.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.Flurl.dll_1389584202" Guid="6f330b47-2577-43ad-9095-18617e2ae6d2">
-                <File Id="Flurl.dll_1389584202" Source="..\Shell\bin\Release\Flurl.dll" />
+              <Component Id="Component.DevExpress.XtraCharts.v19.1.dll_1673945499" Guid="6f330b47-2577-43ad-9095-1861c2e463ad">
+                <File Id="DevExpress.XtraCharts.v19.1.dll_1673945499" Source="..\Shell\bin\Release\DevExpress.XtraCharts.v19.1.dll" />
               </Component>
 
-              <Component Id="Component.Flurl.Http.dll_1315087956" Guid="6f330b47-2577-43ad-9095-1861afa67c5a">
-                <File Id="Flurl.Http.dll_1315087956" Source="..\Shell\bin\Release\Flurl.Http.dll" />
+              <Component Id="Component.Documents.Core.dll_775752428" Guid="6f330b47-2577-43ad-9095-1861871c7cad">
+                <File Id="Documents.Core.dll_775752428" Source="..\Shell\bin\Release\Documents.Core.dll" />
               </Component>
 
-              <Component Id="Component.Infrastructure.dll_1605511173" Guid="6f330b47-2577-43ad-9095-18614eed3b54">
-                <File Id="Infrastructure.dll_1605511173" Source="..\Shell\bin\Release\Infrastructure.dll" />
+              <Component Id="Component.Flurl.dll_1842135575" Guid="6f330b47-2577-43ad-9095-1861bf5bb560">
+                <File Id="Flurl.dll_1842135575" Source="..\Shell\bin\Release\Flurl.dll" />
               </Component>
 
-              <Component Id="Component.Infrastructure.Interface.dll_913111455" Guid="6f330b47-2577-43ad-9095-186115bd632c">
-                <File Id="Infrastructure.Interface.dll_913111455" Source="..\Shell\bin\Release\Infrastructure.Interface.dll" />
+              <Component Id="Component.Flurl.Http.dll_1198212591" Guid="6f330b47-2577-43ad-9095-18617389ad8b">
+                <File Id="Flurl.Http.dll_1198212591" Source="..\Shell\bin\Release\Flurl.Http.dll" />
               </Component>
 
-              <Component Id="Component.Microsoft.Win32.Primitives.dll_1169816261" Guid="6f330b47-2577-43ad-9095-18617891fa2d">
-                <File Id="Microsoft.Win32.Primitives.dll_1169816261" Source="..\Shell\bin\Release\Microsoft.Win32.Primitives.dll" />
+              <Component Id="Component.Infrastructure.Core.dll_2047299211" Guid="6f330b47-2577-43ad-9095-186167029970">
+                <File Id="Infrastructure.Core.dll_2047299211" Source="..\Shell\bin\Release\Infrastructure.Core.dll" />
               </Component>
 
-              <Component Id="Component.netstandard.dll_1104133288" Guid="6f330b47-2577-43ad-9095-18618a3b9c2f">
-                <File Id="netstandard.dll_1104133288" Source="..\Shell\bin\Release\netstandard.dll" />
+              <Component Id="Component.Infrastructure.dll_1239657039" Guid="6f330b47-2577-43ad-9095-18614bc4f891">
+                <File Id="Infrastructure.dll_1239657039" Source="..\Shell\bin\Release\Infrastructure.dll" />
               </Component>
 
-              <Component Id="Component.Networking.dll_1494957776" Guid="6f330b47-2577-43ad-9095-1861d5f5331a">
-                <File Id="Networking.dll_1494957776" Source="..\Shell\bin\Release\Networking.dll" />
+              <Component Id="Component.Microsoft.Win32.Primitives.dll_500051027" Guid="6f330b47-2577-43ad-9095-186119dac69e">
+                <File Id="Microsoft.Win32.Primitives.dll_500051027" Source="..\Shell\bin\Release\Microsoft.Win32.Primitives.dll" />
               </Component>
 
-              <Component Id="Component.Newtonsoft.Json.dll_1558073155" Guid="6f330b47-2577-43ad-9095-18615b8d8153">
-                <File Id="Newtonsoft.Json.dll_1558073155" Source="..\Shell\bin\Release\Newtonsoft.Json.dll" />
+              <Component Id="Component.netstandard.dll_1965744035" Guid="6f330b47-2577-43ad-9095-1861487fe6f5">
+                <File Id="netstandard.dll_1965744035" Source="..\Shell\bin\Release\netstandard.dll" />
               </Component>
 
-              <Component Id="Component.PostSharp.dll_960310192" Guid="6f330b47-2577-43ad-9095-1861af00f7a1">
-                <File Id="PostSharp.dll_960310192" Source="..\Shell\bin\Release\PostSharp.dll" />
+              <Component Id="Component.Networking.dll_962192585" Guid="6f330b47-2577-43ad-9095-1861afebc932">
+                <File Id="Networking.dll_962192585" Source="..\Shell\bin\Release\Networking.dll" />
               </Component>
 
-              <Component Id="Component.Prism.dll_666791875" Guid="6f330b47-2577-43ad-9095-1861ff18d432">
-                <File Id="Prism.dll_666791875" Source="..\Shell\bin\Release\Prism.dll" />
+              <Component Id="Component.Newtonsoft.Json.dll_1731176184" Guid="6f330b47-2577-43ad-9095-186115dfc01e">
+                <File Id="Newtonsoft.Json.dll_1731176184" Source="..\Shell\bin\Release\Newtonsoft.Json.dll" />
               </Component>
 
-              <Component Id="Component.Prism.Unity.Wpf.dll_1248581364" Guid="6f330b47-2577-43ad-9095-1861ca6e36fb">
-                <File Id="Prism.Unity.Wpf.dll_1248581364" Source="..\Shell\bin\Release\Prism.Unity.Wpf.dll" />
+              <Component Id="Component.PostSharp.dll_850971325" Guid="6f330b47-2577-43ad-9095-186140f812e7">
+                <File Id="PostSharp.dll_850971325" Source="..\Shell\bin\Release\PostSharp.dll" />
               </Component>
 
-              <Component Id="Component.Prism.Wpf.dll_1222300683" Guid="6f330b47-2577-43ad-9095-1861ba8e6e4f">
-                <File Id="Prism.Wpf.dll_1222300683" Source="..\Shell\bin\Release\Prism.Wpf.dll" />
+              <Component Id="Component.Prism.dll_1666907720" Guid="6f330b47-2577-43ad-9095-1861e31417b3">
+                <File Id="Prism.dll_1666907720" Source="..\Shell\bin\Release\Prism.dll" />
               </Component>
 
-              <Component Id="Component.SecurityModule.dll_1204599066" Guid="6f330b47-2577-43ad-9095-1861b0c521ae">
-                <File Id="SecurityModule.dll_1204599066" Source="..\Shell\bin\Release\SecurityModule.dll" />
+              <Component Id="Component.Prism.Unity.Wpf.dll_1362459596" Guid="6f330b47-2577-43ad-9095-186180ff25bd">
+                <File Id="Prism.Unity.Wpf.dll_1362459596" Source="..\Shell\bin\Release\Prism.Unity.Wpf.dll" />
               </Component>
 
-              <Component Id="Component.SharedEntities.dll_45884686" Guid="6f330b47-2577-43ad-9095-1861e076bea8">
-                <File Id="SharedEntities.dll_45884686" Source="..\Shell\bin\Release\SharedEntities.dll" />
+              <Component Id="Component.Prism.Wpf.dll_607504329" Guid="6f330b47-2577-43ad-9095-1861655de560">
+                <File Id="Prism.Wpf.dll_607504329" Source="..\Shell\bin\Release\Prism.Wpf.dll" />
               </Component>
 
-              <Component Id="Component.System.AppContext.dll_1586178123" Guid="6f330b47-2577-43ad-9095-18610b3385aa">
-                <File Id="System.AppContext.dll_1586178123" Source="..\Shell\bin\Release\System.AppContext.dll" />
+              <Component Id="Component.SecurityModule.dll_1014105423" Guid="6f330b47-2577-43ad-9095-18616e90b206">
+                <File Id="SecurityModule.dll_1014105423" Source="..\Shell\bin\Release\SecurityModule.dll" />
               </Component>
 
-              <Component Id="Component.System.Collections.Concurrent.dll_2002393107" Guid="6f330b47-2577-43ad-9095-18615f84fd4e">
-                <File Id="System.Collections.Concurrent.dll_2002393107" Source="..\Shell\bin\Release\System.Collections.Concurrent.dll" />
+              <Component Id="Component.SharedEntities.dll_709349668" Guid="6f330b47-2577-43ad-9095-18613e265301">
+                <File Id="SharedEntities.dll_709349668" Source="..\Shell\bin\Release\SharedEntities.dll" />
               </Component>
 
-              <Component Id="Component.System.Collections.dll_173330566" Guid="6f330b47-2577-43ad-9095-1861222d3035">
-                <File Id="System.Collections.dll_173330566" Source="..\Shell\bin\Release\System.Collections.dll" />
+              <Component Id="Component.System.AppContext.dll_305044453" Guid="6f330b47-2577-43ad-9095-18615389a043">
+                <File Id="System.AppContext.dll_305044453" Source="..\Shell\bin\Release\System.AppContext.dll" />
               </Component>
 
-              <Component Id="Component.System.Collections.NonGeneric.dll_365007868" Guid="6f330b47-2577-43ad-9095-18610089e2f8">
-                <File Id="System.Collections.NonGeneric.dll_365007868" Source="..\Shell\bin\Release\System.Collections.NonGeneric.dll" />
+              <Component Id="Component.System.Collections.Concurrent.dll_1882017206" Guid="6f330b47-2577-43ad-9095-1861b0929dc3">
+                <File Id="System.Collections.Concurrent.dll_1882017206" Source="..\Shell\bin\Release\System.Collections.Concurrent.dll" />
               </Component>
 
-              <Component Id="Component.System.Collections.Specialized.dll_273475505" Guid="6f330b47-2577-43ad-9095-18610368d604">
-                <File Id="System.Collections.Specialized.dll_273475505" Source="..\Shell\bin\Release\System.Collections.Specialized.dll" />
+              <Component Id="Component.System.Collections.dll_1636315596" Guid="6f330b47-2577-43ad-9095-18616606d0af">
+                <File Id="System.Collections.dll_1636315596" Source="..\Shell\bin\Release\System.Collections.dll" />
               </Component>
 
-              <Component Id="Component.System.ComponentModel.dll_1304539530" Guid="6f330b47-2577-43ad-9095-186122fc023a">
-                <File Id="System.ComponentModel.dll_1304539530" Source="..\Shell\bin\Release\System.ComponentModel.dll" />
+              <Component Id="Component.System.Collections.NonGeneric.dll_1570623369" Guid="6f330b47-2577-43ad-9095-18613403999b">
+                <File Id="System.Collections.NonGeneric.dll_1570623369" Source="..\Shell\bin\Release\System.Collections.NonGeneric.dll" />
               </Component>
 
-              <Component Id="Component.System.ComponentModel.EventBasedAsync.dll_726085475" Guid="6f330b47-2577-43ad-9095-1861d329457d">
-                <File Id="System.ComponentModel.EventBasedAsync.dll_726085475" Source="..\Shell\bin\Release\System.ComponentModel.EventBasedAsync.dll" />
+              <Component Id="Component.System.Collections.Specialized.dll_643591605" Guid="6f330b47-2577-43ad-9095-18615461db50">
+                <File Id="System.Collections.Specialized.dll_643591605" Source="..\Shell\bin\Release\System.Collections.Specialized.dll" />
               </Component>
 
-              <Component Id="Component.System.ComponentModel.Primitives.dll_2063669429" Guid="6f330b47-2577-43ad-9095-18614605e38c">
-                <File Id="System.ComponentModel.Primitives.dll_2063669429" Source="..\Shell\bin\Release\System.ComponentModel.Primitives.dll" />
+              <Component Id="Component.System.ComponentModel.dll_1451433471" Guid="6f330b47-2577-43ad-9095-1861a9854da0">
+                <File Id="System.ComponentModel.dll_1451433471" Source="..\Shell\bin\Release\System.ComponentModel.dll" />
               </Component>
 
-              <Component Id="Component.System.ComponentModel.TypeConverter.dll_619741857" Guid="6f330b47-2577-43ad-9095-186142fb95f6">
-                <File Id="System.ComponentModel.TypeConverter.dll_619741857" Source="..\Shell\bin\Release\System.ComponentModel.TypeConverter.dll" />
+              <Component Id="Component.System.ComponentModel.EventBasedAsync.dll_114289342" Guid="6f330b47-2577-43ad-9095-186152e1e01f">
+                <File Id="System.ComponentModel.EventBasedAsync.dll_114289342" Source="..\Shell\bin\Release\System.ComponentModel.EventBasedAsync.dll" />
               </Component>
 
-              <Component Id="Component.System.Console.dll_1840145545" Guid="6f330b47-2577-43ad-9095-186181bbe675">
-                <File Id="System.Console.dll_1840145545" Source="..\Shell\bin\Release\System.Console.dll" />
+              <Component Id="Component.System.ComponentModel.Primitives.dll_1062426857" Guid="6f330b47-2577-43ad-9095-1861794bd43b">
+                <File Id="System.ComponentModel.Primitives.dll_1062426857" Source="..\Shell\bin\Release\System.ComponentModel.Primitives.dll" />
               </Component>
 
-              <Component Id="Component.System.Data.Common.dll_1651207232" Guid="6f330b47-2577-43ad-9095-186160151607">
-                <File Id="System.Data.Common.dll_1651207232" Source="..\Shell\bin\Release\System.Data.Common.dll" />
+              <Component Id="Component.System.ComponentModel.TypeConverter.dll_118321062" Guid="6f330b47-2577-43ad-9095-1861ac8ccca7">
+                <File Id="System.ComponentModel.TypeConverter.dll_118321062" Source="..\Shell\bin\Release\System.ComponentModel.TypeConverter.dll" />
               </Component>
 
-              <Component Id="Component.System.Diagnostics.Contracts.dll_727555691" Guid="6f330b47-2577-43ad-9095-1861bba52ca9">
-                <File Id="System.Diagnostics.Contracts.dll_727555691" Source="..\Shell\bin\Release\System.Diagnostics.Contracts.dll" />
+              <Component Id="Component.System.Console.dll_320851988" Guid="6f330b47-2577-43ad-9095-18613f84741a">
+                <File Id="System.Console.dll_320851988" Source="..\Shell\bin\Release\System.Console.dll" />
               </Component>
 
-              <Component Id="Component.System.Diagnostics.Debug.dll_516415943" Guid="6f330b47-2577-43ad-9095-1861e134df7f">
-                <File Id="System.Diagnostics.Debug.dll_516415943" Source="..\Shell\bin\Release\System.Diagnostics.Debug.dll" />
+              <Component Id="Component.System.Data.Common.dll_1782379133" Guid="6f330b47-2577-43ad-9095-186151320bfc">
+                <File Id="System.Data.Common.dll_1782379133" Source="..\Shell\bin\Release\System.Data.Common.dll" />
               </Component>
 
-              <Component Id="Component.System.Diagnostics.FileVersionInfo.dll_1403898872" Guid="6f330b47-2577-43ad-9095-18616296d3ff">
-                <File Id="System.Diagnostics.FileVersionInfo.dll_1403898872" Source="..\Shell\bin\Release\System.Diagnostics.FileVersionInfo.dll" />
+              <Component Id="Component.System.Diagnostics.Contracts.dll_824362480" Guid="6f330b47-2577-43ad-9095-18614bc0daff">
+                <File Id="System.Diagnostics.Contracts.dll_824362480" Source="..\Shell\bin\Release\System.Diagnostics.Contracts.dll" />
               </Component>
 
-              <Component Id="Component.System.Diagnostics.Process.dll_43707735" Guid="6f330b47-2577-43ad-9095-186138aa129d">
-                <File Id="System.Diagnostics.Process.dll_43707735" Source="..\Shell\bin\Release\System.Diagnostics.Process.dll" />
+              <Component Id="Component.System.Diagnostics.Debug.dll_2055452163" Guid="6f330b47-2577-43ad-9095-186103e1c601">
+                <File Id="System.Diagnostics.Debug.dll_2055452163" Source="..\Shell\bin\Release\System.Diagnostics.Debug.dll" />
               </Component>
 
-              <Component Id="Component.System.Diagnostics.StackTrace.dll_1470441429" Guid="6f330b47-2577-43ad-9095-18619e1e79b1">
-                <File Id="System.Diagnostics.StackTrace.dll_1470441429" Source="..\Shell\bin\Release\System.Diagnostics.StackTrace.dll" />
+              <Component Id="Component.System.Diagnostics.FileVersionInfo.dll_1409680385" Guid="6f330b47-2577-43ad-9095-18612b986058">
+                <File Id="System.Diagnostics.FileVersionInfo.dll_1409680385" Source="..\Shell\bin\Release\System.Diagnostics.FileVersionInfo.dll" />
               </Component>
 
-              <Component Id="Component.System.Diagnostics.TextWriterTraceListener.dll_1154155229" Guid="6f330b47-2577-43ad-9095-1861ab31bac4">
-                <File Id="System.Diagnostics.TextWriterTraceListener.dll_1154155229" Source="..\Shell\bin\Release\System.Diagnostics.TextWriterTraceListener.dll" />
+              <Component Id="Component.System.Diagnostics.Process.dll_668640799" Guid="6f330b47-2577-43ad-9095-1861e9ec505b">
+                <File Id="System.Diagnostics.Process.dll_668640799" Source="..\Shell\bin\Release\System.Diagnostics.Process.dll" />
               </Component>
 
-              <Component Id="Component.System.Diagnostics.Tools.dll_1914024158" Guid="6f330b47-2577-43ad-9095-186191105189">
-                <File Id="System.Diagnostics.Tools.dll_1914024158" Source="..\Shell\bin\Release\System.Diagnostics.Tools.dll" />
+              <Component Id="Component.System.Diagnostics.StackTrace.dll_1792313788" Guid="6f330b47-2577-43ad-9095-1861d0a08ba0">
+                <File Id="System.Diagnostics.StackTrace.dll_1792313788" Source="..\Shell\bin\Release\System.Diagnostics.StackTrace.dll" />
               </Component>
 
-              <Component Id="Component.System.Diagnostics.TraceSource.dll_1628050900" Guid="6f330b47-2577-43ad-9095-1861e9d307d1">
-                <File Id="System.Diagnostics.TraceSource.dll_1628050900" Source="..\Shell\bin\Release\System.Diagnostics.TraceSource.dll" />
+              <Component Id="Component.System.Diagnostics.TextWriterTraceListener.dll_367843287" Guid="6f330b47-2577-43ad-9095-1861ab314b6f">
+                <File Id="System.Diagnostics.TextWriterTraceListener.dll_367843287" Source="..\Shell\bin\Release\System.Diagnostics.TextWriterTraceListener.dll" />
               </Component>
 
-              <Component Id="Component.System.Diagnostics.Tracing.dll_1072138074" Guid="6f330b47-2577-43ad-9095-18615af77c0d">
-                <File Id="System.Diagnostics.Tracing.dll_1072138074" Source="..\Shell\bin\Release\System.Diagnostics.Tracing.dll" />
+              <Component Id="Component.System.Diagnostics.Tools.dll_153413997" Guid="6f330b47-2577-43ad-9095-1861f43cc1aa">
+                <File Id="System.Diagnostics.Tools.dll_153413997" Source="..\Shell\bin\Release\System.Diagnostics.Tools.dll" />
               </Component>
 
-              <Component Id="Component.System.Drawing.Primitives.dll_1789654371" Guid="6f330b47-2577-43ad-9095-18615e68375d">
-                <File Id="System.Drawing.Primitives.dll_1789654371" Source="..\Shell\bin\Release\System.Drawing.Primitives.dll" />
+              <Component Id="Component.System.Diagnostics.TraceSource.dll_782334519" Guid="6f330b47-2577-43ad-9095-1861cd8a2514">
+                <File Id="System.Diagnostics.TraceSource.dll_782334519" Source="..\Shell\bin\Release\System.Diagnostics.TraceSource.dll" />
               </Component>
 
-              <Component Id="Component.System.Dynamic.Runtime.dll_1269811053" Guid="6f330b47-2577-43ad-9095-18612508bee7">
-                <File Id="System.Dynamic.Runtime.dll_1269811053" Source="..\Shell\bin\Release\System.Dynamic.Runtime.dll" />
+              <Component Id="Component.System.Diagnostics.Tracing.dll_1175234164" Guid="6f330b47-2577-43ad-9095-186199aa8690">
+                <File Id="System.Diagnostics.Tracing.dll_1175234164" Source="..\Shell\bin\Release\System.Diagnostics.Tracing.dll" />
               </Component>
 
-              <Component Id="Component.System.Globalization.Calendars.dll_595276029" Guid="6f330b47-2577-43ad-9095-1861f598aeeb">
-                <File Id="System.Globalization.Calendars.dll_595276029" Source="..\Shell\bin\Release\System.Globalization.Calendars.dll" />
+              <Component Id="Component.System.Drawing.Primitives.dll_252842814" Guid="6f330b47-2577-43ad-9095-18615d9a3053">
+                <File Id="System.Drawing.Primitives.dll_252842814" Source="..\Shell\bin\Release\System.Drawing.Primitives.dll" />
               </Component>
 
-              <Component Id="Component.System.Globalization.dll_1282416254" Guid="6f330b47-2577-43ad-9095-1861044e9910">
-                <File Id="System.Globalization.dll_1282416254" Source="..\Shell\bin\Release\System.Globalization.dll" />
+              <Component Id="Component.System.Dynamic.Runtime.dll_1191939634" Guid="6f330b47-2577-43ad-9095-1861770904fb">
+                <File Id="System.Dynamic.Runtime.dll_1191939634" Source="..\Shell\bin\Release\System.Dynamic.Runtime.dll" />
               </Component>
 
-              <Component Id="Component.System.Globalization.Extensions.dll_571409497" Guid="6f330b47-2577-43ad-9095-1861ef81f876">
-                <File Id="System.Globalization.Extensions.dll_571409497" Source="..\Shell\bin\Release\System.Globalization.Extensions.dll" />
+              <Component Id="Component.System.Globalization.Calendars.dll_256183640" Guid="6f330b47-2577-43ad-9095-1861053770ab">
+                <File Id="System.Globalization.Calendars.dll_256183640" Source="..\Shell\bin\Release\System.Globalization.Calendars.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.Compression.dll_1486293345" Guid="6f330b47-2577-43ad-9095-1861715847bc">
-                <File Id="System.IO.Compression.dll_1486293345" Source="..\Shell\bin\Release\System.IO.Compression.dll" />
+              <Component Id="Component.System.Globalization.dll_714226180" Guid="6f330b47-2577-43ad-9095-186169d7a8e6">
+                <File Id="System.Globalization.dll_714226180" Source="..\Shell\bin\Release\System.Globalization.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.Compression.ZipFile.dll_555943810" Guid="6f330b47-2577-43ad-9095-18617cea295a">
-                <File Id="System.IO.Compression.ZipFile.dll_555943810" Source="..\Shell\bin\Release\System.IO.Compression.ZipFile.dll" />
+              <Component Id="Component.System.Globalization.Extensions.dll_2013386028" Guid="6f330b47-2577-43ad-9095-1861567427fd">
+                <File Id="System.Globalization.Extensions.dll_2013386028" Source="..\Shell\bin\Release\System.Globalization.Extensions.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.dll_419305610" Guid="6f330b47-2577-43ad-9095-18615c941589">
-                <File Id="System.IO.dll_419305610" Source="..\Shell\bin\Release\System.IO.dll" />
+              <Component Id="Component.System.IO.Compression.dll_2126115947" Guid="6f330b47-2577-43ad-9095-18610c4fbf22">
+                <File Id="System.IO.Compression.dll_2126115947" Source="..\Shell\bin\Release\System.IO.Compression.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.FileSystem.dll_1839511519" Guid="6f330b47-2577-43ad-9095-1861e7626b23">
-                <File Id="System.IO.FileSystem.dll_1839511519" Source="..\Shell\bin\Release\System.IO.FileSystem.dll" />
+              <Component Id="Component.System.IO.Compression.ZipFile.dll_163790462" Guid="6f330b47-2577-43ad-9095-1861d9857515">
+                <File Id="System.IO.Compression.ZipFile.dll_163790462" Source="..\Shell\bin\Release\System.IO.Compression.ZipFile.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.FileSystem.DriveInfo.dll_790022720" Guid="6f330b47-2577-43ad-9095-1861c29a7485">
-                <File Id="System.IO.FileSystem.DriveInfo.dll_790022720" Source="..\Shell\bin\Release\System.IO.FileSystem.DriveInfo.dll" />
+              <Component Id="Component.System.IO.dll_2138952395" Guid="6f330b47-2577-43ad-9095-18610f4abce7">
+                <File Id="System.IO.dll_2138952395" Source="..\Shell\bin\Release\System.IO.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.FileSystem.Primitives.dll_1941054441" Guid="6f330b47-2577-43ad-9095-1861b58ed9c3">
-                <File Id="System.IO.FileSystem.Primitives.dll_1941054441" Source="..\Shell\bin\Release\System.IO.FileSystem.Primitives.dll" />
+              <Component Id="Component.System.IO.FileSystem.dll_1735177419" Guid="6f330b47-2577-43ad-9095-18619e50d78f">
+                <File Id="System.IO.FileSystem.dll_1735177419" Source="..\Shell\bin\Release\System.IO.FileSystem.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.FileSystem.Watcher.dll_421460160" Guid="6f330b47-2577-43ad-9095-1861a7711a07">
-                <File Id="System.IO.FileSystem.Watcher.dll_421460160" Source="..\Shell\bin\Release\System.IO.FileSystem.Watcher.dll" />
+              <Component Id="Component.System.IO.FileSystem.DriveInfo.dll_2051363104" Guid="6f330b47-2577-43ad-9095-18615ec85ee7">
+                <File Id="System.IO.FileSystem.DriveInfo.dll_2051363104" Source="..\Shell\bin\Release\System.IO.FileSystem.DriveInfo.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.IsolatedStorage.dll_1468992399" Guid="6f330b47-2577-43ad-9095-1861fe6e75a8">
-                <File Id="System.IO.IsolatedStorage.dll_1468992399" Source="..\Shell\bin\Release\System.IO.IsolatedStorage.dll" />
+              <Component Id="Component.System.IO.FileSystem.Primitives.dll_1827317073" Guid="6f330b47-2577-43ad-9095-18616f0b93a4">
+                <File Id="System.IO.FileSystem.Primitives.dll_1827317073" Source="..\Shell\bin\Release\System.IO.FileSystem.Primitives.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.MemoryMappedFiles.dll_1736144757" Guid="6f330b47-2577-43ad-9095-186144d5997b">
-                <File Id="System.IO.MemoryMappedFiles.dll_1736144757" Source="..\Shell\bin\Release\System.IO.MemoryMappedFiles.dll" />
+              <Component Id="Component.System.IO.FileSystem.Watcher.dll_1664030446" Guid="6f330b47-2577-43ad-9095-186136412723">
+                <File Id="System.IO.FileSystem.Watcher.dll_1664030446" Source="..\Shell\bin\Release\System.IO.FileSystem.Watcher.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.Pipes.dll_368904578" Guid="6f330b47-2577-43ad-9095-18611fb27ea4">
-                <File Id="System.IO.Pipes.dll_368904578" Source="..\Shell\bin\Release\System.IO.Pipes.dll" />
+              <Component Id="Component.System.IO.IsolatedStorage.dll_950442033" Guid="6f330b47-2577-43ad-9095-186186e87d2f">
+                <File Id="System.IO.IsolatedStorage.dll_950442033" Source="..\Shell\bin\Release\System.IO.IsolatedStorage.dll" />
               </Component>
 
-              <Component Id="Component.System.IO.UnmanagedMemoryStream.dll_350558835" Guid="6f330b47-2577-43ad-9095-1861fb9532c0">
-                <File Id="System.IO.UnmanagedMemoryStream.dll_350558835" Source="..\Shell\bin\Release\System.IO.UnmanagedMemoryStream.dll" />
+              <Component Id="Component.System.IO.MemoryMappedFiles.dll_1906345627" Guid="6f330b47-2577-43ad-9095-1861032c620a">
+                <File Id="System.IO.MemoryMappedFiles.dll_1906345627" Source="..\Shell\bin\Release\System.IO.MemoryMappedFiles.dll" />
               </Component>
 
-              <Component Id="Component.System.Linq.dll_1592719667" Guid="6f330b47-2577-43ad-9095-18614d6fe8ea">
-                <File Id="System.Linq.dll_1592719667" Source="..\Shell\bin\Release\System.Linq.dll" />
+              <Component Id="Component.System.IO.Pipes.dll_606299737" Guid="6f330b47-2577-43ad-9095-1861dac94dd7">
+                <File Id="System.IO.Pipes.dll_606299737" Source="..\Shell\bin\Release\System.IO.Pipes.dll" />
               </Component>
 
-              <Component Id="Component.System.Linq.Expressions.dll_1982954094" Guid="6f330b47-2577-43ad-9095-18613eda2997">
-                <File Id="System.Linq.Expressions.dll_1982954094" Source="..\Shell\bin\Release\System.Linq.Expressions.dll" />
+              <Component Id="Component.System.IO.UnmanagedMemoryStream.dll_635483770" Guid="6f330b47-2577-43ad-9095-186185fda117">
+                <File Id="System.IO.UnmanagedMemoryStream.dll_635483770" Source="..\Shell\bin\Release\System.IO.UnmanagedMemoryStream.dll" />
               </Component>
 
-              <Component Id="Component.System.Linq.Parallel.dll_44812971" Guid="6f330b47-2577-43ad-9095-1861cb5609b0">
-                <File Id="System.Linq.Parallel.dll_44812971" Source="..\Shell\bin\Release\System.Linq.Parallel.dll" />
+              <Component Id="Component.System.Linq.dll_1513300489" Guid="6f330b47-2577-43ad-9095-1861750dfae5">
+                <File Id="System.Linq.dll_1513300489" Source="..\Shell\bin\Release\System.Linq.dll" />
               </Component>
 
-              <Component Id="Component.System.Linq.Queryable.dll_1479223035" Guid="6f330b47-2577-43ad-9095-1861f47f3fbd">
-                <File Id="System.Linq.Queryable.dll_1479223035" Source="..\Shell\bin\Release\System.Linq.Queryable.dll" />
+              <Component Id="Component.System.Linq.Expressions.dll_671042884" Guid="6f330b47-2577-43ad-9095-1861e39b9083">
+                <File Id="System.Linq.Expressions.dll_671042884" Source="..\Shell\bin\Release\System.Linq.Expressions.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.Http.dll_1447088625" Guid="6f330b47-2577-43ad-9095-1861db312ec4">
-                <File Id="System.Net.Http.dll_1447088625" Source="..\Shell\bin\Release\System.Net.Http.dll" />
+              <Component Id="Component.System.Linq.Parallel.dll_1738282790" Guid="6f330b47-2577-43ad-9095-186162f73709">
+                <File Id="System.Linq.Parallel.dll_1738282790" Source="..\Shell\bin\Release\System.Linq.Parallel.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.NameResolution.dll_2049162517" Guid="6f330b47-2577-43ad-9095-18619de6bad6">
-                <File Id="System.Net.NameResolution.dll_2049162517" Source="..\Shell\bin\Release\System.Net.NameResolution.dll" />
+              <Component Id="Component.System.Linq.Queryable.dll_940907838" Guid="6f330b47-2577-43ad-9095-18610c87eefc">
+                <File Id="System.Linq.Queryable.dll_940907838" Source="..\Shell\bin\Release\System.Linq.Queryable.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.NetworkInformation.dll_1912850697" Guid="6f330b47-2577-43ad-9095-1861ad57643a">
-                <File Id="System.Net.NetworkInformation.dll_1912850697" Source="..\Shell\bin\Release\System.Net.NetworkInformation.dll" />
+              <Component Id="Component.System.Net.Http.dll_206491264" Guid="6f330b47-2577-43ad-9095-1861698e66ba">
+                <File Id="System.Net.Http.dll_206491264" Source="..\Shell\bin\Release\System.Net.Http.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.Ping.dll_818556333" Guid="6f330b47-2577-43ad-9095-1861ea5f3790">
-                <File Id="System.Net.Ping.dll_818556333" Source="..\Shell\bin\Release\System.Net.Ping.dll" />
+              <Component Id="Component.System.Net.NameResolution.dll_1504883118" Guid="6f330b47-2577-43ad-9095-18616986523a">
+                <File Id="System.Net.NameResolution.dll_1504883118" Source="..\Shell\bin\Release\System.Net.NameResolution.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.Primitives.dll_1913991764" Guid="6f330b47-2577-43ad-9095-1861f1e4f830">
-                <File Id="System.Net.Primitives.dll_1913991764" Source="..\Shell\bin\Release\System.Net.Primitives.dll" />
+              <Component Id="Component.System.Net.NetworkInformation.dll_1037029256" Guid="6f330b47-2577-43ad-9095-1861b4258385">
+                <File Id="System.Net.NetworkInformation.dll_1037029256" Source="..\Shell\bin\Release\System.Net.NetworkInformation.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.Requests.dll_157600682" Guid="6f330b47-2577-43ad-9095-1861bd117f34">
-                <File Id="System.Net.Requests.dll_157600682" Source="..\Shell\bin\Release\System.Net.Requests.dll" />
+              <Component Id="Component.System.Net.Ping.dll_1186814672" Guid="6f330b47-2577-43ad-9095-186134c619db">
+                <File Id="System.Net.Ping.dll_1186814672" Source="..\Shell\bin\Release\System.Net.Ping.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.Security.dll_1635400758" Guid="6f330b47-2577-43ad-9095-186101a9b528">
-                <File Id="System.Net.Security.dll_1635400758" Source="..\Shell\bin\Release\System.Net.Security.dll" />
+              <Component Id="Component.System.Net.Primitives.dll_1867989609" Guid="6f330b47-2577-43ad-9095-1861d1886b4b">
+                <File Id="System.Net.Primitives.dll_1867989609" Source="..\Shell\bin\Release\System.Net.Primitives.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.Sockets.dll_617337667" Guid="6f330b47-2577-43ad-9095-1861c04360dc">
-                <File Id="System.Net.Sockets.dll_617337667" Source="..\Shell\bin\Release\System.Net.Sockets.dll" />
+              <Component Id="Component.System.Net.Requests.dll_392227167" Guid="6f330b47-2577-43ad-9095-1861bbfc4f80">
+                <File Id="System.Net.Requests.dll_392227167" Source="..\Shell\bin\Release\System.Net.Requests.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.WebHeaderCollection.dll_684037355" Guid="6f330b47-2577-43ad-9095-18617ad94393">
-                <File Id="System.Net.WebHeaderCollection.dll_684037355" Source="..\Shell\bin\Release\System.Net.WebHeaderCollection.dll" />
+              <Component Id="Component.System.Net.Security.dll_390836703" Guid="6f330b47-2577-43ad-9095-18616f5bb23b">
+                <File Id="System.Net.Security.dll_390836703" Source="..\Shell\bin\Release\System.Net.Security.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.WebSockets.Client.dll_1635179157" Guid="6f330b47-2577-43ad-9095-186116455a7b">
-                <File Id="System.Net.WebSockets.Client.dll_1635179157" Source="..\Shell\bin\Release\System.Net.WebSockets.Client.dll" />
+              <Component Id="Component.System.Net.Sockets.dll_1141592328" Guid="6f330b47-2577-43ad-9095-186174d9587d">
+                <File Id="System.Net.Sockets.dll_1141592328" Source="..\Shell\bin\Release\System.Net.Sockets.dll" />
               </Component>
 
-              <Component Id="Component.System.Net.WebSockets.dll_331406936" Guid="6f330b47-2577-43ad-9095-1861a36d540d">
-                <File Id="System.Net.WebSockets.dll_331406936" Source="..\Shell\bin\Release\System.Net.WebSockets.dll" />
+              <Component Id="Component.System.Net.WebHeaderCollection.dll_392088122" Guid="6f330b47-2577-43ad-9095-1861df4775f3">
+                <File Id="System.Net.WebHeaderCollection.dll_392088122" Source="..\Shell\bin\Release\System.Net.WebHeaderCollection.dll" />
               </Component>
 
-              <Component Id="Component.System.ObjectModel.dll_149000388" Guid="6f330b47-2577-43ad-9095-1861a5602bc2">
-                <File Id="System.ObjectModel.dll_149000388" Source="..\Shell\bin\Release\System.ObjectModel.dll" />
+              <Component Id="Component.System.Net.WebSockets.Client.dll_1139278804" Guid="6f330b47-2577-43ad-9095-186163f63532">
+                <File Id="System.Net.WebSockets.Client.dll_1139278804" Source="..\Shell\bin\Release\System.Net.WebSockets.Client.dll" />
               </Component>
 
-              <Component Id="Component.System.Reactive.dll_1388561335" Guid="6f330b47-2577-43ad-9095-1861a65d5145">
-                <File Id="System.Reactive.dll_1388561335" Source="..\Shell\bin\Release\System.Reactive.dll" />
+              <Component Id="Component.System.Net.WebSockets.dll_1145015014" Guid="6f330b47-2577-43ad-9095-18610e8e623f">
+                <File Id="System.Net.WebSockets.dll_1145015014" Source="..\Shell\bin\Release\System.Net.WebSockets.dll" />
               </Component>
 
-              <Component Id="Component.System.Reflection.dll_1022213372" Guid="6f330b47-2577-43ad-9095-18618a607980">
-                <File Id="System.Reflection.dll_1022213372" Source="..\Shell\bin\Release\System.Reflection.dll" />
+              <Component Id="Component.System.ObjectModel.dll_1659820222" Guid="6f330b47-2577-43ad-9095-18615c8d915d">
+                <File Id="System.ObjectModel.dll_1659820222" Source="..\Shell\bin\Release\System.ObjectModel.dll" />
               </Component>
 
-              <Component Id="Component.System.Reflection.Extensions.dll_697382044" Guid="6f330b47-2577-43ad-9095-1861d346cec8">
-                <File Id="System.Reflection.Extensions.dll_697382044" Source="..\Shell\bin\Release\System.Reflection.Extensions.dll" />
+              <Component Id="Component.System.Reactive.dll_769904464" Guid="6f330b47-2577-43ad-9095-1861c819cf31">
+                <File Id="System.Reactive.dll_769904464" Source="..\Shell\bin\Release\System.Reactive.dll" />
               </Component>
 
-              <Component Id="Component.System.Reflection.Primitives.dll_1118377513" Guid="6f330b47-2577-43ad-9095-18619cb11a4f">
-                <File Id="System.Reflection.Primitives.dll_1118377513" Source="..\Shell\bin\Release\System.Reflection.Primitives.dll" />
+              <Component Id="Component.System.Reflection.dll_345958630" Guid="6f330b47-2577-43ad-9095-186118023974">
+                <File Id="System.Reflection.dll_345958630" Source="..\Shell\bin\Release\System.Reflection.dll" />
               </Component>
 
-              <Component Id="Component.System.Resources.Reader.dll_1392743180" Guid="6f330b47-2577-43ad-9095-186169569b3b">
-                <File Id="System.Resources.Reader.dll_1392743180" Source="..\Shell\bin\Release\System.Resources.Reader.dll" />
+              <Component Id="Component.System.Reflection.Extensions.dll_558311862" Guid="6f330b47-2577-43ad-9095-1861d284b58f">
+                <File Id="System.Reflection.Extensions.dll_558311862" Source="..\Shell\bin\Release\System.Reflection.Extensions.dll" />
               </Component>
 
-              <Component Id="Component.System.Resources.ResourceManager.dll_1803587011" Guid="6f330b47-2577-43ad-9095-1861cc4d1c27">
-                <File Id="System.Resources.ResourceManager.dll_1803587011" Source="..\Shell\bin\Release\System.Resources.ResourceManager.dll" />
+              <Component Id="Component.System.Reflection.Primitives.dll_1345607445" Guid="6f330b47-2577-43ad-9095-1861a326dc7e">
+                <File Id="System.Reflection.Primitives.dll_1345607445" Source="..\Shell\bin\Release\System.Reflection.Primitives.dll" />
               </Component>
 
-              <Component Id="Component.System.Resources.Writer.dll_104661193" Guid="6f330b47-2577-43ad-9095-186107d510f2">
-                <File Id="System.Resources.Writer.dll_104661193" Source="..\Shell\bin\Release\System.Resources.Writer.dll" />
+              <Component Id="Component.System.Resources.Reader.dll_2010138771" Guid="6f330b47-2577-43ad-9095-186181860154">
+                <File Id="System.Resources.Reader.dll_2010138771" Source="..\Shell\bin\Release\System.Resources.Reader.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.CompilerServices.Unsafe.dll_1817607171" Guid="6f330b47-2577-43ad-9095-1861a7e84eb6">
-                <File Id="System.Runtime.CompilerServices.Unsafe.dll_1817607171" Source="..\Shell\bin\Release\System.Runtime.CompilerServices.Unsafe.dll" />
+              <Component Id="Component.System.Resources.ResourceManager.dll_1606344546" Guid="6f330b47-2577-43ad-9095-1861c386d62e">
+                <File Id="System.Resources.ResourceManager.dll_1606344546" Source="..\Shell\bin\Release\System.Resources.ResourceManager.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.CompilerServices.VisualC.dll_1524500861" Guid="6f330b47-2577-43ad-9095-1861bb0da600">
-                <File Id="System.Runtime.CompilerServices.VisualC.dll_1524500861" Source="..\Shell\bin\Release\System.Runtime.CompilerServices.VisualC.dll" />
+              <Component Id="Component.System.Resources.Writer.dll_673072861" Guid="6f330b47-2577-43ad-9095-18616f5fefba">
+                <File Id="System.Resources.Writer.dll_673072861" Source="..\Shell\bin\Release\System.Resources.Writer.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.dll_321963155" Guid="6f330b47-2577-43ad-9095-18614bd69345">
-                <File Id="System.Runtime.dll_321963155" Source="..\Shell\bin\Release\System.Runtime.dll" />
+              <Component Id="Component.System.Runtime.CompilerServices.Unsafe.dll_2124396399" Guid="6f330b47-2577-43ad-9095-1861caf238f1">
+                <File Id="System.Runtime.CompilerServices.Unsafe.dll_2124396399" Source="..\Shell\bin\Release\System.Runtime.CompilerServices.Unsafe.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.Extensions.dll_147585816" Guid="6f330b47-2577-43ad-9095-18615bd09c2b">
-                <File Id="System.Runtime.Extensions.dll_147585816" Source="..\Shell\bin\Release\System.Runtime.Extensions.dll" />
+              <Component Id="Component.System.Runtime.CompilerServices.VisualC.dll_1929782358" Guid="6f330b47-2577-43ad-9095-1861fb01cf67">
+                <File Id="System.Runtime.CompilerServices.VisualC.dll_1929782358" Source="..\Shell\bin\Release\System.Runtime.CompilerServices.VisualC.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.Handles.dll_499906015" Guid="6f330b47-2577-43ad-9095-1861098224a5">
-                <File Id="System.Runtime.Handles.dll_499906015" Source="..\Shell\bin\Release\System.Runtime.Handles.dll" />
+              <Component Id="Component.System.Runtime.dll_2009558254" Guid="6f330b47-2577-43ad-9095-186165fd4a14">
+                <File Id="System.Runtime.dll_2009558254" Source="..\Shell\bin\Release\System.Runtime.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.InteropServices.dll_585871324" Guid="6f330b47-2577-43ad-9095-1861240c011b">
-                <File Id="System.Runtime.InteropServices.dll_585871324" Source="..\Shell\bin\Release\System.Runtime.InteropServices.dll" />
+              <Component Id="Component.System.Runtime.Extensions.dll_1407943275" Guid="6f330b47-2577-43ad-9095-18616734545d">
+                <File Id="System.Runtime.Extensions.dll_1407943275" Source="..\Shell\bin\Release\System.Runtime.Extensions.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.InteropServices.RuntimeInformation.dll_121142405" Guid="6f330b47-2577-43ad-9095-186143730447">
-                <File Id="System.Runtime.InteropServices.RuntimeInformation.dll_121142405" Source="..\Shell\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll" />
+              <Component Id="Component.System.Runtime.Handles.dll_381274548" Guid="6f330b47-2577-43ad-9095-1861e1ec2dac">
+                <File Id="System.Runtime.Handles.dll_381274548" Source="..\Shell\bin\Release\System.Runtime.Handles.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.Numerics.dll_1333737984" Guid="6f330b47-2577-43ad-9095-1861509ae91b">
-                <File Id="System.Runtime.Numerics.dll_1333737984" Source="..\Shell\bin\Release\System.Runtime.Numerics.dll" />
+              <Component Id="Component.System.Runtime.InteropServices.dll_1391082240" Guid="6f330b47-2577-43ad-9095-18614651c2d2">
+                <File Id="System.Runtime.InteropServices.dll_1391082240" Source="..\Shell\bin\Release\System.Runtime.InteropServices.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.Serialization.Formatters.dll_2133422648" Guid="6f330b47-2577-43ad-9095-1861c701a8ef">
-                <File Id="System.Runtime.Serialization.Formatters.dll_2133422648" Source="..\Shell\bin\Release\System.Runtime.Serialization.Formatters.dll" />
+              <Component Id="Component.System.Runtime.InteropServices.RuntimeInformation.dll_1131699019" Guid="6f330b47-2577-43ad-9095-186105c3082c">
+                <File Id="System.Runtime.InteropServices.RuntimeInformation.dll_1131699019" Source="..\Shell\bin\Release\System.Runtime.InteropServices.RuntimeInformation.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.Serialization.Json.dll_6831556" Guid="6f330b47-2577-43ad-9095-18611a856051">
-                <File Id="System.Runtime.Serialization.Json.dll_6831556" Source="..\Shell\bin\Release\System.Runtime.Serialization.Json.dll" />
+              <Component Id="Component.System.Runtime.Numerics.dll_1922295103" Guid="6f330b47-2577-43ad-9095-1861fca7458d">
+                <File Id="System.Runtime.Numerics.dll_1922295103" Source="..\Shell\bin\Release\System.Runtime.Numerics.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.Serialization.Primitives.dll_1797012801" Guid="6f330b47-2577-43ad-9095-1861a6b82d93">
-                <File Id="System.Runtime.Serialization.Primitives.dll_1797012801" Source="..\Shell\bin\Release\System.Runtime.Serialization.Primitives.dll" />
+              <Component Id="Component.System.Runtime.Serialization.Formatters.dll_719468256" Guid="6f330b47-2577-43ad-9095-186189d450e4">
+                <File Id="System.Runtime.Serialization.Formatters.dll_719468256" Source="..\Shell\bin\Release\System.Runtime.Serialization.Formatters.dll" />
               </Component>
 
-              <Component Id="Component.System.Runtime.Serialization.Xml.dll_2110378839" Guid="6f330b47-2577-43ad-9095-18617c98438c">
-                <File Id="System.Runtime.Serialization.Xml.dll_2110378839" Source="..\Shell\bin\Release\System.Runtime.Serialization.Xml.dll" />
+              <Component Id="Component.System.Runtime.Serialization.Json.dll_1149789413" Guid="6f330b47-2577-43ad-9095-1861332bde28">
+                <File Id="System.Runtime.Serialization.Json.dll_1149789413" Source="..\Shell\bin\Release\System.Runtime.Serialization.Json.dll" />
               </Component>
 
-              <Component Id="Component.System.Security.Claims.dll_1409212690" Guid="6f330b47-2577-43ad-9095-186145f33c69">
-                <File Id="System.Security.Claims.dll_1409212690" Source="..\Shell\bin\Release\System.Security.Claims.dll" />
+              <Component Id="Component.System.Runtime.Serialization.Primitives.dll_2020425343" Guid="6f330b47-2577-43ad-9095-1861b6b91016">
+                <File Id="System.Runtime.Serialization.Primitives.dll_2020425343" Source="..\Shell\bin\Release\System.Runtime.Serialization.Primitives.dll" />
               </Component>
 
-              <Component Id="Component.System.Security.Cryptography.Algorithms.dll_1780140536" Guid="6f330b47-2577-43ad-9095-18618ced2b73">
-                <File Id="System.Security.Cryptography.Algorithms.dll_1780140536" Source="..\Shell\bin\Release\System.Security.Cryptography.Algorithms.dll" />
+              <Component Id="Component.System.Runtime.Serialization.Xml.dll_1330161318" Guid="6f330b47-2577-43ad-9095-18614c6a3ce7">
+                <File Id="System.Runtime.Serialization.Xml.dll_1330161318" Source="..\Shell\bin\Release\System.Runtime.Serialization.Xml.dll" />
               </Component>
 
-              <Component Id="Component.System.Security.Cryptography.Csp.dll_2102835639" Guid="6f330b47-2577-43ad-9095-1861ce51c4ae">
-                <File Id="System.Security.Cryptography.Csp.dll_2102835639" Source="..\Shell\bin\Release\System.Security.Cryptography.Csp.dll" />
+              <Component Id="Component.System.Security.Claims.dll_1437458370" Guid="6f330b47-2577-43ad-9095-186123686324">
+                <File Id="System.Security.Claims.dll_1437458370" Source="..\Shell\bin\Release\System.Security.Claims.dll" />
               </Component>
 
-              <Component Id="Component.System.Security.Cryptography.Encoding.dll_1127147753" Guid="6f330b47-2577-43ad-9095-1861b58e8b7f">
-                <File Id="System.Security.Cryptography.Encoding.dll_1127147753" Source="..\Shell\bin\Release\System.Security.Cryptography.Encoding.dll" />
+              <Component Id="Component.System.Security.Cryptography.Algorithms.dll_1091086156" Guid="6f330b47-2577-43ad-9095-18613198cf6b">
+                <File Id="System.Security.Cryptography.Algorithms.dll_1091086156" Source="..\Shell\bin\Release\System.Security.Cryptography.Algorithms.dll" />
               </Component>
 
-              <Component Id="Component.System.Security.Cryptography.Primitives.dll_344905412" Guid="6f330b47-2577-43ad-9095-18619a1bbe19">
-                <File Id="System.Security.Cryptography.Primitives.dll_344905412" Source="..\Shell\bin\Release\System.Security.Cryptography.Primitives.dll" />
+              <Component Id="Component.System.Security.Cryptography.Csp.dll_313818611" Guid="6f330b47-2577-43ad-9095-1861051bcaaf">
+                <File Id="System.Security.Cryptography.Csp.dll_313818611" Source="..\Shell\bin\Release\System.Security.Cryptography.Csp.dll" />
               </Component>
 
-              <Component Id="Component.System.Security.Cryptography.X509Certificates.dll_1774955623" Guid="6f330b47-2577-43ad-9095-18612021bc45">
-                <File Id="System.Security.Cryptography.X509Certificates.dll_1774955623" Source="..\Shell\bin\Release\System.Security.Cryptography.X509Certificates.dll" />
+              <Component Id="Component.System.Security.Cryptography.Encoding.dll_68055122" Guid="6f330b47-2577-43ad-9095-186197ca6c8a">
+                <File Id="System.Security.Cryptography.Encoding.dll_68055122" Source="..\Shell\bin\Release\System.Security.Cryptography.Encoding.dll" />
               </Component>
 
-              <Component Id="Component.System.Security.Principal.dll_130879298" Guid="6f330b47-2577-43ad-9095-1861ad534954">
-                <File Id="System.Security.Principal.dll_130879298" Source="..\Shell\bin\Release\System.Security.Principal.dll" />
+              <Component Id="Component.System.Security.Cryptography.Primitives.dll_39991362" Guid="6f330b47-2577-43ad-9095-18615e5bd8a5">
+                <File Id="System.Security.Cryptography.Primitives.dll_39991362" Source="..\Shell\bin\Release\System.Security.Cryptography.Primitives.dll" />
               </Component>
 
-              <Component Id="Component.System.Security.SecureString.dll_725607737" Guid="6f330b47-2577-43ad-9095-18617fec1fab">
-                <File Id="System.Security.SecureString.dll_725607737" Source="..\Shell\bin\Release\System.Security.SecureString.dll" />
+              <Component Id="Component.System.Security.Cryptography.X509Certificates.dll_157723284" Guid="6f330b47-2577-43ad-9095-186115a38a77">
+                <File Id="System.Security.Cryptography.X509Certificates.dll_157723284" Source="..\Shell\bin\Release\System.Security.Cryptography.X509Certificates.dll" />
               </Component>
 
-              <Component Id="Component.System.Text.Encoding.dll_432848876" Guid="6f330b47-2577-43ad-9095-1861e7c81f08">
-                <File Id="System.Text.Encoding.dll_432848876" Source="..\Shell\bin\Release\System.Text.Encoding.dll" />
+              <Component Id="Component.System.Security.Principal.dll_906548744" Guid="6f330b47-2577-43ad-9095-186186654308">
+                <File Id="System.Security.Principal.dll_906548744" Source="..\Shell\bin\Release\System.Security.Principal.dll" />
               </Component>
 
-              <Component Id="Component.System.Text.Encoding.Extensions.dll_2072688207" Guid="6f330b47-2577-43ad-9095-1861b0710875">
-                <File Id="System.Text.Encoding.Extensions.dll_2072688207" Source="..\Shell\bin\Release\System.Text.Encoding.Extensions.dll" />
+              <Component Id="Component.System.Security.SecureString.dll_931913856" Guid="6f330b47-2577-43ad-9095-18616725f854">
+                <File Id="System.Security.SecureString.dll_931913856" Source="..\Shell\bin\Release\System.Security.SecureString.dll" />
               </Component>
 
-              <Component Id="Component.System.Text.RegularExpressions.dll_455543460" Guid="6f330b47-2577-43ad-9095-1861d97820c0">
-                <File Id="System.Text.RegularExpressions.dll_455543460" Source="..\Shell\bin\Release\System.Text.RegularExpressions.dll" />
+              <Component Id="Component.System.Text.Encoding.dll_1460520278" Guid="6f330b47-2577-43ad-9095-1861e8d14824">
+                <File Id="System.Text.Encoding.dll_1460520278" Source="..\Shell\bin\Release\System.Text.Encoding.dll" />
               </Component>
 
-              <Component Id="Component.System.Threading.dll_513383480" Guid="6f330b47-2577-43ad-9095-1861474fa80c">
-                <File Id="System.Threading.dll_513383480" Source="..\Shell\bin\Release\System.Threading.dll" />
+              <Component Id="Component.System.Text.Encoding.Extensions.dll_216563678" Guid="6f330b47-2577-43ad-9095-1861d0c8aeb8">
+                <File Id="System.Text.Encoding.Extensions.dll_216563678" Source="..\Shell\bin\Release\System.Text.Encoding.Extensions.dll" />
               </Component>
 
-              <Component Id="Component.System.Threading.Overlapped.dll_1177627368" Guid="6f330b47-2577-43ad-9095-186102cbebfa">
-                <File Id="System.Threading.Overlapped.dll_1177627368" Source="..\Shell\bin\Release\System.Threading.Overlapped.dll" />
+              <Component Id="Component.System.Text.RegularExpressions.dll_1969342890" Guid="6f330b47-2577-43ad-9095-1861a894af49">
+                <File Id="System.Text.RegularExpressions.dll_1969342890" Source="..\Shell\bin\Release\System.Text.RegularExpressions.dll" />
               </Component>
 
-              <Component Id="Component.System.Threading.Tasks.dll_128615217" Guid="6f330b47-2577-43ad-9095-18611781510a">
-                <File Id="System.Threading.Tasks.dll_128615217" Source="..\Shell\bin\Release\System.Threading.Tasks.dll" />
+              <Component Id="Component.System.Threading.dll_1961619603" Guid="6f330b47-2577-43ad-9095-1861e276fee5">
+                <File Id="System.Threading.dll_1961619603" Source="..\Shell\bin\Release\System.Threading.dll" />
               </Component>
 
-              <Component Id="Component.System.Threading.Tasks.Extensions.dll_1093419952" Guid="6f330b47-2577-43ad-9095-18616eb28476">
-                <File Id="System.Threading.Tasks.Extensions.dll_1093419952" Source="..\Shell\bin\Release\System.Threading.Tasks.Extensions.dll" />
+              <Component Id="Component.System.Threading.Overlapped.dll_121209543" Guid="6f330b47-2577-43ad-9095-1861d13d8691">
+                <File Id="System.Threading.Overlapped.dll_121209543" Source="..\Shell\bin\Release\System.Threading.Overlapped.dll" />
               </Component>
 
-              <Component Id="Component.System.Threading.Tasks.Parallel.dll_778002782" Guid="6f330b47-2577-43ad-9095-186132a4028c">
-                <File Id="System.Threading.Tasks.Parallel.dll_778002782" Source="..\Shell\bin\Release\System.Threading.Tasks.Parallel.dll" />
+              <Component Id="Component.System.Threading.Tasks.dll_1224855363" Guid="6f330b47-2577-43ad-9095-18613dc50d9b">
+                <File Id="System.Threading.Tasks.dll_1224855363" Source="..\Shell\bin\Release\System.Threading.Tasks.dll" />
               </Component>
 
-              <Component Id="Component.System.Threading.Thread.dll_1424043334" Guid="6f330b47-2577-43ad-9095-1861463c284b">
-                <File Id="System.Threading.Thread.dll_1424043334" Source="..\Shell\bin\Release\System.Threading.Thread.dll" />
+              <Component Id="Component.System.Threading.Tasks.Extensions.dll_2014605294" Guid="6f330b47-2577-43ad-9095-18614b6f2cc1">
+                <File Id="System.Threading.Tasks.Extensions.dll_2014605294" Source="..\Shell\bin\Release\System.Threading.Tasks.Extensions.dll" />
               </Component>
 
-              <Component Id="Component.System.Threading.ThreadPool.dll_2012736230" Guid="6f330b47-2577-43ad-9095-1861827c0be8">
-                <File Id="System.Threading.ThreadPool.dll_2012736230" Source="..\Shell\bin\Release\System.Threading.ThreadPool.dll" />
+              <Component Id="Component.System.Threading.Tasks.Parallel.dll_409399125" Guid="6f330b47-2577-43ad-9095-1861e0485374">
+                <File Id="System.Threading.Tasks.Parallel.dll_409399125" Source="..\Shell\bin\Release\System.Threading.Tasks.Parallel.dll" />
               </Component>
 
-              <Component Id="Component.System.Threading.Timer.dll_1942700515" Guid="6f330b47-2577-43ad-9095-186147c83fa6">
-                <File Id="System.Threading.Timer.dll_1942700515" Source="..\Shell\bin\Release\System.Threading.Timer.dll" />
+              <Component Id="Component.System.Threading.Thread.dll_281129107" Guid="6f330b47-2577-43ad-9095-1861407b74e1">
+                <File Id="System.Threading.Thread.dll_281129107" Source="..\Shell\bin\Release\System.Threading.Thread.dll" />
               </Component>
 
-              <Component Id="Component.System.ValueTuple.dll_1307213203" Guid="6f330b47-2577-43ad-9095-1861bb1acd26">
-                <File Id="System.ValueTuple.dll_1307213203" Source="..\Shell\bin\Release\System.ValueTuple.dll" />
+              <Component Id="Component.System.Threading.ThreadPool.dll_828276867" Guid="6f330b47-2577-43ad-9095-1861c8f76259">
+                <File Id="System.Threading.ThreadPool.dll_828276867" Source="..\Shell\bin\Release\System.Threading.ThreadPool.dll" />
               </Component>
 
-              <Component Id="Component.System.Windows.Interactivity.dll_488668624" Guid="6f330b47-2577-43ad-9095-18615ceefeff">
-                <File Id="System.Windows.Interactivity.dll_488668624" Source="..\Shell\bin\Release\System.Windows.Interactivity.dll" />
+              <Component Id="Component.System.Threading.Timer.dll_1416411935" Guid="6f330b47-2577-43ad-9095-186183dd859a">
+                <File Id="System.Threading.Timer.dll_1416411935" Source="..\Shell\bin\Release\System.Threading.Timer.dll" />
               </Component>
 
-              <Component Id="Component.System.Xml.ReaderWriter.dll_1985965167" Guid="6f330b47-2577-43ad-9095-18613269b90f">
-                <File Id="System.Xml.ReaderWriter.dll_1985965167" Source="..\Shell\bin\Release\System.Xml.ReaderWriter.dll" />
+              <Component Id="Component.System.ValueTuple.dll_1100262311" Guid="6f330b47-2577-43ad-9095-186112ab588a">
+                <File Id="System.ValueTuple.dll_1100262311" Source="..\Shell\bin\Release\System.ValueTuple.dll" />
               </Component>
 
-              <Component Id="Component.System.Xml.XDocument.dll_600254192" Guid="6f330b47-2577-43ad-9095-1861a52e55ba">
-                <File Id="System.Xml.XDocument.dll_600254192" Source="..\Shell\bin\Release\System.Xml.XDocument.dll" />
+              <Component Id="Component.System.Windows.Interactivity.dll_849623195" Guid="6f330b47-2577-43ad-9095-18618be0e6ed">
+                <File Id="System.Windows.Interactivity.dll_849623195" Source="..\Shell\bin\Release\System.Windows.Interactivity.dll" />
               </Component>
 
-              <Component Id="Component.System.Xml.XmlDocument.dll_820213425" Guid="6f330b47-2577-43ad-9095-18613229e9f8">
-                <File Id="System.Xml.XmlDocument.dll_820213425" Source="..\Shell\bin\Release\System.Xml.XmlDocument.dll" />
+              <Component Id="Component.System.Xml.ReaderWriter.dll_23601865" Guid="6f330b47-2577-43ad-9095-18615c159974">
+                <File Id="System.Xml.ReaderWriter.dll_23601865" Source="..\Shell\bin\Release\System.Xml.ReaderWriter.dll" />
               </Component>
 
-              <Component Id="Component.System.Xml.XmlSerializer.dll_96398766" Guid="6f330b47-2577-43ad-9095-1861b0e10c4d">
-                <File Id="System.Xml.XmlSerializer.dll_96398766" Source="..\Shell\bin\Release\System.Xml.XmlSerializer.dll" />
+              <Component Id="Component.System.Xml.XDocument.dll_1710597214" Guid="6f330b47-2577-43ad-9095-1861fc118e20">
+                <File Id="System.Xml.XDocument.dll_1710597214" Source="..\Shell\bin\Release\System.Xml.XDocument.dll" />
               </Component>
 
-              <Component Id="Component.System.Xml.XPath.dll_743262103" Guid="6f330b47-2577-43ad-9095-1861a3136870">
-                <File Id="System.Xml.XPath.dll_743262103" Source="..\Shell\bin\Release\System.Xml.XPath.dll" />
+              <Component Id="Component.System.Xml.XmlDocument.dll_1926356074" Guid="6f330b47-2577-43ad-9095-18618bddcc13">
+                <File Id="System.Xml.XmlDocument.dll_1926356074" Source="..\Shell\bin\Release\System.Xml.XmlDocument.dll" />
               </Component>
 
-              <Component Id="Component.System.Xml.XPath.XDocument.dll_1378450103" Guid="6f330b47-2577-43ad-9095-1861a851e668">
-                <File Id="System.Xml.XPath.XDocument.dll_1378450103" Source="..\Shell\bin\Release\System.Xml.XPath.XDocument.dll" />
+              <Component Id="Component.System.Xml.XmlSerializer.dll_1969207599" Guid="6f330b47-2577-43ad-9095-1861a2dae128">
+                <File Id="System.Xml.XmlSerializer.dll_1969207599" Source="..\Shell\bin\Release\System.Xml.XmlSerializer.dll" />
               </Component>
 
-              <Component Id="Component.Unity.Abstractions.dll_1288150522" Guid="6f330b47-2577-43ad-9095-1861e7a9af16">
-                <File Id="Unity.Abstractions.dll_1288150522" Source="..\Shell\bin\Release\Unity.Abstractions.dll" />
+              <Component Id="Component.System.Xml.XPath.dll_1319811728" Guid="6f330b47-2577-43ad-9095-1861a33a442c">
+                <File Id="System.Xml.XPath.dll_1319811728" Source="..\Shell\bin\Release\System.Xml.XPath.dll" />
               </Component>
 
-              <Component Id="Component.Unity.Container.dll_1544036897" Guid="6f330b47-2577-43ad-9095-1861cefe94ef">
-                <File Id="Unity.Container.dll_1544036897" Source="..\Shell\bin\Release\Unity.Container.dll" />
+              <Component Id="Component.System.Xml.XPath.XDocument.dll_443965638" Guid="6f330b47-2577-43ad-9095-186126e0330f">
+                <File Id="System.Xml.XPath.XDocument.dll_443965638" Source="..\Shell\bin\Release\System.Xml.XPath.XDocument.dll" />
+              </Component>
+
+              <Component Id="Component.Unity.Abstractions.dll_1916854268" Guid="6f330b47-2577-43ad-9095-1861682b1b9c">
+                <File Id="Unity.Abstractions.dll_1916854268" Source="..\Shell\bin\Release\Unity.Abstractions.dll" />
+              </Component>
+
+              <Component Id="Component.Unity.Container.dll_316685559" Guid="6f330b47-2577-43ad-9095-186112e3eda1">
+                <File Id="Unity.Container.dll_316685559" Source="..\Shell\bin\Release\Unity.Container.dll" />
+              </Component>
+
+            </Directory>
+
+            <Directory Id="ProgramMenuFolder" Name="ProgramMenuFolder">
+              <Directory Id="ProgramMenuFolder.mybar" Name="mybar">
+
+                <Component Id="Component.MiniBar_Admin_" Guid="6f330b47-2577-43ad-9095-18618eb0f048">
+                  <Shortcut Id="ProgramMenuFolder.mybar.MiniBar_Admin_" WorkingDirectory="INSTALLDIR" Target="[INSTALLDIR]MiniBarManager.exe" Name="MiniBar Admin.lnk" />
+
+                  <CreateFolder />
+                  <RemoveFolder Id="ProgramMenuFolder.mybar" On="uninstall" />
+
+                  <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                    <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                  </RegistryKey>
+                </Component>
+
+              </Directory>
+            </Directory>
+
+            <Directory Id="DesktopFolder" Name="DesktopFolder">
+
+              <Component Id="Component.MiniBar_Admin.1" Guid="6f330b47-2577-43ad-9095-18610eb1994c">
+                <Shortcut Id="DesktopFolder.MiniBar_Admin.1" WorkingDirectory="INSTALLDIR" Target="[INSTALLDIR]MiniBarManager.exe" Name="MiniBar Admin.lnk" />
+
+                <CreateFolder />
+
+                <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
+                  <RegistryValue Value="0" Type="string" KeyPath="yes" />
+                </RegistryKey>
               </Component>
 
             </Directory>
 
             <Directory Id="INSTALLDIR.Modules" Name="Modules">
 
-              <Component Id="Component.MiniBar.ProductsModule.dll_566893874" Guid="6f330b47-2577-43ad-9095-1861a75508fd">
-                <File Id="MiniBar.ProductsModule.dll_566893874" Source="..\Shell\bin\Release\MiniBar.ProductsModule.dll" />
+              <Component Id="Component.MiniBar.ConfigurationModule.dll_1603191719" Guid="6f330b47-2577-43ad-9095-186175fecd31">
+                <File Id="MiniBar.ConfigurationModule.dll_1603191719" Source="..\Shell\bin\Release\MiniBar.ConfigurationModule.dll" />
               </Component>
 
-              <Component Id="Component.MiniBar.ProductsModule.dll.config_71594805" Guid="6f330b47-2577-43ad-9095-18612792fecf">
-                <File Id="MiniBar.ProductsModule.dll.config_71594805" Source="..\Shell\bin\Release\MiniBar.ProductsModule.dll.config" />
+              <Component Id="Component.MiniBar.ConfigurationModule.dll.config_590967585" Guid="6f330b47-2577-43ad-9095-186174306476">
+                <File Id="MiniBar.ConfigurationModule.dll.config_590967585" Source="..\Shell\bin\Release\MiniBar.ConfigurationModule.dll.config" />
+              </Component>
+
+              <Component Id="Component.MiniBar.ProductsModule.dll_169231969" Guid="6f330b47-2577-43ad-9095-1861577bf08a">
+                <File Id="MiniBar.ProductsModule.dll_169231969" Source="..\Shell\bin\Release\MiniBar.ProductsModule.dll" />
+              </Component>
+
+              <Component Id="Component.MiniBar.ProductsModule.dll.config_6195623" Guid="6f330b47-2577-43ad-9095-1861f37a1285">
+                <File Id="MiniBar.ProductsModule.dll.config_6195623" Source="..\Shell\bin\Release\MiniBar.ProductsModule.dll.config" />
               </Component>
 
             </Directory>
           </Directory>
+
+          <Component Id="ProgramFilesFolder.MyBar" Guid="6f330b47-2577-43ad-9095-186120ae76ec" KeyPath="yes">
+            <RemoveFolder Id="ProgramFilesFolder.MyBar" On="uninstall" />
+          </Component>
+
         </Directory>
       </Directory>
     </Directory>
@@ -652,166 +704,175 @@
 
     <Binary Id="StartService_File" SourceFile="%this%.CA.dll" />
 
-    <UIRef Id="WixUI_Minimal" />
+    <UIRef Id="WixUI_InstallDir" />
     <UIRef Id="WixUI_ErrorProgressText" />
 
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+
     <Feature Id="Complete" Title="Complete" Absent="allow" Level="1">
-      <ComponentRef Id="Component.MiniBar.CommonModule.dll_1755195266" />
-      <ComponentRef Id="Component.MiniBar.CommonModule.dll.config_2032185463" />
-      <ComponentRef Id="Component.MiniBar.EntityViewModels.dll_283817786" />
-      <ComponentRef Id="Component.MiniBarManager.exe_41890225" />
-      <ComponentRef Id="Component.MiniBarManager.exe.config_1086136914" />
-      <ComponentRef Id="Component.MiniBarManager.pssym_454820083" />
-      <ComponentRef Id="Component.AutoMapper.dll_427306819" />
-      <ComponentRef Id="Component.CommonServiceLocator.dll_1761636318" />
-      <ComponentRef Id="Component.Core.Documents.dll_250506326" />
-      <ComponentRef Id="Component.Core.UI.dll_1388125313" />
-      <ComponentRef Id="Component.DevExpress.Charts.v18.2.Core.dll_1107544331" />
-      <ComponentRef Id="Component.DevExpress.CodeParser.v18.2.dll_1735719698" />
-      <ComponentRef Id="Component.DevExpress.Data.v18.2.dll_966337180" />
-      <ComponentRef Id="Component.DevExpress.DataAccess.v18.2.dll_987044550" />
-      <ComponentRef Id="Component.DevExpress.Docs.v18.2.dll_1258721453" />
-      <ComponentRef Id="Component.DevExpress.Images.v18.2.dll_1860309687" />
-      <ComponentRef Id="Component.DevExpress.Mvvm.v18.2.dll_1809086791" />
-      <ComponentRef Id="Component.DevExpress.Office.v18.2.Core.dll_1022620562" />
-      <ComponentRef Id="Component.DevExpress.Pdf.v18.2.Core.dll_562576840" />
-      <ComponentRef Id="Component.DevExpress.Pdf.v18.2.Drawing.dll_1199119445" />
-      <ComponentRef Id="Component.DevExpress.Printing.v18.2.Core.dll_1932614458" />
-      <ComponentRef Id="Component.DevExpress.RichEdit.v18.2.Core.dll_298386486" />
-      <ComponentRef Id="Component.DevExpress.Snap.v18.2.Core.dll_905957728" />
-      <ComponentRef Id="Component.DevExpress.Sparkline.v18.2.Core.dll_2085230569" />
-      <ComponentRef Id="Component.DevExpress.Spreadsheet.v18.2.Core.dll_191585073" />
-      <ComponentRef Id="Component.DevExpress.Utils.v18.2.dll_2060672440" />
-      <ComponentRef Id="Component.DevExpress.Xpf.Accordion.v18.2.dll_975740094" />
-      <ComponentRef Id="Component.DevExpress.Xpf.Controls.v18.2.dll_1841697857" />
-      <ComponentRef Id="Component.DevExpress.Xpf.Core.v18.2.dll_399124939" />
-      <ComponentRef Id="Component.DevExpress.Xpf.Docking.v18.2.dll_1867406100" />
-      <ComponentRef Id="Component.DevExpress.Xpf.Gauges.v18.2.dll_1148148786" />
-      <ComponentRef Id="Component.DevExpress.Xpf.Grid.v18.2.Core.dll_1886619781" />
-      <ComponentRef Id="Component.DevExpress.Xpf.Grid.v18.2.dll_1202379811" />
-      <ComponentRef Id="Component.DevExpress.Xpf.Layout.v18.2.Core.dll_429053122" />
-      <ComponentRef Id="Component.DevExpress.Xpf.LayoutControl.v18.2.dll_2015186000" />
-      <ComponentRef Id="Component.DevExpress.Xpf.NavBar.v18.2.dll_114046637" />
-      <ComponentRef Id="Component.DevExpress.Xpf.PrismAdapters.v18.2.dll_923711778" />
-      <ComponentRef Id="Component.DevExpress.Xpf.Ribbon.v18.2.dll_1168622408" />
-      <ComponentRef Id="Component.DevExpress.Xpo.v18.2.dll_708246616" />
-      <ComponentRef Id="Component.DevExpress.XtraCharts.v18.2.dll_318572469" />
-      <ComponentRef Id="Component.Flurl.dll_1389584202" />
-      <ComponentRef Id="Component.Flurl.Http.dll_1315087956" />
-      <ComponentRef Id="Component.Infrastructure.dll_1605511173" />
-      <ComponentRef Id="Component.Infrastructure.Interface.dll_913111455" />
-      <ComponentRef Id="Component.Microsoft.Win32.Primitives.dll_1169816261" />
-      <ComponentRef Id="Component.netstandard.dll_1104133288" />
-      <ComponentRef Id="Component.Networking.dll_1494957776" />
-      <ComponentRef Id="Component.Newtonsoft.Json.dll_1558073155" />
-      <ComponentRef Id="Component.PostSharp.dll_960310192" />
-      <ComponentRef Id="Component.Prism.dll_666791875" />
-      <ComponentRef Id="Component.Prism.Unity.Wpf.dll_1248581364" />
-      <ComponentRef Id="Component.Prism.Wpf.dll_1222300683" />
-      <ComponentRef Id="Component.SecurityModule.dll_1204599066" />
-      <ComponentRef Id="Component.SharedEntities.dll_45884686" />
-      <ComponentRef Id="Component.System.AppContext.dll_1586178123" />
-      <ComponentRef Id="Component.System.Collections.Concurrent.dll_2002393107" />
-      <ComponentRef Id="Component.System.Collections.dll_173330566" />
-      <ComponentRef Id="Component.System.Collections.NonGeneric.dll_365007868" />
-      <ComponentRef Id="Component.System.Collections.Specialized.dll_273475505" />
-      <ComponentRef Id="Component.System.ComponentModel.dll_1304539530" />
-      <ComponentRef Id="Component.System.ComponentModel.EventBasedAsync.dll_726085475" />
-      <ComponentRef Id="Component.System.ComponentModel.Primitives.dll_2063669429" />
-      <ComponentRef Id="Component.System.ComponentModel.TypeConverter.dll_619741857" />
-      <ComponentRef Id="Component.System.Console.dll_1840145545" />
-      <ComponentRef Id="Component.System.Data.Common.dll_1651207232" />
-      <ComponentRef Id="Component.System.Diagnostics.Contracts.dll_727555691" />
-      <ComponentRef Id="Component.System.Diagnostics.Debug.dll_516415943" />
-      <ComponentRef Id="Component.System.Diagnostics.FileVersionInfo.dll_1403898872" />
-      <ComponentRef Id="Component.System.Diagnostics.Process.dll_43707735" />
-      <ComponentRef Id="Component.System.Diagnostics.StackTrace.dll_1470441429" />
-      <ComponentRef Id="Component.System.Diagnostics.TextWriterTraceListener.dll_1154155229" />
-      <ComponentRef Id="Component.System.Diagnostics.Tools.dll_1914024158" />
-      <ComponentRef Id="Component.System.Diagnostics.TraceSource.dll_1628050900" />
-      <ComponentRef Id="Component.System.Diagnostics.Tracing.dll_1072138074" />
-      <ComponentRef Id="Component.System.Drawing.Primitives.dll_1789654371" />
-      <ComponentRef Id="Component.System.Dynamic.Runtime.dll_1269811053" />
-      <ComponentRef Id="Component.System.Globalization.Calendars.dll_595276029" />
-      <ComponentRef Id="Component.System.Globalization.dll_1282416254" />
-      <ComponentRef Id="Component.System.Globalization.Extensions.dll_571409497" />
-      <ComponentRef Id="Component.System.IO.Compression.dll_1486293345" />
-      <ComponentRef Id="Component.System.IO.Compression.ZipFile.dll_555943810" />
-      <ComponentRef Id="Component.System.IO.dll_419305610" />
-      <ComponentRef Id="Component.System.IO.FileSystem.dll_1839511519" />
-      <ComponentRef Id="Component.System.IO.FileSystem.DriveInfo.dll_790022720" />
-      <ComponentRef Id="Component.System.IO.FileSystem.Primitives.dll_1941054441" />
-      <ComponentRef Id="Component.System.IO.FileSystem.Watcher.dll_421460160" />
-      <ComponentRef Id="Component.System.IO.IsolatedStorage.dll_1468992399" />
-      <ComponentRef Id="Component.System.IO.MemoryMappedFiles.dll_1736144757" />
-      <ComponentRef Id="Component.System.IO.Pipes.dll_368904578" />
-      <ComponentRef Id="Component.System.IO.UnmanagedMemoryStream.dll_350558835" />
-      <ComponentRef Id="Component.System.Linq.dll_1592719667" />
-      <ComponentRef Id="Component.System.Linq.Expressions.dll_1982954094" />
-      <ComponentRef Id="Component.System.Linq.Parallel.dll_44812971" />
-      <ComponentRef Id="Component.System.Linq.Queryable.dll_1479223035" />
-      <ComponentRef Id="Component.System.Net.Http.dll_1447088625" />
-      <ComponentRef Id="Component.System.Net.NameResolution.dll_2049162517" />
-      <ComponentRef Id="Component.System.Net.NetworkInformation.dll_1912850697" />
-      <ComponentRef Id="Component.System.Net.Ping.dll_818556333" />
-      <ComponentRef Id="Component.System.Net.Primitives.dll_1913991764" />
-      <ComponentRef Id="Component.System.Net.Requests.dll_157600682" />
-      <ComponentRef Id="Component.System.Net.Security.dll_1635400758" />
-      <ComponentRef Id="Component.System.Net.Sockets.dll_617337667" />
-      <ComponentRef Id="Component.System.Net.WebHeaderCollection.dll_684037355" />
-      <ComponentRef Id="Component.System.Net.WebSockets.Client.dll_1635179157" />
-      <ComponentRef Id="Component.System.Net.WebSockets.dll_331406936" />
-      <ComponentRef Id="Component.System.ObjectModel.dll_149000388" />
-      <ComponentRef Id="Component.System.Reactive.dll_1388561335" />
-      <ComponentRef Id="Component.System.Reflection.dll_1022213372" />
-      <ComponentRef Id="Component.System.Reflection.Extensions.dll_697382044" />
-      <ComponentRef Id="Component.System.Reflection.Primitives.dll_1118377513" />
-      <ComponentRef Id="Component.System.Resources.Reader.dll_1392743180" />
-      <ComponentRef Id="Component.System.Resources.ResourceManager.dll_1803587011" />
-      <ComponentRef Id="Component.System.Resources.Writer.dll_104661193" />
-      <ComponentRef Id="Component.System.Runtime.CompilerServices.Unsafe.dll_1817607171" />
-      <ComponentRef Id="Component.System.Runtime.CompilerServices.VisualC.dll_1524500861" />
-      <ComponentRef Id="Component.System.Runtime.dll_321963155" />
-      <ComponentRef Id="Component.System.Runtime.Extensions.dll_147585816" />
-      <ComponentRef Id="Component.System.Runtime.Handles.dll_499906015" />
-      <ComponentRef Id="Component.System.Runtime.InteropServices.dll_585871324" />
-      <ComponentRef Id="Component.System.Runtime.InteropServices.RuntimeInformation.dll_121142405" />
-      <ComponentRef Id="Component.System.Runtime.Numerics.dll_1333737984" />
-      <ComponentRef Id="Component.System.Runtime.Serialization.Formatters.dll_2133422648" />
-      <ComponentRef Id="Component.System.Runtime.Serialization.Json.dll_6831556" />
-      <ComponentRef Id="Component.System.Runtime.Serialization.Primitives.dll_1797012801" />
-      <ComponentRef Id="Component.System.Runtime.Serialization.Xml.dll_2110378839" />
-      <ComponentRef Id="Component.System.Security.Claims.dll_1409212690" />
-      <ComponentRef Id="Component.System.Security.Cryptography.Algorithms.dll_1780140536" />
-      <ComponentRef Id="Component.System.Security.Cryptography.Csp.dll_2102835639" />
-      <ComponentRef Id="Component.System.Security.Cryptography.Encoding.dll_1127147753" />
-      <ComponentRef Id="Component.System.Security.Cryptography.Primitives.dll_344905412" />
-      <ComponentRef Id="Component.System.Security.Cryptography.X509Certificates.dll_1774955623" />
-      <ComponentRef Id="Component.System.Security.Principal.dll_130879298" />
-      <ComponentRef Id="Component.System.Security.SecureString.dll_725607737" />
-      <ComponentRef Id="Component.System.Text.Encoding.dll_432848876" />
-      <ComponentRef Id="Component.System.Text.Encoding.Extensions.dll_2072688207" />
-      <ComponentRef Id="Component.System.Text.RegularExpressions.dll_455543460" />
-      <ComponentRef Id="Component.System.Threading.dll_513383480" />
-      <ComponentRef Id="Component.System.Threading.Overlapped.dll_1177627368" />
-      <ComponentRef Id="Component.System.Threading.Tasks.dll_128615217" />
-      <ComponentRef Id="Component.System.Threading.Tasks.Extensions.dll_1093419952" />
-      <ComponentRef Id="Component.System.Threading.Tasks.Parallel.dll_778002782" />
-      <ComponentRef Id="Component.System.Threading.Thread.dll_1424043334" />
-      <ComponentRef Id="Component.System.Threading.ThreadPool.dll_2012736230" />
-      <ComponentRef Id="Component.System.Threading.Timer.dll_1942700515" />
-      <ComponentRef Id="Component.System.ValueTuple.dll_1307213203" />
-      <ComponentRef Id="Component.System.Windows.Interactivity.dll_488668624" />
-      <ComponentRef Id="Component.System.Xml.ReaderWriter.dll_1985965167" />
-      <ComponentRef Id="Component.System.Xml.XDocument.dll_600254192" />
-      <ComponentRef Id="Component.System.Xml.XmlDocument.dll_820213425" />
-      <ComponentRef Id="Component.System.Xml.XmlSerializer.dll_96398766" />
-      <ComponentRef Id="Component.System.Xml.XPath.dll_743262103" />
-      <ComponentRef Id="Component.System.Xml.XPath.XDocument.dll_1378450103" />
-      <ComponentRef Id="Component.Unity.Abstractions.dll_1288150522" />
-      <ComponentRef Id="Component.Unity.Container.dll_1544036897" />
-      <ComponentRef Id="Component.MiniBar.ProductsModule.dll_566893874" />
-      <ComponentRef Id="Component.MiniBar.ProductsModule.dll.config_71594805" />
+      <ComponentRef Id="Component.MiniBar.CommonModule.dll_15960708" />
+      <ComponentRef Id="Component.MiniBar.CommonModule.dll.config_424266267" />
+      <ComponentRef Id="Component.MiniBar.EntityViewModels.dll_1732852851" />
+      <ComponentRef Id="Component.MiniBar.EntityViewModels.dll.config_1337584850" />
+      <ComponentRef Id="Component.MiniBarManager.exe_1780104730" />
+      <ComponentRef Id="Component.MiniBarManager.exe.config_1966732583" />
+      <ComponentRef Id="Component.AutoMapper.dll_384434202" />
+      <ComponentRef Id="Component.CommonServiceLocator.dll_1244577189" />
+      <ComponentRef Id="Component.Core.UI.dll_1158976013" />
+      <ComponentRef Id="Component.DevExpress.Charts.v19.1.Core.dll_566491325" />
+      <ComponentRef Id="Component.DevExpress.CodeParser.v19.1.dll_1503456141" />
+      <ComponentRef Id="Component.DevExpress.Data.v19.1.dll_1523619844" />
+      <ComponentRef Id="Component.DevExpress.DataAccess.v19.1.dll_455794886" />
+      <ComponentRef Id="Component.DevExpress.Docs.v19.1.dll_1445394480" />
+      <ComponentRef Id="Component.DevExpress.Images.v19.1.dll_847540632" />
+      <ComponentRef Id="Component.DevExpress.Mvvm.v19.1.DataModel.dll_2023194762" />
+      <ComponentRef Id="Component.DevExpress.Mvvm.v19.1.dll_1377028646" />
+      <ComponentRef Id="Component.DevExpress.Mvvm.v19.1.ViewModel.dll_1237703353" />
+      <ComponentRef Id="Component.DevExpress.Office.v19.1.Core.dll_409476693" />
+      <ComponentRef Id="Component.DevExpress.Pdf.v19.1.Core.dll_1342769940" />
+      <ComponentRef Id="Component.DevExpress.Pdf.v19.1.Drawing.dll_1634458069" />
+      <ComponentRef Id="Component.DevExpress.Printing.v19.1.Core.dll_624239013" />
+      <ComponentRef Id="Component.DevExpress.RichEdit.v19.1.Core.dll_797660205" />
+      <ComponentRef Id="Component.DevExpress.Snap.v19.1.Core.dll_1658453978" />
+      <ComponentRef Id="Component.DevExpress.Sparkline.v19.1.Core.dll_648847792" />
+      <ComponentRef Id="Component.DevExpress.Spreadsheet.v19.1.Core.dll_53522902" />
+      <ComponentRef Id="Component.DevExpress.Utils.v19.1.dll_1864568155" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Accordion.v19.1.dll_716660796" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Controls.v19.1.dll_1685599959" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Core.v19.1.dll_239035257" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Docking.v19.1.dll_1308380253" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Gauges.v19.1.dll_1051895609" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Grid.v19.1.Core.dll_1173009349" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Grid.v19.1.dll_1568649839" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Layout.v19.1.Core.dll_1296492844" />
+      <ComponentRef Id="Component.DevExpress.Xpf.LayoutControl.v19.1.dll_1842481529" />
+      <ComponentRef Id="Component.DevExpress.Xpf.NavBar.v19.1.dll_1301648962" />
+      <ComponentRef Id="Component.DevExpress.Xpf.PrismAdapters.v19.1.dll_1665521013" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Ribbon.v19.1.dll_54076005" />
+      <ComponentRef Id="Component.DevExpress.Xpo.v19.1.dll_982080424" />
+      <ComponentRef Id="Component.DevExpress.XtraCharts.v19.1.dll_1673945499" />
+      <ComponentRef Id="Component.Documents.Core.dll_775752428" />
+      <ComponentRef Id="Component.Flurl.dll_1842135575" />
+      <ComponentRef Id="Component.Flurl.Http.dll_1198212591" />
+      <ComponentRef Id="Component.Infrastructure.Core.dll_2047299211" />
+      <ComponentRef Id="Component.Infrastructure.dll_1239657039" />
+      <ComponentRef Id="Component.Microsoft.Win32.Primitives.dll_500051027" />
+      <ComponentRef Id="Component.netstandard.dll_1965744035" />
+      <ComponentRef Id="Component.Networking.dll_962192585" />
+      <ComponentRef Id="Component.Newtonsoft.Json.dll_1731176184" />
+      <ComponentRef Id="Component.PostSharp.dll_850971325" />
+      <ComponentRef Id="Component.Prism.dll_1666907720" />
+      <ComponentRef Id="Component.Prism.Unity.Wpf.dll_1362459596" />
+      <ComponentRef Id="Component.Prism.Wpf.dll_607504329" />
+      <ComponentRef Id="Component.SecurityModule.dll_1014105423" />
+      <ComponentRef Id="Component.SharedEntities.dll_709349668" />
+      <ComponentRef Id="Component.System.AppContext.dll_305044453" />
+      <ComponentRef Id="Component.System.Collections.Concurrent.dll_1882017206" />
+      <ComponentRef Id="Component.System.Collections.dll_1636315596" />
+      <ComponentRef Id="Component.System.Collections.NonGeneric.dll_1570623369" />
+      <ComponentRef Id="Component.System.Collections.Specialized.dll_643591605" />
+      <ComponentRef Id="Component.System.ComponentModel.dll_1451433471" />
+      <ComponentRef Id="Component.System.ComponentModel.EventBasedAsync.dll_114289342" />
+      <ComponentRef Id="Component.System.ComponentModel.Primitives.dll_1062426857" />
+      <ComponentRef Id="Component.System.ComponentModel.TypeConverter.dll_118321062" />
+      <ComponentRef Id="Component.System.Console.dll_320851988" />
+      <ComponentRef Id="Component.System.Data.Common.dll_1782379133" />
+      <ComponentRef Id="Component.System.Diagnostics.Contracts.dll_824362480" />
+      <ComponentRef Id="Component.System.Diagnostics.Debug.dll_2055452163" />
+      <ComponentRef Id="Component.System.Diagnostics.FileVersionInfo.dll_1409680385" />
+      <ComponentRef Id="Component.System.Diagnostics.Process.dll_668640799" />
+      <ComponentRef Id="Component.System.Diagnostics.StackTrace.dll_1792313788" />
+      <ComponentRef Id="Component.System.Diagnostics.TextWriterTraceListener.dll_367843287" />
+      <ComponentRef Id="Component.System.Diagnostics.Tools.dll_153413997" />
+      <ComponentRef Id="Component.System.Diagnostics.TraceSource.dll_782334519" />
+      <ComponentRef Id="Component.System.Diagnostics.Tracing.dll_1175234164" />
+      <ComponentRef Id="Component.System.Drawing.Primitives.dll_252842814" />
+      <ComponentRef Id="Component.System.Dynamic.Runtime.dll_1191939634" />
+      <ComponentRef Id="Component.System.Globalization.Calendars.dll_256183640" />
+      <ComponentRef Id="Component.System.Globalization.dll_714226180" />
+      <ComponentRef Id="Component.System.Globalization.Extensions.dll_2013386028" />
+      <ComponentRef Id="Component.System.IO.Compression.dll_2126115947" />
+      <ComponentRef Id="Component.System.IO.Compression.ZipFile.dll_163790462" />
+      <ComponentRef Id="Component.System.IO.dll_2138952395" />
+      <ComponentRef Id="Component.System.IO.FileSystem.dll_1735177419" />
+      <ComponentRef Id="Component.System.IO.FileSystem.DriveInfo.dll_2051363104" />
+      <ComponentRef Id="Component.System.IO.FileSystem.Primitives.dll_1827317073" />
+      <ComponentRef Id="Component.System.IO.FileSystem.Watcher.dll_1664030446" />
+      <ComponentRef Id="Component.System.IO.IsolatedStorage.dll_950442033" />
+      <ComponentRef Id="Component.System.IO.MemoryMappedFiles.dll_1906345627" />
+      <ComponentRef Id="Component.System.IO.Pipes.dll_606299737" />
+      <ComponentRef Id="Component.System.IO.UnmanagedMemoryStream.dll_635483770" />
+      <ComponentRef Id="Component.System.Linq.dll_1513300489" />
+      <ComponentRef Id="Component.System.Linq.Expressions.dll_671042884" />
+      <ComponentRef Id="Component.System.Linq.Parallel.dll_1738282790" />
+      <ComponentRef Id="Component.System.Linq.Queryable.dll_940907838" />
+      <ComponentRef Id="Component.System.Net.Http.dll_206491264" />
+      <ComponentRef Id="Component.System.Net.NameResolution.dll_1504883118" />
+      <ComponentRef Id="Component.System.Net.NetworkInformation.dll_1037029256" />
+      <ComponentRef Id="Component.System.Net.Ping.dll_1186814672" />
+      <ComponentRef Id="Component.System.Net.Primitives.dll_1867989609" />
+      <ComponentRef Id="Component.System.Net.Requests.dll_392227167" />
+      <ComponentRef Id="Component.System.Net.Security.dll_390836703" />
+      <ComponentRef Id="Component.System.Net.Sockets.dll_1141592328" />
+      <ComponentRef Id="Component.System.Net.WebHeaderCollection.dll_392088122" />
+      <ComponentRef Id="Component.System.Net.WebSockets.Client.dll_1139278804" />
+      <ComponentRef Id="Component.System.Net.WebSockets.dll_1145015014" />
+      <ComponentRef Id="Component.System.ObjectModel.dll_1659820222" />
+      <ComponentRef Id="Component.System.Reactive.dll_769904464" />
+      <ComponentRef Id="Component.System.Reflection.dll_345958630" />
+      <ComponentRef Id="Component.System.Reflection.Extensions.dll_558311862" />
+      <ComponentRef Id="Component.System.Reflection.Primitives.dll_1345607445" />
+      <ComponentRef Id="Component.System.Resources.Reader.dll_2010138771" />
+      <ComponentRef Id="Component.System.Resources.ResourceManager.dll_1606344546" />
+      <ComponentRef Id="Component.System.Resources.Writer.dll_673072861" />
+      <ComponentRef Id="Component.System.Runtime.CompilerServices.Unsafe.dll_2124396399" />
+      <ComponentRef Id="Component.System.Runtime.CompilerServices.VisualC.dll_1929782358" />
+      <ComponentRef Id="Component.System.Runtime.dll_2009558254" />
+      <ComponentRef Id="Component.System.Runtime.Extensions.dll_1407943275" />
+      <ComponentRef Id="Component.System.Runtime.Handles.dll_381274548" />
+      <ComponentRef Id="Component.System.Runtime.InteropServices.dll_1391082240" />
+      <ComponentRef Id="Component.System.Runtime.InteropServices.RuntimeInformation.dll_1131699019" />
+      <ComponentRef Id="Component.System.Runtime.Numerics.dll_1922295103" />
+      <ComponentRef Id="Component.System.Runtime.Serialization.Formatters.dll_719468256" />
+      <ComponentRef Id="Component.System.Runtime.Serialization.Json.dll_1149789413" />
+      <ComponentRef Id="Component.System.Runtime.Serialization.Primitives.dll_2020425343" />
+      <ComponentRef Id="Component.System.Runtime.Serialization.Xml.dll_1330161318" />
+      <ComponentRef Id="Component.System.Security.Claims.dll_1437458370" />
+      <ComponentRef Id="Component.System.Security.Cryptography.Algorithms.dll_1091086156" />
+      <ComponentRef Id="Component.System.Security.Cryptography.Csp.dll_313818611" />
+      <ComponentRef Id="Component.System.Security.Cryptography.Encoding.dll_68055122" />
+      <ComponentRef Id="Component.System.Security.Cryptography.Primitives.dll_39991362" />
+      <ComponentRef Id="Component.System.Security.Cryptography.X509Certificates.dll_157723284" />
+      <ComponentRef Id="Component.System.Security.Principal.dll_906548744" />
+      <ComponentRef Id="Component.System.Security.SecureString.dll_931913856" />
+      <ComponentRef Id="Component.System.Text.Encoding.dll_1460520278" />
+      <ComponentRef Id="Component.System.Text.Encoding.Extensions.dll_216563678" />
+      <ComponentRef Id="Component.System.Text.RegularExpressions.dll_1969342890" />
+      <ComponentRef Id="Component.System.Threading.dll_1961619603" />
+      <ComponentRef Id="Component.System.Threading.Overlapped.dll_121209543" />
+      <ComponentRef Id="Component.System.Threading.Tasks.dll_1224855363" />
+      <ComponentRef Id="Component.System.Threading.Tasks.Extensions.dll_2014605294" />
+      <ComponentRef Id="Component.System.Threading.Tasks.Parallel.dll_409399125" />
+      <ComponentRef Id="Component.System.Threading.Thread.dll_281129107" />
+      <ComponentRef Id="Component.System.Threading.ThreadPool.dll_828276867" />
+      <ComponentRef Id="Component.System.Threading.Timer.dll_1416411935" />
+      <ComponentRef Id="Component.System.ValueTuple.dll_1100262311" />
+      <ComponentRef Id="Component.System.Windows.Interactivity.dll_849623195" />
+      <ComponentRef Id="Component.System.Xml.ReaderWriter.dll_23601865" />
+      <ComponentRef Id="Component.System.Xml.XDocument.dll_1710597214" />
+      <ComponentRef Id="Component.System.Xml.XmlDocument.dll_1926356074" />
+      <ComponentRef Id="Component.System.Xml.XmlSerializer.dll_1969207599" />
+      <ComponentRef Id="Component.System.Xml.XPath.dll_1319811728" />
+      <ComponentRef Id="Component.System.Xml.XPath.XDocument.dll_443965638" />
+      <ComponentRef Id="Component.Unity.Abstractions.dll_1916854268" />
+      <ComponentRef Id="Component.Unity.Container.dll_316685559" />
+      <ComponentRef Id="Component.MiniBar_Admin_" />
+      <ComponentRef Id="Component.MiniBar_Admin.1" />
+      <ComponentRef Id="Component.MiniBar.ConfigurationModule.dll_1603191719" />
+      <ComponentRef Id="Component.MiniBar.ConfigurationModule.dll.config_590967585" />
+      <ComponentRef Id="Component.MiniBar.ProductsModule.dll_169231969" />
+      <ComponentRef Id="Component.MiniBar.ProductsModule.dll.config_6195623" />
+      <ComponentRef Id="ProgramFilesFolder.MyBar" />
     </Feature>
 
     <InstallExecuteSequence>

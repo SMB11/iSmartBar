@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using Common.Configuration;
@@ -124,7 +125,7 @@ namespace iSmartBarApi
                     }
                 );
             });
-            List<string> languages = (CoreAPIClient.GetLanguages()).GetAwaiter().GetResult().Select(l => l.ID).ToList();
+            List<string> languages = GetLanguages().Result;
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(languages[0]);
@@ -134,6 +135,22 @@ namespace iSmartBarApi
 
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddSingleton<ServiceProvider>(services.BuildServiceProvider());
+        }
+
+        private async Task<List<string>> GetLanguages()
+        {
+            try
+            {
+                var langs = await CoreAPIClient.GetLanguages();
+                return langs.Select(l => l.ID).ToList();
+            }
+            catch
+            {
+                Thread.Sleep(2000);
+
+                var langs = await CoreAPIClient.GetLanguages();
+                return langs.Select(l => l.ID).ToList();
+            }
         }
 
         private void AddManagers(IServiceCollection services)

@@ -1,5 +1,4 @@
 ﻿using Flurl.Http;
-using Infrastructure.Configuration;
 using Infrastructure.Security;
 using System;
 using System.Configuration;

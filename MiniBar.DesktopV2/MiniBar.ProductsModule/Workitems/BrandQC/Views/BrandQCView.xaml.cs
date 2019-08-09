@@ -26,7 +26,6 @@ namespace MiniBar.ProductsModule.Workitems.BrandQC.Views
         public BrandQCView(IWorkItem owner)
         {
             InitializeComponent();
-            WorkitemManager.SetOwner(ribbon, owner);
         }
 
         public GridControl Grid => grid;

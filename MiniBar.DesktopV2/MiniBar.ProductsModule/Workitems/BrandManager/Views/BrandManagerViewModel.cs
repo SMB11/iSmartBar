@@ -3,6 +3,7 @@ using MiniBar.ProductsModule.Services;
 using MiniBar.Common.MVVM;
 using MiniBar.Common.Services;
 using MiniBar.ProductsModule.Workitems.BrandManager.Services;
+using MiniBar.Common.Workitems.ObjectManager;
 
 namespace MiniBar.ProductsModule.Workitems.BrandManager.Views
 {

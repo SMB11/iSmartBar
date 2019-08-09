@@ -1,6 +1,6 @@
 ﻿using DevExpress.Mvvm;
+using Infrastructure.Framework;
 using Infrastructure.Interface;
-using Infrastructure.MVVM;
 using System;
 using System.ComponentModel;
 

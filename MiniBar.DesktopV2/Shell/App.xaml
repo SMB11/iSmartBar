@@ -1,15 +1,16 @@
-﻿<prism:PrismApplication x:Class="Shell.App"
+﻿<inf:PrismApplication x:Class="Shell.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              xmlns:local="clr-namespace:Shell"
+             xmlns:inf="clr-namespace:Infrastructure.Framework;assembly=Infrastructure"
              xmlns:prism="http://prismlibrary.com/">
-    <prism:PrismApplication.Resources>
+    <inf:PrismApplication.Resources>
         <ResourceDictionary>
         <ResourceDictionary.MergedDictionaries>
             <ResourceDictionary 
                 Source="pack://application:,,,/Core.UI;component/Styles/TileStyles.xaml"/>
         </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </prism:PrismApplication.Resources>
-</prism:PrismApplication>
+    </inf:PrismApplication.Resources>
+</inf:PrismApplication>

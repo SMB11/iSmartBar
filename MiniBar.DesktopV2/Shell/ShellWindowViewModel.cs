@@ -1,21 +1,29 @@
-﻿using Infrastructure;
+﻿using DevExpress.Mvvm;
+using Infrastructure;
+using Infrastructure.Framework;
 using Infrastructure.Interface;
 using Infrastructure.Interface.Enums;
-using Infrastructure.MVVM;
-using Prism.Events;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Unity.Attributes;
 
 namespace Shell
 {
-    public class ShellWindowViewModel : BaseViewModel
+    public class ShellWindowViewModel : BaseViewModel, IShell
     {
+        private DelegateCommand newTabCommand;
+        public DelegateCommand NewTabCommand =>
+            newTabCommand ?? (newTabCommand = new DelegateCommand(ExecuteNewTabCommand, CanExecuteNewTabCommand));
+
+        void ExecuteNewTabCommand()
+        {
+
+            CommandManager.ExecuteCommand(Infrastructure.Constants.CommandNames.FocusWorkitem, null);
+        }
+
+        bool CanExecuteNewTabCommand()
+        {
+            return true;
+        }
+
         public IConnectionMonitoringService ConnectionMonitoringService { get; set; }
 
         private string connectedStatusImage;
@@ -35,6 +43,22 @@ namespace Shell
             get { return connectedStatusToolTip; }
             set { SetProperty(ref connectedStatusToolTip, value, nameof(ConnectedStatusToolTip)); }
         }
+        
+        private string loadingAction;
+
+        public string LoadingAction
+        {
+            get { return loadingAction; }
+            set { SetProperty(ref loadingAction, value, nameof(LoadingAction)); }
+        }
+
+        private bool isLoading;
+
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            set { SetProperty(ref isLoading, value, nameof(IsLoading)); }
+        }
 
         private string ConvertConnectionStateToImage(ConnectionState state)
         {
@@ -50,6 +74,7 @@ namespace Shell
                     return "";
             }
         }
+
         private string ConvertConnectionStateToToolTip(ConnectionState state)
         {
             switch (state)
@@ -78,7 +103,7 @@ namespace Shell
             ConnectionMonitoringService = connectionMonitoringService;
             FillNetworkState();
             connectionMonitoringService.ConnectionStateChanged += ConnectionMonitoringService_ConnectionStateChanged;
-            CommandManager.RegisterCommand(Infrastructure.Constants.CommandNames.Reconnect, Reconnect);
+            CommandManager.RegisterCommand(MiniBar.Common.Constants.CommandNames.Reconnect, Reconnect);
         }
 
         private void Reconnect()
@@ -100,6 +125,17 @@ namespace Shell
 
             ConnectedStatusImage = ConvertConnectionStateToImage(state);
             ConnectedStatusToolTip = ConvertConnectionStateToToolTip(state);
+        }
+
+        public void ShowLoading(string action)
+        {
+            LoadingAction = action;
+            IsLoading = true;
+        }
+
+        public void EndLoading()
+        {
+            IsLoading = false;
         }
     }
 }

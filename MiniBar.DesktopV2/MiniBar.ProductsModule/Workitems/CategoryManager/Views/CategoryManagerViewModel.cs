@@ -3,25 +3,22 @@ using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Services;
 using AutoMapper;
 using System.Threading.Tasks;
-using Infrastructure.Extensions;
-using Infrastructure.Enums;
 using System.Linq;
-using System.Windows;
-using SharedEntities.DTO.Product;
 using System.Reactive.Linq;
 using System.Collections.ObjectModel;
-using Infrastructure.MVVM;
-using Infrastructure.Connection;
-using Infrastructure.MVVM.Actions;
 using System.Collections.Generic;
-using MiniBar.Common.MVVM;
 using MiniBar.Common.Services;
 using MiniBar.ProductsModule.Workitems.CatgeoryManager.Services;
+using Infrastructure.Interface;
+using MiniBar.Common.Workitems.ObjectManager;
+using Infrastructure.Utility;
 
 namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
 {
     partial class CategoryManagerViewModel : ObjectManagerViewModel<CategoryViewModel, CategoryUploadViewModel>
     {
+        private IContextService CurrentContextService;
+
         CategoryService CategoryService { get; set; }
 
         IObjectManagementService<CategoryViewModel, CategoryUploadViewModel> objectManagementService;
@@ -41,8 +38,9 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
         }
 
 
-        public CategoryManagerViewModel(CategoryService categoryService) : base()
+        public CategoryManagerViewModel(CategoryService categoryService, IContextService  currentContextService) : base()
         {
+            CurrentContextService = currentContextService;
             CategoryService = categoryService;
             Initialize();
         }

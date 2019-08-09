@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-using Infrastructure.Api;
 using MiniBar.Common.Services;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Services;
 using SharedEntities.DTO.Product;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Configuration;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -50,7 +47,7 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager.Services
 
             if (dto.ImagePath != null)
             {
-                uplaodViewModel.Image.Bytes = await ApiImageHelper.GetImageBytesAsync(dto.ImagePath, token);
+                uplaodViewModel.Image.Bytes = await Infrastructure.Utility.ImageHelper.DownloadBytesAsync(ConfigurationManager.AppSettings["ProductCdn"] + dto.ImagePath, token);
                 uplaodViewModel.Image.AcceptChanges();
             }
             return uplaodViewModel;

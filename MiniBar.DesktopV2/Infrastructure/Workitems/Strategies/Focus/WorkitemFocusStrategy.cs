@@ -1,4 +1,6 @@
 ﻿using Infrastructure.Interface;
+using Infrastructure.Logging;
+using Infrastructure.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,29 +11,41 @@ namespace Infrastructure.Workitems.Strategies.Focus
 {
     internal abstract class WorkitemFocusStrategy
     {
-        protected CurrentContextService CurrentContextService { get; private set; }
+        protected ContextService CurrentContextService { get; private set; }
         protected IWorkItem Workitem { get; private set; }
+        protected ICompositeLogger Logger => CommonServiceLocator.ServiceLocator.Current.GetInstance<ICompositeLogger>();
+        protected ITaskManager TaskManager => CommonServiceLocator.ServiceLocator.Current.GetInstance<ITaskManager>();
 
-        internal WorkitemFocusStrategy(CurrentContextService currentContextService, IWorkItem workItem)
+        internal WorkitemFocusStrategy(ContextService currentContextService, IWorkItem workItem)
         {
             CurrentContextService = currentContextService;
             Workitem = workItem;
         }
 
-        public static WorkitemFocusStrategy GetFocusStrategy(CurrentContextService currentContextService, IWorkItem workItem)
+        public static WorkitemFocusStrategy GetFocusStrategy(ContextService currentContextService, IWorkItem workItem)
         {
-            if(workItem == null)
+            if(workItem == null || workItem is NullWorkitem)
                 return new WorkitemUnfocusStrategy(currentContextService, workItem);
-            else if (workItem is IModalWorkitem)
+            else if (workItem.IsModal)
                 return new ModalWorkitemFocusStrategy(currentContextService, workItem);
             else if (workItem.Parent != null)
-                return new ChildWorkitemFocusStrategy(currentContextService, workItem);
+                return new RootWorkitemFocusStrategy(currentContextService, workItem);
             else
                 return new RootWorkitemFocusStrategy(currentContextService, workItem);
         }
 
-        public virtual void Focus()
+        public async Task Focus()
         {
+            try
+            {
+                await Execute().ConfigureAwait(false);
+            }
+            catch(Exception e)
+            {
+
+            }
         }
+
+        protected abstract Task Execute();
     }
 }

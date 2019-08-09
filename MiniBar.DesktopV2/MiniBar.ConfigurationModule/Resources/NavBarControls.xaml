@@ -1,0 +1,17 @@
+﻿<dxn:NavBarGroup x:Class="MiniBar.ConfigurationModule.NavBarControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
+             xmlns:consts="clr-namespace:MiniBar.ConfigurationModule.Constants"
+             mc:Ignorable="d" 
+             Header="Configuration">
+    <dxn:NavBarGroup.Items>
+        <dxn:NavBarItem ImageSource="{dxc:DXImage Image=Country_32x32.png}" inf:CommandManager.CommandName="{x:Static consts:CommandNames.OpenCountryManager}"  Content="Country Manager"/>
+        <dxn:NavBarItem ImageSource="{dxc:DXImage Image=BOCountry_32x32.png}" inf:CommandManager.CommandName="{x:Static consts:CommandNames.OpenCityManager}"  Content="City Manager"/>
+        <dxn:NavBarItem ImageSource="{dxc:DXImage Image=BO_Address_32x32.png}" inf:CommandManager.CommandName="{x:Static consts:CommandNames.OpenHotelManager}"  Content="Hotel Manager"/>
+    </dxn:NavBarGroup.Items>
+</dxn:NavBarGroup>

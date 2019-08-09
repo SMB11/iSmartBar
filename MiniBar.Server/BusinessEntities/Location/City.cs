@@ -10,5 +10,8 @@ namespace BusinessEntities.Location
     {
         [Column]
         public int CountryID { get; set; }
+
+        [Association(ThisKey = nameof(CountryID), OtherKey = "ID")]
+        public Country Country { get; set; }
     }
 }

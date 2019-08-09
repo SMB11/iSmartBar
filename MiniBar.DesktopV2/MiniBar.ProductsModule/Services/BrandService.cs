@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MiniBar.ProductsModule.Services
 {
-    class BrandService : RestConsumingServiceBase
+    public class BrandService : RestConsumingServiceBase
     {
         public BrandService() : base("brand")
         {
@@ -27,7 +27,7 @@ namespace MiniBar.ProductsModule.Services
         public async Task<BrandUploadDTO> GetForUploadByID(int id, CancellationToken token = default(CancellationToken))
         {
 
-            BrandDTO brand = await BuildRequest("" + id).GetJsonAsync<BrandDTO>(token);
+            BrandDTO brand = await BuildRequest("" + id).GetJsonAsync<BrandDTO>(token).ConfigureAwait(false);
             return new BrandUploadDTO { ID = brand.ID, Name = brand.Name, ImagePath = brand.ImagePath };
 
         }
@@ -42,19 +42,19 @@ namespace MiniBar.ProductsModule.Services
         [ApiExceptionHandling]
         public async Task AddList(List<BrandUploadDTO> dtos)
         {
-            await BuildRequest("insertMultiple").PostJsonAsync(dtos);
+            await BuildRequest("insertMultiple").PostJsonAsync(dtos).ConfigureAwait(false);
         }
 
         [ApiExceptionHandling]
         public async Task Update(BrandUploadDTO uploadDTO)
         {
-            await BuildRequest("update").PostJsonAsync(uploadDTO);
+            await BuildRequest("update").PostJsonAsync(uploadDTO).ConfigureAwait(false);
         }
 
         [ApiExceptionHandling]
         public async Task Remove(int id)
         {
-            await BuildRequest("" + id).DeleteAsync();
+            await BuildRequest("" + id).DeleteAsync().ConfigureAwait(false);
         }
     }
 }

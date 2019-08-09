@@ -1,6 +1,6 @@
 ﻿using DevExpress.Xpf.Core;
-using Infrastructure.DX.Attributes;
-using Infrastructure.MVVM;
+using Infrastructure.Framework;
+using Infrastructure.Interface;
 using MiniBar.EntityViewModels.Base;
 using System.ComponentModel.DataAnnotations;
 

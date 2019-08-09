@@ -1,19 +1,17 @@
 ﻿using AutoMapper;
-using Infrastructure.Connection;
-using Infrastructure.Extensions;
-using MiniBar.Common.MVVM;
+using Infrastructure.Interface;
+using Infrastructure.Utility;
 using MiniBar.Common.Services;
+using MiniBar.Common.Workitems.ObjectManager;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Services;
 using MiniBar.ProductsModule.Workitems.ProductManager.Services;
-using Prism.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
 {
@@ -22,13 +20,36 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
         ProductService ProductService { get; set; }
         CategoryService CategoryService { get; set; }
         BrandService BrandService { get; set; }
+        IContextService CurrentContextService;
 
-        public ProductManagerViewModel(ProductService productService, CategoryService categoryService, BrandService brandService) : base()
+        public ProductManagerViewModel(ProductService productService, CategoryService categoryService, BrandService brandService, IContextService currentContextService) : base()
         {
             CategoryService = categoryService;
             BrandService = brandService;
             ProductService = productService;
+            CurrentContextService = currentContextService;
             Initialize();
+        }
+
+        protected override async Task RefreshList()
+        {
+            if (Brands == null || ChildCategories == null)
+            {
+
+                IsListLoading = true;
+                IsObjectLoading = true;
+
+                await Task.WhenAll(
+                    LoadBrands(),
+                    LoadCategories(),
+                    base.RefreshList()
+                    );
+
+                IsListLoading = false;
+                IsObjectLoading = false;
+            }
+            else
+                await base.RefreshList();
         }
 
         protected override async void Initialize()

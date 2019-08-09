@@ -1,20 +1,13 @@
-﻿using DevExpress.Mvvm;
-using Infrastructure.Api;
-using Infrastructure.Connection;
-using Infrastructure.Util;
-using Infrastructure.MVVM;
-using MiniBar.Common.Resources;
+﻿
 using MiniBar.EntityViewModels.Products;
-using MiniBar.ProductsModule.Services;
-using SharedEntities.DTO.Product;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Reactive.Linq;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
-using MiniBar.Common.MVVM;
+using MiniBar.Common.Workitems.LanguageEdit;
+using MiniBar.Common.Workitems.ObjectManager;
+using Infrastructure.Interface;
+using Infrastructure.Framework;
 
 namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
 {
@@ -23,24 +16,24 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
     /// </summary>
     partial class ProductManagerViewModel : ObjectManagerViewModel<ProductViewModel, ProductUploadViewModel>
     {
-        private SecureCommand nameEditCommand;
-        public SecureCommand NameEditCommand
+        private SecureAsyncCommand nameEditCommand;
+        public SecureAsyncCommand NameEditCommand
         {
             get
             {
                 if (nameEditCommand == null)
-                    nameEditCommand = new SecureCommand(StartEditName, CanEditObject,false);
+                    nameEditCommand = Disposable(new SecureAsyncCommand(StartEditName, CanEditObject));
                 return nameEditCommand;
             }
         }
         
-        private SecureCommand descEditCommand;
-        public SecureCommand DescriptionEditCommand
+        private SecureAsyncCommand descEditCommand;
+        public SecureAsyncCommand DescriptionEditCommand
         {
             get
             {
                 if (descEditCommand == null)
-                    descEditCommand = new SecureCommand(StartEditDescription, CanEditObject, false);
+                    descEditCommand = Disposable(new SecureAsyncCommand(StartEditDescription, CanEditObject));
                 return descEditCommand;
             }
         }
@@ -53,74 +46,22 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             NameEditCommand.RaiseCanExecuteChanged();
         }
 
-        private void StartEditName()
+        private async Task StartEditName()
         {
-            LanguageEdit languageEdit = new LanguageEdit();
-            LanguageEditViewModel vm = (LanguageEditViewModel)languageEdit.DataContext;
-            vm.SetData(CurrentItemDetails.Names ?? new Dictionary<string, string>());
-            UICommand saveCommand = new UICommand
-            {
-                Caption = "Save",
-                IsCancel = false,
-                IsDefault = true,
-                Command = new DelegateCommand<CancelEventArgs>((c) => SaveName(c, languageEdit.DataContext as LanguageEditViewModel))
-            };
-            UICommand cancleCommand = new UICommand
-            {
-                Caption = "Cancel",
-                IsCancel = true
-            };
-            UIHelper.ShowModal(languageEdit, "Edit Name", ResizeMode.CanResizeWithGrip, new Size(300, 300), new List<UICommand> { saveCommand, cancleCommand }, false);
+            IObservable<WorkitemEventArgs> channel =  await CurrentContextService.LaunchModalWorkItem<LanguageEditWorkitem>(CurrentItemDetails.Names ?? new Dictionary<string, string>(), WorkItem);
+            channel.Subscribe(data => CurrentItemDetails.Names = (IDictionary<string, string>)data.Data);
+            
         }
 
-        private void StartEditDescription()
+        private async Task StartEditDescription()
         {
-            LanguageEdit languageEdit = new LanguageEdit();
-            LanguageEditViewModel vm = languageEdit.DataContext as LanguageEditViewModel;
-            vm.SetData(CurrentItemDetails.Description ?? new Dictionary<string, string>());
-            UICommand saveCommand = new UICommand
-            {
-                Caption = "Save",
-                IsCancel = false,
-                IsDefault = true,
-                Command = new DelegateCommand<CancelEventArgs>((c) => SaveDescription(c, languageEdit.DataContext as LanguageEditViewModel))
-            };
-            UICommand cancleCommand = new UICommand
-            {
-                Caption = "Cancel",
-                IsCancel = true
-            };
-            UIHelper.ShowModal(languageEdit, "Edit Description", ResizeMode.CanResizeWithGrip, new Size(300, 300), new List<UICommand> { saveCommand, cancleCommand }, false);
-
+            IObservable<WorkitemEventArgs> channel = await CurrentContextService.LaunchModalWorkItem<LanguageEditWorkitem>(CurrentItemDetails.Description ?? new Dictionary<string, string>(), WorkItem);
+            channel.Subscribe(data => CurrentItemDetails.Description = (IDictionary<string, string>)data.Data);
         }
 
         private bool CanEditObject()
         {
             return !IsReadOnly;
-        }
-
-        private void SaveName(CancelEventArgs arg, LanguageEditViewModel vm)
-        {
-            if (!vm.Validate())
-            {
-                arg.Cancel = true;
-            }
-            else
-            {
-                CurrentItemDetails.Names = vm.GetData();
-            }
-        }
-
-        private void SaveDescription(CancelEventArgs arg, LanguageEditViewModel vm)
-        {
-            if (!vm.Validate())
-            {
-                arg.Cancel = true;
-            }
-            else
-            {
-                CurrentItemDetails.Description = vm.GetData();
-            }
         }
 
         protected override ProductUploadViewModel CreateEmptyDetails()

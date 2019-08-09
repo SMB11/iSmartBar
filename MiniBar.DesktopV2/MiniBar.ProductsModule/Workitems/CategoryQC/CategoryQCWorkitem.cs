@@ -1,7 +1,7 @@
 ﻿using DevExpress.Mvvm;
 using Infrastructure;
 using Infrastructure.Interface;
-using Infrastructure.MVVM;
+
 using MiniBar.Common.Workitems.EntityQC;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Workitems.CategoryQC.Views;
@@ -37,9 +37,9 @@ namespace MiniBar.ProductsModule.Workitems.CategoryQC
             return new CategoryQC.Views.CategoryQCView(this);
         }
 
-        public override void Run()
+        protected override void AfterWorkitemRun()
         {
-            base.Run();
+            base.AfterWorkitemRun();
             object root = Parent.RequestResource("RootCategories");
             if(root != null && root is IEnumerable<CategoryViewModel>)
                 CategoryQCViewModel.RootCategories = new ObservableCollection<CategoryViewModel>((IEnumerable<CategoryViewModel>)root);

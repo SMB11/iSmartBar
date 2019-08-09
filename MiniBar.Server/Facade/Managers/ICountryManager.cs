@@ -9,5 +9,9 @@ namespace Facade.Managers
     public interface ICountryManager
     {
         Task<List<CountryDTO>> GetAll();
+        Task<CountryUploadDTO> GetForUplaodByID(int id);
+        Task<int> InsertAsync(CountryUploadDTO country);
+        Task UpdateAsync(CountryUploadDTO country);
+        Task RemoveAsync(int id);
     }
 }

@@ -3,7 +3,7 @@ using SharedEntities.DTO.Users;
 using System.Threading.Tasks;
 using Security.Internal.Services;
 using Infrastructure.Security;
-using Infrastructure.Security.Entities;
+using System.Threading;
 
 namespace Security.Internal.Controllers
 {
@@ -17,10 +17,10 @@ namespace Security.Internal.Controllers
             this._eventAggregator = eventAggregator;
         }
 
-        public async Task AuthenticateAsync(string login, string password)
+        public async Task AuthenticateAsync(string login, string password, CancellationToken token = default(CancellationToken))
         {
             UserDto user = null;
-            user = await this._authService.AuthenticateAsync(login, password);
+            user = await this._authService.AuthenticateAsync(login, password, token);
 
             if (user != null)
             {

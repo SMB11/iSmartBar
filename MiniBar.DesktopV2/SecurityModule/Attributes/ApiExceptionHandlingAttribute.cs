@@ -1,5 +1,5 @@
 ﻿using Flurl.Http;
-using Infrastructure.Connection;
+using Infrastructure.ErrorHandling;
 using PostSharp.Aspects;
 using System;
 using System.Threading.Tasks;
@@ -31,7 +31,7 @@ namespace Security
             }
             catch (FlurlHttpException ex)
             {
-                await HandleHttpError(ex);
+                await HandleHttpError(ex).ConfigureAwait(false);
             }
         }
         public async override void OnInvoke(MethodInterceptionArgs args)
@@ -42,12 +42,14 @@ namespace Security
             }
             catch (FlurlHttpException ex)
             {
-                await HandleHttpError(ex);
+                await HandleHttpError(ex).ConfigureAwait(false);
             }
         }
 
         private async Task HandleHttpError(FlurlHttpException ex)
         {
+            if (ex.InnerException is TaskCanceledException)
+                throw ex.InnerException;
             if(ex.Call.Response == null)
             {
                 throw new ApiConnectionException("Couldn't connect to server");
@@ -58,7 +60,7 @@ namespace Security
             }
             else
             {
-                ApiError error = await ex.GetResponseJsonAsync<ApiError>();
+                ApiError error = await ex.GetResponseJsonAsync<ApiError>().ConfigureAwait(false);
                 throw new ApiException(error.Message, error.Status);
             }
         }

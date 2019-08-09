@@ -39,13 +39,13 @@ namespace MiniBar.ProductsModule.Services
         [ApiExceptionHandling]
         public async Task Update(CategoryUploadDTO uploadDTO)
         {
-            await BuildRequest("update").PostJsonAsync(uploadDTO);
+            await BuildRequest("update").PostJsonAsync(uploadDTO).ConfigureAwait(false);
         }
 
         [ApiExceptionHandling]
         public async Task Remove(int id)
         {
-            await BuildRequest("" + id).DeleteAsync();
+            await BuildRequest("" + id).DeleteAsync().ConfigureAwait(false);
         }
 
         [ApiExceptionHandling]

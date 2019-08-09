@@ -1,6 +1,6 @@
 ﻿using Infrastructure;
 using Infrastructure.Interface;
-using Infrastructure.MVVM;
+
 using MiniBar.Common.Workitems.EntityQC;
 using MiniBar.EntityViewModels.Products;
 using Prism.Ioc;

@@ -4,27 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using Infrastructure.Extensions;
+using Infrastructure.Utility;
 using Infrastructure.Interface;
 
 namespace Infrastructure.Workitems.Strategies.Focus
 {
     internal class RootWorkitemFocusStrategy : WorkitemFocusStrategy
     {
-        public RootWorkitemFocusStrategy(CurrentContextService currentContextService, IWorkItem workItem) : base(currentContextService, workItem)
+        public RootWorkitemFocusStrategy(ContextService currentContextService, IWorkItem workItem) : base(currentContextService, workItem)
         {
         }
 
-        public override void Focus()
+        protected override async Task Execute()
         {
-            base.Focus();
-
-            foreach (IWorkItem item in CurrentContextService.Collection)
+            Workitem.IsFocused = true;
+            if (CurrentContextService.Collection.Null != null)
+                CurrentContextService.Collection.Null.IsFocused = false;
+            foreach (IWorkItem item in CurrentContextService.Collection.ToList())
             {
-                bool isFocused = item.Equals(Workitem);
-                if (item.IsFocused != isFocused)
-                    Application.Current.Dispatcher.InvokeIfNeeded(() => item.IsFocused = isFocused);
+                if (!item.Equals(Workitem))
+                    item.IsFocused = false;
             }
+
         }
     }
 }

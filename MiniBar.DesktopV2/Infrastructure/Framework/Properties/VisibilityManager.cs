@@ -1,0 +1,88 @@
+﻿using DevExpress.Xpf.Ribbon;
+using DevExpress.Xpf.Ribbon.Internal;
+using Infrastructure.Modularity;
+using Infrastructure.Utility;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace Infrastructure
+{
+    public static class VisibilityManager
+    {
+
+
+
+        public static bool GetRibbonVisibleIfEmpty(DependencyObject obj)
+        {
+            return (bool)obj.GetValue(RibbonVisibleIfEmptyProperty);
+        }
+
+        public static void SetRibbonVisibleIfEmpty(DependencyObject obj, bool value)
+        {
+            obj.SetValue(RibbonVisibleIfEmptyProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for RibbonVisibleIfEmpty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RibbonVisibleIfEmptyProperty =
+            DependencyProperty.RegisterAttached("RibbonVisibleIfEmpty", typeof(bool), typeof(VisibilityManager), new PropertyMetadata(true, OnRibbonVisibleIfEmptyChanged));
+
+        private static void OnRibbonVisibleIfEmptyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            RibbonControl ribbon = d as RibbonControl;
+            if (ribbon != null)
+            {
+                bool ribbonVisibleIfEmptyProperty = (bool)e.NewValue;
+                if (ribbonVisibleIfEmptyProperty == false)
+                {
+                    DetermineRibbonVisibility(ribbon);
+                    foreach(var item in ribbon.Items.OfType<WorkitemRibbonPageCategory>())
+                    {
+                        item.VisibilityChanged += Item_VisibilityChanged;
+                    }
+                    ribbon.Items.CollectionChanged += (o, ev) => Items_CollectionChanged(ribbon, ev);
+                }
+
+            }
+        }
+
+        private static void Items_CollectionChanged(RibbonControl sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (var item in e.NewItems.OfType<WorkitemRibbonPageCategory>())
+                {
+                    item.VisibilityChanged += Item_VisibilityChanged;
+                }
+            }
+
+            if (e.OldItems != null)
+            {
+                foreach (var item in e.OldItems.OfType<WorkitemRibbonPageCategory>())
+                {
+                    item.VisibilityChanged -= Item_VisibilityChanged;
+                }
+            }
+
+            DetermineRibbonVisibility(sender);
+        }
+
+        private static void Item_VisibilityChanged(object sender, EventArgs e)
+        {
+            RibbonPageCategory category = (RibbonPageCategory)sender;
+            DetermineRibbonVisibility(category.Ribbon);
+        }
+
+        private static void DetermineRibbonVisibility(RibbonControl ribbon)
+        {
+            var list = ribbon.Items.Where(i => i is WorkitemRibbonPageCategory && ((WorkitemRibbonPageCategory)i).IsVisible == true);
+            if (list.Count() == 0)
+                ribbon.Visibility = Visibility.Collapsed;
+            else
+                ribbon.Visibility = Visibility.Visible;
+        }
+    }
+}

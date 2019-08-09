@@ -1,0 +1,73 @@
+﻿<ui:TileCollection x:Class="MiniBar.ConfigurationModule.Resources.MainPageMenuGroup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core" 
+             xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure" 
+             xmlns:const="clr-namespace:MiniBar.ConfigurationModule.Constants" 
+             xmlns:ui="clr-namespace:Core.UI;assembly=Core.UI" 
+             xmlns:local="clr-namespace:MiniBar.ConfigurationModule"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:prism="http://prismlibrary.com/"
+                   
+            prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+                   
+                   >
+    <ui:TileCollection.Resources>
+        <ContextMenu x:Key="countryMenu">
+            <MenuItem Header="Open in new window" inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenCountryManagerModal}">
+                <MenuItem.Icon>
+                    <Image Source="{dxc:DXImage Image=Window_16x16.png}" ></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+        <ContextMenu x:Key="cityMenu">
+            <MenuItem Header="Open in new window" inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenCityManagerModal}">
+                <MenuItem.Icon>
+                    <Image Source="{dxc:DXImage Image=Window_16x16.png}" ></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+        <ContextMenu x:Key="hotelMenu">
+            <MenuItem Header="Open in new window" inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenHotelManagerModal}">
+                <MenuItem.Icon>
+                    <Image Source="{dxc:DXImage Image=Window_16x16.png}" ></Image>
+                </MenuItem.Icon>
+            </MenuItem>
+        </ContextMenu>
+    </ui:TileCollection.Resources>
+
+    <ui:InformativeTile Size="Small" InformativeText="{Binding CountryManagerInformativeText}" inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenCountryManager}" Content="Country Manager">
+        <ui:InformativeTile.Style>
+            <Style BasedOn="{StaticResource infTile}" TargetType="ui:InformativeTile">
+                <Setter Property="ContextMenu" Value="{StaticResource countryMenu}">
+
+                </Setter>
+            </Style>
+        </ui:InformativeTile.Style>
+    </ui:InformativeTile>
+
+    <ui:InformativeTile Size="Small"  InformativeText="{Binding CityManagerInformativeText}"  inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenCityManager}" Content="City Manager">
+        <ui:InformativeTile.Style>
+            <Style BasedOn="{StaticResource infTile}" TargetType="ui:InformativeTile">
+                <Setter Property="ContextMenu" Value="{StaticResource cityMenu}">
+
+                </Setter>
+            </Style>
+        </ui:InformativeTile.Style>
+    </ui:InformativeTile>
+
+
+    <ui:InformativeTile Size="Small" InformativeText="{Binding HotelManagerInformativeText}"  inf:CommandManager.CommandName="{x:Static const:CommandNames.OpenHotelManager}" Content="Hotel Manager">
+        <ui:InformativeTile.Style>
+            <Style BasedOn="{StaticResource infTile}" TargetType="ui:InformativeTile">
+                <Setter Property="ContextMenu" Value="{StaticResource hotelMenu}">
+
+                </Setter>
+            </Style>
+        </ui:InformativeTile.Style>
+    </ui:InformativeTile>
+</ui:TileCollection>

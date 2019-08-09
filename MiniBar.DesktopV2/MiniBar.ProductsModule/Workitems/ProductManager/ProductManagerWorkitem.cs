@@ -1,44 +1,37 @@
 ﻿using MiniBar.ProductsModule.Workitems.ProductManager.Views;
 using DevExpress.Xpf.Ribbon;
 using Prism.Ioc;
-using System.ComponentModel;
 using Infrastructure.Workitems;
-using Infrastructure;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Resources;
 using DevExpress.Spreadsheet;
-using System.IO;
 using Infrastructure.Interface;
-using Infrastructure.MVVM;
-using Core.Documents.Adapter;
 using System.Collections.Generic;
-using Core.Documents.Excel;
-using Core.Documents.Editors;
-using System.Linq;
-using Core.Documents.Validation;
 using MiniBar.ProductsModule.Workitems.ProductQC;
 using MiniBar.ProductsModule.Services;
-using Unity.Attributes;
 using SharedEntities.DTO.Product;
 using SharedEntities.Enum;
-using Infrastructure.Util;
-using Core.Documents.Exceptions;
 using System.Threading.Tasks;
-using MiniBar.Common.Workitems;
 using System;
 using System.Reactive.Linq;
+using MiniBar.Common.Workitems.ObjectManager;
+using Documents.Adapter;
+using Infrastructure.Office;
+using Documents.Validation;
+using Documents.Editors;
 
 namespace MiniBar.ProductsModule.Workitems.ProductManager
 {
-    class ProductManagerWorkitem : ObjectManagerWorkitem<ProductManagerView, ProductViewModel, ProductUploadViewModel>
+    public class ProductManagerWorkitem : ObjectManagerWorkitem<ProductManagerView, ProductViewModel, ProductUploadViewModel>
     {
 
         public static WorkitemMetadata Metadata = new WorkitemMetadata("Product Manager", "Add/Edit/Remove Products");
 
         #region Constructor
 
-        public ProductManagerWorkitem(IContainerExtension container) : base(container)
+        public ProductManagerWorkitem(IContainerExtension container, ProductService productService) : base(container)
         {
+            ProductService = productService;
         }
 
 
@@ -55,7 +48,6 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
             }
         }
 
-        [Dependency]
         public ProductService ProductService { get; set; }
         #endregion
 
@@ -67,9 +59,9 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
             }
         }
 
-        public override void Run()
+        protected override void AfterWorkitemRun()
         {
-            base.Run();
+            base.AfterWorkitemRun();
             Resource("ChildCategories", () => ProductManagerViewModel.ChildCategories);
             Resource("Brands", () => ProductManagerViewModel.Brands);
         }
@@ -120,10 +112,9 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
             return  new ExcelDocument<ProductUploadViewModel>(documentAdapter);
         }
 
-        protected override void LaunchQCWorkitem(List<ProductUploadViewModel> res)
+        protected override Task<IObservable<WorkitemEventArgs>> LaunchQCWorkitem(List<ProductUploadViewModel> res)
         {
-
-            CurrentContextService.LaunchWorkItem<ProductQCWorkitem>(res, this);
+            return CurrentContextService.LaunchModalWorkItem<ProductQCWorkitem>(res, this);
         }
 
         protected override IObservable<System.Reactive.Unit> AddList(List<ProductUploadViewModel> list)

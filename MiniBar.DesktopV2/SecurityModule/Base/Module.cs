@@ -16,7 +16,7 @@ namespace Security
     {
         #region Private Fields
 
-        private ICurrentContextService _currentContextService;
+        private IContextService _currentContextService;
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace Security
         public virtual void OnInitialized(IContainerProvider containerProvider)
         {
 
-            this._currentContextService = containerProvider.Resolve< ICurrentContextService>();
+            this._currentContextService = containerProvider.Resolve< IContextService>();
         }
 
         public virtual void RegisterTypes(IContainerRegistry containerRegistry)
@@ -51,7 +51,7 @@ namespace Security
         #region Properties
         public abstract string Name { get; }
         
-        protected ICurrentContextService CurrentContextService { get { return _currentContextService; } }
+        protected IContextService CurrentContextService { get { return _currentContextService; } }
 
         #endregion
         

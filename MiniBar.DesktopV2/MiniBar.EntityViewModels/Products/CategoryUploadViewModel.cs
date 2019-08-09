@@ -1,8 +1,7 @@
-﻿using Infrastructure.Attributes;
-using Infrastructure.DX.Attributes;
-using Infrastructure.MVVM;
+﻿using Infrastructure.Interface;
+using Infrastructure.Localization;
+
 using MiniBar.EntityViewModels.Base;
-using MiniBar.EntityViewModels.Global;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
@@ -29,9 +28,9 @@ namespace MiniBar.EntityViewModels.Products
             get { return (Names != null && Names.ContainsKey(CultureInfo.CurrentCulture.Name)) ? Names[CultureInfo.CurrentCulture.Name] : ""; }
         }
 
-        private BindableDictionary<string> _Names;
+        private IDictionary<string, string> _Names;
         [LanguageDictionary]
-        public BindableDictionary<string> Names
+        public IDictionary<string, string> Names
         {
             get { return _Names; }
             set

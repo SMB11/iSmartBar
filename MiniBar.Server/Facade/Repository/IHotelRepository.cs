@@ -7,6 +7,6 @@ namespace Facade.Repository
 {
     public interface IHotelRepository : IRepository<Hotel, int, IHotelRepository>
     {
-
+        List<HotelWithCity> GetHotelWithCities(string languageID);
     }
 }

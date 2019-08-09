@@ -1,7 +1,8 @@
-﻿using Infrastructure.MVVM;
+﻿
 using System.Collections.ObjectModel;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.Common.MVVM;
+using MiniBar.Common.Workitems.ObjectManager;
 
 namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
 {

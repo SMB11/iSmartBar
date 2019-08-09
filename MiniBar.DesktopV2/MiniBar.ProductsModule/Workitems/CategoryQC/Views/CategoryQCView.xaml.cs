@@ -27,7 +27,6 @@ namespace MiniBar.ProductsModule.Workitems.CategoryQC.Views
         {
             InitializeComponent();
             
-            WorkitemManager.SetOwner(ribbon, owner);
         }
 
         public GridControl Grid => grid;

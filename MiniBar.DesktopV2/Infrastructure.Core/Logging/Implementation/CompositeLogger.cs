@@ -34,11 +34,6 @@ namespace Infrastructure.Logging
         /// </summary>
         public LogLevel LogOutputLevel { get; set; }
 
-        /// <summary>
-        /// If true, includes the origin of where the log message was logged from
-        /// such as the class name, line number and file name
-        /// </summary>
-        public bool IncludeLogOriginDetails { get; set; } = true;
 
         #endregion
 
@@ -81,15 +76,9 @@ namespace Infrastructure.Logging
         /// </summary>
         /// <param name="message">The message to log</param>
         /// <param name="level">The level of the message being logged</param>
-        /// <param name="origin">The method/function this message was logged in</param>
-        /// <param name="filePath">The code filename that this message was logged from</param>
-        /// <param name="lineNumber">The line of code in the filename this message was logged from</param>
         public void Log(
             string message,
-            LogLevel level = LogLevel.Informative,
-            [CallerMemberName] string origin = "",
-            [CallerFilePath] string filePath = "",
-            [CallerLineNumber] int lineNumber = 0)
+            LogLevel level = LogLevel.Informative)
         {
 
             // If we should not log the message as the level is too low...
@@ -97,9 +86,6 @@ namespace Infrastructure.Logging
                 return;
 
             message = $"[{level}] {message}";
-            // If the user wants to know where the log originated from...
-            if (IncludeLogOriginDetails)
-                message = $"{message} [{Path.GetFileName(filePath)} > {origin}() > Line {lineNumber}]";
 
             // Log to all loggers
             mLoggers.ForEach(logger => logger.Log(message, level));

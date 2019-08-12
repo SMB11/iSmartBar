@@ -47,8 +47,16 @@ namespace Infrastructure.Logging
                     break;
             }
 
-            // Write message to console
-            Debug.WriteLine(message, category);
+            try
+            {
+
+                // Write message to console
+                Debug.WriteLine(message, category);
+            }
+            catch
+            {
+                return;
+            }
         }
     }
 }

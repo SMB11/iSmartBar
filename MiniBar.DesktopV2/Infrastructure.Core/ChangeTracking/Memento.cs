@@ -1,11 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.ChangeTracking
 {
@@ -19,7 +15,8 @@ namespace Infrastructure.ChangeTracking
         #region Private
 
         /// <summary>
-        /// 
+        /// Dictionary keeping track of old values
+        /// If object is referance type referance is stored
         /// </summary>
         Dictionary<PropertyInfo, object> storedProperties =
                    new Dictionary<PropertyInfo, object>();
@@ -28,10 +25,12 @@ namespace Infrastructure.ChangeTracking
 
         public Memento(T originator)
         {
+            // Get all properties
             var propertyInfos =
                 typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance)
                                        .Where(p => p.CanRead && p.CanWrite);
 
+            // store properties
             foreach (var property in propertyInfos)
             {
                 this.storedProperties[property] = property.GetValue(originator, null);
@@ -42,7 +41,9 @@ namespace Infrastructure.ChangeTracking
         {
             foreach (var pair in this.storedProperties)
             {
-                if(typeof(IEditableObject).IsAssignableFrom(pair.Key.PropertyType) && pair.Value != null)
+                // If property is IEditableObject call CancelEdit on it
+                // else just set the old value
+                if (typeof(IEditableObject).IsAssignableFrom(pair.Key.PropertyType) && pair.Value != null)
                 {
                     IEditableObject editableObject = (IEditableObject)pair.Value;
                     editableObject?.CancelEdit();

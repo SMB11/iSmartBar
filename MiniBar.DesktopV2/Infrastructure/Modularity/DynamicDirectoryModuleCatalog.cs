@@ -31,8 +31,21 @@ namespace Infrastructure.Modularity
 
             ModulePath = modulePath;
             BinPath = binDirectory;
+            CreateFileWatcher();
+        }
+
+        void CreateFileWatcher()
+        {
+            if (Directory.Exists(ModulePath))
+                DoCreateFileWatcher();
+
+        }
+
+        void DoCreateFileWatcher()
+        {
+            FileSystemWatcher fileWatcher = null;
             // we need to watch our folder for newly added modules
-            FileSystemWatcher fileWatcher = new FileSystemWatcher(ModulePath, "*.dll");
+            fileWatcher = new FileSystemWatcher(ModulePath, "*.dll");
             fileWatcher.Created += FileWatcher_Created;
             fileWatcher.EnableRaisingEvents = true;
         }
@@ -53,7 +66,8 @@ namespace Infrastructure.Modularity
         /// </summary>
         protected override void InnerLoad()
         {
-            LoadModuleCatalog(ModulePath);
+            if(Directory.Exists(ModulePath))
+                LoadModuleCatalog(ModulePath);
         }
 
         void LoadModuleCatalog(string path, bool isFile = false)

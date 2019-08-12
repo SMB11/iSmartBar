@@ -56,7 +56,7 @@ namespace MiniBar.Common.Workitems.ImportExcel
         {
             if (!File.Exists(ImportViewModel.FilePath))
             {
-                UIHelper.Error("The specified file doesn't exist");
+                UIManager.Error("The specified file doesn't exist");
                 return;
             }
             Communication.OnNext(new WorkitemEventArgs(this, ImportViewModel.FilePath));

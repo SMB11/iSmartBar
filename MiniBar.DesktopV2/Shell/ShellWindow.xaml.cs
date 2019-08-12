@@ -5,6 +5,7 @@ using Infrastructure;
 using Infrastructure.Security;
 using Infrastructure.Modularity;
 using Infrastructure.Utility;
+using Infrastructure.Framework;
 
 namespace Shell
 {
@@ -32,7 +33,7 @@ namespace Shell
         {
             base.OnClosing(e);
 
-            e.Cancel = !UIHelper.AskForConfirmation("Are you sure you want to exit? Unsaved changes will be lost.");
+            e.Cancel = !CommonServiceLocator.ServiceLocator.Current.GetInstance<IUIManager>().AskForConfirmation("Are you sure you want to exit? Unsaved changes will be lost.");
         }
 
         private void HandleAuthenticationStateChanged()

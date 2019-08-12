@@ -64,7 +64,7 @@ namespace MiniBar.Common.Workitems.EntityQC
         {
             if (!Validate())
             {
-                UIHelper.Error("Fix errors before saving");
+                UIManager.Error("Fix errors before saving");
                 return;
             }
             Communication.OnNext(new WorkitemEventArgs(this, new List<T>(QCViewModel.List.OfType<T>())));

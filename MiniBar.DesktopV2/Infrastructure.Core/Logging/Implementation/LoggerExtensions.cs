@@ -9,18 +9,32 @@ namespace Infrastructure.Logging
     /// </summary>
     public static class LoggerExtensions
     {
+        /// <summary>
+        /// Adds a debbug logger to a composite logger
+        /// </summary>
+        /// <param name="logger">the composite logger</param>
         public static ICompositeLogger AddDebug(this ICompositeLogger logger)
         {
             logger.AddLogger(new DebugLogger());
             return logger;
         }
 
+        /// <summary>
+        /// Adds a console logger to a composite logger
+        /// </summary>
+        /// <param name="logger">the composite logger</param>
         public static ICompositeLogger AddConsole(this ICompositeLogger logger)
         {
             logger.AddLogger(new ConsoleLogger());
             return logger;
         }
 
+        /// <summary>
+        /// Adds logging to container registry
+        /// </summary>
+        /// <param name="containerRegistry">the container registry</param>
+        /// <param name="configure">configuration callback that should be used to add loggers</param>
+        /// <returns></returns>
         public static IContainerRegistry AddLogging(this IContainerRegistry containerRegistry, Action<ICompositeLogger> configure)
         {
             ICompositeLogger logger = new CompositeLogger();

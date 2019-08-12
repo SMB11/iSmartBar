@@ -250,7 +250,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
             {
                 if (!Validate())
                 {
-                    UIHelper.Error("Correct all errors before saving.");
+                    UIManager.Error("Correct all errors before saving.");
                     return;
                 }
                 IsObjectLoading = true;
@@ -268,7 +268,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
 
         protected override async Task Delete()
         {
-            if(UIHelper.AskForConfirmation(String.Format("Do you really want to remove {0}", CurrentItem.ToString()))){
+            if(UIManager.AskForConfirmation(String.Format("Do you really want to remove {0}", CurrentItem.ToString()))){
 
                 int id = ((IIdEntityViewModel)CurrentItem).ID;
                 IsListLoading = true;

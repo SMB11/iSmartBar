@@ -14,7 +14,6 @@ using MiniBar.Common.Workitems.Main;
 using Infrastructure.Security;
 using System.Threading.Tasks;
 using System.Threading;
-using DryIoc;
 
 namespace Shell
 {

@@ -37,6 +37,8 @@ namespace Infrastructure.Workitems
             Shell = shell;
             Container = container;
             RegionManager = regionManager;
+            UIManager = uiManager;
+            TaskManager = taskManager;
             Collection = new WorkitemCollection();
             ShellTitle = ConfigurationManager.AppSettings.Get("Title");
             FocusCommand.AllowMultipleExecution = true;

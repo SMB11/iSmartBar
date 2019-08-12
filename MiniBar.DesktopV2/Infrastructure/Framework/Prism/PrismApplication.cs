@@ -12,11 +12,9 @@ using Infrastructure.Logging;
 using Infrastructure.Modularity;
 using Infrastructure.Utility;
 using Infrastructure.Workitems;
-using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
-using System;
 using System.IO;
 
 namespace Infrastructure.Framework
@@ -24,17 +22,11 @@ namespace Infrastructure.Framework
     /// <summary>
     /// Prism Applciation base class based on DryIoc Container implementation
     /// </summary>
-    public abstract class PrismApplication : Prism.DryIoc.PrismApplication
+    public abstract class PrismApplication : Prism.Unity.PrismApplication
     {
         protected IExceptionHandler ExceptionHandler => Container.Resolve<IExceptionHandler>();
         protected ICompositeLogger Logger => Container.Resolve<ICompositeLogger>();
         protected IUIManager UIManager => Container.Resolve<IUIManager>();
-
-        /// <summary>
-        /// Extend the DryIoc Container to support IServiceProvider interface
-        /// </summary>
-        /// <returns></returns>
-        protected override IContainerExtension CreateContainerExtension() => PrismContainerExtension.Current;
 
         /// <summary>
         /// Contains actions that should occur last.
@@ -63,11 +55,12 @@ namespace Infrastructure.Framework
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry
+                .AddLogging(opt => opt.AddDebug())
+                .AddDefaultExceptionHandling()
+                .RegisterSingleton(typeof(ITaskManager), typeof(BaseTaskManager))
                 .RegisterSingleton(typeof(IUIManager), typeof(UIManager))
                 .RegisterSingleton(typeof(IContextService), typeof(ContextService))
-                .RegisterSingleton(typeof(IConnectionMonitoringService), typeof(ConnectionMonitoringService))
-                .AddLogging(opt => opt.AddDebug())
-                .AddDefaultExceptionHandling();
+                .RegisterSingleton(typeof(IConnectionMonitoringService), typeof(ConnectionMonitoringService));
             
             // Initialize the mapper
             Mapper.Initialize(ConfigureMappings);

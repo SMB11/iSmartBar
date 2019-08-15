@@ -13,10 +13,12 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Services
     class ProductViewModelOMService : IObjectManagementService<ProductViewModel, ProductUploadViewModel>
     {
         ProductService ProductService;
+        IMapper Mapper;
 
-        public ProductViewModelOMService(ProductService productService)
+        public ProductViewModelOMService(ProductService productService, IMapper mapper)
         {
             ProductService = productService;
+            Mapper = mapper;
         }
 
         public async Task<int> Add(ProductUploadViewModel vm, CancellationToken token = default(CancellationToken))

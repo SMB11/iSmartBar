@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Framework
 {
+    /// <summary>
+    /// Async command with secure implementation
+    /// </summary>
     public class SecureAsyncCommand : AsyncCommand, IDisposable
     {
         public SecureAsyncCommand(Func<Task> executeMethod) : base(executeMethod, SecureCanExecute)
@@ -37,7 +40,9 @@ namespace Infrastructure.Framework
         }
     }
 
-
+    /// <summary>
+    /// Async command with secure implementation
+    /// </summary>
     public class SecureAsyncCommand<T> : AsyncCommand<T> , IDisposable
     {
         public SecureAsyncCommand(Func<T, Task> executeMethod) : base(executeMethod, SecureCanExecute)

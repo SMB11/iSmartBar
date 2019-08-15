@@ -1,6 +1,7 @@
 ﻿using DevExpress.Mvvm;
 using Infrastructure.ErrorHandling;
 using Infrastructure.Framework;
+using Infrastructure.Logging;
 using Security.Internal.Controllers;
 using System;
 using System.Threading;
@@ -64,15 +65,18 @@ namespace Security.Workitems.Login.Views
             }
             catch (ApiException apiEx)
             {
+                Logger.LogErrorSource("Error while logging in", apiEx);
                 ErrorText = apiEx.Message;
             }
 
             catch (ApiConnectionException)
             {
+                Logger.LogErrorSource("Error while logging in | Couldn't connect to server");
                 ErrorText = "Couldn't connect to server";
             }
             catch (Exception e)
             {
+                Logger.LogErrorSource("Unknown error while logging in", e);
                 ErrorText = "An unkown error occured, please contact your administrator.";
             }
             finally

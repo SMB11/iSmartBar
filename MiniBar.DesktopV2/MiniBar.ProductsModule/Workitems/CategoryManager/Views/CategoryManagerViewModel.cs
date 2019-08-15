@@ -20,6 +20,7 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
         private IContextService CurrentContextService;
 
         CategoryService CategoryService { get; set; }
+        IMapper Mapper;
 
         IObjectManagementService<CategoryViewModel, CategoryUploadViewModel> objectManagementService;
         protected override IObjectManagementService<CategoryViewModel, CategoryUploadViewModel> ObjectManagementService
@@ -27,7 +28,7 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
             get
             {
                 if (objectManagementService == null)
-                    objectManagementService = new CategoryViewModelOMService(CategoryService);
+                    objectManagementService = new CategoryViewModelOMService(CategoryService, Mapper);
                 return objectManagementService;
             }
         }
@@ -38,10 +39,11 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
         }
 
 
-        public CategoryManagerViewModel(CategoryService categoryService, IContextService  currentContextService) : base()
+        public CategoryManagerViewModel(CategoryService categoryService, IContextService  currentContextService, IMapper mapper) : base()
         {
             CurrentContextService = currentContextService;
             CategoryService = categoryService;
+            Mapper = mapper;
             Initialize();
         }
 

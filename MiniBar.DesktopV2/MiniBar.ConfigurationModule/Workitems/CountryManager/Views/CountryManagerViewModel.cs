@@ -1,4 +1,5 @@
-﻿using Infrastructure.Interface;
+﻿using AutoMapper;
+using Infrastructure.Interface;
 using Infrastructure.Workitems;
 using MiniBar.Common.MVVM;
 using MiniBar.Common.Services;
@@ -15,6 +16,7 @@ namespace MiniBar.ConfigurationModule.Workitems.CountryManager.Views
     {
         private IContextService CurrentContextService;
         CountryService CountryService;
+        IMapper Mapper;
 
         IObjectManagementService<CountryViewModel, CountryUploadViewModel> objectManagementService;
 
@@ -23,7 +25,7 @@ namespace MiniBar.ConfigurationModule.Workitems.CountryManager.Views
             get
             {
                 if (objectManagementService == null)
-                    objectManagementService = new CountryManagerOMService(CountryService);
+                    objectManagementService = new CountryManagerOMService(CountryService, Mapper);
                 return objectManagementService;
             }
         }
@@ -33,10 +35,11 @@ namespace MiniBar.ConfigurationModule.Workitems.CountryManager.Views
             return new CountryUploadViewModel();
         }
 
-        public CountryManagerViewModel(CountryService countryService, IContextService currentContextService) : base()
+        public CountryManagerViewModel(CountryService countryService, IContextService currentContextService, IMapper mapper) : base()
         {
             CurrentContextService = currentContextService;
             CountryService = countryService;
+            Mapper = mapper;
             Initialize();
         }
 

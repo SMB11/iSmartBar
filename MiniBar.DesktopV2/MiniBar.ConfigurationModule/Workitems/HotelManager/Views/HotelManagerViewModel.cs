@@ -16,6 +16,7 @@ namespace MiniBar.ConfigurationModule.Workitems.HotelManager.Views
 
         HotelService HotelService;
         CityService CityService;
+        IMapper Mapper;
 
         IObjectManagementService<HotelViewModel, HotelUploadViewModel> objectManagementService;
 
@@ -24,7 +25,7 @@ namespace MiniBar.ConfigurationModule.Workitems.HotelManager.Views
             get
             {
                 if (objectManagementService == null)
-                    objectManagementService = new HotelManagerOMService(HotelService);
+                    objectManagementService = new HotelManagerOMService(HotelService, Mapper);
                 return objectManagementService;
             }
         }
@@ -45,10 +46,11 @@ namespace MiniBar.ConfigurationModule.Workitems.HotelManager.Views
             return new HotelUploadViewModel();
         }
 
-        public HotelManagerViewModel(HotelService hotelService, CityService cityService) : base()
+        public HotelManagerViewModel(HotelService hotelService, CityService cityService, IMapper mapper) : base()
         {
             HotelService = hotelService;
             CityService = cityService;
+            Mapper = mapper;
             Initialize();
         }
 

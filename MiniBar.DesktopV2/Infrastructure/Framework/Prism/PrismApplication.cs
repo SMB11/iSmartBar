@@ -34,6 +34,7 @@ namespace Infrastructure.Framework
         protected override void OnInitialized()
         {
             base.OnInitialized();
+            Logger.Log("Apllication has been initialized", LogLevel.Informative);
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
         }
 
@@ -54,17 +55,16 @@ namespace Infrastructure.Framework
         /// <param name="containerRegistry"></param>
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            MapperConfiguration configuration = new MapperConfiguration(ConfigureMappings);
             containerRegistry
                 .AddLogging(opt => opt.AddDebug())
                 .AddDefaultExceptionHandling()
                 .RegisterSingleton(typeof(ITaskManager), typeof(BaseTaskManager))
                 .RegisterSingleton(typeof(IUIManager), typeof(UIManager))
                 .RegisterSingleton(typeof(IContextService), typeof(ContextService))
-                .RegisterSingleton(typeof(IConnectionMonitoringService), typeof(ConnectionMonitoringService));
-            
-            // Initialize the mapper
-            Mapper.Initialize(ConfigureMappings);
-            Mapper.AssertConfigurationIsValid();
+                .RegisterSingleton(typeof(IConnectionMonitoringService), typeof(ConnectionMonitoringService))
+                .RegisterInstance<IMapper>(configuration.CreateMapper());
+
         }
         
         /// <summary>
@@ -93,6 +93,7 @@ namespace Infrastructure.Framework
         protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings mappings)
         {
             base.ConfigureRegionAdapterMappings(mappings);
+            Logger.Log("Configuring region adapter mappings", LogLevel.Debug);
             var factory = Container.Resolve<IRegionBehaviorFactory>();
 
             mappings.RegisterMapping(typeof(NavBarControl),
@@ -120,6 +121,7 @@ namespace Infrastructure.Framework
                 DevExpress.Xpf.Prism.AdapterFactory.Make<RegionAdapterBase<DXTabControl>>(factory));
 
             DXRegionManager.PrismVersion = PrismVersion.Prism7;
+            Logger.Log("Region adapter mappings configured", LogLevel.Debug);
 
         }
 

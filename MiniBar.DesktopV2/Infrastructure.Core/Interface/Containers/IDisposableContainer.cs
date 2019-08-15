@@ -15,9 +15,6 @@ namespace Infrastructure.Interface
         /// Registers an object as a disposable that will be disposed of 
         /// when the  Dispose method of the class is called
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         T Disposable<T>(T obj) where T: IDisposable;
     }
 }

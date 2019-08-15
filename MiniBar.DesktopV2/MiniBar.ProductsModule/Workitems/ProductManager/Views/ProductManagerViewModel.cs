@@ -20,14 +20,16 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
         ProductService ProductService { get; set; }
         CategoryService CategoryService { get; set; }
         BrandService BrandService { get; set; }
+        IMapper Mapper;
         IContextService CurrentContextService;
 
-        public ProductManagerViewModel(ProductService productService, CategoryService categoryService, BrandService brandService, IContextService currentContextService) : base()
+        public ProductManagerViewModel(ProductService productService, CategoryService categoryService, BrandService brandService, IContextService currentContextService, IMapper mapper) : base()
         {
             CategoryService = categoryService;
             BrandService = brandService;
             ProductService = productService;
             CurrentContextService = currentContextService;
+            Mapper = mapper;
             Initialize();
         }
 
@@ -133,7 +135,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
             get
             {
                 if (objectManagementService == null)
-                    objectManagementService = new ProductViewModelOMService(ProductService);
+                    objectManagementService = new ProductViewModelOMService(ProductService, Mapper);
                 return objectManagementService;
             }
         }

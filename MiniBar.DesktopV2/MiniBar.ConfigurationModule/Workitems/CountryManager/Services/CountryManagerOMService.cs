@@ -15,10 +15,12 @@ namespace MiniBar.ConfigurationModule.Workitems.CountryManager.Services
     public class CountryManagerOMService : IObjectManagementService<CountryViewModel, CountryUploadViewModel>
     {
         CountryService CountryService;
+        IMapper Mapper;
 
-        public CountryManagerOMService(CountryService locationService)
+        public CountryManagerOMService(CountryService locationService, IMapper mapper)
         {
             CountryService = locationService;
+            Mapper = mapper;
         }
 
         public async Task<int> Add(CountryUploadViewModel vm, CancellationToken token = default(CancellationToken))

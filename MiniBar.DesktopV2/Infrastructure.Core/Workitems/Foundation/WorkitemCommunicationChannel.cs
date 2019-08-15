@@ -11,18 +11,27 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Workitems
 {
+    /// <summary>
+    /// The communication channel implmentation for WorkitemBase
+    /// </summary>
     internal class WorkitemCommunicationChannel : ISubject<WorkitemEventArgs> , IDisposable
     {
-        Guid id;
+        /// <summary>
+        /// The underlying subject
+        /// </summary>
         ReplaySubject<WorkitemEventArgs> _subject = new ReplaySubject<WorkitemEventArgs>();
-
 
         public WorkitemCommunicationChannel()
         {
-            id = Guid.NewGuid();
+            // Set ReplaySubject so that if workitem is opened in modal dialog mode 
+            // the creator of the workitem gets all massages when the execution context gets to it
+            // this is assuming the workitem won't pass more than 10 messages
             _subject = new ReplaySubject<WorkitemEventArgs>(10);
         }
 
+        /// <summary>
+        /// Dispose of the channel
+        /// </summary>
         public void Dispose()
         {
             _subject.Dispose();

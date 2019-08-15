@@ -15,10 +15,12 @@ namespace MiniBar.ConfigurationModule.Workitems.CityManager.Services
     public class CityManagerOMService : IObjectManagementService<CityViewModel, CityUploadViewModel>
     {
         CityService CityService;
+        IMapper Mapper;
 
-        public CityManagerOMService(CityService locationService)
+        public CityManagerOMService(CityService locationService, IMapper mapper)
         {
             CityService = locationService;
+            Mapper = mapper;
         }
 
         public async Task<int> Add(CityUploadViewModel vm, CancellationToken token = default(CancellationToken))

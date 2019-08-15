@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Workitems
 {
-    public abstract class WorkitemContainerBase: IDisposable
+    /// <summary>
+    /// The base of all workitem containers
+    /// </summary>
+    public abstract class WorkitemContainerBase: IDisposableContainer, IDisposable
     {
+        // Objects to dispose of on Dispose()
         private List<IDisposable> Disposables;
-
+        
         protected IWorkItem WorkItem { get; set; }
 
         public WorkitemContainerBase(IWorkItem workItem)
@@ -19,11 +23,19 @@ namespace Infrastructure.Workitems
             Disposables = new List<IDisposable>();
         }
 
-        protected void Disposable(IDisposable disposable)
+        /// <summary>
+        /// Registers an object as a disposable that will be disposed of 
+        /// when the  Dispose method of the class is called
+        /// </summary>
+        public T Disposable<T>(T obj) where T : IDisposable
         {
-            Disposables.Add(disposable);
+            Disposables.Add(obj);
+            return obj;
         }
 
+        /// <summary>
+        /// Dispose of disposables
+        /// </summary>
         public void Dispose()
         {
             Disposables.ForEach(d => d?.Dispose());

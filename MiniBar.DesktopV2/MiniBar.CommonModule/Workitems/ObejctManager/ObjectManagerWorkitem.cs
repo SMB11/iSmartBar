@@ -17,6 +17,7 @@ using Infrastructure.ChangeTracking;
 using Documents.Exceptions;
 using Infrastructure.Utility;
 using Infrastructure.Modularity;
+using Infrastructure.Logging;
 using Infrastructure.Framework;
 
 namespace MiniBar.Common.Workitems.ObjectManager
@@ -99,11 +100,13 @@ namespace MiniBar.Common.Workitems.ObjectManager
                 }
                 catch (ExcelParseException e)
                 {
+                    Logger.LogErrorSource("Error occured while parsing document", e);
                     UIManager.Error(e.Message);
                 }
                 catch (Exception e)
                 {
-                    UIManager.Error("Error occured while parsing document.");
+                    Logger.LogErrorSource("Unknwon error occured while parsing document", e);
+                    UIManager.Error("Unknwon error occured while parsing document");
                 }
                 return null;
             }).ConfigureAwait(false);

@@ -15,10 +15,12 @@ namespace MiniBar.ConfigurationModule.Workitems.HotelManager.Services
     public class HotelManagerOMService : IObjectManagementService<HotelViewModel, HotelUploadViewModel>
     {
         HotelService HotelService;
+        IMapper Mapper;
 
-        public HotelManagerOMService(HotelService locationService)
+        public HotelManagerOMService(HotelService locationService, IMapper mapper)
         {
             HotelService = locationService;
+            Mapper = mapper;
         }
 
         public async Task<int> Add(HotelUploadViewModel vm, CancellationToken token = default(CancellationToken))

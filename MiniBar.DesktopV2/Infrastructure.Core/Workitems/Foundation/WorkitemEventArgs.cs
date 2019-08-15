@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Interface
 {
+    /// <summary>
+    /// Workitem event args to send data to its creator through the communication channel
+    /// </summary>
     public class WorkitemEventArgs
     {
         public IWorkItem Sender { get; private set; }

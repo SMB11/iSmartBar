@@ -12,10 +12,12 @@ namespace MiniBar.ProductsModule.Workitems.CatgeoryManager.Services
     class CategoryViewModelOMService : IObjectManagementService<CategoryViewModel, CategoryUploadViewModel>
     {
         CategoryService CategoryService;
+        IMapper Mapper;
 
-        public CategoryViewModelOMService(CategoryService categoryService)
+        public CategoryViewModelOMService(CategoryService categoryService, IMapper mapper)
         {
             CategoryService = categoryService;
+            Mapper = mapper;
         }
 
         public async Task<int> Add(CategoryUploadViewModel vm, CancellationToken token = default(CancellationToken))

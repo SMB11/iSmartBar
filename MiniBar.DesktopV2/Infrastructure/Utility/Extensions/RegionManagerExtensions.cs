@@ -1,4 +1,5 @@
 ﻿using DevExpress.Xpf.Core;
+using Infrastructure.Framework;
 using Infrastructure.Interface;
 using Infrastructure.Modularity;
 using Prism.Regions;
@@ -60,19 +61,13 @@ namespace Infrastructure.Utility
             foreach (DependencyObject view in region.Views.OfType<DependencyObject>())
             {
 
-                try
-                {
-                    Application.Current.Dispatcher.InvokeIfNeeded(() =>
+                CommonServiceLocator.ServiceLocator.Current.GetInstance<ITaskManager>()
+                    .RunUIThread(() =>
                     {
                         IWorkItem owner = WorkitemManager.GetOwner(view);
                         if (workItem.Equals(owner) && region.Views.Contains(view))
                             region.Activate(view);
                     });
-                }
-                catch(Exception e)
-                {
-
-                }
             }
         }
 

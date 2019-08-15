@@ -2,9 +2,9 @@ import axios from "axios";
 import { withLocalize } from "react-localize-redux";
 const apiUrl =
   //"https://localhost:44396/api/";
-  "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
+  "http://localhost/MiniBar.Core/api/";
 const iSmartBarApiUrl =
-  "http://ismartbarapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/api/";
+  "http://localhost/iSmartBar/api/";
 
 const getHeader = lang => {
   if (lang)
@@ -21,7 +21,7 @@ const getCoreUrl = (path, cache) => {
 };
 
 export const assetBaseUrl =
-  "http://coreapi-env.txt38iawzw.eu-west-3.elasticbeanstalk.com/";
+  "http://localhost/MiniBar.Core/";
 
 export default {
   locations: {

@@ -14,7 +14,6 @@ using System.Configuration;
 using System.Threading.Tasks;
 using DevExpress.Mvvm;
 using Infrastructure.Framework;
-using Infrastructure.Framework;
 
 namespace Infrastructure.Workitems
 {

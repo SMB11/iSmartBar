@@ -1,5 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
+using Infrastructure.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -103,6 +104,7 @@ namespace Infrastructure.Utility
             }
             catch(Exception e)
             {
+                CommonServiceLocator.ServiceLocator.Current.GetInstance<ICompositeLogger>().LogErrorSource("Failed to focus window", e);
                 return false;
             }
         }

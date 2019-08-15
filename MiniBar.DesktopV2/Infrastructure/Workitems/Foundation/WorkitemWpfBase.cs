@@ -6,7 +6,6 @@ using Prism.Ioc;
 using Prism.Regions;
 using Infrastructure.Logging;
 using Infrastructure.Framework;
-using Infrastructure.Framework;
 
 namespace Infrastructure.Workitems
 {

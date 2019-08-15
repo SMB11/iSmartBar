@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Framework
 {
+    /// <summary>
+    /// Delegate command with secure implementation
+    /// </summary>
     public class SecureCommand : DelegateCommand , IDisposable
     {
         public SecureCommand(Action executeMethod, bool? useCommandManager = null) : base(executeMethod, SecureCanExecute, useCommandManager)

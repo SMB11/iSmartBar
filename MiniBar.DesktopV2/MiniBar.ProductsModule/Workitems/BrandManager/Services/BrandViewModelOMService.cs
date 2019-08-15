@@ -13,10 +13,12 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager.Services
     class BrandViewModelOMService : IObjectManagementService<BrandViewModel, BrandUplaodViewModel>
     {
         BrandService BrandService;
+        IMapper Mapper;
 
-        public BrandViewModelOMService(BrandService brandService)
+        public BrandViewModelOMService(BrandService brandService, IMapper mapper)
         {
             BrandService = brandService;
+            Mapper = mapper;
         }
 
         public async Task<int> Add(BrandUplaodViewModel vm, CancellationToken token = default(CancellationToken))

@@ -11,7 +11,6 @@ namespace Infrastructure.Workitems
 
     public abstract class WorkitemBase : IWorkItem, IDisposableContainer
     {
-
         #region Private
         private IViewContainer viewContainer;
         private IContainerExtension _container;
@@ -21,15 +20,24 @@ namespace Infrastructure.Workitems
         private Dictionary<string, Func<object>> Resources;
         private List<IDisposable> Disposables;
 
+        /// <summary>
+        /// Handle the workitem focus event
+        /// </summary>
         private void HandleFocused()
         {
+            // If window is defined(Modal) focus the window
             if (Window != null)
                 Window.Focus();
+            // continue event execution
             OnFocused();
         }
 
+        /// <summary>
+        /// Handle the workitem unfocus event
+        /// </summary>
         private void HandleLostFocus()
         {
+            // continue event execution
             OnLostFocus();
         }
 
@@ -37,10 +45,16 @@ namespace Infrastructure.Workitems
 
         #region Properties
         
-
+        /// <summary>
+        /// The Communication Channel that allows the workitem to talk to its creator
+        /// </summary>
         protected IObserver<WorkitemEventArgs> Communication => communicationChannel;
 
+        /// <summary>
+        /// The view container that allows to register workitem views
+        /// </summary>
         internal IViewContainer ViewContainer => viewContainer;
+
         /// <summary>
         /// Shows if workitme has unsaved changes.
         /// If overriden you must take care of calling OnIsDirtyChanged
@@ -73,6 +87,9 @@ namespace Infrastructure.Workitems
         /// </summary>
         public IWindow Window { get; set; }
 
+        /// <summary>
+        /// IsDirty changed event
+        /// </summary>
         public virtual event EventHandler<EventArgs> IsDirtyChanged;
         
         /// <summary>
@@ -80,6 +97,9 @@ namespace Infrastructure.Workitems
         /// </summary>
         public IWorkItem Parent { get; set; }
         
+        /// <summary>
+        /// Configuration object of the workitem
+        /// </summary>
         public IConfiguration Configuration => configuration;
 
         /// <summary>
@@ -87,8 +107,14 @@ namespace Infrastructure.Workitems
         /// </summary>
         public bool IsModal { get; private set; }
 
+        /// <summary>
+        /// Current ContextService
+        /// </summary>
         protected IContextService CurrentContextService { get; set; }
 
+        /// <summary>
+        /// The prism container extended
+        /// </summary>
         public IContainerExtension Container
         {
             get
@@ -113,12 +139,26 @@ namespace Infrastructure.Workitems
 
         #region Public/Protected Methods
 
+        /// <summary>
+        /// Create and return the view container that should be used tyo register workitem views
+        /// </summary>
+        /// <returns>The newly created view container</returns>
         protected abstract IViewContainer CreateViewContainer();
 
+        /// <summary>
+        /// Create and return the command container that should be used tyo register workitem commands
+        /// </summary>
+        /// <returns>The newly created command container</returns>
         protected abstract ICommandContainer CreateCommandContainer();
 
+        /// <summary>
+        /// Executed after the workitem run method
+        /// </summary>
         protected virtual void AfterWorkitemRun() { }
 
+        /// <summary>
+        /// Executed before the workitem run method
+        /// </summary>
         protected virtual void BeforeWorkitemRun() { }
 
         /// <summary>
@@ -129,16 +169,14 @@ namespace Infrastructure.Workitems
         {
             return CurrentContextService.CloseWorkitem(this);
         }
-
+        
         /// <summary>
-        /// Specifies the default way to open the workitem in modal mode
+        /// Lifecycle hook to add workitem configuration
         /// </summary>
-        /// <returns></returns>
         public virtual void Configure()
         {
         }
-
-
+        
         /// <summary>
         /// Launch the workitem
         /// </summary>
@@ -179,13 +217,15 @@ namespace Infrastructure.Workitems
             return Run();
         }
 
+        /// <summary>
+        /// Change the workitem state to modal at runtime
+        /// </summary>
         public void ChangeToModalState()
         {
             IsModal = true;
             var oldContainer = viewContainer;
             viewContainer = CreateViewContainer();
             viewContainer.ImportFrom(oldContainer);
-
         }
 
         /// <summary>
@@ -249,6 +289,10 @@ namespace Infrastructure.Workitems
         {
         }
         
+        /// <summary>
+        /// Lifecicle hook to create anything async to be used by the workitem
+        /// </summary>
+        /// <returns></returns>
         protected virtual Task Create()
         {
             return Task.CompletedTask;
@@ -267,7 +311,6 @@ namespace Infrastructure.Workitems
         protected virtual void OnFocused()
         {
         }
-
 
         public override bool Equals(object obj)
         {
@@ -309,6 +352,9 @@ namespace Infrastructure.Workitems
 
         #region ISupportFocus Implementation
 
+        /// <summary>
+        /// Set the workitem focus
+        /// </summary>
         bool ISupportsFocus.IsFocused
         {
             get

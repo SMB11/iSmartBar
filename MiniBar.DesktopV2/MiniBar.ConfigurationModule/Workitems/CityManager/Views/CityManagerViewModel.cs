@@ -18,6 +18,7 @@ namespace MiniBar.ConfigurationModule.Workitems.CityManager.Views
         CityService CityService;
         IContextService CurrentContextService;
         CountryService CountryService;
+        IMapper Mapper;
 
         IObjectManagementService<CityViewModel, CityUploadViewModel> objectManagementService;
 
@@ -26,7 +27,7 @@ namespace MiniBar.ConfigurationModule.Workitems.CityManager.Views
             get
             {
                 if (objectManagementService == null)
-                    objectManagementService = new CityManagerOMService(CityService);
+                    objectManagementService = new CityManagerOMService(CityService, Mapper);
                 return objectManagementService;
             }
         }
@@ -46,10 +47,11 @@ namespace MiniBar.ConfigurationModule.Workitems.CityManager.Views
             return new CityUploadViewModel();
         }
 
-        public CityManagerViewModel(CityService cityService, CountryService countryService, IContextService currentContextService) : base()
+        public CityManagerViewModel(CityService cityService, CountryService countryService, IContextService currentContextService, IMapper mapper) : base()
         {
             CurrentContextService = currentContextService;
             CountryService = countryService;
+            Mapper = mapper;
             CityService = cityService;
             Initialize();
         }

@@ -6,21 +6,34 @@ using Infrastructure.Utility;
 
 namespace Infrastructure.Workitems
 {
+    /// <summary>
+    /// Base class for workitem view containers
+    /// </summary>
     public abstract class WorkitemViewContainerBase : WorkitemContainerBase, IViewContainer
     {
 
         public WorkitemViewContainerBase(IWorkItem workItem) : base(workItem)
         {
             Views = new Dictionary<ScreenRegion, List<ViewDescriptor>>();
+            // Clear views on Disopose
             Disposable(new DisposableAction(() => Views?.Clear()));
         }
 
+        /// Keep track of aded views
         internal Dictionary<ScreenRegion, List<ViewDescriptor>> Views;
 
+        /// <summary>
+        /// Pre process view before it is registered
+        /// </summary>
+        /// <param name="view"></param>
         protected virtual void ProcessView(object view)
         {
         }
 
+        /// <summary>
+        /// Import views from another container
+        /// </summary>
+        /// <param name="viewContainer">Another container</param>
         public void ImportFrom(IViewContainer container)
         {
             if(container is WorkitemViewContainerBase)
@@ -38,7 +51,13 @@ namespace Infrastructure.Workitems
             }
                
         }
-        
+
+        /// <summary>
+        /// Register a view in a specific screen region
+        /// </summary>
+        /// <param name="view">the view to register</param>
+        /// <param name="region">the region to register in</param>
+        /// <returns>the view</returns>
         public object Register(object view, ScreenRegion region)
         {
             ProcessView(view);
@@ -51,11 +70,17 @@ namespace Infrastructure.Workitems
             return view;
         }
 
+        /// <summary>
+        /// Unregister a view from a specific screen region
+        /// </summary>
+        /// <param name="view">the view to unregister</param>
+        /// <param name="region">the region to unregister from</param>
         public void Unregister(object view, ScreenRegion region)
         {
             UnregisterView(view, region);
         }
 
+        // Abstract Imlementation
         protected abstract object RegisterView(object view, ScreenRegion region);
         protected abstract void UnregisterView(object view, ScreenRegion region);
 

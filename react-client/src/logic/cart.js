@@ -1,5 +1,4 @@
 const limits = [20, 5];
-const outsideID = sizes.length + 1;
 const canAddToCart = (cart, product, quantity) => {
   //   let cartWithSize = cart.filter(p => product.size === p.size).length;
   const sectionItems = cart[product.size - 1];

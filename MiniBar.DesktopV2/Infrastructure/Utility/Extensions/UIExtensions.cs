@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Interface;
+using Infrastructure.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +61,7 @@ namespace Infrastructure.Utility
             }
             catch (Exception e)
             {
+                CommonServiceLocator.ServiceLocator.Current.GetInstance<ICompositeLogger>().LogErrorSource("Failed to close the window", e);
                 return false;
             }
         }

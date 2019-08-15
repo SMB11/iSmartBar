@@ -124,7 +124,7 @@ namespace Documents.Excel
                 {
                     throw e;
                 }
-                catch(Exception e)
+                catch
                 {
                     throw new ExcelParseException(columnCounter, rowCounter);
                 }

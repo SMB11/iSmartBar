@@ -37,6 +37,8 @@ namespace Shell
         {
             base.OnInitialized();
             MainWindow?.Hide();
+
+            Container.Resolve<IContextService>().LaunchWorkItem<MainWorkitem>();
         }
 
         protected override void ConfigureMappings(IMapperConfigurationExpression cfg)
@@ -90,7 +92,6 @@ namespace Shell
             CultureInfo.CurrentCulture = culture;
             CultureInfo.CurrentUICulture = culture;
 
-            Container.Resolve<IContextService>().LaunchWorkItem<MainWorkitem>();
             AppSecurityContext.AppPrincipalChanged += AppSecurityContext_AppPrincipalChanged;
         }
 

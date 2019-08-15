@@ -4,12 +4,14 @@ using MiniBar.Common.MVVM;
 using MiniBar.Common.Services;
 using MiniBar.ProductsModule.Workitems.BrandManager.Services;
 using MiniBar.Common.Workitems.ObjectManager;
+using AutoMapper;
 
 namespace MiniBar.ProductsModule.Workitems.BrandManager.Views
 {
     partial class BrandManagerViewModel : ObjectManagerViewModel<BrandViewModel, BrandUplaodViewModel>
     {
         BrandService BrandService { get; set; }
+        IMapper Mapper;
 
         IObjectManagementService<BrandViewModel, BrandUplaodViewModel> objectManagementService;
         protected override IObjectManagementService<BrandViewModel, BrandUplaodViewModel> ObjectManagementService
@@ -17,7 +19,7 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager.Views
             get
             {
                 if (objectManagementService == null)
-                    objectManagementService = new BrandViewModelOMService(BrandService);
+                    objectManagementService = new BrandViewModelOMService(BrandService, Mapper);
                 return objectManagementService;
             }
         }
@@ -27,9 +29,10 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager.Views
             return new BrandUplaodViewModel();
         }
 
-        public BrandManagerViewModel(BrandService brandService) : base()
+        public BrandManagerViewModel(BrandService brandService, IMapper mapper) : base()
         {
             BrandService = brandService;
+            Mapper = mapper;
             Initialize();
         }
 

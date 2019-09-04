@@ -1,10 +1,7 @@
 import axios from "axios";
 import { withLocalize } from "react-localize-redux";
 const apiUrl =
-  //"https://localhost:44396/api/";
-  "http://localhost/MiniBar.Core/api/";
-const iSmartBarApiUrl =
-  "http://localhost/iSmartBar/api/";
+  "http://https://localhost:44396/api/";
 
 const getHeader = lang => {
   if (lang)
@@ -20,16 +17,16 @@ const getCoreUrl = (path, cache) => {
   return apiUrl + path + (cache ? `?t=${getTimestamep()}` : "");
 };
 
-export const assetBaseUrl =
-  "http://localhost/MiniBar.Core/";
-
 export default {
   locations: {
     getAllCountries: lang =>
-      axios.get(`${iSmartBarApiUrl}locations/countries`, getHeader(lang)),
+      axios.get(`${apiUrl}locations/countries`, getHeader(lang)),
     getAllCities: (id, lang) =>
-      axios.get(`${iSmartBarApiUrl}locations/cities/${id}`, getHeader(lang)),
-    getAllHotels: id => axios.get(`${iSmartBarApiUrl}locations/hotels/${id}`)
+      axios.get(`${apiUrl}locations/cities/${id}`, getHeader(lang)),
+    getAllHotels: id => axios.get(`${apiUrl}locations/hotels/${id}`)
+  },
+  visit: {
+    add: visit => axios.post(`${apiUrl}visit/add`, visit)
   },
   categories: {
     getAll: lang => {

@@ -4,11 +4,12 @@ import "../../assets/scss/select.scss";
 import "../../assets/scss/steps.scss";
 import Step from "./step";
 import ChooseLanguage, { languageStepStorageKey } from "./chooseLanguage";
-import ChooseLocation from "./chooseLocation";
+import ChooseLocation, { locationStepStorageKey } from "./chooseLocation";
 import ChooseMiniBar from "./chooseMiniBar";
 import { Translate } from "react-localize-redux";
 import { Redirect } from "react-router-dom";
-import ChooseDate from "./chooseDate";
+import ChooseDate , { dateStepStorageKey }from "./chooseDate";
+import api from "../../api";
 class StartProcessPage extends Component {
   componentDidMount() {
     document.getElementsByTagName("body")[0].className = "steps-body";
@@ -29,6 +30,20 @@ class StartProcessPage extends Component {
     if (step !== this.state.steps.length) {
       this.setState({ ...this.state, step: step + 1 });
     } else {
+      var langaugeObj = JSON.parse(window.localStorage.getItem(languageStepStorageKey));
+      var languageId = langaugeObj.selected.id;
+      var hotelObj = JSON.parse(window.localStorage.getItem(locationStepStorageKey));
+      var hotelId = hotelObj.hotel.id;
+      var checkInOutObj = JSON.parse(window.localStorage.getItem(dateStepStorageKey));
+      var startDate = checkInOutObj.startDate;
+      var endDate = checkInOutObj.endDate;
+      var visit = {
+        languageId,
+        hotelId,
+        startDate,
+        endDate
+      };
+      api.visit.add(visit);
       // this.setState({ ...this.state, redirectHome: true });
       window.location.href = "http://localhost:3000/";
     }

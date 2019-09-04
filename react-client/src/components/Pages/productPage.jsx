@@ -13,7 +13,6 @@ import { GetProductDescription } from "../../redux/products";
 import { withLocalize } from "react-localize-redux";
 import "../../assets/scss/individual.scss";
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
-import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../redux/cart";
 import AddToCart from "../Products/addToCart";
@@ -58,7 +57,7 @@ class ProductPage extends Component {
     let rightContent;
     const imageStyle = {
       backgroundImage: product.imagePath
-        ? `url(${encodeURI(assetBaseUrl + product.imagePath)})`
+        ? `url(${encodeURI(product.imagePath)})`
         : ""
     };
     if (product) {

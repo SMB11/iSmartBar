@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addToCart } from "../../redux/cart";
-import { assetBaseUrl } from "../../api";
 import { withRouter } from "react-router-dom";
 import AddToCart from "./addToCart";
 class Product extends Component {
@@ -37,7 +36,7 @@ class Product extends Component {
     if (!product) return "";
     const imageStyle = {
       backgroundImage: product.imagePath
-        ? `url(${encodeURI(assetBaseUrl + product.imagePath)})`
+        ? `url(${encodeURI(product.imagePath)})`
         : ""
     };
     return (

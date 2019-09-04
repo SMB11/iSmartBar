@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../../assets/scss/products.scss";
-import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 class Brand extends Component {
@@ -12,7 +11,7 @@ class Brand extends Component {
         className="product"
         onClick={this.props.onClick}
       >
-        <img src={assetBaseUrl + brand.imagePath} alt="" />
+        <img src={brand.imagePath} alt="" />
         <div className="background" />
         <span className="product-title">{brand.name}</span>
       </div>

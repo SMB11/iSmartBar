@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "../../assets/scss/mybar.scss";
-import { assetBaseUrl } from "../../api";
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -10,7 +9,7 @@ class myCartOtherItem extends Component {
     const { product } = this.props;
     const imageStyle = {
       backgroundImage: product.imagePath
-        ? `url(${encodeURI(assetBaseUrl + product.imagePath)})`
+        ? `url(${encodeURI(product.imagePath)})`
         : ""
     };
     return (

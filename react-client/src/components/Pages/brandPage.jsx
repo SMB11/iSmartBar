@@ -16,7 +16,6 @@ import {
   brandProductsLoadingSelector
 } from "../../redux/selectors/product";
 import { languageStepStorageKey } from "../StartProcess/chooseLanguage";
-import { assetBaseUrl } from "../../api";
 import Footer from "../Reusable/footer";
 import {
   categorySelector,

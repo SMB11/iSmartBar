@@ -62,8 +62,6 @@ class navBar extends Component {
 
   render() {
     let searchBar = null;
-    console.log(this.props.showSearch);
-    console.log(this.props.showSearch !== false);
     if(this.props.showSearch !== false)
       searchBar = (
         

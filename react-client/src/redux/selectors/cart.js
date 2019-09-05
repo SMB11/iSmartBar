@@ -12,7 +12,6 @@ export const cartAllSelector = state => {
   for (let i = 0; i < 2; i++) {
     Array.prototype.push.apply(res, cart[i]);
   }
-  console.log(res);
   return res;
 };
 export const sectionCartCountSelector = (state, size) =>

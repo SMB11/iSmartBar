@@ -5,26 +5,6 @@ class Footer extends Component {
     return (
       <footer>
         <div className="footer-content">
-          <div className="footer-menu">
-            <ul>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">About</a>
-              </li>
-              <li>
-                <a href="#">Categories</a>
-              </li>
-              <li>
-                <a href="#">iSmartBar</a>
-              </li>
-              <li>
-                <a href="#">Contact</a>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-line" />
           <div className="social-icons">
             <a href="#">
               <img src="http://localhost:3000/images/gmail.svg" alt="gmail" />

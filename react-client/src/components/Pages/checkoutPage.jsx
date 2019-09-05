@@ -60,17 +60,17 @@ class CheckoutPage extends Component {
                             <div className="checkoutPrices">
                                 <div className="inside">
                                     <span className="priceLabel">Items inside MiniBar:</span>
-                                    <span className="right">€ 12</span>
+                                    <span className="right">֏ 12</span>
                                 </div>
                                 <div className="horizontalLine"></div>
                                 <div className="outside">
                                     <span className="priceLabel">Items inside MiniBar:</span>
-                                    <span className="right">€ 12</span>
+                                    <span className="right">֏ 12</span>
                                 </div>
                             </div>
                             <div className="checkoutPricesFinal">
                                 <span className="finalPrice">TOTAL AMOUNT</span>
-                                <span className="rightFinal">€ 12</span>
+                                <span className="rightFinal">֏ 12</span>
                             </div>
                             <div className="buttonDiv">
 

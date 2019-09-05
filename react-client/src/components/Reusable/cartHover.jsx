@@ -140,7 +140,7 @@ class CartHover extends Component {
 
         <div className="subtotal">
           <div className="text">Subtotal</div>
-          <div className="value">€ {this.props.total}</div>
+          <div className="value">֏ {this.props.total}</div>
         </div>
 
         <div className="viewCart">

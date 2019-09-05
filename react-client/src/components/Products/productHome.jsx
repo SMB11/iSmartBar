@@ -30,7 +30,7 @@ class ProductHome extends Component {
           <p>{product.category}</p>
           <div className="p-group">
             <p className="name">{product.name}</p>
-            <p className="nowrap">{"€ " + product.price}</p>
+            <p className="nowrap">{"֏ " + product.price}</p>
           </div>
         </div>
       </div>

@@ -47,7 +47,7 @@ class Product extends Component {
           onClick={() => this.redirect("/product/" + product.id)}
         />
         <span className="product-title">{product.name}</span>
-        <span className="price">€ {product.price}</span>
+        <span className="price">֏ {product.price}</span>
         <div className="prop">
           <div className="product-count">
             <button

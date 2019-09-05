@@ -1,7 +1,7 @@
 import axios from "axios";
 import { withLocalize } from "react-localize-redux";
 const apiUrl =
-  "http://https://localhost:44396/api/";
+  "https://mybar.azurewebsites.net//api/";
 
 const getHeader = lang => {
   if (lang)

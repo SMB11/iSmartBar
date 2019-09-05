@@ -106,16 +106,16 @@ class CartPage extends Component {
                 <div className="horizontal-line" />
                 <div>
                   <span>Items inside MiniBar:</span>
-                  <span className="right">€ {this.props.insidePrice}</span>
+                  <span className="right">֏ {this.props.insidePrice}</span>
                 </div>
                 <div>
                   <span>Items outisde MiniBar:</span>
-                  <span className="right">€ {this.props.outsidePrice}</span>
+                  <span className="right">֏ {this.props.outsidePrice}</span>
                 </div>
                 <div className="horizontal-line" />
                 <div>
                   <span>Order total:</span>
-                  <span className="right">€ {this.props.total}</span>
+                  <span className="right">֏ {this.props.total}</span>
                 </div>
                 <button>CHECKOUT</button>
                 <div className="go-back">

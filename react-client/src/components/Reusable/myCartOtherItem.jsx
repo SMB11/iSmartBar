@@ -57,7 +57,7 @@ class myCartOtherItem extends Component {
               </div>
             </div>
           </div>
-          <div className="price">€{product.price}</div>
+          <div className="price">֏{product.price}</div>
 
           <div
             className="remove"

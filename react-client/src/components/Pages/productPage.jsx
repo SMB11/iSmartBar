@@ -75,20 +75,9 @@ class ProductPage extends Component {
             <div className="image-part" style={imageStyle} />
             <div className="info">
               <h2 className="name">{product.name}</h2>
-              <div>
-                <p>
-                  Volume: 0.75 l <br />
-                  Color: red <br />
-                  Type: dry <br />
-                  Alcohol by volume: 13.5% <br />
-                  Production year: 2015 <br />
-                  Manufacturer: Highland Cellars LLC <br />
-                  Produced in Armenia <br />
-                  Code: 00130 <br />
-                </p>
-              </div>
+              
               <div className="price">
-                <span>€ {product.price}</span>
+                <span>֏ {product.price}</span>
               </div>
               <div className="prop">
                 <div className="product-count">

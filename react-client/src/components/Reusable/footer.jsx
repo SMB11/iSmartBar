@@ -33,7 +33,9 @@ class Footer extends Component {
               Email: info@companyname.com
             </a>
             <a href="tel:+37400000000">Phone: (374) xxx xxxx</a>
-            <a href="">Address: Biagio Capone, Via Castagneto 2, Italy</a>
+            <a href="https://goo.gl/maps/dmgVHogor741G7EW9">
+              Address: Israyelyan 37, 1/1 Office, Yerevan, Armenia, 0010
+            </a>
           </div>
           <div className="short-line" />
           <div className="copyright">

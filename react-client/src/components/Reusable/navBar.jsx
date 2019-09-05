@@ -61,6 +61,19 @@ class navBar extends Component {
   }
 
   render() {
+    let searchBar = null;
+    console.log(this.props.showSearch);
+    console.log(this.props.showSearch !== false);
+    if(this.props.showSearch !== false)
+      searchBar = (
+        
+        <li className="search">
+        <input
+          type="search"
+          placeholder={this.props.translate("search")}
+          title="Search"
+        />
+      </li>);
     return (
       <React.Fragment>
         <header className="header">
@@ -88,13 +101,7 @@ class navBar extends Component {
                 {this.state.location}
               </a>
             </li>
-            <li className="search">
-              <input
-                type="search"
-                placeholder={this.props.translate("search")}
-                title="Search"
-              />
-            </li>
+            {searchBar}
           </ul>
         </header>
         <Modal

@@ -9,7 +9,7 @@ export const sectionCartSelector = (state, size) =>
 export const cartAllSelector = state => {
   const cart = currentCartSelector(state);
   const res = [];
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < cart.length-1; i++) {
     Array.prototype.push.apply(res, cart[i]);
   }
   return res;
@@ -20,7 +20,7 @@ export const insidePriceSelector = state => {
   const cart = currentCartSelector(state);
   const reducer = (price, current) => price + current.price * current.quantity;
   let price = 0;
-  for (let i = 0; i < 2; i++) {
+  for (let i = 0; i < cart.length-1; i++) {
     price += cart[i].reduce(reducer, 0);
   }
   return price.toFixed(2);
@@ -29,14 +29,14 @@ export const outisdePriceSelector = state => {
   const cart = currentCartSelector(state);
   const reducer = (price, current) => price + current.price * current.quantity;
   let price = 0;
-  price += cart[2].reduce(reducer, 0);
+  price += cart[cart.length-1].reduce(reducer, 0);
 
   return price.toFixed(2);
 };
 export const cartFullCountSelector = state => {
   const cart = currentCartSelector(state);
   let quantity = 0;
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < cart.length; i++) {
     quantity += cart[i].reduce(countReducer, 0);
   }
   return quantity;

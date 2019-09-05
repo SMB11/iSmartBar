@@ -1,5 +1,5 @@
 const limits = [20, 5];
-const canAddToCart = (cart, product, quantity) => {
+const getDisitibution = (cart, product, quantity) => {
   //   let cartWithSize = cart.filter(p => product.size === p.size).length;
   const sectionItems = cart[product.size - 1];
   const reducer = (qty = 0, pr) => {
@@ -10,7 +10,7 @@ const canAddToCart = (cart, product, quantity) => {
   if (quantitySum + quantity > limit) {
     const outside = quantitySum + quantity - limit;
     let inside = 0;
-    if (quantitySum <= 5) inside = 5 - quantitySum;
+    if (quantitySum <= limit) inside = limit - quantitySum;
     return { outside, inside };
   } else {
     return { outside: 0, inside: quantity };
@@ -21,7 +21,7 @@ const addToCart = (product, quantity) => {
   if (quantity === 0) return carts;
   product.quantity = quantity;
   let oldCart = carts[carts.length - 1];
-  const distribution = canAddToCart(oldCart, product, quantity);
+  const distribution = getDisitibution(oldCart, product, quantity);
 
   const productInside = { ...product, quantity: distribution.inside };
   const productOutside = { ...product, quantity: distribution.outside };
@@ -34,9 +34,9 @@ const addToCart = (product, quantity) => {
     else oldCart[product.size - 1].push(productInside);
   }
   if (productOutside.quantity > 0) {
-    const index = oldCart[5].findIndex(p => p.id === productOutside.id);
-    if (index >= 0) oldCart[5][index].quantity += productOutside.quantity;
-    else oldCart[5].push(productOutside);
+    const index = oldCart[oldCart.length - 1].findIndex(p => p.id === productOutside.id);
+    if (index >= 0) oldCart[oldCart.length - 1][index].quantity += productOutside.quantity;
+    else oldCart[oldCart.length - 1].push(productOutside);
   }
   carts[carts.length - 1] = oldCart;
   window.localStorage.setItem("carts", JSON.stringify(carts));
@@ -61,41 +61,53 @@ const changeProductQuantity = (id, size, quantity) => {
 };
 
 const removeProduct = (id, size) => {
+  // get carts object
   const carts = getCarts();
+  // get the cart section to update
   let oldCart = carts[carts.length - 1];
+  // get the cart item index to remove
   const index = oldCart[size - 1].findIndex(p => p.id === id);
-
+  // if it exists
   if (index >= 0) {
+    // get the cart item
     let product = oldCart[size - 1][index];
-    if (size !== 6) {
+    // if we working with inside items
+    if (size !== oldCart.length) {
+      // and the product quantity is bigger than one just subtract one and update 
       if (product.quantity > 1) {
         product.quantity -= 1;
         oldCart[size - 1][index] = product;
       } else {
+        // else remove the product
         oldCart[size - 1].splice(index, 1);
       }
-      // get one from other
-
-      const toMoveIndex = oldCart[5].findIndex(p => p.size === size);
+      // determine if we need to bring an item from outside to inside
+      const toMoveIndex = oldCart[oldCart.length].findIndex(p => p.size === size);
+      // if we have empty space 
       if (toMoveIndex >= 0) {
-        const toMove = oldCart[5][toMoveIndex];
-
+        // get the movable item
+        const toMove = oldCart[oldCart.length][toMoveIndex];
+        
+        // if quantity is bigger than one subtract one in the outside section
         if (toMove.quantity > 1) {
-          oldCart[5][toMoveIndex] = {
+          oldCart[oldCart.length][toMoveIndex] = {
             ...toMove,
             quantity: toMove.quantity - 1
           };
         } else {
-          oldCart[5].splice(0, 1);
+          // else remove from the outside
+          oldCart[oldCart.length].splice(0, 1);
         }
-
+        //update cart and send notification
         carts[carts.length - 1] = oldCart;
         window.localStorage.setItem("carts", JSON.stringify(carts));
+        // call addToCart to reuse code
         const res = addToCart(toMove, 1);
         res.popupMessage = "One item was moved to inside of MiniBar.";
         return res;
       }
     } else {
+      // else if working with outside items remove the product
       oldCart[size - 1].splice(index, 1);
     }
   }
@@ -109,7 +121,7 @@ const getCarts = () => {
   if (!window.localStorage.getItem("carts")) {
     window.localStorage.setItem(
       "carts",
-      JSON.stringify([[[], [], [], [], [], []]])
+      JSON.stringify([[[], [], []]])
     );
   }
   let carts = JSON.parse(window.localStorage.getItem("carts"));

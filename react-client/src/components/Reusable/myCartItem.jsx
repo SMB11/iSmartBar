@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../../assets/scss/mybar.scss";
 import { Link } from "react-router-dom";
 import { bindActionCreators } from "redux";
-import { removeProduct, changeProductQuantity } from "../../redux/cart";
+import { addToCart, removeProduct, changeProductQuantity } from "../../redux/cart";
 import { connect } from "react-redux";
 class MyCartItem extends Component {
   prodRef;
@@ -53,10 +53,9 @@ class MyCartItem extends Component {
                 />
                 <button
                   onClick={() =>
-                    this.props.changeProductQuantity(
-                      product.id,
-                      product.size,
-                      product.quantity + 1
+                    this.props.addToCart(
+                      product,
+                      1
                     )
                   }
                   className="button-count"
@@ -85,6 +84,7 @@ class MyCartItem extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
+      addToCart,
       changeProductQuantity,
       removeProduct
     },

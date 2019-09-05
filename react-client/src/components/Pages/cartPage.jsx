@@ -117,7 +117,7 @@ class CartPage extends Component {
                   <span>Order total:</span>
                   <span className="right">֏ {this.props.total}</span>
                 </div>
-                <button>CHECKOUT</button>
+                <Link className="checkoutButton" to="/checkout">CHECKOUT</Link>
                 <div className="go-back">
                   <Link to="/#category">Continue Shopping</Link>
                 </div>

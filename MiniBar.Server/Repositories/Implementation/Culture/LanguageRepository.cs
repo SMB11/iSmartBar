@@ -1,17 +1,20 @@
 ﻿using BusinessEntities.Culture;
+using Common.DataAccess;
 using Facade.Repository;
 using LinqToDB;
-using Repositories.Base;
+using LinqToDB.Data;
 using Repositories.LinqToDB;
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Repositories.Implementation.Culture
 {
-    public class LanguageRepository : RepositoryBase<Language, string, ILanguageRepository>, ILanguageRepository
+    public class LanguageRepository : SimpleRepositoryBase<Language, string, ILanguageRepository>, ILanguageRepository
     {
-        internal override Expression<Func<MiniBarDB, ITable<Language>>> TableExpression => c => c.Languages;
+        public LanguageRepository(MiniBarDB context) : base(context)
+        {
+        }
+
+        public override Expression<Func<DataConnection, ITable<Language>>> TableExpression => c => ((MiniBarDB)c).Languages;
     }
 }

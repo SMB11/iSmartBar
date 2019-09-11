@@ -1,7 +1,5 @@
 ﻿using SharedEntities.Enum;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SharedEntities.DTO.Product
 {
@@ -22,7 +20,7 @@ namespace SharedEntities.DTO.Product
         public string Name { get; set; }
         public string Description { get; set; }
     }
-    
+
     public class ProductUploadDTO
     {
         public int ID { get; set; }

@@ -1,7 +1,5 @@
 ﻿using BusinessEntities.Products;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Common.DataAccess;
 
 namespace Facade.Repository
 {

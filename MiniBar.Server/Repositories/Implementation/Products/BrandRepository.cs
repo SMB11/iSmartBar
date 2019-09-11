@@ -1,20 +1,20 @@
 ﻿using BusinessEntities.Products;
+using Common.DataAccess;
 using Facade.Repository;
 using LinqToDB;
-using Repositories.Base;
+using LinqToDB.Data;
 using Repositories.LinqToDB;
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Repositories.Implementation.Products
 {
-    public class BrandRepository : RepositoryBase<Brand, int, IBrandRepository>, IBrandRepository
+    public class BrandRepository : SimpleRepositoryBase<Brand, int, IBrandRepository>, IBrandRepository
     {
-        internal override Expression<Func<MiniBarDB, ITable<Brand>>> TableExpression => c => c.Brands;
-        
+        public BrandRepository(MiniBarDB context) : base(context)
+        {
+        }
+
+        public override Expression<Func<DataConnection, ITable<Brand>>> TableExpression => c => ((MiniBarDB)c).Brands;
     }
 }

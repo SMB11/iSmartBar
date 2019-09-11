@@ -32,7 +32,7 @@ class Product extends Component {
   }
   render() {
     const { product } = this.props;
-
+    const currency = localStorage.getItem("currency");
     if (!product) return "";
     const imageStyle = {
       backgroundImage: product.imagePath
@@ -47,7 +47,7 @@ class Product extends Component {
           onClick={() => this.redirect("/product/" + product.id)}
         />
         <span className="product-title">{product.name}</span>
-        <span className="price">֏ {product.price}</span>
+        <span className="price">{currency} {product.price}</span>
         <div className="prop">
           <div className="product-count">
             <button

@@ -1,18 +1,20 @@
 ﻿using BusinessEntities.Location;
+using Common.DataAccess;
 using Facade.Repository;
+using iSmartBar.Repositories.LinqToDB;
 using LinqToDB;
+using LinqToDB.Data;
 using System;
 using System.Linq.Expressions;
-using iSmartBar.Repositories.Base;
-using iSmartBar.Repositories.LinqToDB;
-using System.Collections.Generic;
 
 namespace iSmartBar.Repositories.Implementation.Location
 {
-    public class CityRepository : RepositoryBase<City, int, ICityRepository>, ICityRepository
+    public class CityRepository : SimpleRepositoryBase<City, int, ICityRepository>, ICityRepository
     {
+        public CityRepository(ISmartBarDB context) : base(context)
+        {
+        }
 
-        internal override Expression<Func<ISmartBarDB, ITable<City>>> TableExpression => c => c.Cities;
-
+        public override Expression<Func<DataConnection, ITable<City>>> TableExpression => c => ((ISmartBarDB)c).Cities;
     }
 }

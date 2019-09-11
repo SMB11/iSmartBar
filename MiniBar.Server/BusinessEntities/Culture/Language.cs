@@ -1,4 +1,5 @@
-﻿using LinqToDB.Mapping;
+﻿using Common.DataAccess;
+using LinqToDB.Mapping;
 
 namespace BusinessEntities.Culture
 {

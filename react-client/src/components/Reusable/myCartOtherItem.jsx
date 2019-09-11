@@ -12,6 +12,7 @@ class myCartOtherItem extends Component {
         ? `url(${encodeURI(product.imagePath)})`
         : ""
     };
+    const currency = localStorage.getItem("currency");
     return (
       <React.Fragment>
         <div className="product">
@@ -57,7 +58,7 @@ class myCartOtherItem extends Component {
               </div>
             </div>
           </div>
-          <div className="price">֏{product.price}</div>
+          <div className="price">{currency} {product.price}</div>
 
           <div
             className="remove"

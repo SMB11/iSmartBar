@@ -1,4 +1,5 @@
 ﻿using BusinessEntities.Global;
+using Common.DataAccess;
 
 namespace Facade.Repository
 {

@@ -10,6 +10,11 @@ body.steps-body {
     min-height: 100vh;
     // background-color: #042f5c99;
     padding: 50px 0;
+    @media screen and (max-height: 665px) and  (max-width: 400px){
+      
+      height: 100%;
+      padding: 0;
+    }
     .page-logo {
       display: flex;
       justify-content: center;
@@ -21,6 +26,10 @@ body.steps-body {
       margin-top: 80px;
       display: flex;
       justify-content: center;
+      @media (max-height: 665px) and  (max-width: 400px){
+      height: 100%;
+        margin-top: 0;
+    }
       .body {
         padding: 40px 20px 80px;
         width: 880px;

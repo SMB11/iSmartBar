@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SharedEntities.DTO.Updates
+﻿namespace SharedEntities.DTO.Updates
 {
     public class AssemblyDTO
     {

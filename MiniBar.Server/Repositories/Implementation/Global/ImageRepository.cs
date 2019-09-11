@@ -1,16 +1,21 @@
 ﻿using BusinessEntities.Global;
+using Common.DataAccess;
 using Facade.Repository;
 using LinqToDB;
-using Repositories.Base;
+using LinqToDB.Data;
 using Repositories.LinqToDB;
 using System;
 using System.Linq.Expressions;
 
 namespace Core.Repositories.Implementation
 {
-    public class ImageRepository : RepositoryBase<Image, int, IImageRepository>, IImageRepository
+    public class ImageRepository : SimpleRepositoryBase<Image, int, IImageRepository>, IImageRepository
     {
-        internal override Expression<Func<MiniBarDB, ITable<Image>>> TableExpression => c => c.Images;
-        
+        public ImageRepository(MiniBarDB context) : base(context)
+        {
+        }
+
+        public override Expression<Func<DataConnection, ITable<Image>>> TableExpression => c => ((MiniBarDB)c).Images;
+
     }
 }

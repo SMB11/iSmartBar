@@ -6,7 +6,7 @@ namespace SharedEntities.DTO.Users
     public class LoginDto
     {
         public string Username { get; set; } = "";
-        
+
         public string Password { get; set; } = "";
 
     }
@@ -23,7 +23,7 @@ namespace SharedEntities.DTO.Users
     public class RegisterDto
     {
         public string Username { get; set; } = "";
-        
+
         public string Password { get; set; } = "";
     }
 }

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "ismobilejs": "^0.5.1",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
@@ -22,7 +22,8 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "universal-cookie": "^4.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

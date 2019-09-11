@@ -6,6 +6,7 @@ using BusinessEntities.Global;
 using BusinessEntities.Location;
 using BusinessEntities.Products;
 using BusinessEntities.Security;
+using Common.DataAccess;
 using LinqToDB;
 using LinqToDB.Data;
 using LinqToDB.Mapping;
@@ -13,7 +14,7 @@ using LinqToDB.Reflection;
 
 namespace Repositories.LinqToDB
 {
-    internal class MiniBarDB : DataConnection
+    public class MiniBarDB : DataConnection
     {
         private static MappingSchema mappingSchema;
 

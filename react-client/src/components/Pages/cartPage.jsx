@@ -44,6 +44,7 @@ class CartPage extends Component {
   };
   render() {
     const prod = this.props.products;
+    const currency = localStorage.getItem("currency");
     return (
       <React.Fragment>
         <NavBar />
@@ -106,16 +107,16 @@ class CartPage extends Component {
                 <div className="horizontal-line" />
                 <div>
                   <span>Items inside MiniBar:</span>
-                  <span className="right">֏ {this.props.insidePrice}</span>
+                  <span className="right">{currency} {this.props.insidePrice}</span>
                 </div>
                 <div>
                   <span>Items outisde MiniBar:</span>
-                  <span className="right">֏ {this.props.outsidePrice}</span>
+                  <span className="right">{currency} {this.props.outsidePrice}</span>
                 </div>
                 <div className="horizontal-line" />
                 <div>
                   <span>Order total:</span>
-                  <span className="right">֏ {this.props.total}</span>
+                  <span className="right">{currency} {this.props.total}</span>
                 </div>
                 <Link className="checkoutButton" to="/checkout">CHECKOUT</Link>
                 <div className="go-back">

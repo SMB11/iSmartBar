@@ -15,6 +15,7 @@ using Common.ResponseHandling;
 using Common.Validation;
 using Common.Enums;
 using SharedEntities.Enum;
+using Common.Localization;
 
 namespace Managers.Implementation
 {
@@ -93,6 +94,8 @@ namespace Managers.Implementation
 
             IProductInfoRepository productInfoRepo = ServiceProvider.GetService<IProductInfoRepository>();
             ICategoryNameRepository categoryNameRepo = ServiceProvider.GetService<ICategoryNameRepository>();
+            CurrencyProvider currencyProvider = ServiceProvider.GetService<CurrencyProvider>();
+            string currency = HttpContext.Request.Headers["currency"];
             ProductInfo info = await productInfoRepo.FindByIDAsync(product.ID, Culture.Name);
             CategoryName catName = await categoryNameRepo.FindByIDAsync(product.CategoryID, Culture.Name);
             return new ProductDTO()
@@ -103,7 +106,7 @@ namespace Managers.Implementation
                 BrandID = product.BrandID,
                 Brand = product.Brand?.Name,
                 Name = info.Name,
-                Price = product.Price,
+                Price = await currencyProvider.Convert(currency, product.Price),
                 Size = (int)product.Size,
                 Description = info.Description,
                 ImagePath = product.Image?.Path
@@ -204,11 +207,14 @@ namespace Managers.Implementation
                 ImageID = old.ImageID,
                 Size = (BusinessEntities.Enums.ProductSize)product.Size
             };
-
+            bool removeImage = false;
             if(product.ImageChanged)
             {
                 if (product.Image == null)
+                {
+                    removeImage = true;
                     toUpd.ImageID = null;
+                }
                 else if (old.Image != null)
                     toUpd.ImageID = (await imageManager.UpdateBytesAsync(product.Image, old.Image.Path)).ID;
                 else
@@ -229,6 +235,8 @@ namespace Managers.Implementation
                     });
                 }
             }
+            if (removeImage)
+                await imageManager.RemoveAsync(old.Image);
 
         }
 

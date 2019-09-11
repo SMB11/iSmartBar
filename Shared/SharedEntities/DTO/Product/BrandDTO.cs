@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SharedEntities.DTO.Product
+﻿namespace SharedEntities.DTO.Product
 {
     public class BrandDTO
     {
@@ -20,5 +16,5 @@ namespace SharedEntities.DTO.Product
         public byte[] Image { get; set; }
         public bool ImageChanged { get; set; }
     }
-    
+
 }

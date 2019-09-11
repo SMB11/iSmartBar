@@ -16,6 +16,9 @@ const getDisitibution = (cart, product, quantity) => {
     return { outside: 0, inside: quantity };
   }
 };
+const UpdateCart = (cart) => {
+  localStorage.setItem("carts", JSON.stringify(cart));
+}
 const addToCart = (product, quantity) => {
   let carts = getCarts();
   if (quantity === 0) return carts;
@@ -131,5 +134,6 @@ export default {
   addToCart,
   getCarts,
   changeProductQuantity,
-  removeProduct
+  removeProduct,
+  UpdateCart
 };

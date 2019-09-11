@@ -1,17 +1,20 @@
 ﻿using BusinessEntities.Products;
+using Common.DataAccess;
 using Facade.Repository;
 using LinqToDB;
-using Repositories.Base;
+using LinqToDB.Data;
 using Repositories.LinqToDB;
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Repositories.Implementation.Products
 {
-    public class CategoryRepository : RepositoryBase<Category, int, ICategoryRepository>, ICategoryRepository
+    public class CategoryRepository : SimpleRepositoryBase<Category, int, ICategoryRepository>, ICategoryRepository
     {
-        internal override Expression<Func<MiniBarDB, ITable<Category>>> TableExpression => c => c.Categories;
+        public CategoryRepository(MiniBarDB context) : base(context)
+        {
+        }
+
+        public override Expression<Func<DataConnection, ITable<Category>>> TableExpression => c => ((MiniBarDB)c).Categories;
     }
 }

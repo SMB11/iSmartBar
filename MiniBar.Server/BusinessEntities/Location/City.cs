@@ -1,7 +1,5 @@
-﻿using LinqToDB.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Common.DataAccess;
+using LinqToDB.Mapping;
 
 namespace BusinessEntities.Location
 {

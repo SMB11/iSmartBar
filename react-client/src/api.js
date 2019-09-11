@@ -1,14 +1,18 @@
 import axios from "axios";
 import { withLocalize } from "react-localize-redux";
+import Cookies from "universal-cookie";
 const apiUrl =
-  "https://mybar.azurewebsites.net//api/";
+"https://localhost:44396/api/";
+  // "https://mybar.azurewebsites.net/api/";
 
 const getHeader = lang => {
+  
+  let currency = localStorage.getItem("currency");
+  if(!currency) currency = "USD";
+  let headers = {currency};
   if (lang)
-    return {
-      headers: { "Accept-Language": lang }
-    };
-  else return {};
+    headers["Accept-Language"] = lang;
+  return {headers};
 };
 
 const getTimestamep = () => new Date().getTime();
@@ -38,6 +42,15 @@ export default {
       return axios.get(
         getCoreUrl(`brand/subcategoriesBrands/${id}`, true),
         getHeader(lang)
+      );
+    }
+  },
+  cart:{
+    validate: (carts) => {
+      return axios.post(
+        getCoreUrl(`cart/validate`),
+        carts,
+        getHeader()
       );
     }
   },

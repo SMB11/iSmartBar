@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SharedEntities.DTO.Locations
+﻿namespace SharedEntities.DTO.Locations
 {
     public class HotelDTO
     {
@@ -12,7 +8,6 @@ namespace SharedEntities.DTO.Locations
 
         public int CityID { get; set; }
 
-        public string City { get; set; }
     }
 
 

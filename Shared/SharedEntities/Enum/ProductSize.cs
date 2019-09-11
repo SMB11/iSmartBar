@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SharedEntities.Enum
+﻿namespace SharedEntities.Enum
 {
     public enum ProductSize
     {

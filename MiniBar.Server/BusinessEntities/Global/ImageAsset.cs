@@ -1,7 +1,5 @@
 ﻿using Common.Core;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessEntities.Global
 {
@@ -9,26 +7,19 @@ namespace BusinessEntities.Global
     {
         public const int ResizedImageHeight = 400;
 
-        public ImageAsset(byte[] image)
+        public ImageAsset(byte[] content) : base(content)
         {
-            this.Contents = ResizeImage(image);
-            BuildRelativePath();
         }
 
-        public ImageAsset(byte[] image, string path)
+        public ImageAsset(byte[] content, string path) : base(content, path)
         {
-            this.Contents = ResizeImage(image);
-            RelativePath = path;
         }
 
-        private void BuildRelativePath()
+        protected override byte[] ProcessContent(byte[] content)
         {
-            RelativePath = "images/" + Guid.NewGuid() + ".jpg";
+            return ImageHelper.ResizeImage(content, ResizedImageHeight);
         }
 
-        private byte[] ResizeImage(byte[] image)
-        {
-            return ImageHelper.ResizeImage(image, ResizedImageHeight);
-        }
+        public override string ContentType { get => "image/jpeg"; }
     }
 }

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SharedEntities.DTO.Global
 {
-    [Serializable]
     public class ListChanges<T>
     {
         public ListChanges(List<T> newItems, List<T> old, List<T> changed)

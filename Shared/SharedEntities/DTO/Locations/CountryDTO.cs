@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SharedEntities.DTO.Locations
 {
@@ -15,7 +13,7 @@ namespace SharedEntities.DTO.Locations
     public class CountryUploadDTO
     {
         public int ID { get; set; }
-        
+
         public Dictionary<string, string> Names { get; set; }
     }
 }

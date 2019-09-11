@@ -1,17 +1,20 @@
 ﻿using BusinessEntities.Products;
+using Common.DataAccess;
 using Facade.Repository;
 using LinqToDB;
-using Repositories.Base;
+using LinqToDB.Data;
 using Repositories.LinqToDB;
 using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace Repositories.Implementation.Products
 {
-    public class ProductRepository : RepositoryBase<Product, int, IProductRepository>, IProductRepository
+    public class ProductRepository : SimpleRepositoryBase<Product, int, IProductRepository>, IProductRepository
     {
-        internal override Expression<Func<MiniBarDB, ITable<Product>>> TableExpression => c=> c.Products;
+        public ProductRepository(MiniBarDB context) : base(context)
+        {
+        }
+
+        public override Expression<Func<DataConnection, ITable<Product>>> TableExpression => c => ((MiniBarDB)c).Products;
     }
 }

@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using BusinessEntities.Global;
+﻿using BusinessEntities.Global;
+using Common.DataAccess;
 using LinqToDB.Mapping;
 
 namespace BusinessEntities.Products

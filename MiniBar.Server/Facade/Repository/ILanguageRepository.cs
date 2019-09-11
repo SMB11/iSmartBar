@@ -1,4 +1,5 @@
 ﻿using BusinessEntities.Culture;
+using Common.DataAccess;
 
 namespace Facade.Repository
 {

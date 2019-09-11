@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Mvc;
 using SharedEntities.DTO.Locations;
 
-namespace iSmartBarApi.Controllers
+namespace CoreAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

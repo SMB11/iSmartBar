@@ -20,6 +20,7 @@ class ProductHome extends Component {
         ? `url(${encodeURI(product.imagePath)})`
         : ""
     };
+    const currency = localStorage.getItem("currency");
     return (
       <div
         className="product"
@@ -30,7 +31,7 @@ class ProductHome extends Component {
           <p>{product.category}</p>
           <div className="p-group">
             <p className="name">{product.name}</p>
-            <p className="nowrap">{"֏ " + product.price}</p>
+            <p className="nowrap">{currency + " " + product.price}</p>
           </div>
         </div>
       </div>

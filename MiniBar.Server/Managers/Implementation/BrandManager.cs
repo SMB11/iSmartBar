@@ -121,16 +121,22 @@ namespace Managers.Implementation
             if (old == null)
                 throw new ApiException(FaultCode.InvalidID);
             Brand toUpd = new Brand { ID = brand.ID, Name = brand.Name, ImageID = old.ImageID };
+            bool removeImage = false;
             if (brand.ImageChanged)
             {
                 if (brand.Image == null)
+                {
+                    removeImage = true;
                     toUpd.ImageID = null;
+                }
                 else if (old.Image != null)
                     toUpd.ImageID = (await imageManager.UpdateBytesAsync(brand.Image, old.Image.Path)).ID;
                 else
                     toUpd.ImageID = (await imageManager.InsertBytesAsync(brand.Image)).ID;
             }
             await brandRepo.UpdateAsync(toUpd);
+            if (removeImage)
+                await imageManager.RemoveAsync(old.Image);
 
         }
 

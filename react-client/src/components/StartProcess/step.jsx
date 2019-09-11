@@ -6,12 +6,12 @@ class Step extends Component {
     let stepsHtml = [];
     for (let i = 0; i < stepsCount; i++) {
       if (step == i + 1) stepsHtml.push(<div key={i} className="dot active" />);
-      else stepsHtml.push(<div className="dot" />);
+      else stepsHtml.push(<div key={i} className="dot" />);
     }
     return (
-      <div id="container">
+      <div id="container" >
         <div className="page-logo">
-          <img src="images/Logo_big.png" alt="ISmartBar logo" />
+          {/* <img src="images/Logo_big.png" alt="ISmartBar logo" /> */}
         </div>
         <div className="content">
           <div className="body">

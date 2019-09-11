@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SharedEntities.DTO.Global
+﻿namespace SharedEntities.DTO.Global
 {
     public class LanguageDTO
     {

@@ -5,6 +5,8 @@ using BusinessEntities.Culture;
 using BusinessEntities.Location;
 using BusinessEntities.Products;
 using BusinessEntities.Security;
+using BusinessEntities.Statistics;
+using Common.DataAccess;
 using LinqToDB;
 using LinqToDB.Data;
 using LinqToDB.Mapping;
@@ -12,7 +14,7 @@ using LinqToDB.Reflection;
 
 namespace iSmartBar.Repositories.LinqToDB
 {
-    internal class ISmartBarDB : DataConnection
+    public class ISmartBarDB : DataConnection
     {
         private static MappingSchema mappingSchema;
 
@@ -60,5 +62,6 @@ namespace iSmartBar.Repositories.LinqToDB
         public ITable<City> Cities => GetTable<City>();
         public ITable<Country> Countries => GetTable<Country>();
         public ITable<CountryInfo> CountryInfos => GetTable<CountryInfo>();
+        public ITable<Visit> Visits => GetTable<Visit>();
     }
 }

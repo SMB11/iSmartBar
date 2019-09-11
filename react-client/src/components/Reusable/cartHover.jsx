@@ -45,6 +45,7 @@ class CartHover extends Component {
       barInsideProductsCount,
       barLargeBottlesCount
     } = this.props;
+    const currency = localStorage.getItem("currency");
     const otherProds = this.props.otherProducts;
     return (
       <div
@@ -140,7 +141,7 @@ class CartHover extends Component {
 
         <div className="subtotal">
           <div className="text">Subtotal</div>
-          <div className="value">֏ {this.props.total}</div>
+          <div className="value">{currency} {this.props.total}</div>
         </div>
 
         <div className="viewCart">

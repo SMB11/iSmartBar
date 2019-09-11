@@ -20,6 +20,14 @@ namespace CoreAPI.Controllers
         {
         }
 
+        //[Authorize]
+        //[HttpGet("validate")]
+        //public IActionResult ValidateToken()
+        //{
+        //    return Ok();
+        //}
+
+
         [HttpPost]
         public async Task<UserDto> Login(LoginDto dto)
         {

@@ -60,6 +60,7 @@ class ProductPage extends Component {
         ? `url(${encodeURI(product.imagePath)})`
         : ""
     };
+    const currency = localStorage.getItem("currency");
     if (product) {
       rightContent = (
         <div
@@ -77,7 +78,7 @@ class ProductPage extends Component {
               <h2 className="name">{product.name}</h2>
               
               <div className="price">
-                <span>֏ {product.price}</span>
+                <span>{currency} {product.price}</span>
               </div>
               <div className="prop">
                 <div className="product-count">

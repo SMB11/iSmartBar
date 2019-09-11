@@ -25,6 +25,7 @@ class CheckoutPage extends Component {
         this.setState({...this.state, ...JSON.parse(window.localStorage.getItem(locationStepStorageKey))});
     }
     render() {
+        const currency = localStorage.getItem("currency");
         return (
             <React.Fragment>
                 <NavBar showSearch={false}/>
@@ -78,17 +79,17 @@ class CheckoutPage extends Component {
                             <div className="checkoutPrices">
                                 <div className="inside">
                                     <span className="priceLabel">Items inside MiniBar:</span>
-                                    <span className="right">֏ {this.props.insidePrice}</span>
+                                    <span className="right">{currency} {this.props.insidePrice}</span>
                                 </div>
                                 <div className="horizontalLine"></div>
                                 <div className="outside">
                                     <span className="priceLabel">Items inside MiniBar:</span>
-                                    <span className="right">֏ {this.props.outsidePrice}</span>
+                                    <span className="right">{currency} {this.props.outsidePrice}</span>
                                 </div>
                             </div>
                             <div className="checkoutPricesFinal">
                                 <span className="finalPrice">TOTAL AMOUNT</span>
-                                <span className="rightFinal">֏ {this.props.total}</span>
+                                <span className="rightFinal">{currency} {this.props.total}</span>
                             </div>
                             <div className="buttonDiv">
 

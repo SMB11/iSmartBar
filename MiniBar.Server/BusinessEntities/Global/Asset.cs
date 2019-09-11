@@ -1,20 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace BusinessEntities.Global
 {
-    public class Asset
+    public abstract class Asset
     {
-        public string RelativePath { get; set; }
-        public string FileName
+        public string Path { get; set; }
+        public byte[] Contents { get; set; }
+        public virtual string ContentType { get; }
+
+
+        public Asset(byte[] content)
         {
-            get
-            {
-                return Path.GetFileName(RelativePath);
-            }
+            SetContent(content);
         }
-        public byte[] Contents;
+
+        public Asset(byte[] content, string path): this(content)
+        {
+            SetContent(content);
+            Path = path;
+        }
+
+
+        private void SetContent(byte[] content)
+        {
+            this.Contents = ProcessContent(content);
+        }
+
+        protected virtual byte[] ProcessContent(byte[] content)
+        {
+            return content;
+        }
     }
 }

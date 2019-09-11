@@ -11,6 +11,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_CART:
+
       return { ...state, carts: action.payload };
 
     default:
@@ -30,6 +31,12 @@ const processResult = (dispatch, result) => {
     dispatch(SetPopupMessage(result.popupMessage));
   }
 };
+export const UpdateCart = (cart) => {
+  cartLogic.UpdateCart(cart);
+  return dispatch => {
+    dispatch(setCart(cart));
+  }
+}
 
 export const addToCart = (product, quantity) => {
   return dispatch => {

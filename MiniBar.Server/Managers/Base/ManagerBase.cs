@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Options;
+using Common.Services;
 
 namespace Managers.Base
 {
@@ -17,12 +18,21 @@ namespace Managers.Base
         private IHttpContextAccessor httpContextAccessor;
         private IMemoryCache memoryCache;
         private IOptions<RequestLocalizationOptions> localizationOptions;
+        private INotificationService notificationService;
 
         protected IOptions<RequestLocalizationOptions> LocalizationOptions
         {
             get
             {
                 return localizationOptions;
+            }
+        }
+
+        protected INotificationService Notification
+        {
+            get
+            {
+                return notificationService;
             }
         }
 
@@ -67,6 +77,7 @@ namespace Managers.Base
             this.httpContextAccessor = serviceProvider.GetService<IHttpContextAccessor>();
             this.memoryCache = serviceProvider.GetService<IMemoryCache>();
             this.localizationOptions = serviceProvider.GetService<IOptions<RequestLocalizationOptions>>();
+            this.notificationService = serviceProvider.GetService<INotificationService>();
         }
     }
 }

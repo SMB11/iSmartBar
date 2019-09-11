@@ -1,11 +1,26 @@
-﻿using BusinessEntities.Security;
-using Common.ResponseHandling;
+﻿using AutoMapper;
+using BusinessEntities.Security;
+using Common.Configuration;
+using Common.Core;
+using Common.Enums;
 using Common.Filters;
-using AutoMapper;
+using Common.Localization;
+using Common.ResponseHandling;
+using Common.Services;
+using Core.Repositories.Implementation;
+using Facade.Accessors;
+using Facade.Configuration;
+using Facade.Managers;
+using Facade.Repository;
 using FluentValidation.AspNetCore;
+using Hubs;
+using iSmartBar.Repositories.Implementation.Location;
+using iSmartBar.Repositories.Implementation.Statistics;
 using LinqToDB.Data;
 using LinqToDB.DataProvider.SqlServer;
 using LinqToDB.Identity;
+using Managers.Implementation;
+using Managers.Notifications;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
@@ -15,28 +30,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Repositories.Implementation.Accessors;
+using Repositories.Implementation.Culture;
+using Repositories.Implementation.Global;
+using Repositories.Implementation.Products;
+using Repositories.Implementation.Security;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.IO;
-using System.Text;
-using Common.Configuration;
-using Common.Core;
-using System.Collections.Generic;
-using Common.Enums;
-using System.Net;
-using Facade.Managers;
-using Facade.Repository;
-using Repositories.Implementation;
-using Managers.Implementation;
-using Repositories.Implementation.Global;
-using Repositories.Implementation.Security;
-using Repositories.Implementation.Culture;
 using System.Linq;
-using Repositories.Implementation.Products;
-using Facade.Accessors;
-using Repositories.Implementation.Accessors;
-using Facade.Configuration;
-using Core.Repositories.Implementation;
+using System.Net;
+using System.Text;
 
 namespace CoreAPI
 {
@@ -99,8 +104,8 @@ namespace CoreAPI
                         DataProtectionProvider.Create(new DirectoryInfo("C:\\Github\\Identity\\artifacts"));
 
                 });
-            
-            
+
+
             #endregion
 
             // Add Managers to service collection
@@ -134,7 +139,13 @@ namespace CoreAPI
                 .AddFluentValidation();
             services.AddResponseCaching();
             services.AddMemoryCache();
-            //services.AddAutoMapper();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".iSmartBar.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(60);
+                options.Cookie.IsEssential = true;
+            });
 
             Mapper.Initialize(cfg => cfg.AddProfiles(typeof(ProfileLocator).Assembly));
             services.AddOptions();
@@ -143,7 +154,8 @@ namespace CoreAPI
             GlobalOptions globalOptions = globalOptionsSection.Get<GlobalOptions>();
             services.Configure<GlobalOptions>(globalOptionsSection);
             // Configure Response Options
-            services.Configure<ResponseOptions>(options => {
+            services.Configure<ResponseOptions>(options =>
+            {
                 options.Dictionary = new LocalizationDictionary<object, ApiResponse>();
                 options.Dictionary.Add(
                     "en",
@@ -155,11 +167,13 @@ namespace CoreAPI
                         [FaultCode.InvalidPage] = new FaultResponse(HttpStatusCode.BadRequest, "Invalid Page"),
                         [FaultCode.InvalidUserCredentials] = new FaultResponse(HttpStatusCode.BadRequest, "Invalid Credentials"),
                         [FaultCode.NotAllCulturesProvided] = new FaultResponse(HttpStatusCode.BadRequest, "Data must be provided in all supported languages."),
-                        
+
                     }
                 );
             });
-            IList<string> languages = new LanguageRepository().GetAll().Select(l => l.ID).ToList();
+            services.AddScoped<Repositories.LinqToDB.MiniBarDB>();
+            services.AddScoped<iSmartBar.Repositories.LinqToDB.ISmartBarDB>();
+            IList<string> languages = new LanguageRepository(new Repositories.LinqToDB.MiniBarDB()).GetAll().Select(l => l.ID).ToList();
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture(languages[0]);
@@ -167,15 +181,17 @@ namespace CoreAPI
                 options.SupportedCultures = languages.Select(l => new System.Globalization.CultureInfo(l)).ToList();
             });
             services.AddSingleton<ResponseProvider>();
-
+            services.AddSingleton<CurrencyProvider>();
+            services.AddNotifications();
+            services.AddSignalR();
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddSingleton<ServiceProvider>(services.BuildServiceProvider());
         }
-        
+
         private void AddManagers(IServiceCollection services)
         {
             services.AddTransient<IAuthenticationManager, Managers.Implementation.AuthenticationManager>();
-            services.AddTransient<IAssetRepository, AssetRepository>();
+            services.AddTransient<IAssetRepository, AzureBlobRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserRolesManager, UserRolesManager>();
             services.AddTransient<IRoleRepository, RoleRepository>();
@@ -192,12 +208,36 @@ namespace CoreAPI
             services.AddTransient<IProductInfoRepository, ProductInfoRepository>();
             services.AddTransient<IImageManager, ImageManager>();
             services.AddTransient<IImageRepository, ImageRepository>();
+
+            #region iSmartBar
+            services.AddTransient<ICountryRepository, CountryRepository>();
+            services.AddTransient<ICountryInfoRepository, CountryInfoRepository>();
+            services.AddTransient<ICountryManager, CountryManager>();
+            services.AddTransient<ICityRepository, CityRepository>();
+            services.AddTransient<ICityInfoRepository, CityInfoRepository>();
+            services.AddTransient<ICityManager, CityManager>();
+            services.AddTransient<IHotelRepository, HotelRepository>();
+            services.AddTransient<IHotelManager, HotelManager>();
+            services.AddTransient<IVisitManager, VisitManager>();
+            services.AddTransient<IVisitRepository, VisitRepository>();
+            services.AddTransient<ICartManager, CartManager>();
+            services.AddTransient<VisitNotificationManager, VisitNotificationManager>();
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseStaticFiles();
+            app.UseNotifications(o => {
+                o.AddHandler<VisitNotificationManager>();
+            });
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<VisitHub>("/visitHub", o => {
+
+                });
+            });
             app.UseResponseCaching();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             //app.UseSimulatedLatency(TimeSpan.FromMilliseconds(2000), TimeSpan.FromMilliseconds(6000));
@@ -212,8 +252,7 @@ namespace CoreAPI
                 app.UseHsts();
             }
             app.UseErrorHandling();
-
-            app.UseStaticFiles();
+            app.UseSession();
             app.UseRequestLocalization();
             app.UseAuthentication();
             app.UseHttpsRedirection();

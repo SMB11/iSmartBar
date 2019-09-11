@@ -18,15 +18,32 @@ import {
   popupShownSelector
 } from "./redux/selectors/popup";
 import { SetPopupShown } from "./redux/popup";
-
+import { UpdateCart } from "./redux/cart";
+import Cookies from 'universal-cookie';
 import ReactNotification from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
+import api from "./api";
 
 class PageWrapper extends Component {
   constructor(props) {
     super(props);
     this.addNotification = this.addNotification.bind(this);
     this.notificationDOMRef = React.createRef();
+    const cookies = new Cookies();
+    cookies.set('currency', 'USD');
+    this.validateCart();
+  }
+  validateCart(){
+    
+    const carts = JSON.parse(localStorage.getItem("carts"));
+    if(carts){
+      api.cart.validate(carts).then(e => {
+        if(e.data){
+          this.props.UpdateCart(e.data);
+        }
+      });
+    }
+
   }
   addNotification(message) {
     this.notificationDOMRef.current.addNotification({
@@ -68,7 +85,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      SetPopupShown
+      SetPopupShown,
+      UpdateCart
     },
     dispatch
   );

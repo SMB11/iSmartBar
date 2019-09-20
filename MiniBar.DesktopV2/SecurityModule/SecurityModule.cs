@@ -16,7 +16,7 @@ namespace Core.Modules
     public class SecurityModule : Module
     {
         public override string Name => "Security";
-        
+
         private IContainerProvider Container { get; set; }
 
         public override void OnInitialized(IContainerProvider containerProvider)
@@ -45,7 +45,7 @@ namespace Core.Modules
             {
                 await controller.Logout();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ApiHelper.HandleApiException(ex);
             }

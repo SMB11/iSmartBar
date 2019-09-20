@@ -1,18 +1,11 @@
 ﻿using DevExpress.Xpf.Bars;
-using DevExpress.Xpf.NavBar;
-using DevExpress.Xpf.Navigation;
 using Infrastructure.Interface;
 using Infrastructure.Utility;
-using Infrastructure.Workitems;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -41,7 +34,7 @@ namespace Infrastructure
             if (!DesignerProperties.GetIsInDesignMode(element))
             {
                 string name = GetCommandName(element);
-                if(!String.IsNullOrEmpty(name))
+                if (!String.IsNullOrEmpty(name))
                     CreateCommand(element, name);
             }
         }
@@ -90,7 +83,8 @@ namespace Infrastructure
 
         private static ICommand WrapCommandAddParameter(ICommand command, Func<object> getParam)
         {
-            DelegateCommand wrapped = new DelegateCommand(() => {
+            DelegateCommand wrapped = new DelegateCommand(() =>
+            {
                 command.Execute(getParam());
             },
             () => command.CanExecute(getParam()));
@@ -142,7 +136,7 @@ namespace Infrastructure
         public static void ExecuteWorkitemCommand(string commandName, IWorkItem workItem, object parameter = null)
         {
             ICommand cmd = GetCompositeCommandByName(commandName, workItem);
-            if(cmd.CanExecute(parameter))
+            if (cmd.CanExecute(parameter))
                 cmd.Execute(parameter);
         }
 

@@ -48,9 +48,9 @@ namespace Security
 
         private async Task HandleHttpError(FlurlHttpException ex)
         {
-            if (ex.InnerException is TaskCanceledException)
+            if (ex?.InnerException is TaskCanceledException)
                 throw ex.InnerException;
-            if(ex.Call.Response == null)
+            if (ex.Call.Response == null)
             {
                 throw new ApiConnectionException("Couldn't connect to server");
             }

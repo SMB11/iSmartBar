@@ -1,8 +1,6 @@
 ﻿using Infrastructure.Framework;
 using Infrastructure.Interface;
 using Infrastructure.Modularity;
-
-using Infrastructure.Utility;
 using Infrastructure.Workitems;
 using MiniBar.Common.Resources;
 using MiniBar.Common.Workitems.EntityQC.Views;
@@ -32,14 +30,14 @@ namespace MiniBar.Common.Workitems.EntityQC
         protected override void RegisterViews(IViewContainer container)
         {
             base.RegisterViews(container);
-            var view  = container.Register<FrameworkElement>(CreateView(), ScreenRegion.Content);
+            var view = container.Register<FrameworkElement>(CreateView(), ScreenRegion.Content);
             QCViewModel = (QCViewModel)view.DataContext;
             QCViewModel.List = new System.Collections.ObjectModel.ObservableCollection<object>(List.OfType<object>().ToList());
 
             QARibbonPageCategory category = new QARibbonPageCategory();
             category.Caption = WorkItemName;
             container.Register(category, region: ScreenRegion.Ribbon);
-                
+
         }
 
         protected abstract FrameworkElement CreateView();
@@ -83,7 +81,7 @@ namespace MiniBar.Common.Workitems.EntityQC
 
         public virtual void Initialize(object data)
         {
-            if(data is IList)
+            if (data is IList)
             {
                 List = data as IList;
             }

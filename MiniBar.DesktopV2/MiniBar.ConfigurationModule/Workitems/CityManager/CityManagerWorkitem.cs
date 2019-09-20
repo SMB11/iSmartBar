@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Interface;
-using MiniBar.Common.Workitems;
 using MiniBar.Common.Workitems.ObjectManager;
 using MiniBar.ConfigurationModule.Workitems.CityManager.Views;
 using MiniBar.EntityViewModels.Configuration;

@@ -34,7 +34,7 @@ namespace Infrastructure.Modularity
         private void HandleActiveChanged()
         {
             bool visible = IsActive;
-            foreach(var item in Items)
+            foreach (var item in Items)
             {
                 if (item is BarButtonItem)
                 {

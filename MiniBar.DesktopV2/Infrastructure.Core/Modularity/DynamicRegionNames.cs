@@ -24,7 +24,7 @@ namespace Infrastructure.Modularity
         /// <returns></returns>
         public string GetName(ScreenRegion forRegion)
         {
-            if(Names.ContainsKey(forRegion))
+            if (Names.ContainsKey(forRegion))
                 return Names[forRegion];
             return null;
         }

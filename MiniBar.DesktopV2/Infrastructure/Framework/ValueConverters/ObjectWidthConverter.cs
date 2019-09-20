@@ -8,7 +8,7 @@ namespace Infrastructure.Framework
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (value == null) ? 0: Double.NaN;
+            return (value == null) ? 0 : Double.NaN;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

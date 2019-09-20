@@ -1,9 +1,9 @@
-﻿using Infrastructure.Interface;
-using System.Linq;
-using MiniBar.ProductsModule.Workitems.ProductManager;
-using MiniBar.ProductsModule.Workitems.CategoryManager;
+﻿using Infrastructure.Framework;
+using Infrastructure.Interface;
 using MiniBar.ProductsModule.Workitems.BrandManager;
-using Infrastructure.Framework;
+using MiniBar.ProductsModule.Workitems.CategoryManager;
+using MiniBar.ProductsModule.Workitems.ProductManager;
+using System.Linq;
 
 namespace MiniBar.ProductsModule.Resources
 {
@@ -28,7 +28,7 @@ namespace MiniBar.ProductsModule.Resources
                     break;
 
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
-                    if (e.OldItems!= null)
+                    if (e.OldItems != null)
                     {
                         ProductManagerCount -= e.OldItems.OfType<ProductManagerWorkitem>().Count();
                         BrandManagerCount -= e.OldItems.OfType<BrandManagerWorkitem>().Count();
@@ -43,8 +43,9 @@ namespace MiniBar.ProductsModule.Resources
         public int ProductManagerCount
         {
             get { return productManagerCount; }
-            set {
-                SetProperty(ref productManagerCount,  value, nameof(ProductManagerCount));
+            set
+            {
+                SetProperty(ref productManagerCount, value, nameof(ProductManagerCount));
                 RaisePropertyChanged(nameof(ProductManagerInformativeText));
             }
         }

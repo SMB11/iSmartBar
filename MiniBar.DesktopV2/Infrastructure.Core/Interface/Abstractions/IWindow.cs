@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Infrastructure.Interface
+﻿namespace Infrastructure.Interface
 {
     /// <summary>
     /// Abstraction over implementation framework's Window

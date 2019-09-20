@@ -1,11 +1,7 @@
 ﻿using Infrastructure.Interface;
 using Infrastructure.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Threading;
 
 namespace Infrastructure.Utility
@@ -14,7 +10,8 @@ namespace Infrastructure.Utility
     {
         public static void InvokeIfNeeded(this Dispatcher dispatcher, Action action)
         {
-            if (dispatcher.CheckAccess()) {
+            if (dispatcher.CheckAccess())
+            {
                 action?.Invoke();
             }
             else
@@ -33,7 +30,7 @@ namespace Infrastructure.Utility
             }
             else
             {
-                return  dispatcher.Invoke(action);
+                return dispatcher.Invoke(action);
             }
 
         }

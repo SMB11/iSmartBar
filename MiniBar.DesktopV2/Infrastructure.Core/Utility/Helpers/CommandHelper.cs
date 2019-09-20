@@ -1,9 +1,4 @@
 ﻿using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Infrastructure.Utility
@@ -13,7 +8,7 @@ namespace Infrastructure.Utility
         public static string Format(params string[] names)
         {
             string res = "";
-            foreach(string name in names)
+            foreach (string name in names)
             {
                 res += name + ".";
             }

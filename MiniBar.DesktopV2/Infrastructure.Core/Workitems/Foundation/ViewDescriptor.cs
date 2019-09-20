@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Infrastructure.Workitems
+﻿namespace Infrastructure.Workitems
 {
     /// <summary>
     /// Object describing the view registered through the view container

@@ -1,21 +1,21 @@
-﻿using Prism.Ioc;
-using Infrastructure.Workitems;
-using MiniBar.ProductsModule.Workitems.BrandManager.Views;
-using MiniBar.EntityViewModels.Products;
-using MiniBar.ProductsModule.Services;
-using System.Collections.Generic;
-using DevExpress.Xpf.Ribbon;
-using MiniBar.ProductsModule.Resources;
-using MiniBar.ProductsModule.Workitems.BrandQC;
-using SharedEntities.DTO.Product;
-using System.Reactive.Linq;
-using System;
-using System.Reactive;
-using System.Threading.Tasks;
-using Infrastructure.Interface;
-using MiniBar.Common.Workitems.ObjectManager;
-using Infrastructure.Office;
+﻿using DevExpress.Xpf.Ribbon;
 using Documents.Adapter;
+using Infrastructure.Interface;
+using Infrastructure.Office;
+using Infrastructure.Workitems;
+using MiniBar.Common.Workitems.ObjectManager;
+using MiniBar.EntityViewModels.Products;
+using MiniBar.ProductsModule.Resources;
+using MiniBar.ProductsModule.Services;
+using MiniBar.ProductsModule.Workitems.BrandManager.Views;
+using MiniBar.ProductsModule.Workitems.BrandQC;
+using Prism.Ioc;
+using SharedEntities.DTO.Product;
+using System;
+using System.Collections.Generic;
+using System.Reactive;
+using System.Reactive.Linq;
+using System.Threading.Tasks;
 
 namespace MiniBar.ProductsModule.Workitems.BrandManager
 {
@@ -48,7 +48,7 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager
         public BrandService BrandService { get; set; }
         #endregion
 
-        
+
         protected override ExcelDocument<BrandUplaodViewModel> GetDocument()
         {
             BrandManagerViewModel brandManagerViewModel = (ObjectManagerViewModel as BrandManagerViewModel);
@@ -58,7 +58,7 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager
                 "Name");
             return new ExcelDocument<BrandUplaodViewModel>(documentAdapter);
         }
-        
+
         protected override Task<IObservable<WorkitemEventArgs>> LaunchQCWorkitem(List<BrandUplaodViewModel> res)
         {
             return CurrentContextService.LaunchModalWorkItem<BrandQCWorkitem>(res, this);
@@ -79,7 +79,7 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager
             }
 
             return Observable.FromAsync(() => BrandService.AddList(dtos));
-                
+
         }
 
         protected override RibbonPageCategory GetRibbonCategory()

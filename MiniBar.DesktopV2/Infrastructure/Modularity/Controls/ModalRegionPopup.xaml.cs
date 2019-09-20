@@ -1,6 +1,6 @@
 ﻿using DevExpress.Xpf.Core;
-using Infrastructure.Interface;
 using Infrastructure.Framework;
+using Infrastructure.Interface;
 using Infrastructure.Utility;
 
 namespace Infrastructure.Modularity
@@ -17,7 +17,7 @@ namespace Infrastructure.Modularity
             InitializeComponent();
             var names = new DynamicRegionNames();
             RegionNameManager.SetDynamicRegionNames(this, names);
-            
+
         }
 
         #region IWindow Implementation

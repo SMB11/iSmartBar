@@ -32,7 +32,7 @@ namespace MiniBar.ConfigurationModule.Workitems.CountryManager.Views
         private async Task StartEditName()
         {
             IObservable<WorkitemEventArgs> channel = await CurrentContextService.LaunchModalWorkItem<LanguageEditWorkitem>(CurrentItemDetails.Names ?? new Dictionary<string, string>(), WorkItem);
-            channel.Subscribe(data => 
+            channel.Subscribe(data =>
                 CurrentItemDetails.Names = (IDictionary<string, string>)data.Data);
 
         }
@@ -46,7 +46,6 @@ namespace MiniBar.ConfigurationModule.Workitems.CountryManager.Views
         public override void Dispose()
         {
             base.Dispose();
-            NameEditCommand.Dispose();
         }
     }
 }

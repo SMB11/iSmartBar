@@ -1,11 +1,5 @@
 ﻿using MiniBar.EntityViewModels.Configuration;
-using MiniBar.EntityViewModels.Products;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiniBar.ConfigurationModule.Workitems.CityManager.Views
 {

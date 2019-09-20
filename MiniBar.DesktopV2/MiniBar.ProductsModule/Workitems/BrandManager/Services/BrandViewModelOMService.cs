@@ -49,7 +49,7 @@ namespace MiniBar.ProductsModule.Workitems.BrandManager.Services
 
             if (dto.ImagePath != null)
             {
-                uplaodViewModel.Image.Bytes = await Infrastructure.Utility.ImageHelper.DownloadBytesAsync(ConfigurationManager.AppSettings["ProductCdn"] + dto.ImagePath, token);
+                uplaodViewModel.Image.Bytes = await Infrastructure.Utility.ImageHelper.DownloadBytesAsync(dto.ImagePath, token);
                 uplaodViewModel.Image.AcceptChanges();
             }
             return uplaodViewModel;

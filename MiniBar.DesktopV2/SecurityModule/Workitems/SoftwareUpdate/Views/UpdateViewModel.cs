@@ -1,13 +1,13 @@
-﻿using System;
-using DevExpress.Mvvm;
-using System.Reflection;
+﻿using DevExpress.Mvvm;
+using Infrastructure.Framework;
 using Security.Services;
-using System.Collections.Generic;
 using SharedEntities.DTO.Updates;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Collections.ObjectModel;
-using Infrastructure.Framework;
+using System.Reflection;
 
 namespace Security.Workitems.SoftwareUpdate.Views
 {
@@ -68,9 +68,10 @@ namespace Security.Workitems.SoftwareUpdate.Views
         private void CalculateUpdates(List<AssemblyDTO> list)
         {
             DirectoryInfo assembliesDir = new DirectoryInfo(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Modules"));
-            if (assembliesDir != null)
+            if (assembliesDir != null && assembliesDir.Exists)
             {
-                List<AssemblyDTO> localList = assembliesDir.GetFiles().Select(f => {
+                List<AssemblyDTO> localList = assembliesDir.GetFiles().Select(f =>
+                {
                     Assembly assembly = null;
                     try
                     {

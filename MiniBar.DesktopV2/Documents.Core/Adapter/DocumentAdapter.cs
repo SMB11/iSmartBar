@@ -9,7 +9,7 @@ using System.Reflection;
 namespace Documents.Adapter
 {
     public class DocumentAdapter<T>
-        where T: class
+        where T : class
     {
 
         private List<ColumnMetadata> columns = new List<ColumnMetadata>();

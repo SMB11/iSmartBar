@@ -1,11 +1,11 @@
-﻿using System;
-using System.Windows;
-using System.Collections;
-using System.Reflection;
-using System.Collections.Generic;
+﻿using DevExpress.Xpf.Core;
 using DevExpress.Xpf.Grid;
-using DevExpress.Xpf.Core;
 using Infrastructure.Framework;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Windows;
 
 namespace Infrastructure
 {

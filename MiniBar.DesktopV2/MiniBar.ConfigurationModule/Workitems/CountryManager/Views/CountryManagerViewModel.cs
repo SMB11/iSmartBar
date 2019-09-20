@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
 using Infrastructure.Interface;
-using Infrastructure.Workitems;
-using MiniBar.Common.MVVM;
 using MiniBar.Common.Services;
 using MiniBar.Common.Workitems.ObjectManager;
 using MiniBar.ConfigurationModule.Services;
 using MiniBar.ConfigurationModule.Workitems.CountryManager.Services;
 using MiniBar.EntityViewModels.Configuration;
-using MiniBar.EntityViewModels.Products;
 using System.Collections.Generic;
 
 namespace MiniBar.ConfigurationModule.Workitems.CountryManager.Views

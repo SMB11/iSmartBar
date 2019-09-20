@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MiniBar.Common.Constants
+﻿namespace MiniBar.Common.Constants
 {
     public static class CommandNames
     {
+        
+        public const string SwitchToDarkMode = "SwitchToDarkMode";
+        public const string Exit = "Exit";
         public const string OpenFile = "OpenFileCommand";
         public const string SaveData = "SaveData";
         public const string FinishImport = "FinishImport";

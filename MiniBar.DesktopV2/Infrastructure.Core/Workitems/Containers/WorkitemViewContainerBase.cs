@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Infrastructure.Interface;
+﻿using Infrastructure.Interface;
 using Infrastructure.Modularity;
 using Infrastructure.Utility;
+using System.Collections.Generic;
 
 namespace Infrastructure.Workitems
 {
@@ -36,7 +35,7 @@ namespace Infrastructure.Workitems
         /// <param name="viewContainer">Another container</param>
         public void ImportFrom(IViewContainer container)
         {
-            if(container is WorkitemViewContainerBase)
+            if (container is WorkitemViewContainerBase)
             {
                 WorkitemViewContainerBase viewContainer = (WorkitemViewContainerBase)container;
                 foreach (ScreenRegion region in viewContainer.Views.Keys)
@@ -49,7 +48,7 @@ namespace Infrastructure.Workitems
                 }
 
             }
-               
+
         }
 
         /// <summary>

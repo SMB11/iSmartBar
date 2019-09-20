@@ -1,10 +1,7 @@
-﻿using SharedEntities.DTO.Updates;
-using System;
+﻿using Flurl.Http;
+using SharedEntities.DTO.Updates;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using Flurl.Http;
 using System.Threading.Tasks;
 
 namespace Security.Services
@@ -21,6 +18,6 @@ namespace Security.Services
             var a = await BuildRequest("check/" + major).GetJsonAsync<List<AssemblyDTO>>().ConfigureAwait(false);
             return a;
         }
-        
+
     }
 }

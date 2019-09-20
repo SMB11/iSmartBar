@@ -22,7 +22,7 @@ namespace Infrastructure
 
         private static void OnDynamicRegionNamesChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if(d is Window)
+            if (d is Window)
                 UpdateRegionNames(d, (Window)d);
 
         }
@@ -30,7 +30,7 @@ namespace Infrastructure
         private static void UpdateRegionNames(DependencyObject d, Window window)
         {
 
-            foreach(DependencyObject child in LogicalTreeHelper.GetChildren(d).OfType<DependencyObject>())
+            foreach (DependencyObject child in LogicalTreeHelper.GetChildren(d).OfType<DependencyObject>())
             {
                 ScreenRegion region = RegionNameManager.GetScreenRegion(child);
                 if (region != ScreenRegion.Unset)
@@ -44,7 +44,7 @@ namespace Infrastructure
 
         private static void UpdateRegionName(DependencyObject d, ScreenRegion region, Window window)
         {
-            
+
             DynamicRegionNames dynamicRegionNames = RegionNameManager.GetDynamicRegionNames(window);
             if (dynamicRegionNames != null)
                 RegionManager.SetRegionName(d, dynamicRegionNames.GetName(region));
@@ -66,7 +66,7 @@ namespace Infrastructure
         private static void OnScreenRegionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             Window window = GetParentWindow(d);
-            if(window != null)
+            if (window != null)
             {
                 UpdateRegionName(d, (ScreenRegion)e.NewValue, window);
             }

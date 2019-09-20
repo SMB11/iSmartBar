@@ -72,10 +72,10 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Services
 
             if (dto.ImagePath != null)
             {
-                vm.Image.Bytes = await Infrastructure.Utility.ImageHelper.DownloadBytesAsync(ConfigurationManager.AppSettings["ProductCdn"] + dto.ImagePath, token);
+                vm.Image.Bytes = await Infrastructure.Utility.ImageHelper.DownloadBytesAsync(dto.ImagePath, token);
                 vm.Image.AcceptChanges();
             }
-                
+
             return vm;
         }
 

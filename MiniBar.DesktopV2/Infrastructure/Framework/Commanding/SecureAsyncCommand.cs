@@ -1,9 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using Infrastructure.Security;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Framework
@@ -43,7 +40,7 @@ namespace Infrastructure.Framework
     /// <summary>
     /// Async command with secure implementation
     /// </summary>
-    public class SecureAsyncCommand<T> : AsyncCommand<T> , IDisposable
+    public class SecureAsyncCommand<T> : AsyncCommand<T>, IDisposable
     {
         public SecureAsyncCommand(Func<T, Task> executeMethod) : base(executeMethod, SecureCanExecute)
         {

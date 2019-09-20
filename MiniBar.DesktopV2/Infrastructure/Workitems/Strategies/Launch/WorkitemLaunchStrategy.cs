@@ -1,13 +1,13 @@
-﻿using Infrastructure.Utility;
+﻿using Infrastructure.Framework;
 using Infrastructure.Interface;
+using Infrastructure.Logging;
+using Infrastructure.Utility;
 using System;
 using System.Linq;
+using System.Reactive.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Threading;
-using Infrastructure.Logging;
-using Infrastructure.Framework;
-using System.Reactive.Linq;
 
 namespace Infrastructure.Workitems.Strategies.Launch
 {
@@ -60,7 +60,8 @@ namespace Infrastructure.Workitems.Strategies.Launch
         /// </summary>
         public bool ShouldOpenModal { get; private set; }
 
-        internal WorkitemLaunchStrategy(ContextService currentContextService, IWorkItem workItem, IWorkItem parent = null, object data = null) {
+        internal WorkitemLaunchStrategy(ContextService currentContextService, IWorkItem workItem, IWorkItem parent = null, object data = null)
+        {
             CurrentContextService = currentContextService;
             Workitem = workItem;
             Parent = parent;
@@ -111,7 +112,7 @@ namespace Infrastructure.Workitems.Strategies.Launch
                 else
                     Channel = await Workitem.Run().ConfigureAwait(false);
             }).ConfigureAwait(false);
-            
+
         }
 
         /// <summary>
@@ -125,11 +126,11 @@ namespace Infrastructure.Workitems.Strategies.Launch
             try
             {
                 // Log
-                Logger.Log(String.Format("Opening workitem {0}{1}.", Workitem.WorkItemName, ShouldOpenModal ? " in modal state" : ""), LogLevel.Informative);
+                Logger.LogWithWorkitemData(String.Format("Opening workitem {0}{1}.", Workitem.WorkItemName, ShouldOpenModal ? " in modal state" : ""), LogLevel.Informative, Workitem);
 
                 // Trick to let ui have some time to update its state
                 await TaskManager.Run(() => Thread.Sleep(50)).ConfigureAwait(false);
-                
+
                 // If should open modal begin loading
                 if (ShouldOpenModal)
                     CurrentContextService.BeginLoading();
@@ -155,13 +156,13 @@ namespace Infrastructure.Workitems.Strategies.Launch
                 {
                     var initable = Workitem as ISupportsInitialization;
                     // Log
-                    Logger.Log("Initializing workitem", LogLevel.Informative);
+                    Logger.LogWithWorkitemData("Initializing workitem", LogLevel.Informative, Workitem);
                     try
                     {
                         // initialize
                         initable.Initialize(Data);
                     }
-                    catch(Exception e)
+                    catch (Exception e)
                     {
                         // Log error with workitem data
                         Logger.LogWithWorkitemData("Workitem initialization failed", LogLevel.Exception, Workitem, e);
@@ -172,8 +173,8 @@ namespace Infrastructure.Workitems.Strategies.Launch
                 }
 
                 // Log
-                Logger.Log("Configuring Workitem", LogLevel.Informative);
-                
+                Logger.LogWithWorkitemData("Configuring Workitem", LogLevel.Informative, Workitem);
+
                 // Configure Workitem
                 Workitem.Configure();
 
@@ -205,7 +206,7 @@ namespace Infrastructure.Workitems.Strategies.Launch
                 if (ShouldOpenModal)
                 {
                     // Log
-                    Logger.Log("Showing modal window", LogLevel.Informative);
+                    Logger.LogWithWorkitemData("Showing modal window", LogLevel.Informative, Workitem);
                     // If should open in dialog mode call Workitem.Window.ShowDialog 
                     if (ModalMetadata.IsDialog)
                     {

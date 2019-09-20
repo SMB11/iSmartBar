@@ -1,12 +1,10 @@
 ﻿
-using Documents.Excel.Worksheets;
 using DevExpress.Spreadsheet;
+using Documents.Excel.Worksheets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Documents.Editors
 {
@@ -37,7 +35,7 @@ namespace Documents.Editors
 
         private T FindByID(int id)
         {
-            foreach(T item in List)
+            foreach (T item in List)
             {
                 if (IDExpression.Compile().Invoke(item) == id)
                     return item;

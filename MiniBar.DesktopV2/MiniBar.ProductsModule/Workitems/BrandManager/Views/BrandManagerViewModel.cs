@@ -1,10 +1,9 @@
-﻿using MiniBar.EntityViewModels.Products;
-using MiniBar.ProductsModule.Services;
-using MiniBar.Common.MVVM;
+﻿using AutoMapper;
 using MiniBar.Common.Services;
-using MiniBar.ProductsModule.Workitems.BrandManager.Services;
 using MiniBar.Common.Workitems.ObjectManager;
-using AutoMapper;
+using MiniBar.EntityViewModels.Products;
+using MiniBar.ProductsModule.Services;
+using MiniBar.ProductsModule.Workitems.BrandManager.Services;
 
 namespace MiniBar.ProductsModule.Workitems.BrandManager.Views
 {

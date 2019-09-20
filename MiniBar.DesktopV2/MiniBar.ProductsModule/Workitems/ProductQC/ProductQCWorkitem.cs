@@ -22,7 +22,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductQC
         {
             return new ProductQC.Views.ProductQCView(this);
         }
-        
+
         private ProductQCViewModel ProductQCViewModel
         {
             get
@@ -43,11 +43,11 @@ namespace MiniBar.ProductsModule.Workitems.ProductQC
                 ProductQCViewModel.Brands = new ObservableCollection<BrandViewModel>((IEnumerable<BrandViewModel>)brands);
         }
 
-        
+
         public override void Initialize(object data)
         {
             base.Initialize(data);
-            foreach(var item in List.OfType<ProductUploadViewModel>())
+            foreach (var item in List.OfType<ProductUploadViewModel>())
             {
 
                 var dict = new BindableDictionary<BindableTuple<string, string>>();

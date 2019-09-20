@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace Infrastructure.Interface
 {
@@ -39,7 +38,7 @@ namespace Infrastructure.Interface
         /// Is the workitem opened in modal mode
         /// </summary>
         bool IsModal { get; }
-        
+
         /// <summary>
         /// Provides configuration object for the workitem
         /// </summary>
@@ -71,17 +70,17 @@ namespace Infrastructure.Interface
         /// Launch the workitem in modal mode
         /// </summary>
         Task<IObservable<WorkitemEventArgs>> RunModal();
-        
+
         void ChangeToModalState();
-        
+
         /// <summary>
         /// Get a resource if it exists
         /// </summary>
         /// <param name="name">The name of the resource</param>
         /// <returns>The resource if found null otherwise</returns>
         object RequestResource(string name);
-        
-        
+
+
 
     }
 }

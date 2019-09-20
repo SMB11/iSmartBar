@@ -10,11 +10,13 @@ using Infrastructure.ErrorHandling;
 using Infrastructure.Interface;
 using Infrastructure.Logging;
 using Infrastructure.Modularity;
+using Infrastructure.Security;
 using Infrastructure.Utility;
 using Infrastructure.Workitems;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
+using System;
 using System.IO;
 
 namespace Infrastructure.Framework
@@ -28,6 +30,15 @@ namespace Infrastructure.Framework
         protected ICompositeLogger Logger => Container.Resolve<ICompositeLogger>();
         protected IUIManager UIManager => Container.Resolve<IUIManager>();
 
+        public bool IsDebug { get; private set; }
+
+        public PrismApplication()
+        {
+            #if DEBUG
+                IsDebug = true;
+            #endif
+        }
+
         /// <summary>
         /// Contains actions that should occur last.
         /// </summary> 
@@ -36,6 +47,18 @@ namespace Infrastructure.Framework
             base.OnInitialized();
             Logger.Log("Apllication has been initialized", LogLevel.Informative);
             this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+            AppSecurityContext.AppPrincipalChanged += AppSecurityContext_AppPrincipalChanged;
+        }
+
+        private void AppSecurityContext_AppPrincipalChanged(object sender, EventArgs e)
+        {
+            if (AppSecurityContext.CurrentPrincipal.Identity.IsAuthenticated)
+                OnAuthenticated();
+        }
+
+        protected virtual void OnAuthenticated()
+        {
+
         }
 
         /// <summary>
@@ -44,6 +67,7 @@ namespace Infrastructure.Framework
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             e.Handled = true;
+            Logger.Log(e.Exception.ToString(), LogLevel.Exception);
             ExceptionHandler.HandleError(e.Exception);
             UIManager.Error(e.Exception.Message);
             Shutdown();
@@ -57,7 +81,11 @@ namespace Infrastructure.Framework
         {
             MapperConfiguration configuration = new MapperConfiguration(ConfigureMappings);
             containerRegistry
-                .AddLogging(opt => opt.AddDebug())
+                .AddLogging(opt =>
+                {
+                    opt.AddDebug();
+                    opt.AddFile(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MyBar", "Log", $"log-{DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss")}.txt"));
+                })
                 .AddDefaultExceptionHandling()
                 .RegisterSingleton(typeof(ITaskManager), typeof(BaseTaskManager))
                 .RegisterSingleton(typeof(IUIManager), typeof(UIManager))
@@ -66,7 +94,7 @@ namespace Infrastructure.Framework
                 .RegisterInstance<IMapper>(configuration.CreateMapper());
 
         }
-        
+
         /// <summary>
         /// Create DynamicDirectoryModuleCatalog that provides dynamic loading capabilites
         /// </summary>
@@ -76,7 +104,7 @@ namespace Infrastructure.Framework
             DynamicDirectoryModuleCatalog catalog = new DynamicDirectoryModuleCatalog(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Modules"), Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "bin"));
             return catalog;
         }
-        
+
         /// <summary>
         /// Configure how the ViewModelLocator resolves ViewModels
         /// </summary>
@@ -131,6 +159,6 @@ namespace Infrastructure.Framework
         protected virtual void ConfigureMappings(IMapperConfigurationExpression cfg)
         {
 
-        }  
+        }
     }
 }

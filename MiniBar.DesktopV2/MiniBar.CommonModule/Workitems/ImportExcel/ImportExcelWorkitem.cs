@@ -1,6 +1,7 @@
 ﻿using DevExpress.Mvvm;
-
 using Infrastructure.Interface;
+using Infrastructure.Modularity;
+using Infrastructure.Utility;
 using Infrastructure.Workitems;
 using MiniBar.Common.Workitems.ImportExcel.Views;
 using Prism.Ioc;
@@ -8,8 +9,6 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
-using Infrastructure.Utility;
-using Infrastructure.Modularity;
 
 namespace MiniBar.Common.Workitems.ImportExcel
 {

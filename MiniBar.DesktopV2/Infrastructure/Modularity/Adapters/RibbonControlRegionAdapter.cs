@@ -1,5 +1,4 @@
 ﻿using DevExpress.Xpf.Ribbon;
-using Infrastructure.Utility;
 using Prism.Regions;
 using System.Collections.Specialized;
 using System.Linq;
@@ -11,7 +10,7 @@ namespace Infrastructure.Modularity
         public RibbonControlRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory) : base(regionBehaviorFactory)
         {
         }
-        
+
 
         protected override void Adapt(IRegion region, RibbonControl regionTarget)
         {

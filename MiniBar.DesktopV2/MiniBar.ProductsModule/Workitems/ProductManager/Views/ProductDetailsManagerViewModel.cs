@@ -1,13 +1,13 @@
 ﻿
+using Infrastructure.Framework;
+using Infrastructure.Interface;
+using MiniBar.Common.Workitems.LanguageEdit;
+using MiniBar.Common.Workitems.ObjectManager;
 using MiniBar.EntityViewModels.Products;
 using System;
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using MiniBar.Common.Workitems.LanguageEdit;
-using MiniBar.Common.Workitems.ObjectManager;
-using Infrastructure.Interface;
-using Infrastructure.Framework;
 
 namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
 {
@@ -26,7 +26,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
                 return nameEditCommand;
             }
         }
-        
+
         private SecureAsyncCommand descEditCommand;
         public SecureAsyncCommand DescriptionEditCommand
         {
@@ -37,7 +37,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
                 return descEditCommand;
             }
         }
-        
+
         protected override void OnReadOnlyChanged()
         {
             base.OnReadOnlyChanged();
@@ -48,9 +48,9 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
 
         private async Task StartEditName()
         {
-            IObservable<WorkitemEventArgs> channel =  await CurrentContextService.LaunchModalWorkItem<LanguageEditWorkitem>(CurrentItemDetails.Names ?? new Dictionary<string, string>(), WorkItem);
+            IObservable<WorkitemEventArgs> channel = await CurrentContextService.LaunchModalWorkItem<LanguageEditWorkitem>(CurrentItemDetails.Names ?? new Dictionary<string, string>(), WorkItem);
             channel.Subscribe(data => CurrentItemDetails.Names = (IDictionary<string, string>)data.Data);
-            
+
         }
 
         private async Task StartEditDescription()
@@ -68,6 +68,6 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager.Views
         {
             return new ProductUploadViewModel();
         }
-        
+
     }
 }

@@ -34,7 +34,8 @@ namespace Infrastructure.Modularity
         public bool IsActive
         {
             get { return isActive; }
-            set {
+            set
+            {
                 if (isActive != value)
                 {
                     isActive = value;
@@ -44,11 +45,11 @@ namespace Infrastructure.Modularity
         }
 
         public event EventHandler IsActiveChanged;
-        
+
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
-            
+
             HandleActiveChanged();
         }
 

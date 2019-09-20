@@ -15,6 +15,14 @@
         <Directory Id="ProgramFilesFolder.MyBar" Name="MyBar">
           <Directory Id="INSTALLDIR" Name="Admin">
 
+            <Component Id="Component.MiniBar.AnalyticsModule.dll_101532978" Guid="6f330b47-2577-43ad-9095-18618d485f6c">
+              <File Id="MiniBar.AnalyticsModule.dll_101532978" Source="..\Shell\bin\Release\MiniBar.AnalyticsModule.dll" />
+            </Component>
+
+            <Component Id="Component.MiniBar.AnalyticsModule.dll.config_1866996537" Guid="6f330b47-2577-43ad-9095-1861a758c4dc">
+              <File Id="MiniBar.AnalyticsModule.dll.config_1866996537" Source="..\Shell\bin\Release\MiniBar.AnalyticsModule.dll.config" />
+            </Component>
+
             <Component Id="Component.MiniBar.CommonModule.dll_15960708" Guid="6f330b47-2577-43ad-9095-1861c67a4ef4">
               <File Id="MiniBar.CommonModule.dll_15960708" Source="..\Shell\bin\Release\MiniBar.CommonModule.dll" />
             </Component>
@@ -23,12 +31,28 @@
               <File Id="MiniBar.CommonModule.dll.config_424266267" Source="..\Shell\bin\Release\MiniBar.CommonModule.dll.config" />
             </Component>
 
+            <Component Id="Component.MiniBar.ConfigurationModule.dll_177142550" Guid="6f330b47-2577-43ad-9095-18618aa7edd6">
+              <File Id="MiniBar.ConfigurationModule.dll_177142550" Source="..\Shell\bin\Release\MiniBar.ConfigurationModule.dll" />
+            </Component>
+
+            <Component Id="Component.MiniBar.ConfigurationModule.dll.config_1851020158" Guid="6f330b47-2577-43ad-9095-18610c2fc114">
+              <File Id="MiniBar.ConfigurationModule.dll.config_1851020158" Source="..\Shell\bin\Release\MiniBar.ConfigurationModule.dll.config" />
+            </Component>
+
             <Component Id="Component.MiniBar.EntityViewModels.dll_1732852851" Guid="6f330b47-2577-43ad-9095-186166f214b3">
               <File Id="MiniBar.EntityViewModels.dll_1732852851" Source="..\Shell\bin\Release\MiniBar.EntityViewModels.dll" />
             </Component>
 
             <Component Id="Component.MiniBar.EntityViewModels.dll.config_1337584850" Guid="6f330b47-2577-43ad-9095-1861f0d9ab6d">
               <File Id="MiniBar.EntityViewModels.dll.config_1337584850" Source="..\Shell\bin\Release\MiniBar.EntityViewModels.dll.config" />
+            </Component>
+
+            <Component Id="Component.MiniBar.ProductsModule.dll_2019786414" Guid="6f330b47-2577-43ad-9095-1861a4254015">
+              <File Id="MiniBar.ProductsModule.dll_2019786414" Source="..\Shell\bin\Release\MiniBar.ProductsModule.dll" />
+            </Component>
+
+            <Component Id="Component.MiniBar.ProductsModule.dll.config_2026526036" Guid="6f330b47-2577-43ad-9095-18616a6faa3c">
+              <File Id="MiniBar.ProductsModule.dll.config_2026526036" Source="..\Shell\bin\Release\MiniBar.ProductsModule.dll.config" />
             </Component>
 
             <Component Id="Component.MiniBarManager.exe_1780104730" Guid="6f330b47-2577-43ad-9095-18616c3d4caf">
@@ -61,6 +85,14 @@
                 <File Id="DevExpress.CodeParser.v19.1.dll_1503456141" Source="..\Shell\bin\Release\DevExpress.CodeParser.v19.1.dll" />
               </Component>
 
+              <Component Id="Component.DevExpress.Dashboard.v19.1.Core.dll_577191796" Guid="6f330b47-2577-43ad-9095-18616f6f7882">
+                <File Id="DevExpress.Dashboard.v19.1.Core.dll_577191796" Source="..\Shell\bin\Release\DevExpress.Dashboard.v19.1.Core.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.Dashboard.v19.1.Wpf.dll_684939481" Guid="6f330b47-2577-43ad-9095-186103f91595">
+                <File Id="DevExpress.Dashboard.v19.1.Wpf.dll_684939481" Source="..\Shell\bin\Release\DevExpress.Dashboard.v19.1.Wpf.dll" />
+              </Component>
+
               <Component Id="Component.DevExpress.Data.v19.1.dll_1523619844" Guid="6f330b47-2577-43ad-9095-1861414553c8">
                 <File Id="DevExpress.Data.v19.1.dll_1523619844" Source="..\Shell\bin\Release\DevExpress.Data.v19.1.dll" />
               </Component>
@@ -75,6 +107,10 @@
 
               <Component Id="Component.DevExpress.Images.v19.1.dll_847540632" Guid="6f330b47-2577-43ad-9095-1861679bc4c7">
                 <File Id="DevExpress.Images.v19.1.dll_847540632" Source="..\Shell\bin\Release\DevExpress.Images.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.Map.v19.1.Core.dll_1893412743" Guid="6f330b47-2577-43ad-9095-186196ee1105">
+                <File Id="DevExpress.Map.v19.1.Core.dll_1893412743" Source="..\Shell\bin\Release\DevExpress.Map.v19.1.Core.dll" />
               </Component>
 
               <Component Id="Component.DevExpress.Mvvm.v19.1.DataModel.dll_2023194762" Guid="6f330b47-2577-43ad-9095-186125c51f2a">
@@ -101,6 +137,10 @@
                 <File Id="DevExpress.Pdf.v19.1.Drawing.dll_1634458069" Source="..\Shell\bin\Release\DevExpress.Pdf.v19.1.Drawing.dll" />
               </Component>
 
+              <Component Id="Component.DevExpress.PivotGrid.v19.1.Core.dll_6597494" Guid="6f330b47-2577-43ad-9095-18619d027468">
+                <File Id="DevExpress.PivotGrid.v19.1.Core.dll_6597494" Source="..\Shell\bin\Release\DevExpress.PivotGrid.v19.1.Core.dll" />
+              </Component>
+
               <Component Id="Component.DevExpress.Printing.v19.1.Core.dll_624239013" Guid="6f330b47-2577-43ad-9095-18610985d420">
                 <File Id="DevExpress.Printing.v19.1.Core.dll_624239013" Source="..\Shell\bin\Release\DevExpress.Printing.v19.1.Core.dll" />
               </Component>
@@ -121,12 +161,20 @@
                 <File Id="DevExpress.Spreadsheet.v19.1.Core.dll_53522902" Source="..\Shell\bin\Release\DevExpress.Spreadsheet.v19.1.Core.dll" />
               </Component>
 
+              <Component Id="Component.DevExpress.TreeMap.v19.1.Core.dll_142597998" Guid="6f330b47-2577-43ad-9095-1861bc2087e4">
+                <File Id="DevExpress.TreeMap.v19.1.Core.dll_142597998" Source="..\Shell\bin\Release\DevExpress.TreeMap.v19.1.Core.dll" />
+              </Component>
+
               <Component Id="Component.DevExpress.Utils.v19.1.dll_1864568155" Guid="6f330b47-2577-43ad-9095-18611e27ee1c">
                 <File Id="DevExpress.Utils.v19.1.dll_1864568155" Source="..\Shell\bin\Release\DevExpress.Utils.v19.1.dll" />
               </Component>
 
               <Component Id="Component.DevExpress.Xpf.Accordion.v19.1.dll_716660796" Guid="6f330b47-2577-43ad-9095-1861f71ab770">
                 <File Id="DevExpress.Xpf.Accordion.v19.1.dll_716660796" Source="..\Shell\bin\Release\DevExpress.Xpf.Accordion.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.Xpf.Charts.v19.1.dll_1600231243" Guid="6f330b47-2577-43ad-9095-186125397144">
+                <File Id="DevExpress.Xpf.Charts.v19.1.dll_1600231243" Source="..\Shell\bin\Release\DevExpress.Xpf.Charts.v19.1.dll" />
               </Component>
 
               <Component Id="Component.DevExpress.Xpf.Controls.v19.1.dll_1685599959" Guid="6f330b47-2577-43ad-9095-1861a69a4edb">
@@ -137,8 +185,16 @@
                 <File Id="DevExpress.Xpf.Core.v19.1.dll_239035257" Source="..\Shell\bin\Release\DevExpress.Xpf.Core.v19.1.dll" />
               </Component>
 
+              <Component Id="Component.DevExpress.Xpf.Dashboard.v19.1.dll_1282593314" Guid="6f330b47-2577-43ad-9095-1861ac7dd96c">
+                <File Id="DevExpress.Xpf.Dashboard.v19.1.dll_1282593314" Source="..\Shell\bin\Release\DevExpress.Xpf.Dashboard.v19.1.dll" />
+              </Component>
+
               <Component Id="Component.DevExpress.Xpf.Docking.v19.1.dll_1308380253" Guid="6f330b47-2577-43ad-9095-18612458fb04">
                 <File Id="DevExpress.Xpf.Docking.v19.1.dll_1308380253" Source="..\Shell\bin\Release\DevExpress.Xpf.Docking.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.Xpf.DocumentViewer.v19.1.Core.dll_1824345296" Guid="6f330b47-2577-43ad-9095-18615e2ef222">
+                <File Id="DevExpress.Xpf.DocumentViewer.v19.1.Core.dll_1824345296" Source="..\Shell\bin\Release\DevExpress.Xpf.DocumentViewer.v19.1.Core.dll" />
               </Component>
 
               <Component Id="Component.DevExpress.Xpf.Gauges.v19.1.dll_1051895609" Guid="6f330b47-2577-43ad-9095-18611ac2678d">
@@ -161,24 +217,92 @@
                 <File Id="DevExpress.Xpf.LayoutControl.v19.1.dll_1842481529" Source="..\Shell\bin\Release\DevExpress.Xpf.LayoutControl.v19.1.dll" />
               </Component>
 
+              <Component Id="Component.DevExpress.Xpf.Map.v19.1.dll_653258269" Guid="6f330b47-2577-43ad-9095-18616399449d">
+                <File Id="DevExpress.Xpf.Map.v19.1.dll_653258269" Source="..\Shell\bin\Release\DevExpress.Xpf.Map.v19.1.dll" />
+              </Component>
+
               <Component Id="Component.DevExpress.Xpf.NavBar.v19.1.dll_1301648962" Guid="6f330b47-2577-43ad-9095-1861666943f4">
                 <File Id="DevExpress.Xpf.NavBar.v19.1.dll_1301648962" Source="..\Shell\bin\Release\DevExpress.Xpf.NavBar.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.Xpf.PivotGrid.v19.1.dll_684711905" Guid="6f330b47-2577-43ad-9095-18610813e210">
+                <File Id="DevExpress.Xpf.PivotGrid.v19.1.dll_684711905" Source="..\Shell\bin\Release\DevExpress.Xpf.PivotGrid.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.Xpf.Printing.v19.1.dll_1146587035" Guid="6f330b47-2577-43ad-9095-1861b25ca3c8">
+                <File Id="DevExpress.Xpf.Printing.v19.1.dll_1146587035" Source="..\Shell\bin\Release\DevExpress.Xpf.Printing.v19.1.dll" />
               </Component>
 
               <Component Id="Component.DevExpress.Xpf.PrismAdapters.v19.1.dll_1665521013" Guid="6f330b47-2577-43ad-9095-1861590abb45">
                 <File Id="DevExpress.Xpf.PrismAdapters.v19.1.dll_1665521013" Source="..\Shell\bin\Release\DevExpress.Xpf.PrismAdapters.v19.1.dll" />
               </Component>
 
+              <Component Id="Component.DevExpress.Xpf.PropertyGrid.v19.1.dll_349059323" Guid="6f330b47-2577-43ad-9095-186110baae68">
+                <File Id="DevExpress.Xpf.PropertyGrid.v19.1.dll_349059323" Source="..\Shell\bin\Release\DevExpress.Xpf.PropertyGrid.v19.1.dll" />
+              </Component>
+
               <Component Id="Component.DevExpress.Xpf.Ribbon.v19.1.dll_54076005" Guid="6f330b47-2577-43ad-9095-186131131e9e">
                 <File Id="DevExpress.Xpf.Ribbon.v19.1.dll_54076005" Source="..\Shell\bin\Release\DevExpress.Xpf.Ribbon.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.Xpf.RichEdit.v19.1.dll_2136622888" Guid="6f330b47-2577-43ad-9095-18611edf8aee">
+                <File Id="DevExpress.Xpf.RichEdit.v19.1.dll_2136622888" Source="..\Shell\bin\Release\DevExpress.Xpf.RichEdit.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.Xpf.TreeMap.v19.1.dll_986052772" Guid="6f330b47-2577-43ad-9095-1861054de770">
+                <File Id="DevExpress.Xpf.TreeMap.v19.1.dll_986052772" Source="..\Shell\bin\Release\DevExpress.Xpf.TreeMap.v19.1.dll" />
               </Component>
 
               <Component Id="Component.DevExpress.Xpo.v19.1.dll_982080424" Guid="6f330b47-2577-43ad-9095-18613d51fdf2">
                 <File Id="DevExpress.Xpo.v19.1.dll_982080424" Source="..\Shell\bin\Release\DevExpress.Xpo.v19.1.dll" />
               </Component>
 
+              <Component Id="Component.DevExpress.XtraBars.v19.1.dll_252523543" Guid="6f330b47-2577-43ad-9095-1861d6a13a85">
+                <File Id="DevExpress.XtraBars.v19.1.dll_252523543" Source="..\Shell\bin\Release\DevExpress.XtraBars.v19.1.dll" />
+              </Component>
+
               <Component Id="Component.DevExpress.XtraCharts.v19.1.dll_1673945499" Guid="6f330b47-2577-43ad-9095-1861c2e463ad">
                 <File Id="DevExpress.XtraCharts.v19.1.dll_1673945499" Source="..\Shell\bin\Release\DevExpress.XtraCharts.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraEditors.v19.1.dll_301552617" Guid="6f330b47-2577-43ad-9095-18619e706a8a">
+                <File Id="DevExpress.XtraEditors.v19.1.dll_301552617" Source="..\Shell\bin\Release\DevExpress.XtraEditors.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraGauges.v19.1.Core.dll_49760184" Guid="6f330b47-2577-43ad-9095-18613fec0da3">
+                <File Id="DevExpress.XtraGauges.v19.1.Core.dll_49760184" Source="..\Shell\bin\Release\DevExpress.XtraGauges.v19.1.Core.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraGauges.v19.1.Presets.dll_924304638" Guid="6f330b47-2577-43ad-9095-1861e9c1ab15">
+                <File Id="DevExpress.XtraGauges.v19.1.Presets.dll_924304638" Source="..\Shell\bin\Release\DevExpress.XtraGauges.v19.1.Presets.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraGauges.v19.1.Win.dll_1059800070" Guid="6f330b47-2577-43ad-9095-186116f8cedb">
+                <File Id="DevExpress.XtraGauges.v19.1.Win.dll_1059800070" Source="..\Shell\bin\Release\DevExpress.XtraGauges.v19.1.Win.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraLayout.v19.1.dll_621429707" Guid="6f330b47-2577-43ad-9095-186132b28039">
+                <File Id="DevExpress.XtraLayout.v19.1.dll_621429707" Source="..\Shell\bin\Release\DevExpress.XtraLayout.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraMap.v19.1.dll_637622870" Guid="6f330b47-2577-43ad-9095-186154a41f17">
+                <File Id="DevExpress.XtraMap.v19.1.dll_637622870" Source="..\Shell\bin\Release\DevExpress.XtraMap.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraPrinting.v19.1.dll_1364438250" Guid="6f330b47-2577-43ad-9095-186182e8563f">
+                <File Id="DevExpress.XtraPrinting.v19.1.dll_1364438250" Source="..\Shell\bin\Release\DevExpress.XtraPrinting.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraReports.v19.1.dll_88627162" Guid="6f330b47-2577-43ad-9095-186171259279">
+                <File Id="DevExpress.XtraReports.v19.1.dll_88627162" Source="..\Shell\bin\Release\DevExpress.XtraReports.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraTreeList.v19.1.dll_162520220" Guid="6f330b47-2577-43ad-9095-186121d0a3cc">
+                <File Id="DevExpress.XtraTreeList.v19.1.dll_162520220" Source="..\Shell\bin\Release\DevExpress.XtraTreeList.v19.1.dll" />
+              </Component>
+
+              <Component Id="Component.DevExpress.XtraTreeMap.v19.1.dll_682342849" Guid="6f330b47-2577-43ad-9095-18618e0c8c05">
+                <File Id="DevExpress.XtraTreeMap.v19.1.dll_682342849" Source="..\Shell\bin\Release\DevExpress.XtraTreeMap.v19.1.dll" />
               </Component>
 
               <Component Id="Component.Documents.Core.dll_775752428" Guid="6f330b47-2577-43ad-9095-1861871c7cad">
@@ -201,6 +325,62 @@
                 <File Id="Infrastructure.dll_1239657039" Source="..\Shell\bin\Release\Infrastructure.dll" />
               </Component>
 
+              <Component Id="Component.Microsoft.AspNetCore.Connections.Abstractions.dll_1571968998" Guid="6f330b47-2577-43ad-9095-18614c5cc102">
+                <File Id="Microsoft.AspNetCore.Connections.Abstractions.dll_1571968998" Source="..\Shell\bin\Release\Microsoft.AspNetCore.Connections.Abstractions.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.AspNetCore.Http.Connections.Client.dll_1967830620" Guid="6f330b47-2577-43ad-9095-1861f0961ee2">
+                <File Id="Microsoft.AspNetCore.Http.Connections.Client.dll_1967830620" Source="..\Shell\bin\Release\Microsoft.AspNetCore.Http.Connections.Client.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.AspNetCore.Http.Connections.Common.dll_612027877" Guid="6f330b47-2577-43ad-9095-1861cb3accff">
+                <File Id="Microsoft.AspNetCore.Http.Connections.Common.dll_612027877" Source="..\Shell\bin\Release\Microsoft.AspNetCore.Http.Connections.Common.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.AspNetCore.Http.Features.dll_63393946" Guid="6f330b47-2577-43ad-9095-18610fbeb958">
+                <File Id="Microsoft.AspNetCore.Http.Features.dll_63393946" Source="..\Shell\bin\Release\Microsoft.AspNetCore.Http.Features.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.AspNetCore.SignalR.Client.Core.dll_745224512" Guid="6f330b47-2577-43ad-9095-1861824961e1">
+                <File Id="Microsoft.AspNetCore.SignalR.Client.Core.dll_745224512" Source="..\Shell\bin\Release\Microsoft.AspNetCore.SignalR.Client.Core.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.AspNetCore.SignalR.Client.dll_419749671" Guid="6f330b47-2577-43ad-9095-1861dadd5380">
+                <File Id="Microsoft.AspNetCore.SignalR.Client.dll_419749671" Source="..\Shell\bin\Release\Microsoft.AspNetCore.SignalR.Client.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.AspNetCore.SignalR.Common.dll_123993236" Guid="6f330b47-2577-43ad-9095-18619f9b2133">
+                <File Id="Microsoft.AspNetCore.SignalR.Common.dll_123993236" Source="..\Shell\bin\Release\Microsoft.AspNetCore.SignalR.Common.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.AspNetCore.SignalR.Protocols.Json.dll_660998840" Guid="6f330b47-2577-43ad-9095-18611b12ca5e">
+                <File Id="Microsoft.AspNetCore.SignalR.Protocols.Json.dll_660998840" Source="..\Shell\bin\Release\Microsoft.AspNetCore.SignalR.Protocols.Json.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.Extensions.DependencyInjection.Abstractions.dll_1555596568" Guid="6f330b47-2577-43ad-9095-18613b542de2">
+                <File Id="Microsoft.Extensions.DependencyInjection.Abstractions.dll_1555596568" Source="..\Shell\bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.Extensions.DependencyInjection.dll_104521296" Guid="6f330b47-2577-43ad-9095-1861420c70d3">
+                <File Id="Microsoft.Extensions.DependencyInjection.dll_104521296" Source="..\Shell\bin\Release\Microsoft.Extensions.DependencyInjection.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.Extensions.Logging.Abstractions.dll_744588130" Guid="6f330b47-2577-43ad-9095-1861960900e8">
+                <File Id="Microsoft.Extensions.Logging.Abstractions.dll_744588130" Source="..\Shell\bin\Release\Microsoft.Extensions.Logging.Abstractions.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.Extensions.Logging.dll_199963627" Guid="6f330b47-2577-43ad-9095-1861da8c60ed">
+                <File Id="Microsoft.Extensions.Logging.dll_199963627" Source="..\Shell\bin\Release\Microsoft.Extensions.Logging.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.Extensions.Options.dll_1561123786" Guid="6f330b47-2577-43ad-9095-18617dc4eca3">
+                <File Id="Microsoft.Extensions.Options.dll_1561123786" Source="..\Shell\bin\Release\Microsoft.Extensions.Options.dll" />
+              </Component>
+
+              <Component Id="Component.Microsoft.Extensions.Primitives.dll_1295990112" Guid="6f330b47-2577-43ad-9095-186197a49501">
+                <File Id="Microsoft.Extensions.Primitives.dll_1295990112" Source="..\Shell\bin\Release\Microsoft.Extensions.Primitives.dll" />
+              </Component>
+
               <Component Id="Component.Microsoft.Win32.Primitives.dll_500051027" Guid="6f330b47-2577-43ad-9095-186119dac69e">
                 <File Id="Microsoft.Win32.Primitives.dll_500051027" Source="..\Shell\bin\Release\Microsoft.Win32.Primitives.dll" />
               </Component>
@@ -219,6 +399,10 @@
 
               <Component Id="Component.PostSharp.dll_850971325" Guid="6f330b47-2577-43ad-9095-186140f812e7">
                 <File Id="PostSharp.dll_850971325" Source="..\Shell\bin\Release\PostSharp.dll" />
+              </Component>
+
+              <Component Id="Component.Prism.Container.Extensions.dll_1469427608" Guid="6f330b47-2577-43ad-9095-18614a7acaf2">
+                <File Id="Prism.Container.Extensions.dll_1469427608" Source="..\Shell\bin\Release\Prism.Container.Extensions.dll" />
               </Component>
 
               <Component Id="Component.Prism.dll_1666907720" Guid="6f330b47-2577-43ad-9095-1861e31417b3">
@@ -243,6 +427,10 @@
 
               <Component Id="Component.System.AppContext.dll_305044453" Guid="6f330b47-2577-43ad-9095-18615389a043">
                 <File Id="System.AppContext.dll_305044453" Source="..\Shell\bin\Release\System.AppContext.dll" />
+              </Component>
+
+              <Component Id="Component.System.Buffers.dll_1221841649" Guid="6f330b47-2577-43ad-9095-1861e77e96e5">
+                <File Id="System.Buffers.dll_1221841649" Source="..\Shell\bin\Release\System.Buffers.dll" />
               </Component>
 
               <Component Id="Component.System.Collections.Concurrent.dll_1882017206" Guid="6f330b47-2577-43ad-9095-1861b0929dc3">
@@ -377,6 +565,10 @@
                 <File Id="System.IO.MemoryMappedFiles.dll_1906345627" Source="..\Shell\bin\Release\System.IO.MemoryMappedFiles.dll" />
               </Component>
 
+              <Component Id="Component.System.IO.Pipelines.dll_1094713657" Guid="6f330b47-2577-43ad-9095-1861985ff2e9">
+                <File Id="System.IO.Pipelines.dll_1094713657" Source="..\Shell\bin\Release\System.IO.Pipelines.dll" />
+              </Component>
+
               <Component Id="Component.System.IO.Pipes.dll_606299737" Guid="6f330b47-2577-43ad-9095-1861dac94dd7">
                 <File Id="System.IO.Pipes.dll_606299737" Source="..\Shell\bin\Release\System.IO.Pipes.dll" />
               </Component>
@@ -399,6 +591,10 @@
 
               <Component Id="Component.System.Linq.Queryable.dll_940907838" Guid="6f330b47-2577-43ad-9095-18610c87eefc">
                 <File Id="System.Linq.Queryable.dll_940907838" Source="..\Shell\bin\Release\System.Linq.Queryable.dll" />
+              </Component>
+
+              <Component Id="Component.System.Memory.dll_614449311" Guid="6f330b47-2577-43ad-9095-1861a09fea39">
+                <File Id="System.Memory.dll_614449311" Source="..\Shell\bin\Release\System.Memory.dll" />
               </Component>
 
               <Component Id="Component.System.Net.Http.dll_206491264" Guid="6f330b47-2577-43ad-9095-1861698e66ba">
@@ -443,6 +639,10 @@
 
               <Component Id="Component.System.Net.WebSockets.dll_1145015014" Guid="6f330b47-2577-43ad-9095-18610e8e623f">
                 <File Id="System.Net.WebSockets.dll_1145015014" Source="..\Shell\bin\Release\System.Net.WebSockets.dll" />
+              </Component>
+
+              <Component Id="Component.System.Numerics.Vectors.dll_1282118193" Guid="6f330b47-2577-43ad-9095-1861c3d3bc7b">
+                <File Id="System.Numerics.Vectors.dll_1282118193" Source="..\Shell\bin\Release\System.Numerics.Vectors.dll" />
               </Component>
 
               <Component Id="Component.System.ObjectModel.dll_1659820222" Guid="6f330b47-2577-43ad-9095-18615c8d915d">
@@ -569,6 +769,10 @@
                 <File Id="System.Text.RegularExpressions.dll_1969342890" Source="..\Shell\bin\Release\System.Text.RegularExpressions.dll" />
               </Component>
 
+              <Component Id="Component.System.Threading.Channels.dll_1802402108" Guid="6f330b47-2577-43ad-9095-1861beb30bf4">
+                <File Id="System.Threading.Channels.dll_1802402108" Source="..\Shell\bin\Release\System.Threading.Channels.dll" />
+              </Component>
+
               <Component Id="Component.System.Threading.dll_1961619603" Guid="6f330b47-2577-43ad-9095-1861e276fee5">
                 <File Id="System.Threading.dll_1961619603" Source="..\Shell\bin\Release\System.Threading.dll" />
               </Component>
@@ -643,27 +847,10 @@
 
             </Directory>
 
-            <Directory Id="ProgramMenuFolder" Name="ProgramMenuFolder">
-              <Directory Id="ProgramMenuFolder.mybar" Name="mybar">
-
-                <Component Id="Component.MiniBar_Admin_" Guid="6f330b47-2577-43ad-9095-18618eb0f048">
-                  <Shortcut Id="ProgramMenuFolder.mybar.MiniBar_Admin_" WorkingDirectory="INSTALLDIR" Target="[INSTALLDIR]MiniBarManager.exe" Name="MiniBar Admin.lnk" />
-
-                  <CreateFolder />
-                  <RemoveFolder Id="ProgramMenuFolder.mybar" On="uninstall" />
-
-                  <RegistryKey Root="HKCU" Key="Software\WixSharp\Used">
-                    <RegistryValue Value="0" Type="string" KeyPath="yes" />
-                  </RegistryKey>
-                </Component>
-
-              </Directory>
-            </Directory>
-
             <Directory Id="DesktopFolder" Name="DesktopFolder">
 
-              <Component Id="Component.MiniBar_Admin.1" Guid="6f330b47-2577-43ad-9095-18610eb1994c">
-                <Shortcut Id="DesktopFolder.MiniBar_Admin.1" WorkingDirectory="INSTALLDIR" Target="[INSTALLDIR]MiniBarManager.exe" Name="MiniBar Admin.lnk" />
+              <Component Id="Component.Minibar_Admin" Guid="6f330b47-2577-43ad-9095-186196af2ca8">
+                <Shortcut Id="DesktopFolder.Minibar_Admin" WorkingDirectory="INSTALLDIR" Target="[INSTALLDIR]MiniBarManager.exe" Name="Minibar Admin.lnk" />
 
                 <CreateFolder />
 
@@ -676,26 +863,16 @@
 
             <Directory Id="INSTALLDIR.Modules" Name="Modules">
 
-              <Component Id="Component.MiniBar.ConfigurationModule.dll_1603191719" Guid="6f330b47-2577-43ad-9095-186175fecd31">
-                <File Id="MiniBar.ConfigurationModule.dll_1603191719" Source="..\Shell\bin\Release\MiniBar.ConfigurationModule.dll" />
-              </Component>
-
-              <Component Id="Component.MiniBar.ConfigurationModule.dll.config_590967585" Guid="6f330b47-2577-43ad-9095-186174306476">
-                <File Id="MiniBar.ConfigurationModule.dll.config_590967585" Source="..\Shell\bin\Release\MiniBar.ConfigurationModule.dll.config" />
-              </Component>
-
-              <Component Id="Component.MiniBar.ProductsModule.dll_169231969" Guid="6f330b47-2577-43ad-9095-1861577bf08a">
-                <File Id="MiniBar.ProductsModule.dll_169231969" Source="..\Shell\bin\Release\MiniBar.ProductsModule.dll" />
-              </Component>
-
-              <Component Id="Component.MiniBar.ProductsModule.dll.config_6195623" Guid="6f330b47-2577-43ad-9095-1861f37a1285">
-                <File Id="MiniBar.ProductsModule.dll.config_6195623" Source="..\Shell\bin\Release\MiniBar.ProductsModule.dll.config" />
+              <Component Id="Component.INSTALLDIR.Modules.EmptyDirectory" Guid="6f330b47-2577-43ad-9095-186106504599" KeyPath="yes">
+                <CreateFolder />
+                <RemoveFolder Id="INSTALLDIR.Modules" On="uninstall" />
               </Component>
 
             </Directory>
           </Directory>
 
           <Component Id="ProgramFilesFolder.MyBar" Guid="6f330b47-2577-43ad-9095-186120ae76ec" KeyPath="yes">
+            <CreateFolder />
             <RemoveFolder Id="ProgramFilesFolder.MyBar" On="uninstall" />
           </Component>
 
@@ -704,6 +881,8 @@
     </Directory>
 
     <UI />
+
+    <WixVariable Id="WixUILicenseRtf" Value="D:\iSmartBar\MiniBar.DesktopV2\MiniBar.Setup\gpl-3.0.rtf" />
 
     <CustomAction Id="Set_StartService_Props" Property="StartService" Value="INSTALLDIR=[INSTALLDIR];INSTALLDIR=[INSTALLDIR];UILevel=[UILevel];ProductCode=[ProductCode]" />
     <CustomAction Id="StartService" BinaryKey="StartService_File" DllEntry="StartService" Return="asyncWait" Impersonate="no" Execute="deferred" />
@@ -716,10 +895,16 @@
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
 
     <Feature Id="Complete" Title="Complete" Absent="allow" Level="1">
+      <ComponentRef Id="Component.MiniBar.AnalyticsModule.dll_101532978" />
+      <ComponentRef Id="Component.MiniBar.AnalyticsModule.dll.config_1866996537" />
       <ComponentRef Id="Component.MiniBar.CommonModule.dll_15960708" />
       <ComponentRef Id="Component.MiniBar.CommonModule.dll.config_424266267" />
+      <ComponentRef Id="Component.MiniBar.ConfigurationModule.dll_177142550" />
+      <ComponentRef Id="Component.MiniBar.ConfigurationModule.dll.config_1851020158" />
       <ComponentRef Id="Component.MiniBar.EntityViewModels.dll_1732852851" />
       <ComponentRef Id="Component.MiniBar.EntityViewModels.dll.config_1337584850" />
+      <ComponentRef Id="Component.MiniBar.ProductsModule.dll_2019786414" />
+      <ComponentRef Id="Component.MiniBar.ProductsModule.dll.config_2026526036" />
       <ComponentRef Id="Component.MiniBarManager.exe_1780104730" />
       <ComponentRef Id="Component.MiniBarManager.exe.config_1966732583" />
       <ComponentRef Id="Component.AutoMapper.dll_384434202" />
@@ -727,52 +912,93 @@
       <ComponentRef Id="Component.Core.UI.dll_1158976013" />
       <ComponentRef Id="Component.DevExpress.Charts.v19.1.Core.dll_566491325" />
       <ComponentRef Id="Component.DevExpress.CodeParser.v19.1.dll_1503456141" />
+      <ComponentRef Id="Component.DevExpress.Dashboard.v19.1.Core.dll_577191796" />
+      <ComponentRef Id="Component.DevExpress.Dashboard.v19.1.Wpf.dll_684939481" />
       <ComponentRef Id="Component.DevExpress.Data.v19.1.dll_1523619844" />
       <ComponentRef Id="Component.DevExpress.DataAccess.v19.1.dll_455794886" />
       <ComponentRef Id="Component.DevExpress.Docs.v19.1.dll_1445394480" />
       <ComponentRef Id="Component.DevExpress.Images.v19.1.dll_847540632" />
+      <ComponentRef Id="Component.DevExpress.Map.v19.1.Core.dll_1893412743" />
       <ComponentRef Id="Component.DevExpress.Mvvm.v19.1.DataModel.dll_2023194762" />
       <ComponentRef Id="Component.DevExpress.Mvvm.v19.1.dll_1377028646" />
       <ComponentRef Id="Component.DevExpress.Mvvm.v19.1.ViewModel.dll_1237703353" />
       <ComponentRef Id="Component.DevExpress.Office.v19.1.Core.dll_409476693" />
       <ComponentRef Id="Component.DevExpress.Pdf.v19.1.Core.dll_1342769940" />
       <ComponentRef Id="Component.DevExpress.Pdf.v19.1.Drawing.dll_1634458069" />
+      <ComponentRef Id="Component.DevExpress.PivotGrid.v19.1.Core.dll_6597494" />
       <ComponentRef Id="Component.DevExpress.Printing.v19.1.Core.dll_624239013" />
       <ComponentRef Id="Component.DevExpress.RichEdit.v19.1.Core.dll_797660205" />
       <ComponentRef Id="Component.DevExpress.Snap.v19.1.Core.dll_1658453978" />
       <ComponentRef Id="Component.DevExpress.Sparkline.v19.1.Core.dll_648847792" />
       <ComponentRef Id="Component.DevExpress.Spreadsheet.v19.1.Core.dll_53522902" />
+      <ComponentRef Id="Component.DevExpress.TreeMap.v19.1.Core.dll_142597998" />
       <ComponentRef Id="Component.DevExpress.Utils.v19.1.dll_1864568155" />
       <ComponentRef Id="Component.DevExpress.Xpf.Accordion.v19.1.dll_716660796" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Charts.v19.1.dll_1600231243" />
       <ComponentRef Id="Component.DevExpress.Xpf.Controls.v19.1.dll_1685599959" />
       <ComponentRef Id="Component.DevExpress.Xpf.Core.v19.1.dll_239035257" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Dashboard.v19.1.dll_1282593314" />
       <ComponentRef Id="Component.DevExpress.Xpf.Docking.v19.1.dll_1308380253" />
+      <ComponentRef Id="Component.DevExpress.Xpf.DocumentViewer.v19.1.Core.dll_1824345296" />
       <ComponentRef Id="Component.DevExpress.Xpf.Gauges.v19.1.dll_1051895609" />
       <ComponentRef Id="Component.DevExpress.Xpf.Grid.v19.1.Core.dll_1173009349" />
       <ComponentRef Id="Component.DevExpress.Xpf.Grid.v19.1.dll_1568649839" />
       <ComponentRef Id="Component.DevExpress.Xpf.Layout.v19.1.Core.dll_1296492844" />
       <ComponentRef Id="Component.DevExpress.Xpf.LayoutControl.v19.1.dll_1842481529" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Map.v19.1.dll_653258269" />
       <ComponentRef Id="Component.DevExpress.Xpf.NavBar.v19.1.dll_1301648962" />
+      <ComponentRef Id="Component.DevExpress.Xpf.PivotGrid.v19.1.dll_684711905" />
+      <ComponentRef Id="Component.DevExpress.Xpf.Printing.v19.1.dll_1146587035" />
       <ComponentRef Id="Component.DevExpress.Xpf.PrismAdapters.v19.1.dll_1665521013" />
+      <ComponentRef Id="Component.DevExpress.Xpf.PropertyGrid.v19.1.dll_349059323" />
       <ComponentRef Id="Component.DevExpress.Xpf.Ribbon.v19.1.dll_54076005" />
+      <ComponentRef Id="Component.DevExpress.Xpf.RichEdit.v19.1.dll_2136622888" />
+      <ComponentRef Id="Component.DevExpress.Xpf.TreeMap.v19.1.dll_986052772" />
       <ComponentRef Id="Component.DevExpress.Xpo.v19.1.dll_982080424" />
+      <ComponentRef Id="Component.DevExpress.XtraBars.v19.1.dll_252523543" />
       <ComponentRef Id="Component.DevExpress.XtraCharts.v19.1.dll_1673945499" />
+      <ComponentRef Id="Component.DevExpress.XtraEditors.v19.1.dll_301552617" />
+      <ComponentRef Id="Component.DevExpress.XtraGauges.v19.1.Core.dll_49760184" />
+      <ComponentRef Id="Component.DevExpress.XtraGauges.v19.1.Presets.dll_924304638" />
+      <ComponentRef Id="Component.DevExpress.XtraGauges.v19.1.Win.dll_1059800070" />
+      <ComponentRef Id="Component.DevExpress.XtraLayout.v19.1.dll_621429707" />
+      <ComponentRef Id="Component.DevExpress.XtraMap.v19.1.dll_637622870" />
+      <ComponentRef Id="Component.DevExpress.XtraPrinting.v19.1.dll_1364438250" />
+      <ComponentRef Id="Component.DevExpress.XtraReports.v19.1.dll_88627162" />
+      <ComponentRef Id="Component.DevExpress.XtraTreeList.v19.1.dll_162520220" />
+      <ComponentRef Id="Component.DevExpress.XtraTreeMap.v19.1.dll_682342849" />
       <ComponentRef Id="Component.Documents.Core.dll_775752428" />
       <ComponentRef Id="Component.Flurl.dll_1842135575" />
       <ComponentRef Id="Component.Flurl.Http.dll_1198212591" />
       <ComponentRef Id="Component.Infrastructure.Core.dll_2047299211" />
       <ComponentRef Id="Component.Infrastructure.dll_1239657039" />
+      <ComponentRef Id="Component.Microsoft.AspNetCore.Connections.Abstractions.dll_1571968998" />
+      <ComponentRef Id="Component.Microsoft.AspNetCore.Http.Connections.Client.dll_1967830620" />
+      <ComponentRef Id="Component.Microsoft.AspNetCore.Http.Connections.Common.dll_612027877" />
+      <ComponentRef Id="Component.Microsoft.AspNetCore.Http.Features.dll_63393946" />
+      <ComponentRef Id="Component.Microsoft.AspNetCore.SignalR.Client.Core.dll_745224512" />
+      <ComponentRef Id="Component.Microsoft.AspNetCore.SignalR.Client.dll_419749671" />
+      <ComponentRef Id="Component.Microsoft.AspNetCore.SignalR.Common.dll_123993236" />
+      <ComponentRef Id="Component.Microsoft.AspNetCore.SignalR.Protocols.Json.dll_660998840" />
+      <ComponentRef Id="Component.Microsoft.Extensions.DependencyInjection.Abstractions.dll_1555596568" />
+      <ComponentRef Id="Component.Microsoft.Extensions.DependencyInjection.dll_104521296" />
+      <ComponentRef Id="Component.Microsoft.Extensions.Logging.Abstractions.dll_744588130" />
+      <ComponentRef Id="Component.Microsoft.Extensions.Logging.dll_199963627" />
+      <ComponentRef Id="Component.Microsoft.Extensions.Options.dll_1561123786" />
+      <ComponentRef Id="Component.Microsoft.Extensions.Primitives.dll_1295990112" />
       <ComponentRef Id="Component.Microsoft.Win32.Primitives.dll_500051027" />
       <ComponentRef Id="Component.netstandard.dll_1965744035" />
       <ComponentRef Id="Component.Networking.dll_962192585" />
       <ComponentRef Id="Component.Newtonsoft.Json.dll_1731176184" />
       <ComponentRef Id="Component.PostSharp.dll_850971325" />
+      <ComponentRef Id="Component.Prism.Container.Extensions.dll_1469427608" />
       <ComponentRef Id="Component.Prism.dll_1666907720" />
       <ComponentRef Id="Component.Prism.Unity.Wpf.dll_1362459596" />
       <ComponentRef Id="Component.Prism.Wpf.dll_607504329" />
       <ComponentRef Id="Component.SecurityModule.dll_1014105423" />
       <ComponentRef Id="Component.SharedEntities.dll_709349668" />
       <ComponentRef Id="Component.System.AppContext.dll_305044453" />
+      <ComponentRef Id="Component.System.Buffers.dll_1221841649" />
       <ComponentRef Id="Component.System.Collections.Concurrent.dll_1882017206" />
       <ComponentRef Id="Component.System.Collections.dll_1636315596" />
       <ComponentRef Id="Component.System.Collections.NonGeneric.dll_1570623369" />
@@ -806,12 +1032,14 @@
       <ComponentRef Id="Component.System.IO.FileSystem.Watcher.dll_1664030446" />
       <ComponentRef Id="Component.System.IO.IsolatedStorage.dll_950442033" />
       <ComponentRef Id="Component.System.IO.MemoryMappedFiles.dll_1906345627" />
+      <ComponentRef Id="Component.System.IO.Pipelines.dll_1094713657" />
       <ComponentRef Id="Component.System.IO.Pipes.dll_606299737" />
       <ComponentRef Id="Component.System.IO.UnmanagedMemoryStream.dll_635483770" />
       <ComponentRef Id="Component.System.Linq.dll_1513300489" />
       <ComponentRef Id="Component.System.Linq.Expressions.dll_671042884" />
       <ComponentRef Id="Component.System.Linq.Parallel.dll_1738282790" />
       <ComponentRef Id="Component.System.Linq.Queryable.dll_940907838" />
+      <ComponentRef Id="Component.System.Memory.dll_614449311" />
       <ComponentRef Id="Component.System.Net.Http.dll_206491264" />
       <ComponentRef Id="Component.System.Net.NameResolution.dll_1504883118" />
       <ComponentRef Id="Component.System.Net.NetworkInformation.dll_1037029256" />
@@ -823,6 +1051,7 @@
       <ComponentRef Id="Component.System.Net.WebHeaderCollection.dll_392088122" />
       <ComponentRef Id="Component.System.Net.WebSockets.Client.dll_1139278804" />
       <ComponentRef Id="Component.System.Net.WebSockets.dll_1145015014" />
+      <ComponentRef Id="Component.System.Numerics.Vectors.dll_1282118193" />
       <ComponentRef Id="Component.System.ObjectModel.dll_1659820222" />
       <ComponentRef Id="Component.System.Reactive.dll_769904464" />
       <ComponentRef Id="Component.System.Reflection.dll_345958630" />
@@ -854,6 +1083,7 @@
       <ComponentRef Id="Component.System.Text.Encoding.dll_1460520278" />
       <ComponentRef Id="Component.System.Text.Encoding.Extensions.dll_216563678" />
       <ComponentRef Id="Component.System.Text.RegularExpressions.dll_1969342890" />
+      <ComponentRef Id="Component.System.Threading.Channels.dll_1802402108" />
       <ComponentRef Id="Component.System.Threading.dll_1961619603" />
       <ComponentRef Id="Component.System.Threading.Overlapped.dll_121209543" />
       <ComponentRef Id="Component.System.Threading.Tasks.dll_1224855363" />
@@ -872,12 +1102,8 @@
       <ComponentRef Id="Component.System.Xml.XPath.XDocument.dll_443965638" />
       <ComponentRef Id="Component.Unity.Abstractions.dll_1916854268" />
       <ComponentRef Id="Component.Unity.Container.dll_316685559" />
-      <ComponentRef Id="Component.MiniBar_Admin_" />
-      <ComponentRef Id="Component.MiniBar_Admin.1" />
-      <ComponentRef Id="Component.MiniBar.ConfigurationModule.dll_1603191719" />
-      <ComponentRef Id="Component.MiniBar.ConfigurationModule.dll.config_590967585" />
-      <ComponentRef Id="Component.MiniBar.ProductsModule.dll_169231969" />
-      <ComponentRef Id="Component.MiniBar.ProductsModule.dll.config_6195623" />
+      <ComponentRef Id="Component.Minibar_Admin" />
+      <ComponentRef Id="Component.INSTALLDIR.Modules.EmptyDirectory" />
       <ComponentRef Id="ProgramFilesFolder.MyBar" />
     </Feature>
 

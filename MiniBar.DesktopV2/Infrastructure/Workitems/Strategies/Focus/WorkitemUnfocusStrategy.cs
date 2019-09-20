@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Infrastructure.Interface;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using Infrastructure.Utility;
-using Infrastructure.Interface;
 
 namespace Infrastructure.Workitems.Strategies.Focus
 {
@@ -24,7 +19,7 @@ namespace Infrastructure.Workitems.Strategies.Focus
                     if (item.IsFocused != false)
                         item.IsFocused = false;
                 }
-                if(CurrentContextService.Collection.Null != null)
+                if (CurrentContextService.Collection.Null != null)
                     CurrentContextService.Collection.Null.IsFocused = true;
             });
         }

@@ -17,7 +17,7 @@ namespace Infrastructure
         {
             get
             {
-                if(emptyImage == null)
+                if (emptyImage == null)
                 {
                     int width = 128;
                     int height = width;

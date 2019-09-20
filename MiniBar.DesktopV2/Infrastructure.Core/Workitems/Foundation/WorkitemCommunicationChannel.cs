@@ -1,20 +1,13 @@
 ﻿using Infrastructure.Interface;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reactive.Disposables;
-using System.Reactive.Linq;
 using System.Reactive.Subjects;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Workitems
 {
     /// <summary>
     /// The communication channel implmentation for WorkitemBase
     /// </summary>
-    internal class WorkitemCommunicationChannel : ISubject<WorkitemEventArgs> , IDisposable
+    internal class WorkitemCommunicationChannel : ISubject<WorkitemEventArgs>, IDisposable
     {
         /// <summary>
         /// The underlying subject

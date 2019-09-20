@@ -43,7 +43,7 @@ namespace Shell
             get { return connectedStatusToolTip; }
             set { SetProperty(ref connectedStatusToolTip, value, nameof(ConnectedStatusToolTip)); }
         }
-        
+
         private string loadingAction;
 
         public string LoadingAction

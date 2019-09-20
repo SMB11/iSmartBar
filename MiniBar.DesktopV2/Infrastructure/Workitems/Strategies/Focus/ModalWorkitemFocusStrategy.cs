@@ -1,11 +1,5 @@
-﻿using Infrastructure.Utility;
-using Infrastructure.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Infrastructure.Interface;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace Infrastructure.Workitems.Strategies.Focus
 {

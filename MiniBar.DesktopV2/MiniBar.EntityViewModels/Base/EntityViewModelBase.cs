@@ -8,7 +8,7 @@ namespace MiniBar.EntityViewModels.Base
 {
     [Serializable]
     public class EntityViewModelBase<T> : EditableViewModel<T>, IDataErrorInfoExtended
-        where T: class, INotifyPropertyChanged
+        where T : class, INotifyPropertyChanged
     {
         public EntityViewModelBase()
         {
@@ -19,14 +19,15 @@ namespace MiniBar.EntityViewModels.Base
             get { return String.Empty; }
         }
 
-        public bool HasErrors {
+        public bool HasErrors
+        {
             get
             {
                 return IDataErrorInfoHelper.HasErrors(this, true, 1, FilterValidationProperties);
             }
         }
 
-        protected virtual  bool FilterValidationProperties(PropertyDescriptor propertyDescriptor)
+        protected virtual bool FilterValidationProperties(PropertyDescriptor propertyDescriptor)
         {
             return propertyDescriptor.Name != nameof(HasErrors);
         }

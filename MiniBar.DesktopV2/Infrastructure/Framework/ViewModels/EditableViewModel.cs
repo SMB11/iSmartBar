@@ -5,7 +5,7 @@ using System.Reflection;
 namespace Infrastructure.Framework
 {
     public abstract class EditableViewModel<T> : BaseViewModel, IEditableObject, IChangeTracking
-        where T: class
+        where T : class
     {
         public EditableViewModel()
         {
@@ -17,7 +17,7 @@ namespace Infrastructure.Framework
         private void EditableViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             PropertyInfo propertyInfo = this.GetType().GetProperty(e.PropertyName);
-            if(propertyInfo != null)
+            if (propertyInfo != null)
             {
                 if (PropertyFilter(propertyInfo))
                 {

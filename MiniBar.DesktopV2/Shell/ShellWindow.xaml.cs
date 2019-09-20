@@ -1,11 +1,9 @@
-﻿using System;
-using System.ComponentModel;
-using DevExpress.Xpf.Core;
+﻿using DevExpress.Xpf.Core;
 using Infrastructure;
-using Infrastructure.Security;
-using Infrastructure.Modularity;
-using Infrastructure.Utility;
 using Infrastructure.Framework;
+using Infrastructure.Modularity;
+using Infrastructure.Security;
+using System.ComponentModel;
 
 namespace Shell
 {
@@ -17,16 +15,9 @@ namespace Shell
         public ShellWindow()
         {
             InitializeComponent();
-            AppSecurityContext.AppPrincipalChanged += (o,e) => HandleAuthenticationStateChanged();
-            loginBarItem.PerformClick();
-            exit.ItemClick += Exit_ItemClick;
+            AppSecurityContext.AppPrincipalChanged += (o, e) => HandleAuthenticationStateChanged();
             var names = new DynamicRegionNames();
             RegionNameManager.SetDynamicRegionNames(this, names);
-        }
-
-        private void Exit_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
-        {
-            this.Close();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -38,7 +29,7 @@ namespace Shell
 
         private void HandleAuthenticationStateChanged()
         {
-            if(AppSecurityContext.CurrentPrincipal.Identity is AnonymousIdentity)
+            if (AppSecurityContext.CurrentPrincipal.Identity is AnonymousIdentity)
             {
                 loginBarItem.IsVisible = true;
                 logoutBarItem.IsVisible = false;
@@ -49,6 +40,6 @@ namespace Shell
                 logoutBarItem.IsVisible = true;
             }
         }
-        
+
     }
 }

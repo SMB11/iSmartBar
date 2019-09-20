@@ -12,7 +12,7 @@ namespace Security.Workitems.Login.Views
     public class LoginViewModel : WorkitemViewModel
     {
         CancellationTokenSource cancellationToken;
-        
+
         internal AuthenticationController AuthenticationController { get; private set; }
 
         public LoginViewModel(AuthenticationController authenticationController)
@@ -29,7 +29,7 @@ namespace Security.Workitems.Login.Views
         }
 
 
-        private string username = "Admin";
+        private string username = "";
 
         public string Username
         {
@@ -38,7 +38,7 @@ namespace Security.Workitems.Login.Views
         }
 
 
-        private string password = "_Minibaradmin123";
+        private string password = "";
 
         public string Password
         {

@@ -9,7 +9,8 @@ namespace Infrastructure.Framework
         {
             if (!Application.Current.Dispatcher.CheckAccess())
             {
-                return Application.Current.Dispatcher.Invoke(() => {
+                return Application.Current.Dispatcher.Invoke(() =>
+                {
                     return DXMessageBox.Show(message, caption, buttons);
 
                 });

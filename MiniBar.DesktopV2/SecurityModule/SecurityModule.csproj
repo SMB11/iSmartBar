@@ -100,6 +100,11 @@
     </Compile>
     <Compile Include="Workitems\Login\LoginWorkitem.cs" />
     <Compile Include="Workitems\Login\Views\LoginViewModel.cs" />
+    <Compile Include="Workitems\Settings\SettingsWorkitem.cs" />
+    <Compile Include="Workitems\Settings\Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Workitems\Settings\Views\SettingsViewModel.cs" />
     <Compile Include="Workitems\SoftwareUpdate\SoftwareUpdateWorkitem.cs" />
     <Compile Include="Workitems\SoftwareUpdate\Views\UpdateView.xaml.cs">
       <DependentUpon>UpdateView.xaml</DependentUpon>
@@ -126,6 +131,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Workitems\Login\Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Workitems\Settings\Views\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,16 +6,17 @@
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" xmlns:ViewModels="clr-namespace:MiniBar.ProductsModule.Workitems.ProductManager.Views"
              xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
              mc:Ignorable="d"
+             xmlns:shared="clr-namespace:SharedEntities.Enum;assembly=SharedEntities"  
              xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
              xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
              xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:infdp="clr-namespace:Infrastructure;assembly=Infrastructure"  
-             xmlns:shared="clr-namespace:SharedEntities.Enum;assembly=SharedEntities"  
              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
              xmlns:vc ="clr-namespace:Infrastructure.Framework;assembly=Infrastructure"  
-
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             xmlns:local ="clr-namespace:MiniBar.ProductsModule.Workitems.ProductManager.Views"  
+            prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DataContext="{x:Type local:DesignTimeViewModel}">
 
     <UserControl.Resources>
         <vc:ObjectVisibilityConverter x:Key="ObjectVisibilityConverter"/>
@@ -115,11 +116,8 @@
 
                         <dxlc:DataLayoutItem Label="Size" infdp:DataProperties.Required="True">
 
-                                <dxe:ComboBoxEdit EditValue="{Binding Size, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
-                                    <dxmvvm:Interaction.Behaviors>
-                                        <dxmvvm:EnumItemsSourceBehavior EnumType="{x:Type shared:ProductSize}"/>
-                                    </dxmvvm:Interaction.Behaviors>
-                                </dxe:ComboBoxEdit>
+                            <dxe:ComboBoxEdit ItemsSource="{dxe:EnumItemsSource EnumType=shared:ProductSize}" EditValue="{Binding Size, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}">
+                            </dxe:ComboBoxEdit>
                             </dxlc:DataLayoutItem>
                             <dxlc:DataLayoutItem Label="Description" infdp:DataProperties.Required="True">
                                 <dxe:ButtonEdit ValidateOnTextInput="False" infdp:ReadOnlyPanel.AlwaysReadOnly="True" Text="{Binding MainDescription, Mode=OneWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=LostFocus}" AllowDefaultButton="False">

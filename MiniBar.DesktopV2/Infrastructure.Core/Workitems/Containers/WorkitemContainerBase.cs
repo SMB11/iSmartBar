@@ -1,20 +1,17 @@
 ﻿using Infrastructure.Interface;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Workitems
 {
     /// <summary>
     /// The base of all workitem containers
     /// </summary>
-    public abstract class WorkitemContainerBase: IDisposableContainer, IDisposable
+    public abstract class WorkitemContainerBase : IDisposableContainer, IDisposable
     {
         // Objects to dispose of on Dispose()
         private List<IDisposable> Disposables;
-        
+
         protected IWorkItem WorkItem { get; set; }
 
         public WorkitemContainerBase(IWorkItem workItem)

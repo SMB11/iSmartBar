@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DevExpress.Spreadsheet;
 using Documents.Excel.Worksheets;
-using DevExpress.Spreadsheet;
+using System;
+using System.Linq;
 
 namespace Documents.Editors
 {
@@ -31,7 +28,7 @@ namespace Documents.Editors
         {
             string name = cellValue.ToString();
             return Enum.Parse(type, name);
-            
+
         }
     }
 }

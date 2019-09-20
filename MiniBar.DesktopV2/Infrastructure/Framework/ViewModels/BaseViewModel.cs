@@ -1,8 +1,7 @@
 ﻿using DevExpress.Mvvm;
-using Infrastructure.Logging;
-using Infrastructure.Framework;
-using System;
 using Infrastructure.ErrorHandling;
+using Infrastructure.Logging;
+using System;
 
 namespace Infrastructure.Framework
 {

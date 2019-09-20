@@ -1,19 +1,21 @@
-﻿using DevExpress.Xpf.Core;
+﻿using AutoMapper;
+using Core.Modules;
+using DevExpress.Mvvm;
+using DevExpress.Xpf.Core;
+using Infrastructure;
+using Infrastructure.Interface;
+using Infrastructure.Security;
+using Infrastructure.Utility;
+using MiniBar.Common.Workitems.Main;
+using MiniBar.EntityViewModels.Global;
 using MiniBar.Modules;
 using Prism.Ioc;
 using Prism.Modularity;
 using System;
-using System.Windows;
-using AutoMapper;
 using System.Globalization;
-using Infrastructure.Interface;
-using Core.Modules;
-using Infrastructure.Utility;
-using MiniBar.EntityViewModels.Global;
-using MiniBar.Common.Workitems.Main;
-using Infrastructure.Security;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace Shell
 {
@@ -37,7 +39,7 @@ namespace Shell
         {
             base.OnInitialized();
             MainWindow?.Hide();
-
+            CommandManager.RegisterCommand(MiniBar.Common.Constants.CommandNames.Exit, Application.Current.MainWindow.Close);
             Container.Resolve<IContextService>().LaunchWorkItem<MainWorkitem>();
         }
 
@@ -68,6 +70,7 @@ namespace Shell
                 .AddModule<CommonModule>()
                 .AddModule<ConfigurationModule>()
                 .AddModule<ProductsModule>();
+                //.AddModule<AnalyticsModule>();
 
         }
 
@@ -92,25 +95,6 @@ namespace Shell
             CultureInfo.CurrentCulture = culture;
             CultureInfo.CurrentUICulture = culture;
 
-            AppSecurityContext.AppPrincipalChanged += AppSecurityContext_AppPrincipalChanged;
-        }
-
-        private void AppSecurityContext_AppPrincipalChanged(object sender, EventArgs e)
-        {
-            IContextService currentContextService = Container.Resolve<IContextService>();
-            Task.Factory.StartNew(async () =>
-            {
-                Thread.Sleep(1000);
-                for (int i = 0; i < 0; i++)
-                {
-                    //await currentContextService.LaunchModalWorkItem<CountryManagerWorkitem>();
-                    //await currentContextService.LaunchModalWorkItem<CityManagerWorkitem>();
-                    //await currentContextService.LaunchModalWorkItem<HotelManagerWorkitem>();
-                    //await currentContextService.LaunchModalWorkItem<ProductManagerWorkitem>();
-                    //await currentContextService.LaunchModalWorkItem<CategoryManagerWorkitem>();
-                    //await currentContextService.LaunchModalWorkItem<BrandManagerWorkitem>();
-                }
-            });
         }
     }
 }

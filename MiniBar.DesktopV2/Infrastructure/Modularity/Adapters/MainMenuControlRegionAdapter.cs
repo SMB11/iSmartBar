@@ -1,6 +1,5 @@
 ﻿using DevExpress.Xpf.Bars;
 using Prism.Regions;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 
@@ -22,7 +21,7 @@ namespace Infrastructure.Modularity
                         foreach (BarSubItem element in e.NewItems)
                         {
                             BarSubItem found = regionTarget.Items.OfType<BarSubItem>().Where(item => item.Content == element.Content && item.Tag.Equals(element.Tag)).FirstOrDefault();
-                            if(found == null) regionTarget.Items.Insert(0, element);
+                            if (found == null) regionTarget.Items.Insert(0, element);
                             else
                             {
                                 found.Items.AddRange(element.Items);

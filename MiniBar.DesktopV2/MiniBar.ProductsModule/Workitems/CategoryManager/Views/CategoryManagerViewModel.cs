@@ -1,17 +1,17 @@
-﻿using System;
+﻿using AutoMapper;
+using Infrastructure.Interface;
+using Infrastructure.Utility;
+using MiniBar.Common.Services;
+using MiniBar.Common.Workitems.ObjectManager;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Services;
-using AutoMapper;
-using System.Threading.Tasks;
+using MiniBar.ProductsModule.Workitems.CatgeoryManager.Services;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using MiniBar.Common.Services;
-using MiniBar.ProductsModule.Workitems.CatgeoryManager.Services;
-using Infrastructure.Interface;
-using MiniBar.Common.Workitems.ObjectManager;
-using Infrastructure.Utility;
+using System.Threading.Tasks;
 
 namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
 {
@@ -39,7 +39,7 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
         }
 
 
-        public CategoryManagerViewModel(CategoryService categoryService, IContextService  currentContextService, IMapper mapper) : base()
+        public CategoryManagerViewModel(CategoryService categoryService, IContextService currentContextService, IMapper mapper) : base()
         {
             CurrentContextService = currentContextService;
             CategoryService = categoryService;
@@ -64,7 +64,8 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
 
         protected override CategoryUploadViewModel CreateCopyDetails()
         {
-            return new CategoryUploadViewModel() {
+            return new CategoryUploadViewModel()
+            {
                 Names = CurrentItemDetails.Names,
                 ParentCategory = CurrentItemDetails.ParentCategory,
                 ParentID = CurrentItemDetails.ParentID,

@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using Infrastructure.Interface;
+﻿using Infrastructure.Interface;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Workitems.Strategies.Close
 {

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 
 namespace Documents.Metadata
 {
@@ -13,7 +8,7 @@ namespace Documents.Metadata
         {
         }
 
-        public NormalColumnMetadata(PropertyInfo info1, PropertyInfo info2, string name) : base(info1,info2, name)
+        public NormalColumnMetadata(PropertyInfo info1, PropertyInfo info2, string name) : base(info1, info2, name)
         {
         }
 

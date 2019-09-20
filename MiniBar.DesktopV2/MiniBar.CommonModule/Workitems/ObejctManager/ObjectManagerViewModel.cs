@@ -1,26 +1,26 @@
 ﻿using DevExpress.Xpf.Grid;
-using Infrastructure.Utility;
+using Infrastructure.ChangeTracking;
+using Infrastructure.Framework;
 using Infrastructure.Interface;
 using Infrastructure.Security;
+using Infrastructure.Utility;
+using MiniBar.Common.MVVM;
+using MiniBar.Common.Services;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using MiniBar.Common.Services;
-using System.Threading;
-using System.Collections.ObjectModel;
-using Infrastructure.ChangeTracking;
-using MiniBar.Common.MVVM;
-using Infrastructure.Framework;
 
 namespace MiniBar.Common.Workitems.ObjectManager
 {
     public abstract class ObjectManagerViewModel<TList, TDetails> : CrudWorkitemManagerViewModel, ISupportsListManipulation, IWorkitemAware, IGridViewModel, IObserver<TDetails>
-        where TList: IIdEntityViewModel
-        where TDetails: IEditableObject, IIdEntityViewModel
+        where TList : IIdEntityViewModel
+        where TDetails : IEditableObject, IIdEntityViewModel
     {
         #region Bindable Properties
 
@@ -60,7 +60,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
         public bool IsListEnabled
         {
             get { return IsAuthenticated && isListEnabled && !IsListLoading; }
-            set {SetProperty(ref isListEnabled, value, nameof(IsListEnabled));}
+            set { SetProperty(ref isListEnabled, value, nameof(IsListEnabled)); }
         }
 
         private bool isDetailsEnabled = true;
@@ -74,7 +74,8 @@ namespace MiniBar.Common.Workitems.ObjectManager
         public bool IsListLoading
         {
             get { return isListLoading; }
-            set {
+            set
+            {
                 SetProperty(ref isListLoading, value, nameof(IsListLoading));
                 RaisePropertyChanged(nameof(IsListEnabled));
             }
@@ -123,11 +124,11 @@ namespace MiniBar.Common.Workitems.ObjectManager
                 UpdateCrudCommands();
             }
         }
-        
+
         #endregion
 
         #region Commands
-        
+
         private SecureAsyncCommand refreshListCommand;
         public SecureAsyncCommand RefreshListCommand
         {
@@ -153,7 +154,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
             expandAllCommand ?? (expandAllCommand = Disposable(new SecureCommand(ExecuteExpandAllCommand, CanExecuteExpandAllCommand)));
 
         #endregion
-        
+
         #region Command Implementation
 
         protected override void Add()
@@ -268,7 +269,8 @@ namespace MiniBar.Common.Workitems.ObjectManager
 
         protected override async Task Delete()
         {
-            if(UIManager.AskForConfirmation(String.Format("Do you really want to remove {0}", CurrentItem.ToString()))){
+            if (UIManager.AskForConfirmation(String.Format("Do you really want to remove {0}", CurrentItem.ToString())))
+            {
 
                 int id = ((IIdEntityViewModel)CurrentItem).ID;
                 IsListLoading = true;
@@ -326,7 +328,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
             }
             Grid.ExpandAllGroups();
         }
-        
+
         bool CanExecuteExpandAllCommand()
         {
             return Grid != null;
@@ -337,7 +339,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
 
         #region Properties
 
-        public GridControl Grid { get; set ; }
+        public GridControl Grid { get; set; }
 
         protected IWorkItem WorkItem { get; private set; }
 
@@ -348,7 +350,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
         {
             WhenCurrentItemChanged = new Subject<int?>();
             WhenCurrentItemChanged.Throttle(TimeSpan.FromMilliseconds(200));
-            Disposable( WhenCurrentItemChanged.Subscribe(HandleCurrentItemChanged));
+            Disposable(WhenCurrentItemChanged.Subscribe(HandleCurrentItemChanged));
             AppSecurityContext.AppPrincipalChanged += HandleAutheticationStateChanged;
         }
 
@@ -364,7 +366,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
             RaisePropertyChanged(nameof(IsListEnabled));
             UpdateCrudCommands();
         }
-        
+
         private void HandleCurrentItemChanged(int? id)
         {
             CurrentItemDetails = default(TDetails);
@@ -400,7 +402,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
                         )
                     );
         }
-        
+
         private IObservable<CommitSuccessAction> GetRemoveObservable()
         {
             return
@@ -412,7 +414,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
         }
 
         #endregion
-        
+
         #region Abstract Interface
         public abstract ObservableCollection<TList> ListItems { get; set; }
         protected abstract TDetails CreateEmptyDetails();
@@ -423,7 +425,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
         #endregion
 
         #region Protected
-        
+
         protected virtual async Task LoadList()
         {
             try
@@ -442,7 +444,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
             IDataErrorInfo dataErrorInfo = CurrentItemDetails as IDataErrorInfo;
             return !dataErrorInfo.HasErrors();
         }
-        
+
         protected virtual async void Initialize()
         {
 
@@ -470,14 +472,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
 
         public async Task RefreshItems(int? focuseID = null)
         {
-
-            IsListLoading = true;
-            IsObjectLoading = true;
-
-            await LoadList();
-
-            IsListLoading = false;
-            IsObjectLoading = false;
+            Initialize();
 
             if (focuseID.HasValue)
             {
@@ -503,7 +498,8 @@ namespace MiniBar.Common.Workitems.ObjectManager
 
         public void OnError(Exception e)
         {
-            ApiHelper.HandleApiException(e, "Failed to load object", () => {
+            ApiHelper.HandleApiException(e, "Failed to load object", () =>
+            {
                 IsObjectLoading = false;
             });
         }

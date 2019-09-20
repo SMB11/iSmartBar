@@ -1,9 +1,9 @@
-﻿using Prism.Events;
-using SharedEntities.DTO.Users;
-using System.Threading.Tasks;
+﻿using Infrastructure.Security;
+using Prism.Events;
 using Security.Internal.Services;
-using Infrastructure.Security;
+using SharedEntities.DTO.Users;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace Security.Internal.Controllers
 {

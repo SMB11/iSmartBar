@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using Infrastructure.Interface;
-using Infrastructure.Interface.Enums;
-using Infrastructure.Modularity;
-using Infrastructure.Utility;
+﻿using Infrastructure.Interface;
 using Prism.Regions;
+using System;
+using System.Windows;
 
 namespace Infrastructure.Workitems
 {
@@ -28,7 +21,7 @@ namespace Infrastructure.Workitems
                 if (WorkitemManager.GetOwner(view as DependencyObject) != null) return;
                 WorkitemManager.SetOwner(view as DependencyObject, (IWorkItem)WorkItem);
             }
-            
+
             if (view is FrameworkElement)
             {
                 object viewModel = ((FrameworkElement)view).DataContext;
@@ -40,12 +33,12 @@ namespace Infrastructure.Workitems
 
                 if (viewModel is IDisposable)
                     Disposable((IDisposable)viewModel);
-                
+
                 if (view is IGridView && viewModel is IGridViewModel)
                     ((IGridViewModel)viewModel).Grid = ((IGridView)view).Grid;
             }
         }
-        
+
 
 
 

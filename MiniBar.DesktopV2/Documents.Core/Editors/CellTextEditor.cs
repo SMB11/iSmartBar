@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DevExpress.Spreadsheet;
 using Documents.Converters.Cell;
-
 using Documents.Excel.Worksheets;
-using DevExpress.Spreadsheet;
+using System;
 
 namespace Documents.Editors
 {
@@ -26,7 +21,7 @@ namespace Documents.Editors
 
         public override void Init(Worksheet mainWorksheet, ListWorksheet listWorksheet, Range range)
         {
-            if(DataValidation  != null)
+            if (DataValidation != null)
                 mainWorksheet.DataValidations.Add(
                     range,
                     DataValidation.ValidationType,

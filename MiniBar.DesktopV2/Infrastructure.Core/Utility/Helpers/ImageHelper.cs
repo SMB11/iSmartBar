@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using Flurl.Http;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Flurl.Http;
 
 namespace Infrastructure.Utility
 {
@@ -18,7 +13,7 @@ namespace Infrastructure.Utility
         {
 
             WebRequest request =
-            WebRequest.Create( url);
+            WebRequest.Create(url);
             WebResponse response = await request.GetResponseAsync().ConfigureAwait(false);
             Stream responseStream =
                 response.GetResponseStream();

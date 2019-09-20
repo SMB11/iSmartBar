@@ -44,7 +44,7 @@ namespace Infrastructure.Workitems
         #endregion
 
         #region Properties
-        
+
         /// <summary>
         /// The Communication Channel that allows the workitem to talk to its creator
         /// </summary>
@@ -91,12 +91,12 @@ namespace Infrastructure.Workitems
         /// IsDirty changed event
         /// </summary>
         public virtual event EventHandler<EventArgs> IsDirtyChanged;
-        
+
         /// <summary>
         /// Workitems Parent in the Workitem Tree
         /// </summary>
         public IWorkItem Parent { get; set; }
-        
+
         /// <summary>
         /// Configuration object of the workitem
         /// </summary>
@@ -169,14 +169,14 @@ namespace Infrastructure.Workitems
         {
             return CurrentContextService.CloseWorkitem(this);
         }
-        
+
         /// <summary>
         /// Lifecycle hook to add workitem configuration
         /// </summary>
         public virtual void Configure()
         {
         }
-        
+
         /// <summary>
         /// Launch the workitem
         /// </summary>
@@ -193,9 +193,9 @@ namespace Infrastructure.Workitems
 
             IsOpen = true;
             await Create().ConfigureAwait(false);
-            
+
             viewContainer = CreateViewContainer();
-            
+
             Disposable(viewContainer);
             RegisterViews(viewContainer);
 
@@ -239,7 +239,7 @@ namespace Infrastructure.Workitems
                 return Resources[name]?.Invoke();
             return null;
         }
-        
+
         /// <summary>
         /// Notifies that IsDirty has changed.
         /// Should be called every time IsDirty chnages if ovveriding IsDirty
@@ -254,7 +254,7 @@ namespace Infrastructure.Workitems
         /// note that all Disposables will be disposed during cleanup
         /// </summary>
         /// <param name="disposable"></param>
-        public T Disposable<T>(T disposable) 
+        public T Disposable<T>(T disposable)
             where T : IDisposable
         {
             Disposables.Add(disposable);
@@ -288,7 +288,7 @@ namespace Infrastructure.Workitems
         protected virtual void RegisterViews(IViewContainer container)
         {
         }
-        
+
         /// <summary>
         /// Lifecicle hook to create anything async to be used by the workitem
         /// </summary>
@@ -337,7 +337,7 @@ namespace Infrastructure.Workitems
         #endregion
 
         #region IDisposable Implementation
-        
+
         /// <summary>
         /// Dispose of the workitem
         /// </summary>
@@ -347,7 +347,7 @@ namespace Infrastructure.Workitems
             DispisableHelper.DisposeEvent(IsDirtyChanged);
             communicationChannel = null;
         }
-        
+
         #endregion
 
         #region ISupportFocus Implementation

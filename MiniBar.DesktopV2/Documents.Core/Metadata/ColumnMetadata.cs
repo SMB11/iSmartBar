@@ -1,10 +1,5 @@
 ﻿using Documents.Editors;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Documents.Metadata
 {
@@ -26,10 +21,10 @@ namespace Documents.Metadata
         public PropertyInfo PropertyInfo { get; private set; }
 
         public PropertyInfo PropertyInfo2 { get; private set; }
-        
+
         public string Name { get; private set; }
 
-        public abstract ColumnType ColumnType{ get; }
+        public abstract ColumnType ColumnType { get; }
 
         public CellEditor CellEditor { get; set; }
     }

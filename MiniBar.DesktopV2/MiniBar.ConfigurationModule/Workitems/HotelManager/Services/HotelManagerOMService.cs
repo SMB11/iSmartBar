@@ -3,10 +3,7 @@ using MiniBar.Common.Services;
 using MiniBar.ConfigurationModule.Services;
 using MiniBar.EntityViewModels.Configuration;
 using SharedEntities.DTO.Locations;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

@@ -3,7 +3,6 @@ using Infrastructure.Framework;
 using Infrastructure.Interface;
 using Infrastructure.Modularity;
 using Prism.Regions;
-using System;
 using System.Linq;
 using System.Windows;
 
@@ -40,7 +39,7 @@ namespace Infrastructure.Utility
             foreach (DependencyObject view in region.Views.OfType<DependencyObject>())
             {
                 IWorkItem owner = WorkitemManager.GetOwner(view);
-                if(workItem.Equals(owner))
+                if (workItem.Equals(owner))
                     region.Remove(view);
             }
         }
@@ -107,7 +106,7 @@ namespace Infrastructure.Utility
             if (isDirty)
                 item.Header = header + "*";
             else
-                item.Header = header ;
+                item.Header = header;
         }
 
         public static void RemoveTab(this IRegionManager regionManager, IWorkItem workItem)

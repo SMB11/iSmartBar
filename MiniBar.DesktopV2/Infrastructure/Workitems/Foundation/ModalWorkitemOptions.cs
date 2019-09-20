@@ -39,7 +39,7 @@ namespace Infrastructure.Workitems
             WindowStartupLocation = startupLocation;
         }
 
-        public ModalOptions(Size size, ResizeMode resizeMode, WindowStartupLocation startupLocation, bool showIcon) :this(size, resizeMode, startupLocation)
+        public ModalOptions(Size size, ResizeMode resizeMode, WindowStartupLocation startupLocation, bool showIcon) : this(size, resizeMode, startupLocation)
         {
             ShowIcon = showIcon;
         }

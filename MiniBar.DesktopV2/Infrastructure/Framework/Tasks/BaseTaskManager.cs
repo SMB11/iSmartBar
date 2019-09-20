@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Logging;
-using Infrastructure.Utility;
 using System;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -40,7 +39,7 @@ namespace Infrastructure.Framework
             catch (Exception ex)
             {
                 // Log error
-                Logger.LogErrorSource(ex.ToString(),  origin: origin, filePath: filePath, lineNumber: lineNumber);
+                Logger.LogErrorSource(ex.ToString(), origin: origin, filePath: filePath, lineNumber: lineNumber);
 
                 // Throw it as normal
                 throw;

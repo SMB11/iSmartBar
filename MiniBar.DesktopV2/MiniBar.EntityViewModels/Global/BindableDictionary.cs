@@ -3,9 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiniBar.EntityViewModels.Global
 {
@@ -80,16 +77,17 @@ namespace MiniBar.EntityViewModels.Global
 
         public BindableDictionary(IDictionary<string, T> dict)
         {
-            foreach(var item in dict)
+            foreach (var item in dict)
             {
                 Add(item.Key, item.Value);
             }
         }
 
-        public T this[string key] {
+        public T this[string key]
+        {
             get
             {
-                foreach(var item in this)
+                foreach (var item in this)
                 {
                     if (item.Key == key)
                         return item.Value;
@@ -187,7 +185,7 @@ namespace MiniBar.EntityViewModels.Global
         public Dictionary<string, T> ToDictionary()
         {
             Dictionary<string, T> dictionary = new Dictionary<string, T>();
-            foreach(var item in this)
+            foreach (var item in this)
                 dictionary.Add(item.Key, item.Value);
             return dictionary;
         }

@@ -1,14 +1,9 @@
-﻿using Prism.Modularity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Prism.Ioc;
-using System.Windows.Input;
-using Prism.Events;
-using System.Reflection;
-using DevExpress.Mvvm;
-using Infrastructure.Interface;
+﻿using Infrastructure.Interface;
 using Infrastructure.Security;
+using Prism.Ioc;
+using Prism.Modularity;
+using System.Linq;
+using System.Reflection;
 
 namespace Security
 {
@@ -38,22 +33,22 @@ namespace Security
         public virtual void OnInitialized(IContainerProvider containerProvider)
         {
 
-            this._currentContextService = containerProvider.Resolve< IContextService>();
+            this._currentContextService = containerProvider.Resolve<IContextService>();
         }
 
         public virtual void RegisterTypes(IContainerRegistry containerRegistry)
         {
 
         }
-        
+
         #endregion
 
         #region Properties
         public abstract string Name { get; }
-        
+
         protected IContextService CurrentContextService { get { return _currentContextService; } }
 
         #endregion
-        
+
     }
 }

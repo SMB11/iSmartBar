@@ -1,4 +1,5 @@
 ﻿using CommonServiceLocator;
+using Infrastructure.Logging;
 using Prism.Modularity;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Infrastructure.Modularity
 {
     public class DynamicDirectoryModuleCatalog : ModuleCatalog
     {
+
         SynchronizationContext _context;
         /// <summary>
         /// Directory containing modules to search for.
@@ -28,7 +30,6 @@ namespace Infrastructure.Modularity
         public DynamicDirectoryModuleCatalog(string modulePath, string binDirectory)
         {
             _context = SynchronizationContext.Current;
-
             ModulePath = modulePath;
             BinPath = binDirectory;
             CreateFileWatcher();
@@ -66,8 +67,13 @@ namespace Infrastructure.Modularity
         /// </summary>
         protected override void InnerLoad()
         {
-            if(Directory.Exists(ModulePath))
+            try
+            {
                 LoadModuleCatalog(ModulePath);
+            }
+            catch
+            {
+            }
         }
 
         void LoadModuleCatalog(string path, bool isFile = false)
@@ -106,15 +112,14 @@ namespace Infrastructure.Modularity
                 if (loaderType.Assembly != null)
                 {
                     var loader = (InnerModuleInfoLoader)childDomain.CreateInstanceFrom(loaderType.Assembly.Location, loaderType.FullName).Unwrap();
-                    foreach(var assembly in loadedAssemblies)
+                    foreach (var assembly in loadedAssemblies)
                     {
                         try
                         {
                             loader.LoadAssemblies(new string[] { assembly });
                         }
-                        catch(Exception e)
+                        catch (Exception e)
                         {
-                            MessageBox.Show("Error 1: "+ e.Message);
                         }
                     }
 
@@ -131,9 +136,8 @@ namespace Infrastructure.Modularity
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                MessageBox.Show("Error 2: " + e.Message);
 
             }
             finally
@@ -252,7 +256,7 @@ namespace Infrastructure.Modularity
                                             .Where(t => !t.IsAbstract)
                                             .Select(type => CreateModuleInfo(type)));
             }
-            
+
 
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
             internal void LoadAssemblies(IEnumerable<string> assemblies)

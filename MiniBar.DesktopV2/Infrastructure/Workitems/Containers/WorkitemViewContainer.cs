@@ -11,11 +11,11 @@ namespace Infrastructure.Workitems
     {
         DynamicRegionNames RegionNames;
 
-        internal WorkitemViewContainer(IWorkItem workItem, IRegionManager regionManager): base(workItem,regionManager)
+        internal WorkitemViewContainer(IWorkItem workItem, IRegionManager regionManager) : base(workItem, regionManager)
         {
             RegionNames = RegionNameManager.GetDynamicRegionNames(Application.Current.MainWindow);
         }
-        
+
         protected override object RegisterView(object view, ScreenRegion region)
         {
             switch (region)
@@ -53,17 +53,17 @@ namespace Infrastructure.Workitems
             }
             else
             {
-            item  = new DXTabItem() { Content = view, Header = WorkItem.WorkItemName };
-            //TabControlStretchView.SetPinMode(item, TabPinMode.Left);
-            if (WorkItem != null)
-            {
-                SetTabHeader(item, WorkItem.WorkItemName, WorkItem.IsDirty);
-
-                WorkitemManager.SetOwner(item, (IWorkItem)WorkItem);
-                WorkItem.IsDirtyChanged += (o, e) =>
+                item = new DXTabItem() { Content = view, Header = WorkItem.WorkItemName };
+                //TabControlStretchView.SetPinMode(item, TabPinMode.Left);
+                if (WorkItem != null)
                 {
                     SetTabHeader(item, WorkItem.WorkItemName, WorkItem.IsDirty);
-                };
+
+                    WorkitemManager.SetOwner(item, (IWorkItem)WorkItem);
+                    WorkItem.IsDirtyChanged += (o, e) =>
+                    {
+                        SetTabHeader(item, WorkItem.WorkItemName, WorkItem.IsDirty);
+                    };
                 }
 
             }

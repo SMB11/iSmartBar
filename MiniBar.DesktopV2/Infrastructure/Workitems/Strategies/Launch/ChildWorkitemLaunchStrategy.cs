@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Infrastructure.Interface;
+using Infrastructure.Utility;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
-using Infrastructure.Interface;
-using Infrastructure.Utility;
 
 namespace Infrastructure.Workitems.Strategies.Launch
 {
@@ -29,10 +29,10 @@ namespace Infrastructure.Workitems.Strategies.Launch
             Workitem.Parent = Parent;
             // if should open modal set window owner to pernt.window or mainwindow
             if (ShouldOpenModal)
-                Application.Current.Dispatcher.InvokeIfNeeded(() => ((Window) Workitem.Window).Owner = ((Window)Parent.Window) ?? Application.Current.MainWindow);
-            
+                Application.Current.Dispatcher.InvokeIfNeeded(() => ((Window)Workitem.Window).Owner = ((Window)Parent.Window) ?? Application.Current.MainWindow);
+
             await RunWorkitem().ConfigureAwait(false);
-            
+
         }
     }
 }

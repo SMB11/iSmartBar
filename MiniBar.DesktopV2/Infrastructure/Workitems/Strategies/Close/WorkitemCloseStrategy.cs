@@ -1,10 +1,9 @@
-﻿using Infrastructure.Utility;
+﻿using Infrastructure.Framework;
 using Infrastructure.Interface;
+using Infrastructure.Logging;
+using Infrastructure.Utility;
 using System;
 using System.Threading.Tasks;
-using System.Windows;
-using Infrastructure.Framework;
-using Infrastructure.Logging;
 
 namespace Infrastructure.Workitems.Strategies.Close
 {
@@ -93,7 +92,7 @@ namespace Infrastructure.Workitems.Strategies.Close
             {
                 // execute instance specific close logic
                 await Execute().ConfigureAwait(false);
-                
+
                 // dispose of the workitem
                 Workitem.Dispose();
 
@@ -102,7 +101,7 @@ namespace Infrastructure.Workitems.Strategies.Close
 
                 // remove views in UI thread
                 TaskManager.RunUIThread(() => CurrentContextService.RegionManager.RemoveWorkitemViews(Workitem));
-                
+
                 // if modal workitem close window
                 if (Workitem.IsModal)
                     TaskManager.RunUIThread(() => Workitem.Window.TryClose());
@@ -110,7 +109,7 @@ namespace Infrastructure.Workitems.Strategies.Close
                 // remove from the collection
                 CurrentContextService.Collection.Remove(Workitem);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 // Log workitem exception
                 Logger.LogWithWorkitemData("Failed to close workitem", LogLevel.Exception, Workitem, e);

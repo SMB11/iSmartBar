@@ -1,9 +1,6 @@
-﻿using System;
-using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm;
-using MiniBar.Common.Workitems.EntityQC.Views;
-using System.Collections.ObjectModel;
+﻿using MiniBar.Common.Workitems.EntityQC.Views;
 using MiniBar.EntityViewModels.Products;
+using System.Collections.ObjectModel;
 
 namespace MiniBar.ProductsModule.Workitems.ProductQC.Views
 {

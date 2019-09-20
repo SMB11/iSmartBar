@@ -27,7 +27,7 @@ namespace Infrastructure
 
         private static void OnIsWorkitemTabControlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if(d is DXTabControl && ((bool)e.NewValue) == true)
+            if (d is DXTabControl && ((bool)e.NewValue) == true)
             {
                 DXTabControl control = (DXTabControl)d;
                 control.TabHiding += DXTabControl_TabHiding;

@@ -1,17 +1,17 @@
-﻿using MiniBar.ProductsModule;
+﻿using Infrastructure;
+using Infrastructure.Framework;
+using Infrastructure.Workitems;
+using MiniBar.ProductsModule;
 using MiniBar.ProductsModule.Constants;
+using MiniBar.ProductsModule.Resources;
+using MiniBar.ProductsModule.Services;
+using MiniBar.ProductsModule.Workitems.BrandManager;
+using MiniBar.ProductsModule.Workitems.CategoryManager;
 using MiniBar.ProductsModule.Workitems.ProductManager;
 using Prism.Ioc;
 using Prism.Regions;
-using MiniBar.ProductsModule.Services;
 using Security;
-using MiniBar.ProductsModule.Workitems.BrandManager;
-using Infrastructure;
-using MiniBar.ProductsModule.Workitems.CategoryManager;
-using MiniBar.ProductsModule.Resources;
-using Infrastructure.Workitems;
 using System.Threading.Tasks;
-using Infrastructure.Framework;
 
 namespace MiniBar.Modules
 {
@@ -49,12 +49,12 @@ namespace MiniBar.Modules
 
             RegionManager.RegisterViewWithRegion(Infrastructure.Constants.RegionNames.NavBarControlRegion, typeof(NavBarControls));
             RegionManager.RegisterViewWithRegion(Infrastructure.Constants.RegionNames.MainPageMenuRegion, typeof(MainPageMenuGroup));
-            
+
         }
 
         private async Task OpenProductManager(bool isModal)
         {
-            if(isModal)
+            if (isModal)
                 await CurrentContextService.LaunchModalWorkItem<ProductManagerWorkitem>();
             else
                 await CurrentContextService.LaunchWorkItem<ProductManagerWorkitem>();

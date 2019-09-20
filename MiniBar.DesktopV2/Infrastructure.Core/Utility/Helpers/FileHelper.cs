@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
 namespace Infrastructure.Utility
 {
@@ -12,7 +11,7 @@ namespace Infrastructure.Utility
             while (File.Exists(available))
             {
                 string newFileName = Path.GetFileNameWithoutExtension(filePath) + " (" + i++ + ")";
-                available = Path.Combine(Path.GetPathRoot(filePath),  newFileName + Path.GetExtension(filePath));
+                available = Path.Combine(Path.GetPathRoot(filePath), newFileName + Path.GetExtension(filePath));
             }
             return available;
         }

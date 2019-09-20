@@ -1,11 +1,4 @@
-﻿using Infrastructure.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Infrastructure.Interface
+﻿namespace Infrastructure.Interface
 {
     /// <summary>
     /// Workitem event args to send data to its creator through the communication channel

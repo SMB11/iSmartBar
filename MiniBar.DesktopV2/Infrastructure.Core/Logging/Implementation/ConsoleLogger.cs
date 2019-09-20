@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure.Logging
 {
@@ -41,7 +39,7 @@ namespace Infrastructure.Logging
                 case LogLevel.Exception:
                     consoleColor = ConsoleColor.Red;
                     break;
-                    
+
             }
 
             // Set the desired console color
@@ -53,6 +51,6 @@ namespace Infrastructure.Logging
             // Reset color
             Console.ForegroundColor = consoleOldColor;
         }
-        
+
     }
 }

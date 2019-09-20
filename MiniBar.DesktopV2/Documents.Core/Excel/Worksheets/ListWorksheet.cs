@@ -1,9 +1,5 @@
 ﻿using DevExpress.Spreadsheet;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Documents.Excel.Worksheets
 {
@@ -29,7 +25,7 @@ namespace Documents.Excel.Worksheets
                 string item = list[i];
                 Worksheet[i, avalilableColumn].SetValue(item);
             }
-            Range range = Worksheet.Range.FromLTRB(avalilableColumn, 0, avalilableColumn, i-1).GetRangeWithAbsoluteReference();
+            Range range = Worksheet.Range.FromLTRB(avalilableColumn, 0, avalilableColumn, i - 1).GetRangeWithAbsoluteReference();
             avalilableColumn++;
             return range;
         }

@@ -1,5 +1,4 @@
 ﻿using DevExpress.Xpf.LayoutControl;
-using System;
 using System.Windows;
 
 namespace Infrastructure
@@ -17,8 +16,8 @@ namespace Infrastructure
                 LayoutItem item = (LayoutItem)d;
                 if ((bool)e.NewValue == true && (bool)e.OldValue == false)
                     item.Label += "*";
-                if((bool)e.NewValue == false && (bool)e.OldValue == true)
-                    item.Label = item.Label.ToString().Substring(0, item.Label.ToString().Length-1);
+                if ((bool)e.NewValue == false && (bool)e.OldValue == true)
+                    item.Label = item.Label.ToString().Substring(0, item.Label.ToString().Length - 1);
             }
         }
 

@@ -14,7 +14,7 @@ namespace Infrastructure.Localization
         public override bool IsValid(object value)
         {
             IDictionary<string, string> dict = (IDictionary<string, string>)value;
-            if(!dict.ContainsKey("en") || !dict.ContainsKey("it"))
+            if (!dict.ContainsKey("en") || !dict.ContainsKey("it"))
             {
                 ErrorMessage = "Data must be entered in all languages";
                 return false;

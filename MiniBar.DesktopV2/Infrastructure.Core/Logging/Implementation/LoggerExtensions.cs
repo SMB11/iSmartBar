@@ -30,6 +30,16 @@ namespace Infrastructure.Logging
         }
 
         /// <summary>
+        /// Adds a file logger to a composite logger
+        /// </summary>
+        /// <param name="logger">the composite logger</param>
+        public static ICompositeLogger AddFile(this ICompositeLogger logger, string filePath)
+        {
+            logger.AddLogger(new FileLogger(filePath));
+            return logger;
+        }
+
+        /// <summary>
         /// Adds logging to container registry
         /// </summary>
         /// <param name="containerRegistry">the container registry</param>
@@ -110,6 +120,6 @@ namespace Infrastructure.Logging
             [CallerMemberName] string origin = "",
             [CallerFilePath] string filePath = "",
             [CallerLineNumber] int lineNumber = 0) => logger.Log(LoggerSourceFormatter.Format(message, origin, filePath, lineNumber, exception), LogLevel.Warning);
-        
+
     }
 }

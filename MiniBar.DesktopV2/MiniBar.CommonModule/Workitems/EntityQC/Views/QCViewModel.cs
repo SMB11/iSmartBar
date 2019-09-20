@@ -1,12 +1,6 @@
-﻿using System;
-using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm;
-
-using System.Collections;
-using System.Collections.ObjectModel;
+﻿using Infrastructure.Framework;
 using Infrastructure.Interface;
-using DevExpress.Xpf.Grid;
-using Infrastructure.Framework;
+using System.Collections.ObjectModel;
 
 namespace MiniBar.Common.Workitems.EntityQC.Views
 {
@@ -20,7 +14,7 @@ namespace MiniBar.Common.Workitems.EntityQC.Views
             get { return isListEnabled && !IsListLoading; }
             set { SetProperty(ref isListEnabled, value, nameof(IsListEnabled)); }
         }
-        
+
 
         private bool isListLoading;
 
@@ -69,7 +63,7 @@ namespace MiniBar.Common.Workitems.EntityQC.Views
         {
             return CurrentItem != null;
         }
-        
-        
+
+
     }
 }

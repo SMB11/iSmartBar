@@ -1,13 +1,5 @@
-﻿using DevExpress.Mvvm.UI;
-using DevExpress.Xpf.Bars;
-using DevExpress.Xpf.Core;
-using DevExpress.Xpf.Ribbon;
-using Infrastructure.Interface;
-using System;
-using System.Collections.Generic;
+﻿using Infrastructure.Interface;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Infrastructure
@@ -27,7 +19,7 @@ namespace Infrastructure
 
         private static void TrySetForChildren(DependencyObject obj, IWorkItem value)
         {
-            foreach(var child in LogicalTreeHelper.GetChildren(obj).OfType<DependencyObject>())
+            foreach (var child in LogicalTreeHelper.GetChildren(obj).OfType<DependencyObject>())
             {
                 IWorkItem owner = GetOwner(child);
                 if (owner == null)

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Infrastructure.Framework;
+using Infrastructure.Interface;
+using MiniBar.Common.Workitems.LanguageEdit;
+using System;
 using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Infrastructure.Framework;
-using Infrastructure.Interface;
-using MiniBar.Common.Workitems.LanguageEdit;
 
 namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
 {

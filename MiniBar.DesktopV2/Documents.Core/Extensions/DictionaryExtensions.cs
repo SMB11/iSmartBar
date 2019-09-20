@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Documents.Extensions
 {
@@ -10,7 +6,7 @@ namespace Documents.Extensions
     {
         public static void SetDictionary<TKey, TValue>(this IDictionary<TKey, TValue> dict, IDictionary<TKey, TValue> from)
         {
-            foreach(var item in from)
+            foreach (var item in from)
             {
                 dict.Add(item.Key, item.Value);
             }

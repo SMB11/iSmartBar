@@ -31,7 +31,7 @@ namespace MiniBar.Common.Workitems.ImportExcel.Views
             if (folderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 IsTemplateLoading = true;
-                string filename =(ImportExcelOptions.TemplateName ?? "importTemplate") + ".xlsx";
+                string filename = (ImportExcelOptions.TemplateName ?? "importTemplate") + ".xlsx";
 
                 string filePath = FileHelper.GetAvailableFilename(Path.Combine(folderDialog.SelectedPath, filename));
 
@@ -127,7 +127,8 @@ namespace MiniBar.Common.Workitems.ImportExcel.Views
         public bool IsTemplateLoading
         {
             get { return isTemplateLoading; }
-            set {
+            set
+            {
                 SetProperty(ref isTemplateLoading, value, nameof(IsTemplateLoading));
                 SaveTemplateCommand.RaiseCanExecuteChanged();
                 OpenFileCommand.RaiseCanExecuteChanged();

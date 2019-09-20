@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Infrastructure.Logging
+﻿namespace Infrastructure.Logging
 {
-    
+
     /// <summary>
     /// The severity of the log message
     /// </summary>

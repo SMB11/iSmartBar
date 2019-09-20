@@ -4,8 +4,8 @@ using Infrastructure.Interface.Events;
 using Networking;
 using NETWORKLIST;
 using System;
-using System.Threading.Tasks;
 using System.Configuration;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Utility
 {
@@ -17,7 +17,7 @@ namespace Infrastructure.Utility
 
         public ConnectionMonitoringService()
         {
-            
+
             NetworkListManager nlmUser = new NetworkListManager();
             NetworkConnectivityMonitor = new NetworkConnectivityMonitor();
             NetworkConnectivityMonitor.Subscribe();

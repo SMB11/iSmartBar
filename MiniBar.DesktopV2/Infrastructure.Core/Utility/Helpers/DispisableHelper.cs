@@ -6,7 +6,7 @@ namespace Infrastructure.Utility
     {
         public static void DisposeEvent<TEventArgs>(EventHandler<TEventArgs> eventHandler)
         {
-            if(eventHandler != null)
+            if (eventHandler != null)
             {
                 foreach (Delegate d in eventHandler.GetInvocationList())
                 {

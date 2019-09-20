@@ -1,5 +1,4 @@
-﻿using Infrastructure.Utility;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace Infrastructure.Framework
 {
@@ -7,7 +6,7 @@ namespace Infrastructure.Framework
     /// <summary>
     /// Adds CRUD functionality to WorkitemViewModel
     /// </summary>
-    public abstract class CrudWorkitemManagerViewModel: WorkitemViewModel
+    public abstract class CrudWorkitemManagerViewModel : WorkitemViewModel
     {
 
         #region Commands

@@ -1,8 +1,8 @@
 ﻿using DevExpress.Xpf.Ribbon;
 using Documents.Adapter;
 using Documents.Editors;
-using Infrastructure.Office;
 using Infrastructure.Interface;
+using Infrastructure.Office;
 using MiniBar.Common.Workitems.ObjectManager;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Resources;
@@ -50,7 +50,7 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager
         }
 
         public override string WorkItemName => "Category Manager";
-        
+
         protected override RibbonPageCategory GetRibbonCategory()
         {
             return new CategoryManagerRibbonCategory();
@@ -60,7 +60,7 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager
 
         protected override ExcelDocument<CategoryUploadViewModel> GetDocument()
         {
-            
+
             DocumentAdapter<CategoryUploadViewModel> documentAdapter = new DocumentAdapter<CategoryUploadViewModel>();
             documentAdapter.MultiColumn(
                 p => p.Names,
@@ -101,7 +101,7 @@ namespace MiniBar.ProductsModule.Workitems.CategoryManager
                 dtos.Add(dto);
             }
             return Observable.FromAsync(() => CategoryService.InsertChanges(dtos, new List<CategoryUploadDTO>(), new List<CategoryUploadDTO>()));
-            
+
         }
     }
 }

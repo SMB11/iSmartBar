@@ -1,19 +1,19 @@
-﻿using Infrastructure.Constants;
-using Infrastructure.Utility;
+﻿using DevExpress.Mvvm;
+using Infrastructure.Constants;
+using Infrastructure.Framework;
 using Infrastructure.Interface;
+using Infrastructure.Utility;
+using Infrastructure.Workitems.Strategies.Close;
+using Infrastructure.Workitems.Strategies.Focus;
+using Infrastructure.Workitems.Strategies.Launch;
 using Prism.Ioc;
 using Prism.Regions;
 using System;
-using System.Linq;
-using System.Windows;
-using Infrastructure.Workitems.Strategies.Launch;
-using Infrastructure.Workitems.Strategies.Close;
-using Infrastructure.Workitems.Strategies.Focus;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Linq;
 using System.Threading.Tasks;
-using DevExpress.Mvvm;
-using Infrastructure.Framework;
+using System.Windows;
 
 namespace Infrastructure.Workitems
 {
@@ -46,9 +46,9 @@ namespace Infrastructure.Workitems
         }
 
         private AsyncCommand<IWorkItem> focusCommand;
-        public AsyncCommand<IWorkItem> FocusCommand =>   
+        public AsyncCommand<IWorkItem> FocusCommand =>
             focusCommand ?? (focusCommand = new AsyncCommand<IWorkItem>(FocusWorkitem));
-        
+
 
         public string ShellTitle
         {
@@ -58,7 +58,7 @@ namespace Infrastructure.Workitems
 
                 Application.Current.Dispatcher.InvokeIfNeeded(() =>
                 {
-                    Application.Current.MainWindow.Title =  value;
+                    Application.Current.MainWindow.Title = value;
                 });
             }
         }
@@ -126,7 +126,7 @@ namespace Infrastructure.Workitems
             return LaunchWorkItem(typeof(T), parent, data, true, metadata);
         }
 
-        public Task<IObservable<WorkitemEventArgs>> LaunchModalWorkItem<T>( object data = null, IWorkItem parent = null) where T : IWorkItem
+        public Task<IObservable<WorkitemEventArgs>> LaunchModalWorkItem<T>(object data = null, IWorkItem parent = null) where T : IWorkItem
         {
             return LaunchWorkItem(typeof(T), parent, data, true);
         }

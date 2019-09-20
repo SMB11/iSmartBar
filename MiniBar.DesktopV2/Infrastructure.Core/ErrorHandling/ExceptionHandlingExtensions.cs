@@ -1,7 +1,4 @@
 ﻿using Prism.Ioc;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Infrastructure.ErrorHandling
 {

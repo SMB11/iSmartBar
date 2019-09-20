@@ -1,8 +1,8 @@
 ﻿using DevExpress.Xpf.Ribbon;
 using Documents.Adapter;
 using Documents.Editors;
-using Infrastructure.Office;
 using Infrastructure.Interface;
+using Infrastructure.Office;
 using MiniBar.Common.Workitems.ObjectManager;
 using MiniBar.ConfigurationModule.Resources;
 using MiniBar.ConfigurationModule.Services;

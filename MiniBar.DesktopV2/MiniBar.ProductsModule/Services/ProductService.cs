@@ -1,9 +1,9 @@
-﻿using Security;
+﻿using Flurl.Http;
+using Security;
 using SharedEntities.DTO.Product;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Flurl.Http;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MiniBar.ProductsModule.Services
 {
@@ -23,7 +23,7 @@ namespace MiniBar.ProductsModule.Services
         public Task<ProductUploadDTO> GetForUploadByID(int id, CancellationToken token = default(CancellationToken))
         {
 
-            return BuildRequest("forupload/"+id).GetJsonAsync<ProductUploadDTO>(token);
+            return BuildRequest("forupload/" + id).GetJsonAsync<ProductUploadDTO>(token);
         }
 
         [ApiExceptionHandling]
@@ -50,7 +50,7 @@ namespace MiniBar.ProductsModule.Services
         [ApiExceptionHandling]
         public async Task Remove(int id)
         {
-            await BuildRequest(""+id).DeleteAsync().ConfigureAwait(false);
+            await BuildRequest("" + id).DeleteAsync().ConfigureAwait(false);
         }
 
     }

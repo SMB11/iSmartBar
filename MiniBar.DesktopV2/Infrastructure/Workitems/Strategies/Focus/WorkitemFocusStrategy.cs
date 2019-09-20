@@ -1,10 +1,7 @@
-﻿using Infrastructure.Interface;
+﻿using Infrastructure.Framework;
+using Infrastructure.Interface;
 using Infrastructure.Logging;
-using Infrastructure.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Workitems.Strategies.Focus
@@ -53,7 +50,7 @@ namespace Infrastructure.Workitems.Strategies.Focus
         /// <param name="workItem">Workitem to open</param>
         public static WorkitemFocusStrategy GetFocusStrategy(ContextService currentContextService, IWorkItem workItem)
         {
-            if(workItem == null || workItem is NullWorkitem)
+            if (workItem == null || workItem is NullWorkitem)
                 return new WorkitemUnfocusStrategy(currentContextService, workItem);
             else if (workItem.IsModal)
                 return new ModalWorkitemFocusStrategy(currentContextService, workItem);
@@ -72,7 +69,7 @@ namespace Infrastructure.Workitems.Strategies.Focus
             {
                 await Execute().ConfigureAwait(false);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 // Log workitem exception
                 Logger.LogWithWorkitemData("Failed to focus workitem", LogLevel.Exception, Workitem, e);

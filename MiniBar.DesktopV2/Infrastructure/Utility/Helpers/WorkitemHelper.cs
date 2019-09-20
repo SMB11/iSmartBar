@@ -1,6 +1,5 @@
 ﻿using Infrastructure.Interface;
 using Infrastructure.Modularity;
-using Infrastructure.Utility;
 using Prism.Regions;
 using System.Windows;
 
@@ -10,7 +9,7 @@ namespace Infrastructure.Utility
     {
         internal static IWindow GetModalWindow(IWorkItem workitem, IModalOption metadata = null)
         {
-            if(metadata == null)
+            if (metadata == null)
             {
                 metadata = workitem.Configuration.GetOption<IModalOption>();
             }

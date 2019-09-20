@@ -2,10 +2,7 @@
 using Security;
 using SharedEntities.DTO.Global;
 using SharedEntities.DTO.Product;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -35,7 +32,7 @@ namespace MiniBar.ProductsModule.Services
         {
             return BuildRequest("insert").PostJsonAsync(uploadDTO).ReceiveJson<int>();
         }
-        
+
         [ApiExceptionHandling]
         public async Task Update(CategoryUploadDTO uploadDTO)
         {

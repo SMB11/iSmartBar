@@ -1,17 +1,10 @@
-﻿using DevExpress.Mvvm;
-using Infrastructure;
-using Infrastructure.Interface;
-
+﻿
 using MiniBar.Common.Workitems.EntityQC;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Workitems.CategoryQC.Views;
 using Prism.Ioc;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace MiniBar.ProductsModule.Workitems.CategoryQC
@@ -41,7 +34,7 @@ namespace MiniBar.ProductsModule.Workitems.CategoryQC
         {
             base.AfterWorkitemRun();
             object root = Parent.RequestResource("RootCategories");
-            if(root != null && root is IEnumerable<CategoryViewModel>)
+            if (root != null && root is IEnumerable<CategoryViewModel>)
                 CategoryQCViewModel.RootCategories = new ObservableCollection<CategoryViewModel>((IEnumerable<CategoryViewModel>)root);
         }
     }

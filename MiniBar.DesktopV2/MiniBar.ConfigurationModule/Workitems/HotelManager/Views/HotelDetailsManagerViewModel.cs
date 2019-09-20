@@ -2,6 +2,6 @@
 {
     partial class HotelManagerViewModel
     {
-        
+
     }
 }

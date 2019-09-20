@@ -41,7 +41,7 @@ namespace MiniBar.Common.Workitems.LanguageEdit.Views
 
         public void SetData(IDictionary<string, string> names)
         {
-            foreach(var data in languageDatas)
+            foreach (var data in languageDatas)
             {
                 if (names.ContainsKey(data.Language.ID))
                 {

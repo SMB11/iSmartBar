@@ -1,11 +1,8 @@
 ﻿using Flurl.Http;
 using Security;
 using SharedEntities.DTO.Locations;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,8 +10,8 @@ namespace MiniBar.ConfigurationModule.Services
 {
     public class CountryService : RestConsumingServiceBase
     {
-        public CountryService() : base("locations/countries", ConfigurationManager.AppSettings["ConfigApiUrl"])
-        {   
+        public CountryService() : base("locations/countries", ConfigurationManager.AppSettings["ProductApiUrl"])
+        {
         }
 
 
@@ -48,6 +45,6 @@ namespace MiniBar.ConfigurationModule.Services
         {
             await BuildRequest("" + id).DeleteAsync().ConfigureAwait(false);
         }
-        
+
     }
 }

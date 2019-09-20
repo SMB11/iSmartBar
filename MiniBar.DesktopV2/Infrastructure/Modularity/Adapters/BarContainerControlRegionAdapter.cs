@@ -3,7 +3,7 @@ using Prism.Regions;
 using System.Collections.Specialized;
 
 namespace Infrastructure.Modularity
-{ 
+{
 
     public class BarContainerControlRegionAdapter : RegionAdapterBase<BarContainerControl>
     {

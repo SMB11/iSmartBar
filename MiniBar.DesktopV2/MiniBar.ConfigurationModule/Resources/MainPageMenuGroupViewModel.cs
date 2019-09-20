@@ -1,9 +1,9 @@
-﻿using Infrastructure.Interface;
-using System.Linq;
-using MiniBar.ConfigurationModule.Workitems.CountryManager;
+﻿using Infrastructure.Framework;
+using Infrastructure.Interface;
 using MiniBar.ConfigurationModule.Workitems.CityManager;
+using MiniBar.ConfigurationModule.Workitems.CountryManager;
 using MiniBar.ConfigurationModule.Workitems.HotelManager;
-using Infrastructure.Framework;
+using System.Linq;
 
 namespace MiniBar.ConfigurationModule.Resources
 {
@@ -28,7 +28,7 @@ namespace MiniBar.ConfigurationModule.Resources
                     break;
 
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
-                    if (e.OldItems!= null)
+                    if (e.OldItems != null)
                     {
                         CountryManagerCount -= e.OldItems.OfType<CountryManagerWorkitem>().Count();
                         CityManagerCount -= e.OldItems.OfType<CityManagerWorkitem>().Count();
@@ -43,8 +43,9 @@ namespace MiniBar.ConfigurationModule.Resources
         public int CountryManagerCount
         {
             get { return countryManagerCount; }
-            set {
-                SetProperty(ref countryManagerCount,  value, nameof(CountryManagerCount));
+            set
+            {
+                SetProperty(ref countryManagerCount, value, nameof(CountryManagerCount));
                 RaisePropertyChanged(nameof(CountryManagerInformativeText));
             }
         }

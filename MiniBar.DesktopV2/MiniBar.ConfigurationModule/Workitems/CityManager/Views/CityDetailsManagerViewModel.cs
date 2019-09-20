@@ -20,7 +20,7 @@ namespace MiniBar.ConfigurationModule.Workitems.CityManager.Views
                 return nameEditCommand;
             }
         }
-        
+
 
         protected override void OnReadOnlyChanged()
         {

@@ -1,5 +1,5 @@
-﻿using Infrastructure.Utility;
-using Infrastructure.Interface;
+﻿using Infrastructure.Interface;
+using Infrastructure.Utility;
 using System;
 using System.Windows;
 

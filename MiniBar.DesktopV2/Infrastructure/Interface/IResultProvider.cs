@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Infrastructure.Interface
+﻿namespace Infrastructure.Interface
 {
     public interface IResultProvider
     {
-        object Result { get;  }
+        object Result { get; }
     }
 }

@@ -43,8 +43,8 @@ namespace Infrastructure.Modularity
                         {
                             var toRemove = control.Children
                                                 .OfType<Tile>()
-                                                .Where(t => 
-                                                    t.Tag != null && 
+                                                .Where(t =>
+                                                    t.Tag != null &&
                                                     t.Tag.Equals(tiles.Tag)
                                                 ).ToList();
                             for (int i = 0; i < toRemove.Count; i++)

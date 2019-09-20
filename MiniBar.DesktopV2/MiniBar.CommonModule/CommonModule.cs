@@ -1,18 +1,13 @@
-﻿using Infrastructure;
-using Infrastructure.Modularity;
-using MiniBar.Common.Resources;
-using MiniBar.Common.Workitems.ImportExcel;
+﻿using MiniBar.Common.Workitems.ImportExcel;
 using Prism.Ioc;
-using Prism.Regions;
 using Security;
-using System.Windows;
 
 namespace MiniBar.Modules
 {
     public class CommonModule : Module
     {
         public override string Name => "Common";
-        
+
         private IContainerProvider Container { get; set; }
 
         public override void OnInitialized(IContainerProvider containerProvider)

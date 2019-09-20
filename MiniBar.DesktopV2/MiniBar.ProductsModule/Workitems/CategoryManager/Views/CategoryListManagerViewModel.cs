@@ -1,12 +1,5 @@
-﻿using MiniBar.Common.Services;
-using MiniBar.EntityViewModels.Products;
-using MiniBar.ProductsModule.Workitems.CatgeoryManager.Services;
-using System;
-using System.Collections.Generic;
+﻿using MiniBar.EntityViewModels.Products;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MiniBar.ProductsModule.Workitems.CategoryManager.Views
 {

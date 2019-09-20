@@ -1,24 +1,24 @@
 ﻿using DevExpress.Spreadsheet;
 using DevExpress.Xpf.Ribbon;
+using Documents.Exceptions;
+using Infrastructure.ChangeTracking;
+using Infrastructure.Framework;
 using Infrastructure.Interface;
+using Infrastructure.Logging;
+using Infrastructure.Modularity;
+using Infrastructure.Office;
+using Infrastructure.Utility;
 using Infrastructure.Workitems;
+using MiniBar.Common.Resources;
 using MiniBar.Common.Workitems.ImportExcel;
 using Prism.Ioc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Reactive.Linq;
-using MiniBar.Common.Resources;
-using Infrastructure.Office;
-using Infrastructure.ChangeTracking;
-using Documents.Exceptions;
-using Infrastructure.Utility;
-using Infrastructure.Modularity;
-using Infrastructure.Logging;
-using Infrastructure.Framework;
 
 namespace MiniBar.Common.Workitems.ObjectManager
 {
@@ -63,7 +63,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
 
         async Task ExecuteImportFromExcelCommand()
         {
-            var observable =  await CurrentContextService.LaunchModalWorkItem<ImportExcelWorkitem>(new ImportExcelOptions(
+            var observable = await CurrentContextService.LaunchModalWorkItem<ImportExcelWorkitem>(new ImportExcelOptions(
                 (DocumentFormat) =>
                 {
                     MemoryStream stream = new MemoryStream();
@@ -123,15 +123,17 @@ namespace MiniBar.Common.Workitems.ObjectManager
                 ObjectManagerViewModel.IsListLoading = true;
                 AddList(list)
                     .ObserveOn(Application.Current.Dispatcher)
-                    .Subscribe(async _ => {
+                    .Subscribe(async _ =>
+                    {
                         await ObjectManagerViewModel.RefreshItems(ObjectManagerViewModel.CurrentItemDetails?.ID);
                         ObjectManagerViewModel.IsListLoading = false;
-                    }, e => ApiHelper.HandleApiException(e, "Failed to add list", () => {
+                    }, e => ApiHelper.HandleApiException(e, "Failed to add list", () =>
+                    {
                         ObjectManagerViewModel.IsListLoading = false;
                     }));
             }
         }
-        
+
 
         protected abstract Task<IObservable<WorkitemEventArgs>> LaunchQCWorkitem(List<TDetails> details);
 
@@ -143,7 +145,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
         protected override void RegisterCommands(ICommandContainer container)
         {
             base.RegisterCommands(container);
-            
+
             container.Register(Constants.CommandNames.AddObject, ObjectManagerViewModel.AddCommand);
             container.Register(Constants.CommandNames.AddObjectCopy, ObjectManagerViewModel.AddCopyCommand);
             container.Register(Constants.CommandNames.EditObject, ObjectManagerViewModel.EditCommand);
@@ -165,7 +167,7 @@ namespace MiniBar.Common.Workitems.ObjectManager
 
         private ExcelDocument<TDetails> ResolveDocument()
         {
-            if(document == null)
+            if (document == null)
             {
                 document = GetDocument();
             }

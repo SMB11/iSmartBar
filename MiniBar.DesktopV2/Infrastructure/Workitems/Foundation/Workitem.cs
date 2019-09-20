@@ -1,7 +1,4 @@
-﻿using Infrastructure.Interface;
-using Prism.Ioc;
-using Prism.Regions;
-using System.Windows;
+﻿using Prism.Ioc;
 
 namespace Infrastructure.Workitems
 {
@@ -11,6 +8,6 @@ namespace Infrastructure.Workitems
         public Workitem(IContainerExtension container) : base(container)
         {
         }
-        
+
     }
 }

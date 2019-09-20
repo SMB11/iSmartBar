@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.Spreadsheet;
+﻿using DevExpress.Spreadsheet;
+using System;
 
 namespace Documents.Converters.Cell
 {
@@ -15,7 +11,7 @@ namespace Documents.Converters.Cell
         public CellConverter(Type type)
         {
             Type = type;
-            if(type == typeof(int) || type == typeof(double) || type == typeof(float))
+            if (type == typeof(int) || type == typeof(double) || type == typeof(float))
             {
                 Converter = new NumericCellConverter();
             }

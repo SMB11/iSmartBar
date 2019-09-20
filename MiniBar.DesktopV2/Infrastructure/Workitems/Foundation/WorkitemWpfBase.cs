@@ -1,11 +1,11 @@
 ﻿using DevExpress.Mvvm;
 using Infrastructure.Constants;
-using Infrastructure.Utility;
+using Infrastructure.Framework;
 using Infrastructure.Interface;
+using Infrastructure.Logging;
+using Infrastructure.Utility;
 using Prism.Ioc;
 using Prism.Regions;
-using Infrastructure.Logging;
-using Infrastructure.Framework;
 
 namespace Infrastructure.Workitems
 {
@@ -54,9 +54,9 @@ namespace Infrastructure.Workitems
         }
 
         #endregion
-        
+
         #region Public/Protected Methods
-        
+
         protected override ICommandContainer CreateCommandContainer()
         {
             return new WorkitemCommandContainer(this);
@@ -81,7 +81,7 @@ namespace Infrastructure.Workitems
 
             if (!IsModal)
                 RegionManager.DeactivateWorkitem(this);
-            
+
 
         }
 
@@ -90,7 +90,7 @@ namespace Infrastructure.Workitems
 
             RegionManager.ActivateWorkitem(this);
         }
-        
+
         #endregion
     }
 }

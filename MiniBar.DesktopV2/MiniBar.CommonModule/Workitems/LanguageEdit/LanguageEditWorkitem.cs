@@ -5,10 +5,7 @@ using Infrastructure.Workitems;
 using MiniBar.Common.Constants;
 using MiniBar.Common.Workitems.LanguageEdit.Views;
 using Prism.Ioc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 

@@ -1,0 +1,15 @@
+﻿<dxn:NavBarGroup x:Class="MiniBar.AnalyticsModule.NavBarControls"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxn="http://schemas.devexpress.com/winfx/2008/xaml/navbar"
+             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             xmlns:inf="clr-namespace:Infrastructure;assembly=Infrastructure"
+             xmlns:consts="clr-namespace:MiniBar.AnalyticsModule.Constants"
+             mc:Ignorable="d" 
+             Header="Analytics">
+    <dxn:NavBarGroup.Items>
+        <dxn:NavBarItem ImageSource="{dxc:DXImage Image=Country_32x32.png}" inf:CommandManager.CommandName="{x:Static consts:CommandNames.LaunchStatisticsWorkitem}"  Content="Dashboard"/>
+    </dxn:NavBarGroup.Items>
+</dxn:NavBarGroup>

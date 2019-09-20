@@ -24,13 +24,13 @@ namespace Infrastructure.Utility
                     UIManager.Error(exception.Message);
                 else if (exception is ApiConnectionException)
                     UIManager.Error("Couldn't connect to server");
-                else if(String.IsNullOrEmpty(defaultMessage))
+                else if (String.IsNullOrEmpty(defaultMessage))
                     UIManager.Error("An unkown error occured, please contact your administrator.");
                 else
                     UIManager.Error(defaultMessage);
                 afterHandle?.Invoke();
             }
-            
+
         }
     }
 }

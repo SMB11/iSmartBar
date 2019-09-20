@@ -1,24 +1,24 @@
-﻿using MiniBar.ProductsModule.Workitems.ProductManager.Views;
+﻿using DevExpress.Spreadsheet;
 using DevExpress.Xpf.Ribbon;
-using Prism.Ioc;
+using Documents.Adapter;
+using Documents.Editors;
+using Documents.Validation;
+using Infrastructure.Interface;
+using Infrastructure.Office;
 using Infrastructure.Workitems;
+using MiniBar.Common.Workitems.ObjectManager;
 using MiniBar.EntityViewModels.Products;
 using MiniBar.ProductsModule.Resources;
-using DevExpress.Spreadsheet;
-using Infrastructure.Interface;
-using System.Collections.Generic;
-using MiniBar.ProductsModule.Workitems.ProductQC;
 using MiniBar.ProductsModule.Services;
+using MiniBar.ProductsModule.Workitems.ProductManager.Views;
+using MiniBar.ProductsModule.Workitems.ProductQC;
+using Prism.Ioc;
 using SharedEntities.DTO.Product;
 using SharedEntities.Enum;
-using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 using System.Reactive.Linq;
-using MiniBar.Common.Workitems.ObjectManager;
-using Documents.Adapter;
-using Infrastructure.Office;
-using Documents.Validation;
-using Documents.Editors;
+using System.Threading.Tasks;
 
 namespace MiniBar.ProductsModule.Workitems.ProductManager
 {
@@ -71,12 +71,12 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
             ProductManagerViewModel productManagerViewModel = (ObjectManagerViewModel as ProductManagerViewModel);
             DocumentAdapter<ProductUploadViewModel> documentAdapter = new DocumentAdapter<ProductUploadViewModel>();
             documentAdapter.MultiColumn(
-                p => p.Names, 
-                "Names", 
+                p => p.Names,
+                "Names",
                 new List<string>() { "en", "it" }
             );
             documentAdapter.MultiColumn(
-                p => p.Description, 
+                p => p.Description,
                 "Description",
                 new List<string>() { "en", "it" }
             );
@@ -92,7 +92,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
             documentAdapter.Column(
                 p => p.CategoryID,
                 p => p.Category,
-                "Category", 
+                "Category",
                 new CellListEditor<CategoryViewModel>(
                         productManagerViewModel.ChildCategories,
                         c => c.ID,
@@ -100,16 +100,16 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
                     )
                 );
             documentAdapter.Column(
-                p => p.BrandID, 
+                p => p.BrandID,
                 p => p.Brand,
                 "Brand",
                 new CellListEditor<BrandViewModel>(
-                    productManagerViewModel.Brands, 
-                    c => c.ID, 
+                    productManagerViewModel.Brands,
+                    c => c.ID,
                     c => c.Name
                 )
             );
-            return  new ExcelDocument<ProductUploadViewModel>(documentAdapter);
+            return new ExcelDocument<ProductUploadViewModel>(documentAdapter);
         }
 
         protected override Task<IObservable<WorkitemEventArgs>> LaunchQCWorkitem(List<ProductUploadViewModel> res)
@@ -143,7 +143,7 @@ namespace MiniBar.ProductsModule.Workitems.ProductManager
 
             return Observable.FromAsync(() => ProductService.AddList(dtos));
         }
-        
+
 
         protected override RibbonPageCategory GetRibbonCategory()
         {

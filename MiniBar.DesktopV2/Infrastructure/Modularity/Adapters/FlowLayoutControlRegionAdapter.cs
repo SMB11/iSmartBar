@@ -22,7 +22,7 @@ namespace Infrastructure.Modularity
                     case NotifyCollectionChangedAction.Add:
                         foreach (UIElement element in e.NewItems)
                         {
-                            if(element is TileCollection)
+                            if (element is TileCollection)
                             {
                                 TileCollection tiles = element as TileCollection;
                                 tiles.Tag = Guid.NewGuid();

@@ -16,7 +16,8 @@ namespace Infrastructure.Security
             }
         }
 
-        public static void SetCurrentPrincipal(AppPrincipal principal) {
+        public static void SetCurrentPrincipal(AppPrincipal principal)
+        {
             if (principal != currentPrincipal)
             {
                 currentPrincipal = principal;

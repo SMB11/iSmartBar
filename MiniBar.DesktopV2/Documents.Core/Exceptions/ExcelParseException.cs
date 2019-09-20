@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Documents.Exceptions
 {
@@ -12,7 +8,7 @@ namespace Documents.Exceptions
         {
             Column = column;
             Row = row;
-            
+
         }
 
         public ExcelParseException(int column, int row, string error) : base(String.Format("Invalid data at row {0} and column {1}. {2}", row, column, error))

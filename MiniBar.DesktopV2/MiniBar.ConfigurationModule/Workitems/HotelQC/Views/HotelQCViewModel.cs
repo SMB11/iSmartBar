@@ -1,9 +1,6 @@
-﻿using System;
-using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Mvvm;
-using MiniBar.Common.Workitems.EntityQC.Views;
-using System.Collections.ObjectModel;
+﻿using MiniBar.Common.Workitems.EntityQC.Views;
 using MiniBar.EntityViewModels.Configuration;
+using System.Collections.ObjectModel;
 
 namespace MiniBar.ConfigurationModule.Workitems.HotelQC.Views
 {

@@ -1,12 +1,7 @@
 ﻿using DevExpress.Xpf.Ribbon;
-using DevExpress.Xpf.Ribbon.Internal;
 using Infrastructure.Modularity;
-using Infrastructure.Utility;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Infrastructure
@@ -39,7 +34,7 @@ namespace Infrastructure
                 if (ribbonVisibleIfEmptyProperty == false)
                 {
                     DetermineRibbonVisibility(ribbon);
-                    foreach(var item in ribbon.Items.OfType<WorkitemRibbonPageCategory>())
+                    foreach (var item in ribbon.Items.OfType<WorkitemRibbonPageCategory>())
                     {
                         item.VisibilityChanged += Item_VisibilityChanged;
                     }

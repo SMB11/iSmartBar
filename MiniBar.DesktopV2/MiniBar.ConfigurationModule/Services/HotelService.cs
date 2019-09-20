@@ -1,11 +1,8 @@
 ﻿using Flurl.Http;
 using Security;
 using SharedEntities.DTO.Locations;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -13,7 +10,7 @@ namespace MiniBar.ConfigurationModule.Services
 {
     public class HotelService : RestConsumingServiceBase
     {
-        public HotelService() : base("locations/hotels", ConfigurationManager.AppSettings["ConfigApiUrl"])
+        public HotelService() : base("locations/hotels", ConfigurationManager.AppSettings["ProductApiUrl"])
         {
         }
 

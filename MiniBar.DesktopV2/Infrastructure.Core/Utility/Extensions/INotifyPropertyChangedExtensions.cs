@@ -13,7 +13,7 @@ namespace Infrastructure.Utility
         public static IObservable<EventPattern<PropertyChangedEventArgs>> WhenPropertyChanges<T, TProperty>(
                 this T source,
                 Expression<Func<T, TProperty>> propertyExpression)
-            where T: INotifyPropertyChanged
+            where T : INotifyPropertyChanged
         {
             var memberExpression = propertyExpression.Body as MemberExpression;
             return memberExpression == null

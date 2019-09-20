@@ -1,6 +1,5 @@
 ﻿using Infrastructure;
 using Infrastructure.Framework;
-using Infrastructure.Security;
 using MiniBar.ConfigurationModule;
 using MiniBar.ConfigurationModule.Constants;
 using MiniBar.ConfigurationModule.Resources;
@@ -11,7 +10,6 @@ using MiniBar.ConfigurationModule.Workitems.HotelManager;
 using Prism.Ioc;
 using Prism.Regions;
 using Security;
-using System;
 using System.Threading.Tasks;
 
 namespace MiniBar.Modules
@@ -36,7 +34,7 @@ namespace MiniBar.Modules
             CommandManager.RegisterCommand(CommandNames.OpenCityManagerModal, new SecureAsyncCommand(OpenCityManagerModal));
             CommandManager.RegisterCommand(CommandNames.OpenHotelManager, new SecureAsyncCommand(OpenHotelManager));
             CommandManager.RegisterCommand(CommandNames.OpenHotelManagerModal, new SecureAsyncCommand(OpenHotelManagerModal));
-            
+
         }
 
         public override void RegisterTypes(IContainerRegistry containerRegistry)
